@@ -51,7 +51,7 @@ class PlateViewController: UITableViewController, UITableViewDataSource, UITable
         tableView.rowHeight = UITableViewAutomaticDimension
         
         titleLabel.text = "Your Plate"
-        subtitleLabel.text = "The top 5 suggestions based on the information you provided"
+        subtitleLabel.text = "What can you see yourself eating?"
         
         self.refreshControl = UIRefreshControl()
         self.refreshControl?.backgroundColor = UIColor.redColor()
@@ -100,7 +100,7 @@ class PlateViewController: UITableViewController, UITableViewDataSource, UITable
     }
     
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        if mealList.indexOf(mealList.last!) > 0 { // roundabout way of mealList.count
+        if mealList.count > 0 { // roundabout way of mealList.count
             return 1
         } else {
             var messageLabel: UILabel = UILabel(frame: CGRectMake(0, 0, self.view.bounds.size.width, self.view.bounds.size.height))

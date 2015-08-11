@@ -19,7 +19,7 @@ class User: Object {
     
     required init() {
         super.init()
-        var realIngredientsLiked = removeDuplicates(self.ingredientsLiked)
+        var realIngredientsLiked = self.realIngredientsLiked
         var relevantCategories = self.relevantCategories
     }
     
@@ -35,16 +35,16 @@ class User: Object {
                 result.append(value)
             }
         }
-        for i in 0...result.count - 1 {
+        for i in 0...(result.count - 1) {
             realIngredientsLiked.append(RealmString(value: result[i]))
         }
         return realIngredientsLiked
     }
     
     func appendIngredients() {
-        //let realm = Realm()
+    if relevantCategories.count == 0 {
         var categories: [String] = []
-        for i in 0...relevantCategories.indexOf(relevantCategories.last!)! {
+        for i in 0...relevantCategories.count {
             let stringHolder = relevantCategories[i].string
             categories.append(stringHolder)
         }
@@ -153,6 +153,11 @@ class User: Object {
             default:
                 println("No ingredients appended")
             }
+        }
+        removeDuplicates(ingredientsLiked)
+    } else {
+        println("nope")
+        // relevantCategories should be populated
         }
         
     }

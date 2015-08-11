@@ -36,9 +36,9 @@ class UserChoiceCollectionDataSource {
     var latitude: CLLocationDegrees!
     
     required init(){
-        self.ingredientData = currentUser.first!.realIngredientsLiked
-        self.foodCategories = currentUser.first!.relevantCategories
-        
+//        self.ingredientData = currentUser.first!.realIngredientsLiked
+//        self.foodCategories = currentUser.first!.relevantCategories
+//        
     }
     
     func getUserSuggestions() -> [MealObject] {

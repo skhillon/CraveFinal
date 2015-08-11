@@ -9,7 +9,7 @@
         <!--Choose View Controller-->
         <scene sceneID="Buc-xf-gcr">
             <objects>
-                <viewController id="Qus-HB-UNH" customClass="ChooseViewController" customModule="Crave_App" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="Qus-HB-UNH" customClass="ChooseViewController" customModule="CraveFinal" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="UiB-4F-peg"/>
                         <viewControllerLayoutGuide type="bottom" id="Il6-Ry-pjn"/>
@@ -23,7 +23,7 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <color key="sectionIndexBackgroundColor" red="1" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ChooseCell" rowHeight="65" id="gOk-Gs-Pm7" customClass="ChooseTableViewCell" customModule="Crave_App" customModuleProvider="target">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ChooseCell" rowHeight="65" id="gOk-Gs-Pm7" customClass="ChooseTableViewCell" customModule="CraveFinal" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="gOk-Gs-Pm7" id="NL8-Dc-L7E">
@@ -62,7 +62,7 @@
                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="search query" borderStyle="roundedRect" placeholder="Venue name goes here" textAlignment="center" clearsOnBeginEditing="YES" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="x8K-Ez-5x2" customClass="AutoCompleteTextField" customModule="Crave_App" customModuleProvider="target">
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="search query" borderStyle="roundedRect" placeholder="Venue name goes here" textAlignment="center" clearsOnBeginEditing="YES" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="x8K-Ez-5x2" customClass="AutoCompleteTextField" customModule="CraveFinal" customModuleProvider="target">
                                         <rect key="frame" x="200" y="122" width="200" height="30"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
@@ -132,7 +132,7 @@
         <!--Results-->
         <scene sceneID="zf7-Hu-FdZ">
             <objects>
-                <viewController id="SnV-Np-iDU" userLabel="Results" customClass="ResultsViewController" customModule="Crave_App" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="SnV-Np-iDU" userLabel="Results" customClass="ResultsViewController" customModule="CraveFinal" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="HbF-TJ-phs"/>
                         <viewControllerLayoutGuide type="bottom" id="GDY-xV-bOH"/>
@@ -280,7 +280,7 @@
         <!--Plate View Controller-->
         <scene sceneID="wzL-UC-Amk">
             <objects>
-                <tableViewController id="nr5-0R-zXZ" customClass="PlateViewController" customModule="Crave_App" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="nr5-0R-zXZ" customClass="PlateViewController" customModule="CraveFinal" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="SWC-xL-bva">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -319,7 +319,7 @@
                             </constraints>
                         </view>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="MealCell" rowHeight="125" id="8m3-B8-9n9" customClass="PlateTableViewCell" customModule="Crave_App" customModuleProvider="target">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="MealCell" rowHeight="125" id="8m3-B8-9n9" customClass="PlateTableViewCell" customModule="CraveFinal" customModuleProvider="target">
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="8m3-B8-9n9" id="gos-Ja-bbI">
                                     <autoresizingMask key="autoresizingMask"/>
@@ -388,7 +388,7 @@
         <!--Welcome View Controller-->
         <scene sceneID="eNa-fI-S3a">
             <objects>
-                <viewController storyboardIdentifier="Welcome Controller" id="aaR-0N-3t4" customClass="WelcomeViewController" customModule="Crave_App" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Welcome Controller" id="aaR-0N-3t4" customClass="WelcomeViewController" customModule="CraveFinal" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="4sZ-YL-eEi"/>
                         <viewControllerLayoutGuide type="bottom" id="ayG-Jp-96W"/>
@@ -491,7 +491,7 @@
         <!--Categories Collection View Controller-->
         <scene sceneID="lod-Ut-9Al">
             <objects>
-                <collectionViewController storyboardIdentifier="Setup Controller" useStoryboardIdentifierAsRestorationIdentifier="YES" id="3HM-rR-nbv" customClass="CategoriesCollectionViewController" customModule="Crave_App" customModuleProvider="target" sceneMemberID="viewController">
+                <collectionViewController storyboardIdentifier="Setup Controller" useStoryboardIdentifierAsRestorationIdentifier="YES" id="3HM-rR-nbv" customClass="CategoriesCollectionViewController" customModule="CraveFinal" customModuleProvider="target" sceneMemberID="viewController">
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="djZ-A2-Kit">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -503,7 +503,7 @@
                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                         </collectionViewFlowLayout>
                         <cells>
-                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="CategoryCell" id="JBh-Ao-apE" customClass="CategoryCollectionViewCell" customModule="Crave_App" customModuleProvider="target">
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="CategoryCell" id="JBh-Ao-apE" customClass="CategoryCollectionViewCell" customModule="CraveFinal" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
