@@ -13,6 +13,24 @@
 		28579D011B7AAFBA0099A270 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 28579D001B7AAFBA0099A270 /* Images.xcassets */; };
 		28579D041B7AAFBA0099A270 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28579D021B7AAFBA0099A270 /* LaunchScreen.xib */; };
 		28579D101B7AAFBA0099A270 /* CraveFinalTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28579D0F1B7AAFBA0099A270 /* CraveFinalTests.swift */; };
+		28579D1A1B7AB16E0099A270 /* TestRealm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28579D191B7AB16E0099A270 /* TestRealm.swift */; };
+		28579D211B7AB4860099A270 /* UserChoiceCollectionDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28579D201B7AB4860099A270 /* UserChoiceCollectionDataSource.swift */; };
+		28579D231B7AB4BA0099A270 /* ChooseHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28579D221B7AB4BA0099A270 /* ChooseHelper.swift */; };
+		28579D251B7AB4CF0099A270 /* LocationHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28579D241B7AB4CF0099A270 /* LocationHelper.swift */; };
+		28579D271B7AB4E20099A270 /* Storyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28579D261B7AB4E20099A270 /* Storyboard.swift */; };
+		28579D291B7AB5010099A270 /* RealmString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28579D281B7AB5010099A270 /* RealmString.swift */; };
+		28579D2B1B7AB5150099A270 /* MealObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28579D2A1B7AB5150099A270 /* MealObject.swift */; };
+		28579D2D1B7AB5240099A270 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28579D2C1B7AB5240099A270 /* User.swift */; };
+		28579D2F1B7AB5390099A270 /* AutoCompleteTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28579D2E1B7AB5390099A270 /* AutoCompleteTextField.swift */; };
+		28579D311B7AB5510099A270 /* PlateTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28579D301B7AB5510099A270 /* PlateTableViewCell.swift */; };
+		28579D331B7AB5630099A270 /* ChooseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28579D321B7AB5630099A270 /* ChooseTableViewCell.swift */; };
+		28579D351B7AB5790099A270 /* CategoryCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28579D341B7AB5790099A270 /* CategoryCollectionViewCell.swift */; };
+		28579D371B7AB58C0099A270 /* PlateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28579D361B7AB58C0099A270 /* PlateViewController.swift */; };
+		28579D391B7AB5A20099A270 /* ChooseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28579D381B7AB5A20099A270 /* ChooseViewController.swift */; };
+		28579D3B1B7AB5B60099A270 /* ResultsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28579D3A1B7AB5B60099A270 /* ResultsViewController.swift */; };
+		28579D3D1B7AB5D20099A270 /* CategoriesCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28579D3C1B7AB5D20099A270 /* CategoriesCollectionViewController.swift */; };
+		28579D3F1B7AB5E50099A270 /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28579D3E1B7AB5E50099A270 /* WelcomeViewController.swift */; };
+		B132F746385B6E5CA8007271 /* Pods_CraveFinal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A8F99719EFDFF94ED7AC894 /* Pods_CraveFinal.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -29,13 +47,33 @@
 		28579CF41B7AAFBA0099A270 /* CraveFinal.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CraveFinal.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		28579CF81B7AAFBA0099A270 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		28579CF91B7AAFBA0099A270 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		28579CFB1B7AAFBA0099A270 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		28579CFB1B7AAFBA0099A270 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ViewController.swift; path = ../ViewController.swift; sourceTree = "<group>"; };
 		28579CFE1B7AAFBA0099A270 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		28579D001B7AAFBA0099A270 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		28579D031B7AAFBA0099A270 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		28579D091B7AAFBA0099A270 /* CraveFinalTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CraveFinalTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		28579D0E1B7AAFBA0099A270 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		28579D0F1B7AAFBA0099A270 /* CraveFinalTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CraveFinalTests.swift; sourceTree = "<group>"; };
+		28579D191B7AB16E0099A270 /* TestRealm.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TestRealm.swift; path = ../TestRealm.swift; sourceTree = "<group>"; };
+		28579D201B7AB4860099A270 /* UserChoiceCollectionDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UserChoiceCollectionDataSource.swift; path = CraveFinal/Helpers/UserChoiceCollectionDataSource.swift; sourceTree = SOURCE_ROOT; };
+		28579D221B7AB4BA0099A270 /* ChooseHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChooseHelper.swift; sourceTree = "<group>"; };
+		28579D241B7AB4CF0099A270 /* LocationHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationHelper.swift; sourceTree = "<group>"; };
+		28579D261B7AB4E20099A270 /* Storyboard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Storyboard.swift; sourceTree = "<group>"; };
+		28579D281B7AB5010099A270 /* RealmString.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RealmString.swift; sourceTree = "<group>"; };
+		28579D2A1B7AB5150099A270 /* MealObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MealObject.swift; sourceTree = "<group>"; };
+		28579D2C1B7AB5240099A270 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		28579D2E1B7AB5390099A270 /* AutoCompleteTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AutoCompleteTextField.swift; sourceTree = "<group>"; };
+		28579D301B7AB5510099A270 /* PlateTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlateTableViewCell.swift; sourceTree = "<group>"; };
+		28579D321B7AB5630099A270 /* ChooseTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChooseTableViewCell.swift; sourceTree = "<group>"; };
+		28579D341B7AB5790099A270 /* CategoryCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryCollectionViewCell.swift; sourceTree = "<group>"; };
+		28579D361B7AB58C0099A270 /* PlateViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlateViewController.swift; sourceTree = "<group>"; };
+		28579D381B7AB5A20099A270 /* ChooseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChooseViewController.swift; sourceTree = "<group>"; };
+		28579D3A1B7AB5B60099A270 /* ResultsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResultsViewController.swift; sourceTree = "<group>"; };
+		28579D3C1B7AB5D20099A270 /* CategoriesCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoriesCollectionViewController.swift; sourceTree = "<group>"; };
+		28579D3E1B7AB5E50099A270 /* WelcomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
+		5195CB371D4B1C4AF968886E /* Pods-CraveFinal.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CraveFinal.release.xcconfig"; path = "Pods/Target Support Files/Pods-CraveFinal/Pods-CraveFinal.release.xcconfig"; sourceTree = "<group>"; };
+		5A8F99719EFDFF94ED7AC894 /* Pods_CraveFinal.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CraveFinal.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		EB568C0F2A9E5158D230F67C /* Pods-CraveFinal.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CraveFinal.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CraveFinal/Pods-CraveFinal.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -43,6 +81,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B132F746385B6E5CA8007271 /* Pods_CraveFinal.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -62,6 +101,8 @@
 				28579CF61B7AAFBA0099A270 /* CraveFinal */,
 				28579D0C1B7AAFBA0099A270 /* CraveFinalTests */,
 				28579CF51B7AAFBA0099A270 /* Products */,
+				BF663E0A334825689FD68484 /* Pods */,
+				A3DB369B3066C56BC27963C8 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -77,8 +118,12 @@
 		28579CF61B7AAFBA0099A270 /* CraveFinal */ = {
 			isa = PBXGroup;
 			children = (
+				28579D1F1B7AB4580099A270 /* TestingToDelete */,
+				28579D1E1B7AB3C40099A270 /* Models */,
+				28579D1D1B7AB3B60099A270 /* Helpers */,
+				28579D1C1B7AB3A90099A270 /* ViewCells */,
+				28579D1B1B7AB3740099A270 /* View Controllers */,
 				28579CF91B7AAFBA0099A270 /* AppDelegate.swift */,
-				28579CFB1B7AAFBA0099A270 /* ViewController.swift */,
 				28579CFD1B7AAFBA0099A270 /* Main.storyboard */,
 				28579D001B7AAFBA0099A270 /* Images.xcassets */,
 				28579D021B7AAFBA0099A270 /* LaunchScreen.xib */,
@@ -112,6 +157,76 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		28579D1B1B7AB3740099A270 /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				28579D361B7AB58C0099A270 /* PlateViewController.swift */,
+				28579D381B7AB5A20099A270 /* ChooseViewController.swift */,
+				28579D3A1B7AB5B60099A270 /* ResultsViewController.swift */,
+				28579D3C1B7AB5D20099A270 /* CategoriesCollectionViewController.swift */,
+				28579D3E1B7AB5E50099A270 /* WelcomeViewController.swift */,
+			);
+			path = "View Controllers";
+			sourceTree = "<group>";
+		};
+		28579D1C1B7AB3A90099A270 /* ViewCells */ = {
+			isa = PBXGroup;
+			children = (
+				28579D301B7AB5510099A270 /* PlateTableViewCell.swift */,
+				28579D321B7AB5630099A270 /* ChooseTableViewCell.swift */,
+				28579D341B7AB5790099A270 /* CategoryCollectionViewCell.swift */,
+			);
+			path = ViewCells;
+			sourceTree = "<group>";
+		};
+		28579D1D1B7AB3B60099A270 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				28579D201B7AB4860099A270 /* UserChoiceCollectionDataSource.swift */,
+				28579D221B7AB4BA0099A270 /* ChooseHelper.swift */,
+				28579D241B7AB4CF0099A270 /* LocationHelper.swift */,
+				28579D261B7AB4E20099A270 /* Storyboard.swift */,
+				28579D2E1B7AB5390099A270 /* AutoCompleteTextField.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		28579D1E1B7AB3C40099A270 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				28579D281B7AB5010099A270 /* RealmString.swift */,
+				28579D2A1B7AB5150099A270 /* MealObject.swift */,
+				28579D2C1B7AB5240099A270 /* User.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		28579D1F1B7AB4580099A270 /* TestingToDelete */ = {
+			isa = PBXGroup;
+			children = (
+				28579CFB1B7AAFBA0099A270 /* ViewController.swift */,
+				28579D191B7AB16E0099A270 /* TestRealm.swift */,
+			);
+			path = TestingToDelete;
+			sourceTree = "<group>";
+		};
+		A3DB369B3066C56BC27963C8 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				5A8F99719EFDFF94ED7AC894 /* Pods_CraveFinal.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		BF663E0A334825689FD68484 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				EB568C0F2A9E5158D230F67C /* Pods-CraveFinal.debug.xcconfig */,
+				5195CB371D4B1C4AF968886E /* Pods-CraveFinal.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -119,9 +234,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 28579D131B7AAFBA0099A270 /* Build configuration list for PBXNativeTarget "CraveFinal" */;
 			buildPhases = (
+				07FEB7D8646F2ADFE1E90EFC /* Check Pods Manifest.lock */,
 				28579CF01B7AAFBA0099A270 /* Sources */,
 				28579CF11B7AAFBA0099A270 /* Frameworks */,
 				28579CF21B7AAFBA0099A270 /* Resources */,
+				2C7D79D651B97D5FC8158831 /* Embed Pods Frameworks */,
+				644F5DAB736260FA0489804B /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -207,13 +325,78 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		07FEB7D8646F2ADFE1E90EFC /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		2C7D79D651B97D5FC8158831 /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-CraveFinal/Pods-CraveFinal-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		644F5DAB736260FA0489804B /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-CraveFinal/Pods-CraveFinal-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		28579CF01B7AAFBA0099A270 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				28579D251B7AB4CF0099A270 /* LocationHelper.swift in Sources */,
+				28579D211B7AB4860099A270 /* UserChoiceCollectionDataSource.swift in Sources */,
+				28579D2F1B7AB5390099A270 /* AutoCompleteTextField.swift in Sources */,
 				28579CFC1B7AAFBA0099A270 /* ViewController.swift in Sources */,
+				28579D271B7AB4E20099A270 /* Storyboard.swift in Sources */,
+				28579D391B7AB5A20099A270 /* ChooseViewController.swift in Sources */,
+				28579D291B7AB5010099A270 /* RealmString.swift in Sources */,
+				28579D3B1B7AB5B60099A270 /* ResultsViewController.swift in Sources */,
+				28579D231B7AB4BA0099A270 /* ChooseHelper.swift in Sources */,
+				28579D371B7AB58C0099A270 /* PlateViewController.swift in Sources */,
+				28579D3D1B7AB5D20099A270 /* CategoriesCollectionViewController.swift in Sources */,
 				28579CFA1B7AAFBA0099A270 /* AppDelegate.swift in Sources */,
+				28579D311B7AB5510099A270 /* PlateTableViewCell.swift in Sources */,
+				28579D331B7AB5630099A270 /* ChooseTableViewCell.swift in Sources */,
+				28579D2B1B7AB5150099A270 /* MealObject.swift in Sources */,
+				28579D2D1B7AB5240099A270 /* User.swift in Sources */,
+				28579D351B7AB5790099A270 /* CategoryCollectionViewCell.swift in Sources */,
+				28579D1A1B7AB16E0099A270 /* TestRealm.swift in Sources */,
+				28579D3F1B7AB5E50099A270 /* WelcomeViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -340,6 +523,7 @@
 		};
 		28579D141B7AAFBA0099A270 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = EB568C0F2A9E5158D230F67C /* Pods-CraveFinal.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = CraveFinal/Info.plist;
@@ -350,6 +534,7 @@
 		};
 		28579D151B7AAFBA0099A270 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5195CB371D4B1C4AF968886E /* Pods-CraveFinal.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = CraveFinal/Info.plist;
@@ -362,10 +547,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
+				FRAMEWORK_SEARCH_PATHS = "";
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
@@ -381,10 +563,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
+				FRAMEWORK_SEARCH_PATHS = "";
 				INFOPLIST_FILE = CraveFinalTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -411,6 +590,7 @@
 				28579D151B7AAFBA0099A270 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		28579D161B7AAFBA0099A270 /* Build configuration list for PBXNativeTarget "CraveFinalTests" */ = {
 			isa = XCConfigurationList;
@@ -419,6 +599,7 @@
 				28579D181B7AAFBA0099A270 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
