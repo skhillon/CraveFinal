@@ -18,29 +18,34 @@ class ChooseHelper {
     let CLIENT_ID = "GBFQRRGTBCGRIYX5H204VMOD1XRQRYDVZW1UCFNFYQVLKZLY"
     let CLIENT_SECRET = "KZRGDLJNGKDNVWSK2YID2WBAKRH2KBQ2ROIXPFW5FOFSNACU"
     
+    let realm = Realm()
     
-    var currentUser = Realm().objects(User)
+    var ingredientDataObject: Results<RealmIngredientLiked>!
+    var ingredientData: List<Ingredient> = List<Ingredient>()
+    
+    //var currentUser = realm.objects(User)
     var mealObject = MealObject()
-    var foundMeals: List<MealObject> = List<MealObject>()
-    var sortedMealObjects: [MealObject] = []
+    var foundMeals: [MealObject] = []
+    var sortedFoundMeals: [MealObject] = []
     
-    var ingredientData:List<RealmString>! //= currentUser.ingredientsLiked
+    let locationHelper = LocationHelper.sharedInstance
+    var longitude: CLLocationDegrees!
+    var latitude: CLLocationDegrees!
+    
+//    var ingredientData:List<RealmString>! //= currentUser.ingredientsLiked
     //var categoryTagSearch = currentUser.relevantCategories
     
     required init(){
-        
-        ingredientData = currentUser.first!.realIngredientsLiked
+        self.ingredientDataObject = realm.objects(RealmIngredientLiked)
+        self.ingredientData = ingredientDataObject.first!.ingredientsLiked
     }
     
-    var userChoice = UserChoiceCollectionDataSource() {
-        didSet {
-            self.longitude = userChoice.longitude
-            self.latitude = userChoice.latitude
-        }
-    }
-    
-    var longitude: CLLocationDegrees?
-    var latitude: CLLocationDegrees?
+//    var userChoice = UserChoiceCollectionDataSource() {
+//        didSet {
+//            self.longitude = userChoice.longitude
+//            self.latitude = userChoice.latitude
+//        }
+//    }
     
     func locateVenue(query: String) -> [MealObject] {
         
@@ -72,17 +77,22 @@ class ChooseHelper {
             processedMealData.append(foundMeals[i])
         }
         searchMealDescriptions(processedMealData)
-        sortedMealObjects = sortMeals(processedMealData)
-        return sortedMealObjects
+        sortedFoundMeals = sortMeals(processedMealData)
+        return sortedFoundMeals
     } //end function
     
     func searchMealDescriptions(meals: [MealObject]) {
         
-        let mealObjectArray = meals
         var processedIngredientData: [String] = []
-        for i in 0...ingredientData.count {
-            processedIngredientData.append(ingredientData[i].string)
+        
+        for ing in ingredientData {
+            processedIngredientData.append(ing.ingredient)
         }
+        let mealObjectArray = meals
+//
+//        for i in 0...ingredientData.count {
+//            processedIngredientData.append(ingredientData[i].string)
+//        }
         for mealItem in mealObjectArray {
             
             let mealDescription = mealItem.mealDescription // [String] of meal descriptions

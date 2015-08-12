@@ -10,15 +10,17 @@ import UIKit
 import RealmSwift
 
 class User {
-    static let sharedInstance = User()
+    //static let sharedInstance = User()
     //YOU SHOULD BE GETTING RELEVANTCATEGORIES NAMES FROM CATEGORIESSELECTIONCLASS!!!
+    
+    //dont need to inherit
     
     let collectionVC = CategoriesCollectionViewController()
     //dynamic var savedMeals: List<MealObject> = List<MealObject>()
     
     var realIngredientsLiked: List<RealmString> = List<RealmString>()
-    var relevantCategories: List<RealmString> = List<RealmString>()
-    var relevantTags: List<RealmString> = List<RealmString>()
+//    var relevantCategories: List<RealmString> = List<RealmString>()
+//    var relevantTags: List<RealmString> = List<RealmString>()
     
 //    required init() {
 //        super.init()
@@ -37,17 +39,26 @@ class User {
 //    }
     
     func appendIngredients() {
+                var ingredientsLiked: [String] = []
+                var categories: [String] = []
         
+        let realm = Realm()
         var ingredient = Ingredient()
         var realmIngredientsLiked = RealmIngredientLiked()
+        var relevantCategoriesObject = realm.objects(RealmRelevantCategoryNames)
+        var relevantCategoryNames = relevantCategoriesObject.first!.relevantNames
         
-        var ingredientsLiked: [String] = []
-    if relevantCategories.count > 0 {
-        var categories: [String] = []
-        for i in 0...relevantCategories.count {
-            let stringHolder = relevantCategories[i].string
-            categories.append(stringHolder)
+        for name in relevantCategoryNames {
+            categories.append(name.name)
         }
+        
+        if relevantCategoryNames.count > 0 {
+            
+//        for i in 0...relevantCategories.count {
+//            let stringHolder = relevantCategories[i].string
+//            categories.append(stringHolder)
+//        }
+            
         for relevant in categories {
             switch relevant {
             case "Afghan":

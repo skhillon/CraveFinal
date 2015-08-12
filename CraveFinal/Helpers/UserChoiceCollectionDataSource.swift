@@ -15,13 +15,25 @@ import RealmSwift
 
 class UserChoiceCollectionDataSource {
     
-    var currentUser:Results<User>!
-    var mealObject = MealObject()
-    var foundMeals: List<MealObject> = List<MealObject>()
-    var foodCategories: List<RealmString> = List<RealmString>()
-    var sortedMealObjects: [MealObject] = []
+//    //var currentUser:Results<User>!
+//    var mealObject = MealObject()
+//    var foundMeals: List<MealObject> = List<MealObject>()
+//    var foodCategories: List<RealmString> = List<RealmString>()
+//    
+//    var ingredientData:List<RealmString> = List<RealmString>()
     
-    var ingredientData:List<RealmString> = List<RealmString>()
+    let realm = Realm()
+    
+    var foodCategoriesObject: Results<RealmRelevantCategoryTags>!
+    var foodCategories: List<Tag> = List<Tag>()
+    var ingredientDataObject: Results<RealmIngredientLiked>!
+    var ingredientData: List<Ingredient> = List<Ingredient>()
+    
+    
+    var mealObject = MealObject()
+    var foundMeals: [MealObject] = []
+    var sortedFoundMeals: [MealObject] = []
+    
     
     lazy var numElements: Int = { return self.foodCategories.count }()
     
@@ -36,17 +48,21 @@ class UserChoiceCollectionDataSource {
     var latitude: CLLocationDegrees!
     
     required init(){
-        currentUser = Realm().objects(User)
-        self.ingredientData = currentUser.first!.realIngredientsLiked
-        self.foodCategories = currentUser.first!.relevantCategories
+        //currentUser = Realm().objects(User)
+        self.foodCategoriesObject = realm.objects(RealmRelevantCategoryTags)
+        self.foodCategories = foodCategoriesObject.first!.relevantTags
+        self.ingredientDataObject = realm.objects(RealmIngredientLiked)
+        self.ingredientData = ingredientDataObject.first!.ingredientsLiked
+        
+        //self.ingredientData = currentUser.first!.realIngredientsLiked
         
     }
     
     func getUserSuggestions() -> [MealObject] {
         
         var categories: [String]!
-        for i in 0...foodCategories.count {
-            categories.append(foodCategories[i].string)
+        for tag in foodCategories {
+            categories.append(tag.tag)
         }
         
         // TODO: instead of returning [MealObject] take a closure as argument
@@ -62,10 +78,12 @@ class UserChoiceCollectionDataSource {
             }
                 
             else {
+            dispatch_async(dispatch_get_main_queue(), { () ->  Void in
+
                 
                 for tag in categories! {
                     
-                    let urlString = "https://api.foursquare.com/v2/venues/search?ll=\(longitude),\(latitude)&categoryId=\(tag)&client_id=\(CLIENT_ID)&client_secret=\(CLIENT_SECRET)&v=20150729"
+                    let urlString = "https://api.foursquare.com/v2/venues/search?ll=\(self.longitude),\(self.latitude)&categoryId=\(tag)&client_id=\(self.CLIENT_ID)&client_secrself.et=\(self.CLIENT_SECRET)&v=20150729"
                     
                     //println(urlString)
                     
@@ -87,7 +105,7 @@ class UserChoiceCollectionDataSource {
                                     
                                     // println(name + " distance: \(distance)")
                                     let tempTuple = (name, distance, id)
-                                    venueInformation.append(tempTuple)
+                                    self.venueInformation.append(tempTuple)
                                     
                                     let mealObject = MealObject()
                                     mealObject.nameOfVenue = name
@@ -95,7 +113,7 @@ class UserChoiceCollectionDataSource {
                                     mealObject.latitudeOfVenue = location!["lat"]!.doubleValue
                                     mealObject.addressofVenue = location!["formattedAddress"]!.stringValue
                                     mealObject.distanceToVenue = location!["distance"]!.int!
-                                    foundMeals.append(mealObject)
+                                    self.foundMeals.append(mealObject)
                                     
                                 }
                             }
@@ -107,9 +125,12 @@ class UserChoiceCollectionDataSource {
                         println("Error in retrieving JSON")
                     }
                 }
-            }
+            })
+
             counter++
         }
+        }
+
         var returnedMeals: [MealObject] = []
         for i in 0...foundMeals.count {
             returnedMeals.append(foundMeals[i])
@@ -148,13 +169,13 @@ class UserChoiceCollectionDataSource {
         return filteredArray
     }
     
-    func findMeals(venueIDArray: [String]) -> List<MealObject> {
+    func findMeals(venueIDArray: [String]) -> [MealObject] {
         let venuesToSearch = venueIDArray
-        var sortedMealObjects: [MealObject] = []
         
+        dispatch_async(dispatch_get_main_queue(), { () ->  Void in
         for venue in venuesToSearch {
             
-            let urlString = "https://api.foursquare.com/v2/venues/\(venue)/menu?client_id=\(CLIENT_ID)&client_secret=\(CLIENT_SECRET)&v=20150729"
+            let urlString = "https://api.foursquare.com/v2/venues/\(venue)/menu?client_id=\(self.CLIENT_ID)&client_secret=\(self.CLIENT_SECRET)&v=20150729"
             
             println(urlString)
             if let url = NSURL(string: urlString) { // if #1
@@ -174,7 +195,7 @@ class UserChoiceCollectionDataSource {
                                     let entries = sub["entries"].dictionaryValue
                                     let food = entries["items"]!.arrayValue
                                     for foodStuff in food {
-                                        for meal in foundMeals {
+                                        for meal in self.foundMeals {
                                             let mealTitle = foodStuff["name"].stringValue
                                             let mealDescription = foodStuff["description"].stringValue
                                             let priceValue = foodStuff["price"].stringValue
@@ -202,24 +223,26 @@ class UserChoiceCollectionDataSource {
                     
                 }
             } //end if #1
-            searchMealDescriptions(foundMeals)
-            sortedMealObjects = sortMeals(foundMeals)
+            self.searchMealDescriptions(self.foundMeals)
+            self.sortedFoundMeals = self.sortMeals(self.foundMeals)
         }
-        var returnedMealObjects: List<MealObject> = List<MealObject>()
-        for i in 0...sortedMealObjects.count {
-            returnedMealObjects.append(sortedMealObjects[i])
-        }
-        return returnedMealObjects
+            })
+        
+//        var returnedMealObjects: List<MealObject> = List<MealObject>()
+//        for i in 0...sortedFoundMeals.count {
+//            returnedMealObjects.append(sortedFoundMeals[i])
+//        }
+        return sortedFoundMeals
     } // end function
     
-    func searchMealDescriptions(meals: List<MealObject>) {
+    func searchMealDescriptions(meals: [MealObject]) {
         
-        var mealObjectList = meals
-        var mealObjectArray: [MealObject] = []
-        for i in 0...mealObjectList.count {
-            mealObjectArray.append(mealObjectList[i])
-        }
-        for mealItem in mealObjectArray {
+//        var mealObjectList = meals
+//        var mealObjectArray: [MealObject] = []
+//        for i in 0...mealObjectList.count {
+//            mealObjectArray.append(mealObjectList[i])
+//        }
+        for mealItem in meals {
             
             let mealDescription = mealItem.mealDescription // [String] of meal descriptions
             let characterSet: NSCharacterSet = NSCharacterSet.punctuationCharacterSet()
@@ -234,7 +257,7 @@ class UserChoiceCollectionDataSource {
         }
     }
     
-    func calcScore(wordArray: [String], userArray: List<RealmString>) -> Double {
+    func calcScore(wordArray: [String], userArray: List<Ingredient>) -> Double {
         let userIngredientBank = userArray
         var userFound: Double = 0
         let descriptionArray = wordArray
@@ -249,13 +272,14 @@ class UserChoiceCollectionDataSource {
         return score
     }
     
-    func sortMeals(meals: List<MealObject>) -> [MealObject] {
-        var mealObjectList = meals
-        var mealObjectArray: [MealObject] = []
-        for i in 0...mealObjectList.count {
-            mealObjectArray.append(mealObjectList[i])
-        }
-        mealObjectArray.sort({ $0.score > $1.score })
-        return mealObjectArray
+    func sortMeals(meals: [MealObject]) -> [MealObject] {
+        var mealArray = meals
+//        var mealObjectList = meals
+////        var mealObjectArray: [MealObject] = []
+//        for i in 0...meals.count {
+//            mealObjectArray.append(mealObjectList[i])
+//        }
+        mealArray.sort({ $0.score > $1.score })
+        return mealArray
     }
 }

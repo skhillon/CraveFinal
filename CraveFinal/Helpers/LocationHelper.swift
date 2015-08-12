@@ -8,32 +8,36 @@
 
 import UIKit
 import CoreLocation
-typealias KILLINGIT = () -> Void
+//typealias KILLINGIT = () -> Void
 
 class LocationHelper: NSObject, CLLocationManagerDelegate {
     static let sharedInstance = LocationHelper()
     let locationManager = CLLocationManager()
     var locValue: CLLocationCoordinate2D!
-    var callback:KILLINGIT!
+    //var callback:KILLINGIT!
     
     func setupLocation() {
-        locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
-        locationManager.delegate = self
-        locationManager.distanceFilter = kCLDistanceFilterNone
+        dispatch_async(dispatch_get_main_queue(), { () ->  Void in
+
+        self.locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
+        self.locationManager.delegate = self
+        self.locationManager.distanceFilter = kCLDistanceFilterNone
         let status = CLLocationManager.authorizationStatus()
         if status == .NotDetermined {
-            locationManager.requestWhenInUseAuthorization()
+            self.locationManager.requestWhenInUseAuthorization()
         } else if status == CLAuthorizationStatus.AuthorizedWhenInUse
             || status == CLAuthorizationStatus.AuthorizedAlways {
-                locationManager.startUpdatingLocation()
+                self.locationManager.startUpdatingLocation()
         } else {
             println("No permissions")
         }
+        })
+        
     }
     
     func locationManager(manager: CLLocationManager!, didUpdateLocations locations: [AnyObject]!) {
         locValue = locationManager.location.coordinate
-        callback()
+        //callback()
     }
     
     // TODO: func getCurrentLocation
