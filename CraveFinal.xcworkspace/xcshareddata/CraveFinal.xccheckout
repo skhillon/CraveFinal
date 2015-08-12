@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>69A728C1-BADA-4C09-97F9-DC1AEEB9796E</string>
+	<key>IDESourceControlProjectName</key>
+	<string>CraveFinal</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>48B60A757E4A9C0C09C70CAD7B6F65F1B3CE847E</key>
+		<string>https://github.com/Skahri1429/CraveFinal.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>CraveFinal.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>48B60A757E4A9C0C09C70CAD7B6F65F1B3CE847E</key>
+		<string>..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/Skahri1429/CraveFinal.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>48B60A757E4A9C0C09C70CAD7B6F65F1B3CE847E</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>48B60A757E4A9C0C09C70CAD7B6F65F1B3CE847E</string>
+			<key>IDESourceControlWCCName</key>
+			<string>CraveFinal</string>
+		</dict>
+	</array>
+</dict>
+</plist>

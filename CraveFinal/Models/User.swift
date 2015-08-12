@@ -9,13 +9,14 @@
 import UIKit
 import RealmSwift
 
-class User: Object {
-    
+class User {
+    static let sharedInstance = User()
     //YOU SHOULD BE GETTING RELEVANTCATEGORIES NAMES FROM CATEGORIESSELECTIONCLASS!!!
-    
+    let collectionVC = CategoriesCollectionViewController()
     //dynamic var savedMeals: List<MealObject> = List<MealObject>()
-    dynamic var realIngredientsLiked: List<RealmString> = List<RealmString>()
-    dynamic var relevantCategories: List<RealmString> = List<RealmString>()
+    var realIngredientsLiked: List<RealmString> = List<RealmString>()
+    var relevantCategories: List<RealmString> = List<RealmString>()
+    var relevantTags: List<RealmString> = List<RealmString>()
     
     required init() {
         super.init()
@@ -34,6 +35,7 @@ class User: Object {
     }
     
     func appendIngredients() {
+        
         var ingredientsLiked: [String] = []
     if relevantCategories.count > 0 {
         var categories: [String] = []

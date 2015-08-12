@@ -461,21 +461,21 @@
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
-                                <exclude reference="pig-K5-n2C"/>
                                 <exclude reference="ZVg-2U-UJr"/>
-                                <exclude reference="vEm-Z2-DSJ"/>
-                                <exclude reference="rbx-gN-Ai0"/>
-                                <exclude reference="Or0-7Q-qki"/>
+                                <exclude reference="pig-K5-n2C"/>
                                 <exclude reference="4gs-EQ-8ua"/>
-                                <exclude reference="DVc-Mz-eAx"/>
                                 <exclude reference="BJV-Ya-Ad2"/>
+                                <exclude reference="DVc-Mz-eAx"/>
+                                <exclude reference="Or0-7Q-qki"/>
                                 <exclude reference="fEW-ff-ivw"/>
-                                <exclude reference="XfJ-Pe-e1L"/>
+                                <exclude reference="rbx-gN-Ai0"/>
+                                <exclude reference="vEm-Z2-DSJ"/>
                                 <exclude reference="X07-NP-kbp"/>
-                                <exclude reference="b1x-a9-ZyN"/>
+                                <exclude reference="XfJ-Pe-e1L"/>
                                 <exclude reference="Xly-MO-Ea4"/>
-                                <exclude reference="q2k-ga-FWA"/>
+                                <exclude reference="b1x-a9-ZyN"/>
                                 <exclude reference="gsm-My-s5L"/>
+                                <exclude reference="q2k-ga-FWA"/>
                             </mask>
                         </variation>
                     </view>

@@ -15,7 +15,7 @@ import RealmSwift
 
 class UserChoiceCollectionDataSource {
     
-    var currentUser = Realm().objects(User)
+    var currentUser:Results<User>!
     var mealObject = MealObject()
     var foundMeals: List<MealObject> = List<MealObject>()
     var foodCategories: List<RealmString> = List<RealmString>()
@@ -36,6 +36,7 @@ class UserChoiceCollectionDataSource {
     var latitude: CLLocationDegrees!
     
     required init(){
+        currentUser = Realm().objects(User)
         self.ingredientData = currentUser.first!.realIngredientsLiked
         self.foodCategories = currentUser.first!.relevantCategories
         

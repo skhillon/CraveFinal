@@ -21,7 +21,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         println("application did finish launching")
         window?.tintColor = themeColor
         // Override point for customization after application launch.
-        if let firstLaunch =  NSUserDefaults.standardUserDefaults().boolForKey("FirstLaunch") {
+        let firstLaunch =  NSUserDefaults.standardUserDefaults().boolForKey("FirstLaunch")
+        if firstLaunch {
             println("Not the first launch")
         } else {
             println("First launch, setting NSUserDefault.")

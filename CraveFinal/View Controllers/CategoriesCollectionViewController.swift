@@ -27,9 +27,20 @@ class CategoriesCollectionViewController: UICollectionViewController, UICollecti
     
     let sectionInsets = UIEdgeInsets(top: 50.0, left: 20.0, bottom: 50.0, right: 20.0)
     var categoriesSelected: List<RealmString> = List<RealmString>()
-    var catSelected: [String] = []
+    var relevantTags: [String] = []
     var ingredientsToAppend: [String] = []
     let categoryBank = ["Afghan", "African", "American", "Asian", "Caribbean", "Chinese", "Deli", "EastEuro", "French", "German", "Hawaiian", "Indian", "Indonesian", "Italian", "Mediterranean", "Mexican", "Persian", "Pizza", "Seafood", "Thai"]
+    
+    convenience init() {
+        self.init()
+        var categoryNames = self.categoriesSelected
+        var categoryTags = self.relevantTags
+    }
+    
+
+    required init(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -57,14 +68,6 @@ class CategoriesCollectionViewController: UICollectionViewController, UICollecti
         navigationController?.setNavigationBarHidden(true, animated: false)
     }
     
-    override func viewWillDisappear(animated: Bool) {
-        let realm = Realm()
-        
-        realm.write {
-            realm.add(self.currentUser)
-            var objs = realm.objects(User)
-        }
-    }
     
     func segueToHomeScreen() {
         self.performSegueWithIdentifier("segueToHomeScreen", sender: self)
@@ -102,17 +105,17 @@ class CategoriesCollectionViewController: UICollectionViewController, UICollecti
         
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("CategoryCell", forIndexPath: indexPath) as! CategoryCollectionViewCell
 
-        cell.tintColor = UIColor.greenColor()
+        //cell.tintColor = UIColor()
         
-        if(category.isSelected) {
-            cell.alpha = 0.5
-        }
-        else {
-            //cell.alpha = 1
-        }
+//        if(Choice.isSelected) {
+//            cell.alpha = 0.5
+//        }
+//        else {
+//            //cell.alpha = 1
+//        }
         
-        cell.categoryName.text = category.name
-        cell.categoryImage.image = category.image
+//        cell.categoryName.text = Choice.name
+//        cell.categoryImage.image = Choice.image
         
         // Configure the cell
         
@@ -143,95 +146,152 @@ class CategoriesCollectionViewController: UICollectionViewController, UICollecti
             
             switch(category) {
             case "Afghan":
-                catSelected.append("503288ae91d4c4b30a586d67")
+                relevantTags.append("503288ae91d4c4b30a586d67")
+                let realmString = RealmString()
+                realmString.string = "Afghan"
+                categoriesSelected.append(realmString)
                 
             case "African":
                 let catHolder = "4bf58dd8d48988d1c8941735"
                 let catArray = catHolder.componentsSeparatedByString(",")
                 for cat in catArray {
-                    catSelected.append(cat)
+                    relevantTags.append(cat)
                 }
+                let realmString = RealmString()
+                realmString.string = "African"
+                categoriesSelected.append(realmString)
                 
             case "American":
                 let catHolder = "4bf58dd8d48988d14e941735"
                 let catArray = catHolder.componentsSeparatedByString(",")
                 for cat in catArray {
-                    catSelected.append(cat)
+                    relevantTags.append(cat)
                 }
+                let realmString = RealmString()
+                realmString.string = "American"
+                categoriesSelected.append(realmString)
                 
             case "Asian":
                 let catHolder = "4bf58dd8d48988d142941735"
                 let catArray = catHolder.componentsSeparatedByString(",")
                 for cat in catArray {
-                    catSelected.append(cat)
+                    relevantTags.append(cat)
                 }
+                let realmString = RealmString()
+                realmString.string = "Asian"
+                categoriesSelected.append(realmString)
                 
             case "Caribbean":
-                catSelected.append("4bf58dd8d48988d144941735")
+                relevantTags.append("4bf58dd8d48988d144941735")
+                let realmString = RealmString()
+                realmString.string = "Caribbean"
+                categoriesSelected.append(realmString)
                 
             case "Chinese":
                 let catHolder = "4bf58dd8d48988d145941735"
                 let catArray = catHolder.componentsSeparatedByString(",")
                 for cat in catArray {
-                    catSelected.append(cat)
+                    relevantTags.append(cat)
                 }
+                let realmString = RealmString()
+                realmString.string = "Chinese"
+                categoriesSelected.append(realmString)
                 
             case "Deli":
-                catSelected.append("4bf58dd8d48988d146941735")
+                relevantTags.append("4bf58dd8d48988d146941735")
+                let realmString = RealmString()
+                realmString.string = "Deli"
+                categoriesSelected.append(realmString)
                 
             case "EastEuro":
                 let catHolder = "52e81612bcbc57f1066b7a01,5293a7d53cf9994f4e043a45,52f2ae52bcbc57f1066b8b81,4bf58dd8d48988d109941735,52e928d0bcbc57f1066b7e97,52960bac3cf9994f4e043ac4,52e928d0bcbc57f1066b7e98,52e81612bcbc57f1066b7a04,5293a7563cf9994f4e043a44,52e928d0bcbc57f1066b7e9d,52e928d0bcbc57f1066b7e9c,52e928d0bcbc57f1066b7e96,52e928d0bcbc57f1066b7e9a,52e928d0bcbc57f1066b7e9b"
                 let catArray = catHolder.componentsSeparatedByString(",")
                 for cat in catArray {
-                    catSelected.append(cat)
+                    relevantTags.append(cat)
                 }
-            case "Falafel":
-                catSelected.append("4bf58dd8d48988d10b941735")
+                let realmString = RealmString()
+                realmString.string = "EastEuro"
+                categoriesSelected.append(realmString)
+                
             case "French":
-                catSelected.append("4bf58dd8d48988d10c941735")
+                relevantTags.append("4bf58dd8d48988d10c941735")
+                let realmString = RealmString()
+                realmString.string = "French"
+                categoriesSelected.append(realmString)
+                
             case "German":
-                catSelected.append("4bf58dd8d48988d10d941735")
+                relevantTags.append("4bf58dd8d48988d10d941735")
+                let realmString = RealmString()
+                realmString.string = "German"
+                categoriesSelected.append(realmString)
+                
             case "Hawaiian":
-                catSelected.append("52e81612bcbc57f1066b79fe")
+                relevantTags.append("52e81612bcbc57f1066b79fe")
+                let realmString = RealmString()
+                realmString.string = "Hawaiian"
+                categoriesSelected.append(realmString)
+                
             case "Indian":
-                catSelected.append("4bf58dd8d48988d10f941735")
+                relevantTags.append("4bf58dd8d48988d10f941735")
+                let realmString = RealmString()
+                realmString.string = "Indian"
+                categoriesSelected.append(realmString)
+                
             case "Indonesian":
-                catSelected.append("52960eda3cf9994f4e043ac9")
+                relevantTags.append("52960eda3cf9994f4e043ac9")
+                let realmString = RealmString()
+                realmString.string = "Indonesian"
+                categoriesSelected.append(realmString)
+                
             case "Italian":
-                catSelected.append("4bf58dd8d48988d110941735")
+                relevantTags.append("4bf58dd8d48988d110941735")
+                let realmString = RealmString()
+                realmString.string = "Italian"
+                categoriesSelected.append(realmString)
+                
             case "Mediterranean":
-                catSelected.append("4bf58dd8d48988d1c0941735,4bf58dd8d48988d1c3941735")
+                relevantTags.append("4bf58dd8d48988d1c0941735,4bf58dd8d48988d1c3941735")
+                let realmString = RealmString()
+                realmString.string = "Mediterranean"
+                categoriesSelected.append(realmString)
+                
             case "Mexican":
-                catSelected.append("4bf58dd8d48988d1c1941735")
+                relevantTags.append("4bf58dd8d48988d1c1941735")
+                let realmString = RealmString()
+                realmString.string = "Mexican"
+                categoriesSelected.append(realmString)
+                
             case "Persian":
-                catSelected.append("52e81612bcbc57f1066b79f7")
+                relevantTags.append("52e81612bcbc57f1066b79f7")
+                let realmString = RealmString()
+                realmString.string = "Persian"
+                categoriesSelected.append(realmString)
+                
             case "Pizza":
-                catSelected.append("4bf58dd8d48988d1ca941735")
+                relevantTags.append("4bf58dd8d48988d1ca941735")
+                let realmString = RealmString()
+                realmString.string = "Pizza"
+                categoriesSelected.append(realmString)
+                
             case "Seafood":
-                catSelected.append("4bf58dd8d48988d1d2941735,4edd64a0c7ddd24ca188df1a")
-            case "Steakhouse":
-                catSelected.append("4bf58dd8d48988d1cc941735")
-            case "Turkish":
-                catSelected.append("4f04af1f2fb6e1c99f3db0bb")
+                relevantTags.append("4bf58dd8d48988d1d2941735,4edd64a0c7ddd24ca188df1a")
+                let realmString = RealmString()
+                realmString.string = "Seafood"
+                categoriesSelected.append(realmString)
+
             case "Thai":
-                catSelected.append("4bf58dd8d48988d149941735")
+                relevantTags.append("4bf58dd8d48988d149941735")
+                let realmString = RealmString()
+                realmString.string = "Thai"
+                categoriesSelected.append(realmString)
+                
             default:
                 println("No categories appended")
-            }
-            
-            for cat in catSelected {
-                categoriesSelected.append(RealmString(value: cat))
+                
             }
             
             var currentUser = User()
             currentUser.relevantCategories = self.categoriesSelected
-            
-            let realm = Realm()
-            
-            realm.write() {
-                println(currentUser.description)
-                realm.add(currentUser)
-            }
             
     }
     
