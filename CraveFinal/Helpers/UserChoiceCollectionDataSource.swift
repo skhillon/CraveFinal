@@ -84,7 +84,7 @@ class UserChoiceCollectionDataSource {
                 for tag in categories! {
                     Alamofire.request(.GET, "https://api.foursquare.com/v2/venues/search?ll=\(self.longitude),\(self.latitude)&categoryId=\(tag)&client_id=\(self.CLIENT_ID)&client_secrself.et=\(self.CLIENT_SECRET)&v=20150729").responseJSON() {
                         (_, _, data, _) in
-                        let json = JSON(data: data)
+                        let json: JSON = data as! JSON
                         if json["meta"]["code"].intValue == 200 {
                             // we're OK to parse!
                             
@@ -164,9 +164,9 @@ class UserChoiceCollectionDataSource {
         for venue in venuesToSearch {
             Alamofire.request(.GET, "https://api.foursquare.com/v2/venues/\(venue)/menu?client_id=\(self.CLIENT_ID)&client_secret=\(self.CLIENT_SECRET)&v=20150729").responseJSON() {
                 (_, _, data, _) in
-                if let url = NSURL(string: urlString) { // if #1
-                    if let data = NSData(contentsOfURL: url, options: .allZeros, error: nil) { //if #2
-                        let json = JSON(data: data)
+//                if let url = NSURL(string: urlString) { // if #1
+//                    if let data = NSData(contentsOfURL: url, options: .allZeros, error: nil) { //if #2
+                        let json: JSON = data as! JSON
                         if json["meta"]["code"].intValue == 200 { //if #3
                             let menuContainer = json["response"]["menu"]["menus"].dictionary
                             let menuCount = menuContainer!["count"]!.int!
@@ -207,8 +207,8 @@ class UserChoiceCollectionDataSource {
                             println("Error in retrieving JSON")
                         }
                         
-                    }
-                }
+//                    }
+//                }
                 
             }
             self.searchMealDescriptions(self.foundMeals)

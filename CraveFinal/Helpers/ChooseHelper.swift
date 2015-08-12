@@ -8,7 +8,7 @@
 
 import UIKit
 import Foundation
-//import Alamofire
+import Alamofire
 import SwiftyJSON
 import RealmSwift
 import CoreLocation
@@ -50,15 +50,15 @@ class ChooseHelper {
     func locateVenue(query: String) -> [MealObject] {
         
         let searchQuery = query
-        Alamofire.request(.GET, "https://api.foursquare.com/v2/venues/suggestCompletion?ll=\(self.longitude),\(self.latitude)&query=\(self.searchQuery)&client_id=\(self.CLIENT_ID)&client_secret=\(self.CLIENT_SECRET)&v=20150729").responseJSON() { (_, _, data, _) in
-            let json = JSON(data: data)
+        Alamofire.request(.GET, "https://api.foursquare.com/v2/venues/suggestCompletion?ll=\(self.longitude),\(self.latitude)&query=\(searchQuery)&client_id=\(self.CLIENT_ID)&client_secret=\(self.CLIENT_SECRET)&v=20150729").responseJSON() { (_, _, data, _) in
+            let json: JSON = data as! JSON
                 if json["meta"]["code"].intValue == 200 { //if #3
                     for venue in json["response"]["minivenues"].arrayValue {
-                        mealObject.venueId = venue["id"].stringValue
-                        mealObject.nameOfVenue = venue["name"].stringValue
-                        mealObject.distanceToVenue = venue["location"]["distance"].intValue
-                        mealObject.addressofVenue = venue["location"]["address"].stringValue
-                        foundMeals.append(mealObject)
+                        self.mealObject.venueId = venue["id"].stringValue
+                        self.mealObject.nameOfVenue = venue["name"].stringValue
+                        self.mealObject.distanceToVenue = venue["location"]["distance"].intValue
+                        self.mealObject.addressofVenue = venue["location"]["address"].stringValue
+                        self.foundMeals.append(self.mealObject)
                     }
                     
                 } else {
