@@ -7,7 +7,8 @@
 //
 
 import UIKit
+import RealmSwift
 
 class RealmRelevantCategoryTags: Object {
-   
+   let relevantTags = List<Tag>()
 }

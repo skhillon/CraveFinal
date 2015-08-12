@@ -33,6 +33,9 @@
 		28D48F881B7B3B4C00E459D8 /* RealmIngredientsLiked.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28D48F871B7B3B4C00E459D8 /* RealmIngredientsLiked.swift */; };
 		28D48F8A1B7B3B7000E459D8 /* RealmRelevantCategoryNames.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28D48F891B7B3B7000E459D8 /* RealmRelevantCategoryNames.swift */; };
 		28D48F8C1B7B3B9B00E459D8 /* RealmRelevantCategoryTags.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28D48F8B1B7B3B9B00E459D8 /* RealmRelevantCategoryTags.swift */; };
+		28D48F8E1B7B3D3700E459D8 /* Ingredient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28D48F8D1B7B3D3700E459D8 /* Ingredient.swift */; };
+		28D48F901B7B3D7C00E459D8 /* Tag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28D48F8F1B7B3D7C00E459D8 /* Tag.swift */; };
+		28D48F921B7B3D9E00E459D8 /* Name.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28D48F911B7B3D9E00E459D8 /* Name.swift */; };
 		B132F746385B6E5CA8007271 /* Pods_CraveFinal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A8F99719EFDFF94ED7AC894 /* Pods_CraveFinal.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 /* End PBXBuildFile section */
 
@@ -77,6 +80,9 @@
 		28D48F871B7B3B4C00E459D8 /* RealmIngredientsLiked.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RealmIngredientsLiked.swift; sourceTree = "<group>"; };
 		28D48F891B7B3B7000E459D8 /* RealmRelevantCategoryNames.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RealmRelevantCategoryNames.swift; sourceTree = "<group>"; };
 		28D48F8B1B7B3B9B00E459D8 /* RealmRelevantCategoryTags.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RealmRelevantCategoryTags.swift; sourceTree = "<group>"; };
+		28D48F8D1B7B3D3700E459D8 /* Ingredient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Ingredient.swift; sourceTree = "<group>"; };
+		28D48F8F1B7B3D7C00E459D8 /* Tag.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tag.swift; sourceTree = "<group>"; };
+		28D48F911B7B3D9E00E459D8 /* Name.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Name.swift; sourceTree = "<group>"; };
 		5195CB371D4B1C4AF968886E /* Pods-CraveFinal.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CraveFinal.release.xcconfig"; path = "Pods/Target Support Files/Pods-CraveFinal/Pods-CraveFinal.release.xcconfig"; sourceTree = "<group>"; };
 		5A8F99719EFDFF94ED7AC894 /* Pods_CraveFinal.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CraveFinal.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		EB568C0F2A9E5158D230F67C /* Pods-CraveFinal.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CraveFinal.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CraveFinal/Pods-CraveFinal.debug.xcconfig"; sourceTree = "<group>"; };
@@ -124,8 +130,8 @@
 		28579CF61B7AAFBA0099A270 /* CraveFinal */ = {
 			isa = PBXGroup;
 			children = (
-				28D48F861B7B3B1A00E459D8 /* Realm Objects */,
 				28579D1F1B7AB4580099A270 /* TestingToDelete */,
+				28D48F861B7B3B1A00E459D8 /* Realm Objects */,
 				28579D1E1B7AB3C40099A270 /* Models */,
 				28579D1D1B7AB3B60099A270 /* Helpers */,
 				28579D1C1B7AB3A90099A270 /* ViewCells */,
@@ -223,6 +229,9 @@
 				28D48F891B7B3B7000E459D8 /* RealmRelevantCategoryNames.swift */,
 				28D48F8B1B7B3B9B00E459D8 /* RealmRelevantCategoryTags.swift */,
 				28579D281B7AB5010099A270 /* RealmString.swift */,
+				28D48F8D1B7B3D3700E459D8 /* Ingredient.swift */,
+				28D48F8F1B7B3D7C00E459D8 /* Tag.swift */,
+				28D48F911B7B3D9E00E459D8 /* Name.swift */,
 			);
 			path = "Realm Objects";
 			sourceTree = "<group>";
@@ -395,10 +404,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				28D48F901B7B3D7C00E459D8 /* Tag.swift in Sources */,
 				28579D251B7AB4CF0099A270 /* LocationHelper.swift in Sources */,
 				28579D211B7AB4860099A270 /* UserChoiceCollectionDataSource.swift in Sources */,
 				28579D2F1B7AB5390099A270 /* AutoCompleteTextField.swift in Sources */,
 				28579CFC1B7AAFBA0099A270 /* ViewController.swift in Sources */,
+				28D48F8E1B7B3D3700E459D8 /* Ingredient.swift in Sources */,
 				28579D271B7AB4E20099A270 /* Storyboard.swift in Sources */,
 				28D48F8A1B7B3B7000E459D8 /* RealmRelevantCategoryNames.swift in Sources */,
 				28579D391B7AB5A20099A270 /* ChooseViewController.swift in Sources */,
@@ -417,6 +428,7 @@
 				28579D351B7AB5790099A270 /* CategoryCollectionViewCell.swift in Sources */,
 				28579D1A1B7AB16E0099A270 /* TestRealm.swift in Sources */,
 				28579D3F1B7AB5E50099A270 /* WelcomeViewController.swift in Sources */,
+				28D48F921B7B3D9E00E459D8 /* Name.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

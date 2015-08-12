@@ -1,5 +1,5 @@
 //
-//  RealmIngredientsLiked.swift
+//  Name.swift
 //  CraveFinal
 //
 //  Created by Pankaj Khillon on 8/12/15.
@@ -9,6 +9,6 @@
 import UIKit
 import RealmSwift
 
-class RealmIngredientLiked: Object {
-    let ingredientsLiked = List<Ingredient>()
+class Name: Object {
+    dynamic var name: String = ""
 }

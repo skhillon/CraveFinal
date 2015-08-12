@@ -7,7 +7,8 @@
 //
 
 import UIKit
+import RealmSwift
 
 class RealmRelevantCategoryNames: Object {
-   
+    let relevantNames = List<Name>()
 }
