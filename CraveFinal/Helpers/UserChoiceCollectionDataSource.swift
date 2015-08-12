@@ -18,10 +18,10 @@ class UserChoiceCollectionDataSource {
     var currentUser = Realm().objects(User)
     var mealObject = MealObject()
     var foundMeals: List<MealObject> = List<MealObject>()
-    var foodCategories: List<RealmString>!
+    var foodCategories: List<RealmString> = List<RealmString>()
     var sortedMealObjects: [MealObject] = []
     
-    var ingredientData:List<RealmString>!
+    var ingredientData:List<RealmString> = List<RealmString>()
     
     lazy var numElements: Int = { return self.foodCategories.count }()
     
@@ -36,9 +36,9 @@ class UserChoiceCollectionDataSource {
     var latitude: CLLocationDegrees!
     
     required init(){
-//        self.ingredientData = currentUser.first!.realIngredientsLiked
-//        self.foodCategories = currentUser.first!.relevantCategories
-//        
+        self.ingredientData = currentUser.first!.realIngredientsLiked
+        self.foodCategories = currentUser.first!.relevantCategories
+        
     }
     
     func getUserSuggestions() -> [MealObject] {
@@ -229,7 +229,7 @@ class UserChoiceCollectionDataSource {
             }
             //let userIngredientsLikedArray = self.ingredientData
             
-            mealItem.score = calcScore(description, userArray: self.ingredientData!)
+            mealItem.score = calcScore(description, userArray: self.ingredientData)
         }
     }
     

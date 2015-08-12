@@ -11,10 +11,10 @@ import RealmSwift
 
 class User: Object {
     
-    dynamic var savedMeals: List<MealObject> = List<MealObject>()
-    dynamic var ingredientsLiked: [String] = []
-    dynamic var realIngredientsLiked: List<RealmString> = List<RealmString>()
+    //YOU SHOULD BE GETTING RELEVANTCATEGORIES NAMES FROM CATEGORIESSELECTIONCLASS!!!
     
+    //dynamic var savedMeals: List<MealObject> = List<MealObject>()
+    dynamic var realIngredientsLiked: List<RealmString> = List<RealmString>()
     dynamic var relevantCategories: List<RealmString> = List<RealmString>()
     
     required init() {
@@ -23,18 +23,10 @@ class User: Object {
         var relevantCategories = self.relevantCategories
     }
     
+
     func removeDuplicates(array: [String]) -> List<RealmString> {
-        var encountered = Set<String>()
-        var result: [String] = []
-        for value in array {
-            if encountered.contains(value) {
-                // Do not add a duplicate element.
-            }
-            else {
-                encountered.insert(value)
-                result.append(value)
-            }
-        }
+        var originals = array
+        let result = Array(Set(originals))
         for i in 0...(result.count - 1) {
             realIngredientsLiked.append(RealmString(value: result[i]))
         }
@@ -42,7 +34,8 @@ class User: Object {
     }
     
     func appendIngredients() {
-    if relevantCategories.count == 0 {
+        var ingredientsLiked: [String] = []
+    if relevantCategories.count > 0 {
         var categories: [String] = []
         for i in 0...relevantCategories.count {
             let stringHolder = relevantCategories[i].string
@@ -154,7 +147,8 @@ class User: Object {
                 println("No ingredients appended")
             }
         }
-        removeDuplicates(ingredientsLiked)
+        realIngredientsLiked = removeDuplicates(ingredientsLiked)
+        
     } else {
         println("nope")
         // relevantCategories should be populated

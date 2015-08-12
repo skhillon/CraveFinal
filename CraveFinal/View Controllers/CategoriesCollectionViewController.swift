@@ -15,8 +15,17 @@ class CategoriesCollectionViewController: UICollectionViewController, UICollecti
     
     @IBOutlet weak var categoryLabel: UILabel!
     
-    let sectionInsets = UIEdgeInsets(top: 50.0, left: 20.0, bottom: 50.0, right: 20.0)
+    struct Choice {
+        var name : String
+        var color: UIColor
+        var isSelected : Bool
+    }
     
+
+    var currentUser : User = User()
+    var doneButton : UIBarButtonItem?
+    
+    let sectionInsets = UIEdgeInsets(top: 50.0, left: 20.0, bottom: 50.0, right: 20.0)
     var categoriesSelected: List<RealmString> = List<RealmString>()
     var catSelected: [String] = []
     var ingredientsToAppend: [String] = []
@@ -34,13 +43,31 @@ class CategoriesCollectionViewController: UICollectionViewController, UICollecti
         self.collectionView!.delegate = self
         self.collectionView!.allowsMultipleSelection = true
         self.collectionView!.selectItemAtIndexPath(nil, animated: true, scrollPosition: .None)
+        doneButton = UIBarButtonItem(barButtonSystemItem: .Done, target: self, action: "segueToHomeScreen")
         
         // Do any additional setup after loading the view.
+        
+        if let cvl = collectionViewLayout as? UICollectionViewFlowLayout {
+            let widthOfCollectionView = cvl.collectionViewContentSize().width
+            cvl.itemSize.width = widthOfCollectionView/2.1
+        }
     }
     
     override func viewWillAppear(animated: Bool) {
         navigationController?.setNavigationBarHidden(true, animated: false)
+    }
+    
+    override func viewWillDisappear(animated: Bool) {
+        let realm = Realm()
         
+        realm.write {
+            realm.add(self.currentUser)
+            var objs = realm.objects(User)
+        }
+    }
+    
+    func segueToHomeScreen() {
+        self.performSegueWithIdentifier("segueToHomeScreen", sender: self)
     }
     
     override func didReceiveMemoryWarning() {
@@ -71,9 +98,21 @@ class CategoriesCollectionViewController: UICollectionViewController, UICollecti
     }
     
     override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCellWithReuseIdentifier("CategoryCell", forIndexPath: indexPath) as! CategoryCollectionViewCell
+        var category = categoryBank[indexPath.row]
         
+        let cell = collectionView.dequeueReusableCellWithReuseIdentifier("CategoryCell", forIndexPath: indexPath) as! CategoryCollectionViewCell
+
         cell.tintColor = UIColor.greenColor()
+        
+        if(category.isSelected) {
+            cell.alpha = 0.5
+        }
+        else {
+            //cell.alpha = 1
+        }
+        
+        cell.categoryName.text = category.name
+        cell.categoryImage.image = category.image
         
         // Configure the cell
         
@@ -94,9 +133,13 @@ class CategoriesCollectionViewController: UICollectionViewController, UICollecti
     
     override func collectionView(collectionView: UICollectionView,
         didSelectItemAtIndexPath indexPath: NSIndexPath) {
-            let cell = collectionView.cellForItemAtIndexPath(indexPath)
             
+            let cell = collectionView.cellForItemAtIndexPath(indexPath)
+            cell?.alpha = 0.5
+            categoryBank[indexPath.row]
+            self.navigationItem.rightBarButtonItem = doneButton
             let category = self.categoryBank[indexPath.row]
+            
             
             switch(category) {
             case "Afghan":
@@ -193,6 +236,9 @@ class CategoriesCollectionViewController: UICollectionViewController, UICollecti
     }
     
     override func collectionView(collectionView: UICollectionView, didDeselectItemAtIndexPath indexPath: NSIndexPath) {
+        
+        let category = categoryBank[indexPath.row]
+        
         categoriesSelected.removeAtIndex(indexPath.row)
     }
     

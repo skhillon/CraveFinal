@@ -326,8 +326,8 @@
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" misplaced="YES" text="Meal Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dEW-zq-BpJ">
                                             <rect key="frame" x="8" y="8" width="450" height="30"/>
-                                            <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
-                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="17"/>
+                                            <color key="textColor" red="1" green="0.45882352939999999" blue="0.098039215690000001" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="$0.00" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="I5Z-7X-bJW">
@@ -335,7 +335,7 @@
                                             <constraints>
                                                 <constraint firstAttribute="width" secondItem="I5Z-7X-bJW" secondAttribute="height" multiplier="25:7" id="hli-91-EJq"/>
                                             </constraints>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="17"/>
                                             <color key="textColor" red="0.14901961389999999" green="0.72941178080000002" blue="0.35294118520000001" alpha="1" colorSpace="deviceRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
@@ -345,8 +345,8 @@
                                                 <constraint firstAttribute="height" constant="79.5" id="0aE-0c-SJJ"/>
                                                 <constraint firstAttribute="width" secondItem="hbu-Kr-vqa" secondAttribute="height" multiplier="450:79" id="bP3-lR-PlW"/>
                                             </constraints>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <color key="textColor" red="0.83921575550000005" green="0.64313727620000005" blue="0.1647058874" alpha="1" colorSpace="deviceRGB"/>
+                                            <fontDescription key="fontDescription" name="HelveticaNeue-LightItalic" family="Helvetica Neue" pointSize="17"/>
+                                            <color key="textColor" red="0.22352941176470587" green="0.27058823529411763" blue="0.32941176470588235" alpha="1" colorSpace="deviceRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
@@ -361,6 +361,7 @@
                                         <constraint firstItem="I5Z-7X-bJW" firstAttribute="centerY" secondItem="dEW-zq-BpJ" secondAttribute="centerY" constant="-5.5" id="zIe-fY-3BH"/>
                                     </constraints>
                                 </tableViewCellContentView>
+                                <color key="backgroundColor" red="0.99607843137254903" green="0.98039215686274506" blue="0.93725490196078431" alpha="1" colorSpace="calibratedRGB"/>
                                 <connections>
                                     <outlet property="descriptionLabel" destination="hbu-Kr-vqa" id="JRw-bq-Rx8"/>
                                     <outlet property="mealTitleLabel" destination="dEW-zq-BpJ" id="KvC-0H-ebe"/>
@@ -535,6 +536,9 @@
                         </connections>
                     </collectionView>
                     <navigationItem key="navigationItem" id="9SX-5T-O6u"/>
+                    <connections>
+                        <segue destination="gVd-75-Yqn" kind="show" identifier="segueToHomeScreen" id="uZP-hg-7xH"/>
+                    </connections>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GK8-9g-i8c" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
