@@ -78,54 +78,42 @@ class UserChoiceCollectionDataSource {
             }
                 
             else {
-            dispatch_async(dispatch_get_main_queue(), { () ->  Void in
+            //dispatch_async(dispatch_get_main_queue(), { () ->  Void in
 
                 
                 for tag in categories! {
-                    
-                    let urlString = "https://api.foursquare.com/v2/venues/search?ll=\(self.longitude),\(self.latitude)&categoryId=\(tag)&client_id=\(self.CLIENT_ID)&client_secrself.et=\(self.CLIENT_SECRET)&v=20150729"
-                    
-                    //println(urlString)
-                    
-                    if let url = NSURL(string: urlString) {
-                        if let data = NSData(contentsOfURL: url, options: .allZeros, error: nil) {
-                            let json = JSON(data: data)
-                            //print(json["response"]["venues"])
-                            if json["meta"]["code"].intValue == 200 {
-                                // we're OK to parse!
-                                
-                                let venues = json["response"]["venues"].arrayValue
-                                
-                                for venue in venues {
-                                    let venueDict = venue.dictionary
-                                    let name = venueDict!["name"]!.stringValue
-                                    let id = venueDict!["id"]!.stringValue
-                                    let location = venueDict!["location"]!.dictionary
-                                    let distance = location!["distance"]!.intValue
-                                    
-                                    // println(name + " distance: \(distance)")
-                                    let tempTuple = (name, distance, id)
-                                    self.venueInformation.append(tempTuple)
-                                    
-                                    let mealObject = MealObject()
-                                    mealObject.nameOfVenue = name
-                                    mealObject.longitudeOfVenue = location!["lng"]!.doubleValue
-                                    mealObject.latitudeOfVenue = location!["lat"]!.doubleValue
-                                    mealObject.addressofVenue = location!["formattedAddress"]!.stringValue
-                                    mealObject.distanceToVenue = location!["distance"]!.int!
-                                    self.foundMeals.append(mealObject)
-                                    
-                                }
-                            }
+                    Alamofire.request(.GET, "https://api.foursquare.com/v2/venues/search?ll=\(self.longitude),\(self.latitude)&categoryId=\(tag)&client_id=\(self.CLIENT_ID)&client_secrself.et=\(self.CLIENT_SECRET)&v=20150729").responseJSON() {
+                        (_, _, data, _) in
+                        let json = JSON(data: data)
+                        if json["meta"]["code"].intValue == 200 {
+                            // we're OK to parse!
                             
+                            let venues = json["response"]["venues"].arrayValue
+                            
+                            for venue in venues {
+                                let venueDict = venue.dictionary
+                                let name = venueDict!["name"]!.stringValue
+                                let id = venueDict!["id"]!.stringValue
+                                let location = venueDict!["location"]!.dictionary
+                                let distance = location!["distance"]!.intValue
+                                
+                                // println(name + " distance: \(distance)")
+                                let tempTuple = (name, distance, id)
+                                self.venueInformation.append(tempTuple)
+                                
+                                let mealObject = MealObject()
+                                mealObject.nameOfVenue = name
+                                mealObject.longitudeOfVenue = location!["lng"]!.doubleValue
+                                mealObject.latitudeOfVenue = location!["lat"]!.doubleValue
+                                mealObject.addressofVenue = location!["formattedAddress"]!.stringValue
+                                mealObject.distanceToVenue = location!["distance"]!.int!
+                                self.foundMeals.append(mealObject)
+                                
+                            }
                         }
-                        
-                    }
-                    else {
-                        println("Error in retrieving JSON")
                     }
                 }
-            })
+            //})
 
             counter++
         }
@@ -172,61 +160,61 @@ class UserChoiceCollectionDataSource {
     func findMeals(venueIDArray: [String]) -> [MealObject] {
         let venuesToSearch = venueIDArray
         
-        dispatch_async(dispatch_get_main_queue(), { () ->  Void in
+        //dispatch_async(dispatch_get_main_queue(), { () ->  Void in
         for venue in venuesToSearch {
-            
-            let urlString = "https://api.foursquare.com/v2/venues/\(venue)/menu?client_id=\(self.CLIENT_ID)&client_secret=\(self.CLIENT_SECRET)&v=20150729"
-            
-            println(urlString)
-            if let url = NSURL(string: urlString) { // if #1
-                if let data = NSData(contentsOfURL: url, options: .allZeros, error: nil) { //if #2
-                    let json = JSON(data: data)
-                    if json["meta"]["code"].intValue == 200 { //if #3
-                        let menuContainer = json["response"]["menu"]["menus"].dictionary
-                        let menuCount = menuContainer!["count"]!.int!
-                        println(menuCount)
-                        if menuCount == 1 { //if #4
-                            
-                            let menuItems = menuContainer!["items"]!.arrayValue //lists all menus "main Menu"
-                            for item in menuItems {
-                                let menuSections = item["entries"].dictionaryValue //subheadings in menus
-                                let subheadings = menuSections["items"]!.arrayValue
-                                for sub in subheadings {
-                                    let entries = sub["entries"].dictionaryValue
-                                    let food = entries["items"]!.arrayValue
-                                    for foodStuff in food {
-                                        for meal in self.foundMeals {
-                                            let mealTitle = foodStuff["name"].stringValue
-                                            let mealDescription = foodStuff["description"].stringValue
-                                            let priceValue = foodStuff["price"].stringValue
-                                            
-                                            meal.mealTitle = mealTitle
-                                            meal.mealDescription = mealDescription
-                                            meal.priceValue = priceValue
-                                            println(meal.mealTitle)
-                                            println(meal.mealDescription)
-                                            println(meal.nameOfVenue)
-                                            println(meal.distanceToVenue)
-                                            println(meal.addressofVenue)
-                                            println(meal.longitudeOfVenue)
-                                            println(meal.latitudeOfVenue)
+            Alamofire.request(.GET, "https://api.foursquare.com/v2/venues/\(venue)/menu?client_id=\(self.CLIENT_ID)&client_secret=\(self.CLIENT_SECRET)&v=20150729").responseJSON() {
+                (_, _, data, _) in
+                if let url = NSURL(string: urlString) { // if #1
+                    if let data = NSData(contentsOfURL: url, options: .allZeros, error: nil) { //if #2
+                        let json = JSON(data: data)
+                        if json["meta"]["code"].intValue == 200 { //if #3
+                            let menuContainer = json["response"]["menu"]["menus"].dictionary
+                            let menuCount = menuContainer!["count"]!.int!
+                            println(menuCount)
+                            if menuCount == 1 { //if #4
+                                
+                                let menuItems = menuContainer!["items"]!.arrayValue //lists all menus "main Menu"
+                                for item in menuItems {
+                                    let menuSections = item["entries"].dictionaryValue //subheadings in menus
+                                    let subheadings = menuSections["items"]!.arrayValue
+                                    for sub in subheadings {
+                                        let entries = sub["entries"].dictionaryValue
+                                        let food = entries["items"]!.arrayValue
+                                        for foodStuff in food {
+                                            for meal in self.foundMeals {
+                                                let mealTitle = foodStuff["name"].stringValue
+                                                let mealDescription = foodStuff["description"].stringValue
+                                                let priceValue = foodStuff["price"].stringValue
+                                                
+                                                meal.mealTitle = mealTitle
+                                                meal.mealDescription = mealDescription
+                                                meal.priceValue = priceValue
+                                                println(meal.mealTitle)
+                                                println(meal.mealDescription)
+                                                println(meal.nameOfVenue)
+                                                println(meal.distanceToVenue)
+                                                println(meal.addressofVenue)
+                                                println(meal.longitudeOfVenue)
+                                                println(meal.latitudeOfVenue)
+                                            }
                                         }
                                     }
                                 }
-                            }
+                                
+                            }// end if #4
                             
-                        }// end if #4
+                        } else {
+                            println("Error in retrieving JSON")
+                        }
                         
-                    } else {
-                        println("Error in retrieving JSON")
                     }
-                    
                 }
-            } //end if #1
+                
+            }
             self.searchMealDescriptions(self.foundMeals)
             self.sortedFoundMeals = self.sortMeals(self.foundMeals)
         }
-            })
+            //})
         
 //        var returnedMealObjects: List<MealObject> = List<MealObject>()
 //        for i in 0...sortedFoundMeals.count {

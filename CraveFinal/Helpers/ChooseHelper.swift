@@ -50,14 +50,9 @@ class ChooseHelper {
     func locateVenue(query: String) -> [MealObject] {
         
         let searchQuery = query
-        let urlString = "https://api.foursquare.com/v2/venues/suggestCompletion?ll=\(longitude),\(latitude)&query=\(searchQuery)&client_id=\(CLIENT_ID)&client_secret=\(CLIENT_SECRET)&v=20150729"
-        
-        println(urlString)
-        if let url = NSURL(string: urlString) { // if #1
-            if let data = NSData(contentsOfURL: url, options: .allZeros, error: nil) { //if #2
-                let json = JSON(data: data)
+        Alamofire.request(.GET, "https://api.foursquare.com/v2/venues/suggestCompletion?ll=\(self.longitude),\(self.latitude)&query=\(self.searchQuery)&client_id=\(self.CLIENT_ID)&client_secret=\(self.CLIENT_SECRET)&v=20150729").responseJSON() { (_, _, data, _) in
+            let json = JSON(data: data)
                 if json["meta"]["code"].intValue == 200 { //if #3
-                    
                     for venue in json["response"]["minivenues"].arrayValue {
                         mealObject.venueId = venue["id"].stringValue
                         mealObject.nameOfVenue = venue["name"].stringValue
@@ -70,10 +65,11 @@ class ChooseHelper {
                     println("Error in retrieving JSON")
                 } // end else
                 
-            }
-        } //end if #1
+        
+        } //end Alamofire
+        
         var processedMealData: [MealObject] = []
-        for i in 0...foundMeals.count {
+        for i in 0...self.foundMeals.count {
             processedMealData.append(foundMeals[i])
         }
         searchMealDescriptions(processedMealData)
