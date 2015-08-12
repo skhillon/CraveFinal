@@ -48,6 +48,10 @@ class User {
         var relevantCategoriesObject = realm.objects(RealmRelevantCategoryNames)
         var relevantCategoryNames = relevantCategoriesObject.first!.relevantNames
         
+        realm.write{
+            realm.add(realmIngredientsLiked, update: true)
+        }
+        
         for name in relevantCategoryNames {
             categories.append(name.name)
         }

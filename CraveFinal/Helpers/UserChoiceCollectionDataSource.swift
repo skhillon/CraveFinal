@@ -48,11 +48,16 @@ class UserChoiceCollectionDataSource {
     var latitude: CLLocationDegrees!
     
     required init(){
-        //currentUser = Realm().objects(User)
-        self.foodCategoriesObject = realm.objects(RealmRelevantCategoryTags)
-        self.foodCategories = foodCategoriesObject.first!.relevantTags
+        
+        
         self.ingredientDataObject = realm.objects(RealmIngredientLiked)
-        self.ingredientData = ingredientDataObject.first!.ingredientsLiked
+        
+        if self.ingredientDataObject.count != 0 {
+            self.ingredientData = ingredientDataObject.first!.ingredientsLiked
+            //currentUser = Realm().objects(User)
+            self.foodCategoriesObject = realm.objects(RealmRelevantCategoryTags)
+            self.foodCategories = foodCategoriesObject.first!.relevantTags
+        }
         
         //self.ingredientData = currentUser.first!.realIngredientsLiked
         
@@ -108,7 +113,7 @@ class UserChoiceCollectionDataSource {
                                 mealObject.addressofVenue = location!["formattedAddress"]!.stringValue
                                 mealObject.distanceToVenue = location!["distance"]!.int!
                                 self.foundMeals.append(mealObject)
-                                
+                                println(self.foundMeals)
                             }
                         }
                     }
@@ -118,12 +123,7 @@ class UserChoiceCollectionDataSource {
             counter++
         }
         }
-
-        var returnedMeals: [MealObject] = []
-        for i in 0...foundMeals.count {
-            returnedMeals.append(foundMeals[i])
-        }
-        return returnedMeals
+        return foundMeals
     }
     
     func sortVenues(unfilteredVenueInfo: [(String, Int, String)]) -> [(String, Int, String)] {

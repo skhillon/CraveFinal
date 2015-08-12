@@ -39,8 +39,16 @@ class CategoriesCollectionViewController: UICollectionViewController, UICollecti
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        println("I'M HERE!")
+        
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
+        realm.write{
+            self.realm.add(self.relevantCategoryTags, update: true)
+            self.realm.add(self.relevantCategoryNames, update: true)
+
+        }
+        
         
         // Register cell classes
         self.collectionView!.registerClass(UICollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
