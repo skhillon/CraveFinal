@@ -5,6 +5,7 @@ use_frameworks!
 target 'CraveFinal' do
 	pod 'RealmSwift'
     pod 'SwiftyJSON'
+    pod 'Alamofire', '~> 1.3'
 end
 
 target 'CraveFinalTests' do

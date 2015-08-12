@@ -71,8 +71,6 @@ class PlateViewController: UITableViewController, UITableViewDataSource, UITable
         if segue.identifier == "plateSegue" {
             if let destinationVC = segue.destinationViewController as? ResultsViewController {
                 destinationVC.mealObject = mealArray[cellLocation]
-                destinationVC.nameOfVenue = mealArray[cellLocation].nameOfVenue
-                destinationVC
             }
         }
     }
@@ -93,7 +91,7 @@ class PlateViewController: UITableViewController, UITableViewDataSource, UITable
     }
     
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        if mealList.count > 0 { // roundabout way of mealList.count
+        if mealArray.count > 0 { // roundabout way of mealList.count
             return 1
         } else {
             var messageLabel: UILabel = UILabel(frame: CGRectMake(0, 0, self.view.bounds.size.width, self.view.bounds.size.height))

@@ -9,7 +9,7 @@
 import UIKit
 import CoreLocation
 import Foundation
-//import Alamofire
+import Alamofire
 import SwiftyJSON
 import RealmSwift
 

@@ -23,7 +23,6 @@ class ResultsViewController: UIViewController {
 //    let mealPrice: String!
     
     
-    
     @IBOutlet weak var venueImageView: UIImageView!
     @IBOutlet weak var priceLabel: UILabel!
     @IBOutlet weak var mealTitleLabel: UILabel!
