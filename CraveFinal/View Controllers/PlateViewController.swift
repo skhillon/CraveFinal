@@ -17,33 +17,24 @@ class PlateViewController: UITableViewController, UITableViewDataSource, UITable
     var cellLocation = 0
     let locationHelper = LocationHelper.sharedInstance
     let userChoice = UserChoiceCollectionDataSource()
-    //    var mealArray: [MealObject] = []
-    dynamic var mealList = List<MealObject>()
+    var mealArray: [MealObject] = []
+    //dynamic var mealList = List<MealObject>()
     
-    func getResults(refreshControl: UIRefreshControl) -> List<MealObject> {
+    func getResults(refreshControl: UIRefreshControl) {
         //handle meal results getting here. put this in a callback in the viewdidload
         
         self.tableView.reloadData()
         if (self.refreshControl != nil) {
             self.refreshControl!.endRefreshing()
         }
-        var tempMealArray = self.userChoice.getUserSuggestions()
-        for i in 0...tempMealArray.count {
-            self.mealList.insert(tempMealArray[i], atIndex: i)
-        }
-        return mealList
+        mealArray = self.userChoice.getUserSuggestions()
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         locationHelper.setupLocation()
-        
-        //        locationHelper.callback = {
-        //
-        //        self.mealArray = self.userChoice.getUserSuggestions()
-        //
-        //        }
-        
+
+        mealArray = self.userChoice.getUserSuggestions()
         
         tableView.dataSource = self
         tableView.delegate = self
@@ -79,7 +70,9 @@ class PlateViewController: UITableViewController, UITableViewDataSource, UITable
         
         if segue.identifier == "plateSegue" {
             if let destinationVC = segue.destinationViewController as? ResultsViewController {
-                destinationVC.mealObject = mealList[cellLocation]
+                destinationVC.mealObject = mealArray[cellLocation]
+                destinationVC.nameOfVenue = mealArray[cellLocation].nameOfVenue
+                destinationVC
             }
         }
     }

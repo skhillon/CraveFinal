@@ -16,9 +16,12 @@ class ResultsViewController: UIViewController {
     
     var mealObject: MealObject!
     // Currently hardcoded values.
-    let longitudeOfVenue: Double = 37.4520420
-    let latitudeOfVenue: Double = 122.1374890
-    let nameOfVenue: String = "Mountain Mike's Pizza"
+    //wait this is already stored in mealObject wat r u doing y u make again
+//    let longitudeOfVenue: Double!
+//    let latitudeOfVenue: Double!
+//    let nameOfVenue: String!
+//    let mealPrice: String!
+    
     
     
     @IBOutlet weak var venueImageView: UIImageView!
@@ -32,11 +35,11 @@ class ResultsViewController: UIViewController {
     
     @IBAction func openMaps(sender: UIButton) {
         
-        let coords = CLLocationCoordinate2DMake(longitudeOfVenue, latitudeOfVenue)
+        let coords = CLLocationCoordinate2DMake(mealObject.longitudeOfVenue, mealObject.latitudeOfVenue)
         let placeMark = MKPlacemark(coordinate: coords, addressDictionary: nil)
         var mapItem = MKMapItem(placemark: placeMark)
         
-        mapItem.name = nameOfVenue
+        mapItem.name = mealObject.nameOfVenue
         
         //You could also choose: MKLaunchOptionsDirectionsModeWalking
         var launchOptions = [MKLaunchOptionsDirectionsModeKey : MKLaunchOptionsDirectionsModeDriving]
