@@ -39,12 +39,12 @@ class UserChoiceCollectionDataSource {
     let CLIENT_ID = "GBFQRRGTBCGRIYX5H204VMOD1XRQRYDVZW1UCFNFYQVLKZLY"
     let CLIENT_SECRET = "KZRGDLJNGKDNVWSK2YID2WBAKRH2KBQ2ROIXPFW5FOFSNACU"
     
-    let locationHelper = LocationHelper.sharedInstance
+    //let locationHelper = LocationHelper.sharedInstance
     
     var venueInformation: [(String, Int, String)] = []
     var finishedVenueIdArray: [String] = []
-    var longitude: CLLocationDegrees!
-    var latitude: CLLocationDegrees!
+//    var longitude: CLLocationDegrees!
+//    var latitude: CLLocationDegrees!
     
     required init(){
         
@@ -57,6 +57,16 @@ class UserChoiceCollectionDataSource {
             //currentUser = Realm().objects(User)
             self.foodCategoriesObject = realm.objects(RealmRelevantCategoryTags)
             self.foodCategories = foodCategoriesObject.first!.relevantTags
+            if self.foodCategories.count > 0 {
+                println("foodCategories is good")
+            }
+            
+            if self.foodCategories.first != nil {
+                println("foodCategories contains valid tags")
+                println(self.foodCategories.first)
+            } else {
+                println("foodCategories does not have existing tags")
+            }
         } else {
             println("INGREDIENT DATA IS FUUUUUCKED UPPPP")
         }
@@ -65,22 +75,24 @@ class UserChoiceCollectionDataSource {
         
     }
     
-    func getUserSuggestions() -> [MealObject] {
+    func getUserSuggestions(long: CLLocationDegrees, lat: CLLocationDegrees) -> [MealObject] {
         
-        var categories: [String]!
+        var categories: [String] = []
         for tag in foodCategories {
             categories.append(tag.tag)
         }
         
+        var longitude = long as Double
+        var latitude = lat as Double
         // TODO: instead of returning [MealObject] take a closure as argument
-        
-        longitude = 38.665314 /*locationHelper.locValue?.longitude */
-        latitude = -121.143955/* locationHelper.locValue?.latitude */
+//        
+//        longitude = 38.665314 /*locationHelper.locValue?.longitude */
+//        latitude = -121.143955/* locationHelper.locValue?.latitude */
         for(var counter = 1; counter <= numElements; counter++) {
             if counter == numElements {
                 let tempSortedVenues = sortVenues(venueInformation)
                 finishedVenueIdArray = filterVenues(tempSortedVenues)
-                foundMeals = findMeals(categories)
+                foundMeals = findMeals(categories, long: longitude, lat: latitude)
                 
             }
                 
@@ -88,9 +100,11 @@ class UserChoiceCollectionDataSource {
             //dispatch_async(dispatch_get_main_queue(), { () ->  Void in
 
                 
-                for tag in categories! {
-                    Alamofire.request(.GET, "https://api.foursquare.com/v2/venues/search?ll=\(self.longitude),\(self.latitude)&categoryId=\(tag)&client_id=\(self.CLIENT_ID)&client_secrself.et=\(self.CLIENT_SECRET)&v=20150729").responseJSON() {
+                for tag in categories {
+                    
+                    Alamofire.request(.GET, "https://api.foursquare.com/v2/venues/search?ll=\(longitude),\(latitude)&categoryId=\(tag)&client_id=\(self.CLIENT_ID)&client_secrself.et=\(self.CLIENT_SECRET)&v=20150729").responseJSON() {
                         (_, _, data, _) in
+                        println(data)
                         let json: JSON = data as! JSON
                         if json["meta"]["code"].intValue == 200 {
                             // we're OK to parse!
@@ -159,9 +173,10 @@ class UserChoiceCollectionDataSource {
         return filteredArray
     }
     
-    func findMeals(venueIDArray: [String]) -> [MealObject] {
+    func findMeals(venueIDArray: [String], long: CLLocationDegrees, lat: CLLocationDegrees) -> [MealObject] {
         let venuesToSearch = venueIDArray
-        
+        let longitude = long as Double
+        let latitude = lat as Double
         //dispatch_async(dispatch_get_main_queue(), { () ->  Void in
         for venue in venuesToSearch {
             Alamofire.request(.GET, "https://api.foursquare.com/v2/venues/\(venue)/menu?client_id=\(self.CLIENT_ID)&client_secret=\(self.CLIENT_SECRET)&v=20150729").responseJSON() {

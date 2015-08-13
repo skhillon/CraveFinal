@@ -8,13 +8,16 @@
 
 import UIKit
 import CoreLocation
-//typealias KILLINGIT = () -> Void
+typealias KILLINGIT = (longitude: CLLocationDegrees, latitude: CLLocationDegrees) -> Void
 
 class LocationHelper: NSObject, CLLocationManagerDelegate {
+    
     static let sharedInstance = LocationHelper()
     let locationManager = CLLocationManager()
     var locValue: CLLocationCoordinate2D!
-    //var callback:KILLINGIT!
+    var longitude: CLLocationDegrees!
+    var latitude: CLLocationDegrees!
+    var callback: KILLINGIT!
     
     func setupLocation() {
         dispatch_async(dispatch_get_main_queue(), { () ->  Void in
@@ -37,7 +40,9 @@ class LocationHelper: NSObject, CLLocationManagerDelegate {
     
     func locationManager(manager: CLLocationManager!, didUpdateLocations locations: [AnyObject]!) {
         locValue = locationManager.location.coordinate
-        //callback()
+        self.longitude = locValue.longitude
+        self.latitude = locValue.latitude
+        callback(longitude: longitude, latitude: latitude)
     }
     
     // TODO: func getCurrentLocation
@@ -50,7 +55,6 @@ class LocationHelper: NSObject, CLLocationManagerDelegate {
         super.init()
         self.locationManager
         self.setupLocation()
-        let location = self.locValue
     }
     
 }

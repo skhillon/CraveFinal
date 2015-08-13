@@ -15,27 +15,39 @@ class PlateViewController: UITableViewController, UITableViewDataSource, UITable
     @IBOutlet weak var subtitleLabel: UILabel!
     
     var cellLocation = 0
-    let locationHelper = LocationHelper.sharedInstance
     let userChoice = UserChoiceCollectionDataSource()
     var mealArray: [MealObject] = []
+    
+    var locationHelper = LocationHelper.sharedInstance
+    
+//    var longitude: CLLocationDegrees!
+//    var latitude: CLLocationDegrees!
     //dynamic var mealList = List<MealObject>()
     
-    func getResults(refreshControl: UIRefreshControl) {
-        //handle meal results getting here. put this in a callback in the viewdidload
-        
-        self.tableView.reloadData()
-        if (self.refreshControl != nil) {
-            self.refreshControl!.endRefreshing()
-        }
-        mealArray = self.userChoice.getUserSuggestions()
-    }
+//    func getResults(refreshControl: UIRefreshControl) {
+//        //handle meal results getting here. put this in a callback in the viewdidload
+//        
+//        self.tableView.reloadData()
+//        if (self.refreshControl != nil) {
+//            self.refreshControl!.endRefreshing()
+//        }
+//        mealArray = self.userChoice.getUserSuggestions(longitude, lat: latitude)
+//    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         locationHelper.setupLocation()
 
-        //mealArray = self.userChoice.getUserSuggestions()
+        println(locationHelper.locationManager.location) // returning nil...
+
+        locationHelper.callback = { (longitude,latitude) in
+            self.mealArray = self.userChoice.getUserSuggestions(longitude, lat: latitude)
+        }
         
+        for meal in self.mealArray {
+            println(meal)
+        }
         tableView.dataSource = self
         tableView.delegate = self
         tableView.estimatedRowHeight = 125
@@ -44,11 +56,11 @@ class PlateViewController: UITableViewController, UITableViewDataSource, UITable
         titleLabel.text = "Your Plate"
         subtitleLabel.text = "What can you see yourself eating?"
         
-        self.refreshControl = UIRefreshControl()
-        self.refreshControl?.backgroundColor = UIColor.redColor()
-        self.refreshControl?.tintColor = UIColor.whiteColor()
-        self.refreshControl?.addTarget(self, action: "getResults", forControlEvents: UIControlEvents.ValueChanged)
-        
+//        self.refreshControl = UIRefreshControl()
+//        self.refreshControl?.backgroundColor = UIColor.redColor()
+//        self.refreshControl?.tintColor = UIColor.whiteColor()
+//        self.refreshControl?.addTarget(self, action: "getResults:", forControlEvents: UIControlEvents.ValueChanged)
+//        
     }
     
     

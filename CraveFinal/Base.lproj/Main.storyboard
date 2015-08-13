@@ -15,7 +15,7 @@
                         <viewControllerLayoutGuide type="bottom" id="Il6-Ry-pjn"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="Jc1-xH-tMr" userLabel="Root View">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="551"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="65" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="f4C-12-ExS">
@@ -138,7 +138,7 @@
                         <viewControllerLayoutGuide type="bottom" id="GDY-xV-bOH"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="gw8-AX-kI6">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="551"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="iNN-o7-iRo">
@@ -148,10 +148,10 @@
                                 </constraints>
                             </imageView>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Wih-0G-8XD">
-                                <rect key="frame" x="0.0" y="162" width="600" height="438"/>
+                                <rect key="frame" x="0.0" y="162" width="600" height="389"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Obc-fi-0Ep">
-                                        <rect key="frame" x="0.0" y="0.0" width="600" height="438"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="600" height="389"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Description text" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EeW-UB-lyC">
                                                 <rect key="frame" x="19" y="78" width="548" height="56"/>
@@ -193,7 +193,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3jy-zw-4Nd">
-                                                <rect key="frame" x="268" y="318" width="97" height="30"/>
+                                                <rect key="frame" x="268" y="269" width="97" height="30"/>
                                                 <state key="normal" title="Open in Maps">
                                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                 </state>
@@ -282,7 +282,7 @@
             <objects>
                 <tableViewController id="nr5-0R-zXZ" customClass="PlateViewController" customModule="CraveFinal" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="SWC-xL-bva">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="551"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <view key="tableHeaderView" contentMode="scaleToFill" id="Jby-3R-OqM">
@@ -593,10 +593,11 @@
             <objects>
                 <tabBarController storyboardIdentifier="TabBarController" id="gVd-75-Yqn" sceneMemberID="viewController">
                     <nil key="simulatedBottomBarMetrics"/>
-                    <tabBar key="tabBar" contentMode="scaleToFill" id="1Ed-cm-P8G">
+                    <tabBar key="tabBar" contentMode="scaleToFill" translucent="NO" id="1Ed-cm-P8G">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <color key="barTintColor" red="0.85490196078431369" green="0.31372549019607843" blue="0.054901960784313725" alpha="1" colorSpace="calibratedRGB"/>
                     </tabBar>
                     <connections>
                         <segue destination="mC3-0P-BIr" kind="relationship" relationship="viewControllers" id="old-nU-E1V"/>
@@ -607,11 +608,17 @@
             </objects>
             <point key="canvasLocation" x="588" y="263"/>
         </scene>
-        <!--Item-->
+        <!--Your Plate-->
         <scene sceneID="FRf-xk-pLO">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="mC3-0P-BIr" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="uJM-7h-g1K"/>
+                    <tabBarItem key="tabBarItem" title="Your Plate" image="Plate" id="uJM-7h-g1K">
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="color" keyPath="tintColor">
+                                <color key="value" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                    </tabBarItem>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="nmX-cr-XMh">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -635,6 +642,7 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="q3F-R4-g0X">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
@@ -647,6 +655,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Choose" width="64" height="64"/>
+        <image name="Choose" width="50" height="50"/>
+        <image name="Plate" width="50" height="50"/>
     </resources>
 </document>
