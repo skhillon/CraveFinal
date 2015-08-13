@@ -17,3 +17,9 @@ class Ingredient: Object {
         return "ingredientKey"
     }
 }
+
+/*
+    var relevantIngredients: [Ingredient] = []
+    var ingredients: Ingredient!
+    var relevantIngredientsLiked: RealmIngredientLiked = RealmIngredientLiked()
+*/

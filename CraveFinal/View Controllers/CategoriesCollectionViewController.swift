@@ -22,8 +22,10 @@ class CategoriesCollectionViewController: UIViewController, UICollectionViewData
     
     var relevantNames: [Name] = []
     var relevantTags: [Tag] = []
+    var relevantIngredients: [Ingredient] = []
     var tags: Tag!
     var names: Name!
+    var ingredients: Ingredient!
     
     struct Choice {
         var name : String
@@ -31,16 +33,14 @@ class CategoriesCollectionViewController: UIViewController, UICollectionViewData
         var isSelected : Bool
     }
 
-    var tag: Tag = Tag()
     var relevantCategoryTags: RealmRelevantCategoryTags = RealmRelevantCategoryTags()
     
-    var name: Name = Name()
     var relevantCategoryNames: RealmRelevantCategoryNames = RealmRelevantCategoryNames()
     
-    //var currentUser : User = User()
+    var relevantIngredientsLiked: RealmIngredientLiked = RealmIngredientLiked()
+    
     //var doneButton : UIBarButtonItem?
     let sectionInsets = UIEdgeInsets(top: 50.0, left: 20.0, bottom: 50.0, right: 20.0)
-    
     
     //var ingredientsToAppend: [String] = []
     let categoryBank = ["Afghan", "African", "American", "Asian", "Caribbean", "Chinese", "Deli", "EastEuro", "French", "German", "Hawaiian", "Indian", "Indonesian", "Italian", "Mediterranean", "Mexican", "Persian", "Pizza", "Seafood", "Thai"]
@@ -56,8 +56,7 @@ class CategoriesCollectionViewController: UIViewController, UICollectionViewData
             println("realm write")
             realm.add(self.relevantCategoryTags, update: true)
             realm.add(self.relevantCategoryNames, update: true)
-            println(self.relevantCategoryTags)
-            println(self.relevantCategoryNames)
+            realm.add(self.relevantIngredientsLiked, update: true)
         }
         
         // Register cell classes
@@ -162,11 +161,18 @@ class CategoriesCollectionViewController: UIViewController, UICollectionViewData
                 println("Afghan selected")
                 tags = Tag()
                 names = Name()
+                ingredients = Ingredient()
                 tags.tag = "503288ae91d4c4b30a586d67"
                 relevantTags.append(self.tags)
-                name.name = "Afghan"
+                names.name = "Afghan"
                 relevantNames.append(self.names)
-                println(relevantTags[0])
+                
+                let arr: [String] = ["onions", "lamb", "rice", "lentils", "bolani", "mantwo", "aushak", "kabob"]
+                
+                for a in arr {
+                    ingredients.ingredient = a
+                    relevantIngredients.append(self.ingredients)
+                }
                 
 //                realm.write {
 //                    self.relevantCategoryTags.relevantTags.append(self.tag)
@@ -183,6 +189,13 @@ class CategoriesCollectionViewController: UIViewController, UICollectionViewData
                 relevantTags.append(self.tags)
                 names.name = "African"
                 relevantNames.append(self.names)
+                
+                let arr: [String] = ["corn", "fennel", "miele", "carrot", "scallion", "chicken", "ginger", "garlic", "olive oil", "cumin", "turmeric"]
+                
+                for a in arr {
+                    ingredients.ingredient = a
+                    relevantIngredients.append(self.ingredients)
+                }
 //                realm.write {
 //                    self.relevantCategoryTags.relevantTags.append(self.tag)
 //                    self.relevantCategoryNames.relevantNames.append(self.name)
@@ -202,6 +215,12 @@ class CategoriesCollectionViewController: UIViewController, UICollectionViewData
                 relevantTags.append(self.tags)
                 names.name = "American"
                 relevantNames.append(self.names)
+                let arr: [String] = ["cheese", "chicken", "beef", "onion", "salt", "pepper", "soup", "pasta", "oil", "garlic", "tomato", "sauce", "butter", "milk", "potatoes", "corn"]
+                
+                for a in arr {
+                    ingredients.ingredient = a
+                    relevantIngredients.append(self.ingredients)
+                }
 //                realm.write {
 //                    self.relevantCategoryNames.relevantNames.append(self.name)
 //                    self.relevantCategoryTags.relevantTags.append(self.tag)
@@ -221,6 +240,14 @@ class CategoriesCollectionViewController: UIViewController, UICollectionViewData
                 relevantTags.append(self.tags)
                 names.name = "Asian"
                 relevantNames.append(self.names)
+                
+                let arr: [String] = ["soy", "sauce", "rice", "vinegar", "fish", "sriracha", "oyster", "coconut", "curry", "miso", "paste", "sesame", "oil", "sake", "rice", "noodles", "ginger", "lime", "cilantro"]
+                
+                for a in arr {
+                    ingredients.ingredient = a
+                    relevantIngredients.append(self.ingredients)
+                }
+                
 //                realm.write {
 //               self.relevantCategoryTags.relevantTags.append(self.tag)
 //                    self.relevantCategoryNames.relevantNames.append(self.name)
@@ -240,6 +267,14 @@ class CategoriesCollectionViewController: UIViewController, UICollectionViewData
                 relevantTags.append(self.tags)
                 names.name = "Caribbean"
                 relevantNames.append(self.names)
+                
+                let arr: [String] = ["allspice", "callaloo", "coconut", "molasses", "pigeon", "peas", "pepper", "plantains", "rum", "scotch", "chiles", "turmeric"]
+                
+                for a in arr {
+                    ingredients.ingredient = a
+                    relevantIngredients.append(self.ingredients)
+                }
+                
 //                realm.write {
 //               self.relevantCategoryNames.relevantNames.append(self.name)
 //                    self.relevantCategoryTags.relevantTags.append(self.tag)
@@ -256,6 +291,14 @@ class CategoriesCollectionViewController: UIViewController, UICollectionViewData
                 relevantTags.append(self.tags)
                 names.name = "Chinese"
                 relevantNames.append(self.names)
+                
+                    let arr: [String] = ["bamboo shoots", "bean", "chile", "noodles", "sticky", "rice", "jasmine", "shiitake", "sichuan", "soy", "sesame ", "water", "chestnuts"]
+                
+                for a in arr {
+                    ingredients.ingredient = a
+                    relevantIngredients.append(self.ingredients)
+                }
+                
 //                realm.write {
 //                    self.relevantCategoryTags.relevantTags.append(self.tag)
 //                    self.relevantCategoryNames.relevantNames.append(self.name)
@@ -275,6 +318,14 @@ class CategoriesCollectionViewController: UIViewController, UICollectionViewData
                 relevantTags.append(self.tags)
                 names.name = "Deli"
                 relevantNames.append(self.names)
+                
+                let arr: [String] = ["cold", "cuts", "salad", "pasta", "potato", "chicken", "tuna", "shrimp", "cheese", "eggplant", "pastrami", "roast beef", "salami", "ham", "turkey", "bologna"]
+                
+                for a in arr {
+                    ingredients.ingredient = a
+                    relevantIngredients.append(self.ingredients)
+                }
+                
 //                realm.write {
 //                    self.relevantCategoryNames.relevantNames.append(self.name)
 //               self.relevantCategoryTags.relevantTags.append(self.tag)
@@ -291,6 +342,13 @@ class CategoriesCollectionViewController: UIViewController, UICollectionViewData
                 relevantTags.append(self.tags)
                 names.name = "EastEuro"
                 relevantNames.append(self.names)
+                
+                let arr: [String] = ["curd", "cheese", "kohlrabi", "peperivka", "kovbasa", "sorrel", "squash", "vegeta"]
+                
+                for a in arr {
+                    ingredients.ingredient = a
+                    relevantIngredients.append(self.ingredients)
+                }
 //                realm.write {
 //                    self.relevantCategoryTags.relevantTags.append(self.tag)
 //               self.relevantCategoryNames.relevantNames.append(self.name)
@@ -311,6 +369,14 @@ class CategoriesCollectionViewController: UIViewController, UICollectionViewData
                 relevantTags.append(self.tags)
                 names.name = "French"
                 relevantNames.append(self.names)
+                
+                let arr: [String] = ["baguette", "butter", "cheese", "fleur", "herbes", "provence", "leeks", "mustard", "olive oil", "shallots", "tarragon", "chicken", "vinegar", "wine"]
+                
+                for a in arr {
+                    ingredients.ingredient = a
+                    relevantIngredients.append(self.ingredients)
+                }
+                
 //                realm.write {
 //               self.relevantCategoryTags.relevantTags.append(self.tag)
 //                    self.relevantCategoryNames.relevantNames.append(self.name)
@@ -327,6 +393,14 @@ class CategoriesCollectionViewController: UIViewController, UICollectionViewData
                 relevantTags.append(self.tags)
                 names.name = "German"
                 relevantNames.append(self.names)
+                
+                let arr: [String] = ["pork", "beef", "chicken", "duck", "goose", "prunes", "apples", "venison", "boar", "hare", "pheasant", "trout", "potato", "dumplings", "cabbage", "carrots", "radishes", "turnips", "asparagus"]
+                
+                for a in arr {
+                    ingredients.ingredient = a
+                    relevantIngredients.append(self.ingredients)
+                }
+                
 //                realm.write {
 //               self.relevantCategoryNames.relevantNames.append(self.name)
 //                    self.relevantCategoryTags.relevantTags.append(self.tag)
@@ -343,6 +417,14 @@ class CategoriesCollectionViewController: UIViewController, UICollectionViewData
                 relevantTags.append(self.tags)
                 names.name = "Hawaiian"
                 relevantNames.append(self.names)
+                
+                let arr: [String] = ["taro", "sweet potato", "purple yam", "breadfruit", "sea", "mineral", "ti", "hala", "limpets", "kukui", "imu", "beef", "pork", "chicken", "butterfish", "soy sauce", "sesame oil", "coconut milk", "squid", "cornstarch"]
+                
+                for a in arr {
+                    ingredients.ingredient = a
+                    relevantIngredients.append(self.ingredients)
+                }
+                
 //                realm.write {
 //               self.relevantCategoryTags.relevantTags.append(self.tag)
 //                    self.relevantCategoryNames.relevantNames.append(self.name)
@@ -359,6 +441,13 @@ class CategoriesCollectionViewController: UIViewController, UICollectionViewData
                 relevantTags.append(self.tags)
                 names.name = "Indian"
                 relevantNames.append(self.names)
+                
+                let arr: [String] = ["lentils", "chickpeas", "cardamom", "chili", "cinnamon", "coriander", "cumin", "masala", "ginger", "mustard seed", "onion", "garlic", "turmeric", "rice", "cheese", "chicken", "beans"]
+                
+                for a in arr {
+                    ingredients.ingredient = a
+                    relevantIngredients.append(self.ingredients)
+                }
 //                realm.write {
 //                    self.relevantCategoryTags.relevantTags.append(self.tag)
 //                    self.relevantCategoryNames.relevantNames.append(self.name)
@@ -375,6 +464,14 @@ class CategoriesCollectionViewController: UIViewController, UICollectionViewData
                 relevantTags.append(self.tags)
                 names.name = "Indonesian"
                 relevantNames.append(self.names)
+                
+                let arr: [String] = ["rice", "coconut", "turmeric", "wheat", "noodles", "bakpao", "cakwe", "yam", "sweet", "potato", "taro", "cassava", "maize", "breadfruit", "jackfruit", "spinach", "papaya", "cassava", "cabbage", "potato", "carrot", "beef", "chicken", "duck", "goat", "lamb"]
+                
+                for a in arr {
+                    ingredients.ingredient = a
+                    relevantIngredients.append(self.ingredients)
+                }
+                
 //                realm.write {
 //               self.relevantCategoryTags.relevantTags.append(self.tag)
 //               self.relevantCategoryNames.relevantNames.append(self.name)
@@ -391,6 +488,14 @@ class CategoriesCollectionViewController: UIViewController, UICollectionViewData
                 relevantTags.append(self.tags)
                 names.name = "Italian"
                 relevantNames.append(self.names)
+                
+                let arr: [String] = ["tomatoes", "pasta", "rice", "flour", "beans", "bread", "artichoke", "olives", "olive oil", "garlic", "prosciutto", "basil", "mozzarella", "balsamic", "wine", "marsala", "parmesan"]
+                
+                for a in arr {
+                    ingredients.ingredient = a
+                    relevantIngredients.append(self.ingredients)
+                }
+                
 //                realm.write {
 //                    self.relevantCategoryNames.relevantNames.append(self.name)
 //               self.relevantCategoryTags.relevantTags.append(self.tag)
@@ -407,6 +512,14 @@ class CategoriesCollectionViewController: UIViewController, UICollectionViewData
                 relevantTags.append(self.tags)
                 names.name = "Mediterranean"
                 relevantNames.append(self.names)
+                
+                let arr: [String] = ["olive oil", "lamb", "onions", "pepper", "tomato", "phyllo", "spinach", "feta", "cheese", "hummus", "chickpeas", "garlic", "eggplant", "cinnamon", "grape", "rice", "chicken", "beef", "tahini"]
+                
+                for a in arr {
+                    ingredients.ingredient = a
+                    relevantIngredients.append(self.ingredients)
+                }
+                
 //                realm.write {
 //                    self.relevantCategoryTags.relevantTags.append(self.tag)
 //                    self.relevantCategoryNames.relevantNames.append(self.name)
@@ -423,6 +536,13 @@ class CategoriesCollectionViewController: UIViewController, UICollectionViewData
                 relevantTags.append(self.tags)
                 names.name = "Mexican"
                 relevantNames.append(self.names)
+                
+                let arr: [String] = ["avocadoes", "beans", "cheese", "chipotle", "chocolate", "sour", "cream", "lime", "oregano", "poblanos", "tomatoes", "tortilla", "salsa"]
+                
+                for a in arr {
+                    ingredients.ingredient = a
+                    relevantIngredients.append(self.ingredients)
+                }
 //                realm.write {
 //                    self.relevantCategoryNames.relevantNames.append(self.name)
 //                    self.relevantCategoryTags.relevantTags.append(self.tag)
@@ -439,6 +559,14 @@ class CategoriesCollectionViewController: UIViewController, UICollectionViewData
                 relevantTags.append(self.tags)
                 names.name = "Persian"
                 relevantNames.append(self.names)
+                
+                let arr: [String] = ["garbanzo beans", "onion", "garlic cloves", "garlic", "parsley", "flour", "salt", "cumin", "coriander", "cardamom", "fava beans", "chickpeas", "pita bread"]
+                
+                for a in arr {
+                    ingredients.ingredient = a
+                    relevantIngredients.append(self.ingredients)
+                }
+                
 //                realm.write {
 //                    self.relevantCategoryTags.relevantTags.append(self.tag)
 //                    self.relevantCategoryNames.relevantNames.append(self.name)
@@ -455,6 +583,14 @@ class CategoriesCollectionViewController: UIViewController, UICollectionViewData
                 relevantTags.append(self.tags)
                 names.name = "Pizza"
                 relevantNames.append(self.names)
+                
+                let arr: [String] = ["wheat", "flour", "dough", "tomato", "garlic", "onion", "basil", "pepperoni", "bacon", "beef", "chicken", "italian", "sausage", "breast", "salami", "ham", "cheese", "ranch", "marinara"]
+                
+                for a in arr {
+                    ingredients.ingredient = a
+                    relevantIngredients.append(self.ingredients)
+                }
+                
 //                realm.write {
 //                    self.relevantCategoryNames.relevantNames.append(self.name)
 //                    self.relevantCategoryTags.relevantTags.append(self.tag)
@@ -471,6 +607,14 @@ class CategoriesCollectionViewController: UIViewController, UICollectionViewData
                 relevantTags.append(self.tags)
                 names.name = "Seafood"
                 relevantNames.append(self.names)
+                
+                let arr: [String] = ["shrimp", "tuna", "shellfish", "shark", "salmon", "sushi", "squid", "fish", "fillet", "cod", "mackerel", "anchovies"]
+                
+                for a in arr {
+                    ingredients.ingredient = a
+                    relevantIngredients.append(self.ingredients)
+                }
+                
 //                realm.write {
 //                    self.relevantCategoryTags.relevantTags.append(self.tag)
 //                    self.relevantCategoryNames.relevantNames.append(self.name)
@@ -487,6 +631,14 @@ class CategoriesCollectionViewController: UIViewController, UICollectionViewData
                 relevantTags.append(self.tags)
                 names.name = "Thai"
                 relevantNames.append(self.names)
+                
+                let arr: [String] = ["fish", "sauce", "nam", "pla", "anchovies", "cilantro", "basil", "coriander", "chile", "coconut", "milk", "palm", "lemongrass", "bamboo", "beancurd", "beansprouts"]
+                
+                for a in arr {
+                    ingredients.ingredient = a
+                    relevantIngredients.append(self.ingredients)
+                }
+                
 //                realm.write {
 //                    self.relevantCategoryNames.relevantNames.append(self.name)
 //                    self.relevantCategoryTags.relevantTags.append(self.tag)
@@ -512,6 +664,11 @@ class CategoriesCollectionViewController: UIViewController, UICollectionViewData
                     self.relevantCategoryNames.relevantNames.append(name)
                 }
                 realm.add(self.relevantCategoryNames)
+                
+                for ing in self.relevantIngredients {
+                    self.relevantIngredientsLiked.ingredientsLiked.append(ing)
+                }
+                realm.add(self.relevantIngredientsLiked)
             }
             
 //            var currentUser = User()

@@ -10,7 +10,7 @@ import UIKit
 import RealmSwift
 
 class RealmIngredientLiked: Object {
-    let ingredientsLiked = List<Ingredient>()
+    let ingredientsLiked: List<Ingredient> = List<Ingredient>()
     dynamic var ingredientLikedKey: String = ""
     
     override class func primaryKey() -> String {
