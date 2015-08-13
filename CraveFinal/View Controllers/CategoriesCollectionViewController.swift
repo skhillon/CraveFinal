@@ -38,7 +38,7 @@ class CategoriesCollectionViewController: UIViewController, UICollectionViewData
     var relevantCategoryNames: RealmRelevantCategoryNames = RealmRelevantCategoryNames()
     
     //var currentUser : User = User()
-    var doneButton : UIBarButtonItem?
+    //var doneButton : UIBarButtonItem?
     let sectionInsets = UIEdgeInsets(top: 50.0, left: 20.0, bottom: 50.0, right: 20.0)
     
     
@@ -66,7 +66,7 @@ class CategoriesCollectionViewController: UIViewController, UICollectionViewData
         self.collectionView!.delegate = self
         self.collectionView!.allowsMultipleSelection = true
         self.collectionView!.selectItemAtIndexPath(nil, animated: true, scrollPosition: .None)
-        doneButton = UIBarButtonItem(barButtonSystemItem: .Done, target: self, action: "segueToHomeScreen")
+        //doneButton = UIBarButtonItem(barButtonSystemItem: .Done, target: self, action: "segueToHomeScreen")
         
         // Do any additional setup after loading the view.
         
@@ -154,7 +154,7 @@ class CategoriesCollectionViewController: UIViewController, UICollectionViewData
             let cell = collectionView.cellForItemAtIndexPath(indexPath)
             cell?.alpha = 0.5
             //categoryBank[indexPath.row]
-            self.navigationItem.rightBarButtonItem = doneButton
+            //self.navigationItem.rightBarButtonItem = doneButton
             let category = self.categoryBank[indexPath.row]
 
             switch(category) {

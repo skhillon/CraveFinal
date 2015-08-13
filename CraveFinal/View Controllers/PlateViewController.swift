@@ -34,7 +34,7 @@ class PlateViewController: UITableViewController, UITableViewDataSource, UITable
         super.viewDidLoad()
         locationHelper.setupLocation()
 
-        mealArray = self.userChoice.getUserSuggestions()
+        //mealArray = self.userChoice.getUserSuggestions()
         
         tableView.dataSource = self
         tableView.delegate = self

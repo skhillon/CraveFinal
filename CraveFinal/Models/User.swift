@@ -15,6 +15,9 @@ class User {
     
     //dont need to inherit
     
+    var relevantIngredients: [Ingredient] = []
+    var ingredients: Ingredient!
+    
     let collectionVC = CategoriesCollectionViewController()
     //dynamic var savedMeals: List<MealObject> = List<MealObject>()
     
@@ -39,10 +42,10 @@ class User {
 //    }
     
     func appendIngredients() {
-                var ingredientsLiked: [String] = []
+                //var ingredientsLiked: [String] = []
                 var categories: [String] = []
         
-        var ingredient = Ingredient()
+        //var ingredient = Ingredient()
         var realmIngredientsLiked = RealmIngredientLiked()
         var relevantCategoriesObject = realm.objects(RealmRelevantCategoryNames)
         var relevantCategoryNames = relevantCategoriesObject.first!.relevantNames
