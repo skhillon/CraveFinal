@@ -9,6 +9,7 @@
 import UIKit
 import RealmSwift
 import CoreLocation
+//BEFORE DELETING OTHER TAB BAR CONTROLLER
 
 class PlateViewController: UITableViewController, UITableViewDataSource, UITableViewDelegate, CLLocationManagerDelegate {
     
