@@ -185,6 +185,7 @@ class CategoriesCollectionViewController: UIViewController, UICollectionViewData
             case "African":
                 tags = Tag()
                 names = Name()
+                ingredients = Ingredient()
                 tags.tag = "4bf58dd8d48988d1c8941735"
                 relevantTags.append(self.tags)
                 names.name = "African"
@@ -211,6 +212,7 @@ class CategoriesCollectionViewController: UIViewController, UICollectionViewData
             case "American":
                 tags = Tag()
                 names = Name()
+                ingredients = Ingredient()
                 tags.tag = "4bf58dd8d48988d14e941735"
                 relevantTags.append(self.tags)
                 names.name = "American"
@@ -236,6 +238,7 @@ class CategoriesCollectionViewController: UIViewController, UICollectionViewData
             case "Asian":
                 tags = Tag()
                 names = Name()
+                ingredients = Ingredient()
                 tags.tag = "4bf58dd8d48988d142941735"
                 relevantTags.append(self.tags)
                 names.name = "Asian"
@@ -263,6 +266,7 @@ class CategoriesCollectionViewController: UIViewController, UICollectionViewData
             case "Caribbean":
                 tags = Tag()
                 names = Name()
+                ingredients = Ingredient()
                 tags.tag = "4bf58dd8d48988d144941735"
                 relevantTags.append(self.tags)
                 names.name = "Caribbean"
@@ -287,6 +291,7 @@ class CategoriesCollectionViewController: UIViewController, UICollectionViewData
             case "Chinese":
                 tags = Tag()
                 names = Name()
+                ingredients = Ingredient()
                 tags.tag = "4bf58dd8d48988d145941735"
                 relevantTags.append(self.tags)
                 names.name = "Chinese"
@@ -314,6 +319,7 @@ class CategoriesCollectionViewController: UIViewController, UICollectionViewData
             case "Deli":
                 tags = Tag()
                 names = Name()
+                ingredients = Ingredient()
                 tags.tag = "4bf58dd8d48988d146941735"
                 relevantTags.append(self.tags)
                 names.name = "Deli"
@@ -338,6 +344,7 @@ class CategoriesCollectionViewController: UIViewController, UICollectionViewData
             case "EastEuro":
                 tags = Tag()
                 names = Name()
+                ingredients = Ingredient()
                 tags.tag = "52e81612bcbc57f1066b7a01"
                 relevantTags.append(self.tags)
                 names.name = "EastEuro"
@@ -365,6 +372,7 @@ class CategoriesCollectionViewController: UIViewController, UICollectionViewData
             case "French":
                 tags = Tag()
                 names = Name()
+                ingredients = Ingredient()
                 tags.tag = "4bf58dd8d48988d10c941735"
                 relevantTags.append(self.tags)
                 names.name = "French"
@@ -389,6 +397,7 @@ class CategoriesCollectionViewController: UIViewController, UICollectionViewData
             case "German":
                 tags = Tag()
                 names = Name()
+                ingredients = Ingredient()
                 tags.tag = "4bf58dd8d48988d10d941735"
                 relevantTags.append(self.tags)
                 names.name = "German"
@@ -413,6 +422,7 @@ class CategoriesCollectionViewController: UIViewController, UICollectionViewData
             case "Hawaiian":
                 tags = Tag()
                 names = Name()
+                ingredients = Ingredient()
                 tags.tag = "52e81612bcbc57f1066b79fe"
                 relevantTags.append(self.tags)
                 names.name = "Hawaiian"
@@ -437,6 +447,7 @@ class CategoriesCollectionViewController: UIViewController, UICollectionViewData
             case "Indian":
                 tags = Tag()
                 names = Name()
+                ingredients = Ingredient()
                 tags.tag = "4bf58dd8d48988d10f941735"
                 relevantTags.append(self.tags)
                 names.name = "Indian"
@@ -460,6 +471,7 @@ class CategoriesCollectionViewController: UIViewController, UICollectionViewData
             case "Indonesian":
                 tags = Tag()
                 names = Name()
+                ingredients = Ingredient()
                 tags.tag = "52960eda3cf9994f4e043ac9"
                 relevantTags.append(self.tags)
                 names.name = "Indonesian"
@@ -484,6 +496,7 @@ class CategoriesCollectionViewController: UIViewController, UICollectionViewData
             case "Italian":
                 tags = Tag()
                 names = Name()
+                ingredients = Ingredient()
                 tags.tag = "4bf58dd8d48988d110941735"
                 relevantTags.append(self.tags)
                 names.name = "Italian"
@@ -508,6 +521,7 @@ class CategoriesCollectionViewController: UIViewController, UICollectionViewData
             case "Mediterranean":
                 tags = Tag()
                 names = Name()
+                ingredients = Ingredient()
                 tags.tag = "4bf58dd8d48988d1c0941735"
                 relevantTags.append(self.tags)
                 names.name = "Mediterranean"
@@ -532,6 +546,7 @@ class CategoriesCollectionViewController: UIViewController, UICollectionViewData
             case "Mexican":
                 tags = Tag()
                 names = Name()
+                ingredients = Ingredient()
                 tags.tag = "4bf58dd8d48988d1c1941735"
                 relevantTags.append(self.tags)
                 names.name = "Mexican"
@@ -555,6 +570,7 @@ class CategoriesCollectionViewController: UIViewController, UICollectionViewData
             case "Persian":
                 tags = Tag()
                 names = Name()
+                ingredients = Ingredient()
                 tags.tag = "52e81612bcbc57f1066b79f7"
                 relevantTags.append(self.tags)
                 names.name = "Persian"
@@ -579,6 +595,7 @@ class CategoriesCollectionViewController: UIViewController, UICollectionViewData
             case "Pizza":
                 tags = Tag()
                 names = Name()
+                ingredients = Ingredient()
                 tags.tag = "4bf58dd8d48988d1ca941735"
                 relevantTags.append(self.tags)
                 names.name = "Pizza"
@@ -603,6 +620,7 @@ class CategoriesCollectionViewController: UIViewController, UICollectionViewData
             case "Seafood":
                 tags = Tag()
                 names = Name()
+                ingredients = Ingredient()
                 tags.tag = "4bf58dd8d48988d1d2941735"
                 relevantTags.append(self.tags)
                 names.name = "Seafood"
@@ -627,6 +645,7 @@ class CategoriesCollectionViewController: UIViewController, UICollectionViewData
             case "Thai":
                 tags = Tag()
                 names = Name()
+                ingredients = Ingredient()
                 tags.tag = "4bf58dd8d48988d149941735"
                 relevantTags.append(self.tags)
                 names.name = "Thai"
