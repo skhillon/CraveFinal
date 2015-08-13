@@ -12,9 +12,13 @@ import RealmSwift
 let reuseIdentifier = "Cell"
 let realm = Realm()
 
-class CategoriesCollectionViewController: UICollectionViewController, UICollectionViewDataSource, UICollectionViewDelegate {
+class CategoriesCollectionViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
     
     @IBOutlet weak var categoryLabel: UILabel!
+    
+    @IBOutlet weak var collectionView: UICollectionView!
+    
+    @IBOutlet weak var collectionViewLayout: UICollectionViewFlowLayout!
     
     var relevantNames: [Name] = []
     var relevantTags: [Tag] = []
@@ -99,16 +103,16 @@ class CategoriesCollectionViewController: UICollectionViewController, UICollecti
     
     // MARK: UICollectionViewDataSource
     
-    override func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
+    func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
         return 1
     }
     
     
-    override func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return categoryBank.count
     }
     
-    override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
+    func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         var category = categoryBank[indexPath.row]
         
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("CategoryCell", forIndexPath: indexPath) as! CategoryCollectionViewCell
@@ -142,7 +146,7 @@ class CategoriesCollectionViewController: UICollectionViewController, UICollecti
             return sectionInsets
     }
     
-    override func collectionView(collectionView: UICollectionView,
+    func collectionView(collectionView: UICollectionView,
         didSelectItemAtIndexPath indexPath: NSIndexPath) {
             
             
@@ -515,7 +519,7 @@ class CategoriesCollectionViewController: UICollectionViewController, UICollecti
             
     }
     
-    override func collectionView(collectionView: UICollectionView, didDeselectItemAtIndexPath indexPath: NSIndexPath) {
+    func collectionView(collectionView: UICollectionView, didDeselectItemAtIndexPath indexPath: NSIndexPath) {
         let index = indexPath.row
         relevantCategoryNames.relevantNames.removeAtIndex(index)
     }
