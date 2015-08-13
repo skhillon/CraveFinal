@@ -8,8 +8,9 @@
 
 import UIKit
 import RealmSwift
+import CoreLocation
 
-class PlateViewController: UITableViewController, UITableViewDataSource, UITableViewDelegate {
+class PlateViewController: UITableViewController, UITableViewDataSource, UITableViewDelegate, CLLocationManagerDelegate {
     
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var subtitleLabel: UILabel!
@@ -17,37 +18,55 @@ class PlateViewController: UITableViewController, UITableViewDataSource, UITable
     var cellLocation = 0
     let userChoice = UserChoiceCollectionDataSource()
     var mealArray: [MealObject] = []
-    
+    var currentLocation: CLLocationCoordinate2D = CLLocationCoordinate2D()
+    var locationManager: CLLocationManager = CLLocationManager()
     var locationHelper = LocationHelper.sharedInstance
     
 //    var longitude: CLLocationDegrees!
 //    var latitude: CLLocationDegrees!
     //dynamic var mealList = List<MealObject>()
     
-//    func getResults(refreshControl: UIRefreshControl) {
-//        //handle meal results getting here. put this in a callback in the viewdidload
-//        
-//        self.tableView.reloadData()
-//        if (self.refreshControl != nil) {
-//            self.refreshControl!.endRefreshing()
-//        }
-//        mealArray = self.userChoice.getUserSuggestions(longitude, lat: latitude)
-//    }
+    func getResults(refreshControl: UIRefreshControl) {
+        //handle meal results getting here. put this in a callback in the viewdidload
+        
+        self.tableView.reloadData()
+        if (self.refreshControl != nil) {
+            self.refreshControl!.endRefreshing()
+        }
+        locationHelper.callback = { (longitude,latitude) in
+            self.mealArray = self.userChoice.getUserSuggestions(longitude, lat: latitude)
+            for meal in self.mealArray {
+                println(meal)
+            }
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        self.locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
+        self.locationManager.delegate = self
+        self.locationManager.distanceFilter = kCLDistanceFilterNone
+        let status = CLLocationManager.authorizationStatus()
+        if status == .NotDetermined {
+            self.locationManager.requestWhenInUseAuthorization()
+        } else if status == CLAuthorizationStatus.AuthorizedWhenInUse
+            || status == CLAuthorizationStatus.AuthorizedAlways {
+                self.locationManager.startUpdatingLocation()
+        } else {
+            println("No permissions")
+        }
         locationHelper.setupLocation()
 
         println(locationHelper.locationManager.location) // returning nil...
 
-        locationHelper.callback = { (longitude,latitude) in
-            self.mealArray = self.userChoice.getUserSuggestions(longitude, lat: latitude)
-        }
+        //locationHelper.callback = { (longitude,latitude) in
+            self.mealArray = self.userChoice.getUserSuggestions(self.currentLocation.longitude, lat: self.currentLocation.latitude)
+            for meal in self.mealArray {
+                println(meal)
+            }
+        //}
         
-        for meal in self.mealArray {
-            println(meal)
-        }
+
         tableView.dataSource = self
         tableView.delegate = self
         tableView.estimatedRowHeight = 125
@@ -56,11 +75,11 @@ class PlateViewController: UITableViewController, UITableViewDataSource, UITable
         titleLabel.text = "Your Plate"
         subtitleLabel.text = "What can you see yourself eating?"
         
-//        self.refreshControl = UIRefreshControl()
-//        self.refreshControl?.backgroundColor = UIColor.redColor()
-//        self.refreshControl?.tintColor = UIColor.whiteColor()
-//        self.refreshControl?.addTarget(self, action: "getResults:", forControlEvents: UIControlEvents.ValueChanged)
-//        
+        self.refreshControl = UIRefreshControl()
+        self.refreshControl?.backgroundColor = UIColor.redColor() // look at MakeNotes for custom colors
+        self.refreshControl?.tintColor = UIColor.whiteColor()
+        self.refreshControl?.addTarget(self, action: "getResults:", forControlEvents: UIControlEvents.ValueChanged)
+        
     }
     
     
@@ -128,6 +147,9 @@ class PlateViewController: UITableViewController, UITableViewDataSource, UITable
         
         print("cell recreated ")
         //timelineComponent.targetWillDisplayEntry(indexPath.row)
+    }
+    func locationManager(manager: CLLocationManager!, didUpdateLocations locations: [AnyObject]!) {
+        self.currentLocation = self.locationManager.location.coordinate
     }
     
 }
