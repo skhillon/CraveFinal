@@ -11,4 +11,6 @@ import RealmSwift
 
 class Name: Object {
     dynamic var name: String = ""
+//    dynamic var nameKey: String = ""
+    
 }

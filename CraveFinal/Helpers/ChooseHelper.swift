@@ -18,8 +18,6 @@ class ChooseHelper {
     let CLIENT_ID = "GBFQRRGTBCGRIYX5H204VMOD1XRQRYDVZW1UCFNFYQVLKZLY"
     let CLIENT_SECRET = "KZRGDLJNGKDNVWSK2YID2WBAKRH2KBQ2ROIXPFW5FOFSNACU"
     
-    let realm = Realm()
-    
     var ingredientDataObject: Results<RealmIngredientLiked>!
     var ingredientData: List<Ingredient> = List<Ingredient>()
     

@@ -11,4 +11,9 @@ import RealmSwift
 
 class Ingredient: Object {
     dynamic var ingredient: String = ""
+    dynamic var ingredientKey: String = ""
+    
+    override class func primaryKey() -> String {
+        return "ingredientKey"
+    }
 }

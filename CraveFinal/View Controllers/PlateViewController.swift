@@ -48,6 +48,7 @@ class PlateViewController: UITableViewController, UITableViewDataSource, UITable
         self.refreshControl?.backgroundColor = UIColor.redColor()
         self.refreshControl?.tintColor = UIColor.whiteColor()
         self.refreshControl?.addTarget(self, action: "getResults", forControlEvents: UIControlEvents.ValueChanged)
+        
     }
     
     

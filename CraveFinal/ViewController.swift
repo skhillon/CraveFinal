@@ -18,8 +18,6 @@ class ViewController: UIViewController {
         
         objectThing.name = "ting"
         
-        let realm = Realm()
-        
         realm.write {
             realm.add(self.objectThing)
         }

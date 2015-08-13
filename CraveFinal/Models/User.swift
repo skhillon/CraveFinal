@@ -42,7 +42,6 @@ class User {
                 var ingredientsLiked: [String] = []
                 var categories: [String] = []
         
-        let realm = Realm()
         var ingredient = Ingredient()
         var realmIngredientsLiked = RealmIngredientLiked()
         var relevantCategoriesObject = realm.objects(RealmRelevantCategoryNames)
@@ -331,6 +330,10 @@ class User {
                 println("No ingredients appended")
             }
         }
+            
+//            realm.write{
+//                realm.add(realmIngredientsLiked, update: true)
+//            }
         //realIngredientsLiked = removeDuplicates(ingredientsLiked)
         
     } else {

@@ -22,7 +22,6 @@ class UserChoiceCollectionDataSource {
 //    
 //    var ingredientData:List<RealmString> = List<RealmString>()
     
-    let realm = Realm()
     
     var foodCategoriesObject: Results<RealmRelevantCategoryTags>!
     var foodCategories: List<Tag> = List<Tag>()
@@ -53,10 +52,13 @@ class UserChoiceCollectionDataSource {
         self.ingredientDataObject = realm.objects(RealmIngredientLiked)
         
         if self.ingredientDataObject.count != 0 {
+            println("ingredient Data is good")
             self.ingredientData = ingredientDataObject.first!.ingredientsLiked
             //currentUser = Realm().objects(User)
             self.foodCategoriesObject = realm.objects(RealmRelevantCategoryTags)
             self.foodCategories = foodCategoriesObject.first!.relevantTags
+        } else {
+            println("INGREDIENT DATA IS FUUUUUCKED UPPPP")
         }
         
         //self.ingredientData = currentUser.first!.realIngredientsLiked

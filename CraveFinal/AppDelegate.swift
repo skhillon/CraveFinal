@@ -18,9 +18,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     // How to detect if first time launching
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+        
         println("application did finish launching")
-        window?.tintColor = themeColor
+        // window?.tintColor = themeColor
         // Override point for customization after application launch.
+        
         let firstLaunch =  NSUserDefaults.standardUserDefaults().boolForKey("FirstLaunch")
         if firstLaunch {
             println("Not the first launch")

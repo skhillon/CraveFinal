@@ -11,4 +11,9 @@ import RealmSwift
 
 class RealmString: Object {
     dynamic var string: String = ""
+//    dynamic var stringKey: String = ""
+//    
+//    override class func primaryKey() -> String {
+//        return "stringKey"
+//    }
 }

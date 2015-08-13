@@ -11,4 +11,9 @@ import RealmSwift
 
 class RealmRelevantCategoryTags: Object {
    let relevantTags = List<Tag>()
+    dynamic var categoryTagSelectedKey: String = ""
+    
+    override class func primaryKey() -> String {
+        return "categoryTagSelectedKey"
+    }
 }

@@ -11,4 +11,7 @@ import RealmSwift
 
 class Tag: Object {
     dynamic var tag: String = ""
+//    dynamic var tagKey: String = ""
+
+
 }
