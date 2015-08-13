@@ -26,7 +26,7 @@ class ChooseHelper {
     var foundMeals: [MealObject] = []
     var sortedFoundMeals: [MealObject] = []
     
-    let locationHelper = LocationHelper.sharedInstance
+    //let locationHelper = LocationHelper.sharedInstance
     var longitude: CLLocationDegrees!
     var latitude: CLLocationDegrees!
     

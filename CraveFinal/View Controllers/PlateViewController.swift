@@ -19,51 +19,58 @@ class PlateViewController: UITableViewController, UITableViewDataSource, UITable
     let userChoice = UserChoiceCollectionDataSource()
     var mealArray: [MealObject] = []
     var currentLocation: CLLocationCoordinate2D = CLLocationCoordinate2D()
-    var locationManager: CLLocationManager = CLLocationManager()
-    var locationHelper = LocationHelper.sharedInstance
+    var locationManager: CLLocationManager = CLLocationManager() {
+        didSet {
+            self.mealArray = self.userChoice.getUserSuggestions(self.currentLocation.longitude, lat: self.currentLocation.latitude)
+        }
+    }
+    //var locationHelper = LocationHelper.sharedInstance
     
 //    var longitude: CLLocationDegrees!
 //    var latitude: CLLocationDegrees!
     //dynamic var mealList = List<MealObject>()
     
-    func getResults(refreshControl: UIRefreshControl) {
-        //handle meal results getting here. put this in a callback in the viewdidload
-        
-        self.tableView.reloadData()
-        if (self.refreshControl != nil) {
-            self.refreshControl!.endRefreshing()
-        }
-        locationHelper.callback = { (longitude,latitude) in
-            self.mealArray = self.userChoice.getUserSuggestions(longitude, lat: latitude)
-            for meal in self.mealArray {
-                println(meal)
-            }
-        }
-    }
+//    func getResults(refreshControl: UIRefreshControl) {
+//        //handle meal results getting here. put this in a callback in the viewdidload
+//        
+//        self.tableView.reloadData()
+//        if (self.refreshControl != nil) {
+//            self.refreshControl!.endRefreshing()
+//        }
+//        //locationHelper.callback = { (longitude,latitude) in
+//        self.mealArray = self.userChoice.getUserSuggestions(self.currentLocation.longitude, lat: self.currentLocation.latitude)
+//        for meal in self.mealArray {
+//            println(meal)
+//        }
+//
+//        //}
+//    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
         self.locationManager.delegate = self
         self.locationManager.distanceFilter = kCLDistanceFilterNone
-        let status = CLLocationManager.authorizationStatus()
-        if status == .NotDetermined {
-            self.locationManager.requestWhenInUseAuthorization()
-        } else if status == CLAuthorizationStatus.AuthorizedWhenInUse
-            || status == CLAuthorizationStatus.AuthorizedAlways {
-                self.locationManager.startUpdatingLocation()
-        } else {
-            println("No permissions")
-        }
-        locationHelper.setupLocation()
+//        let status = CLLocationManager.authorizationStatus()
+//        if status == .NotDetermined {
+//            self.locationManager.requestWhenInUseAuthorization()
+//        } else if status == CLAuthorizationStatus.AuthorizedWhenInUse
+//            || status == CLAuthorizationStatus.AuthorizedAlways {
+//                self.locationManager.startUpdatingLocation()
+//        } else {
+//            println("No permissions")
+//        }
+        self.locationManager.requestWhenInUseAuthorization()
+        self.locationManager.startUpdatingLocation()
+        //locationHelper.setupLocation()
 
-        println(locationHelper.locationManager.location) // returning nil...
+        //println(locationHelper.locationManager.location) // returning nil...
 
         //locationHelper.callback = { (longitude,latitude) in
-            self.mealArray = self.userChoice.getUserSuggestions(self.currentLocation.longitude, lat: self.currentLocation.latitude)
-            for meal in self.mealArray {
-                println(meal)
-            }
+//            self.mealArray = self.userChoice.getUserSuggestions(self.currentLocation.longitude, lat: self.currentLocation.latitude)
+//            for meal in self.mealArray {
+//                println(meal)
+//            }
         //}
         
 
@@ -88,6 +95,22 @@ class PlateViewController: UITableViewController, UITableViewDataSource, UITable
         
     }
     
+    func getResults(refreshControl: UIRefreshControl) {
+        //handle meal results getting here. put this in a callback in the viewdidload
+        
+        self.tableView.reloadData()
+        if (self.refreshControl != nil) {
+            self.refreshControl!.endRefreshing()
+        }
+        //locationHelper.callback = { (longitude,latitude) in
+        self.mealArray = self.userChoice.getUserSuggestions(self.currentLocation.longitude, lat: self.currentLocation.latitude)
+        println(currentLocation.latitude)
+        for meal in self.mealArray {
+            println(meal)
+        }
+        
+        //}
+    }
     
     // MARK: - Navigation
     
@@ -149,7 +172,7 @@ class PlateViewController: UITableViewController, UITableViewDataSource, UITable
         //timelineComponent.targetWillDisplayEntry(indexPath.row)
     }
     func locationManager(manager: CLLocationManager!, didUpdateLocations locations: [AnyObject]!) {
-        self.currentLocation = self.locationManager.location.coordinate
+        var tempLocation = locations[0] as! CLLocation
     }
     
 }

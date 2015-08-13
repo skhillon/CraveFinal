@@ -15,7 +15,7 @@ let themeColor = UIColor(red: 0.99, green: 0.90, blue: 0.80, alpha: 1.0)
 class AppDelegate: UIResponder, UIApplicationDelegate {
     
     var window: UIWindow?
-    var locationHelper = LocationHelper.sharedInstance
+    //var locationHelper = LocationHelper.sharedInstance
     
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject :AnyObject]?) -> Bool {
         var initalViewController: UIViewController!

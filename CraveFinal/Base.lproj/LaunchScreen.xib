@@ -25,17 +25,23 @@
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="FoursquareLogo" translatesAutoresizingMaskIntoConstraints="NO" id="4Er-i9-stE">
                     <rect key="frame" x="261" y="287" width="60" height="60"/>
                 </imageView>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Logo" translatesAutoresizingMaskIntoConstraints="NO" id="ZqZ-2q-aW1">
-                    <rect key="frame" x="82" y="54" width="78" height="128"/>
-                </imageView>
-                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="rave" textAlignment="center" lineBreakMode="middleTruncation" baselineAdjustment="alignBaselines" minimumFontSize="18" translatesAutoresizingMaskIntoConstraints="NO" id="kId-c2-rCX">
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="rave" textAlignment="center" lineBreakMode="middleTruncation" baselineAdjustment="alignBaselines" minimumFontSize="18" translatesAutoresizingMaskIntoConstraints="NO" id="kId-c2-rCX">
                     <rect key="frame" x="164" y="38" width="262" height="159"/>
                     <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="150"/>
                     <color key="textColor" red="0.99215686274509807" green="0.55686274509803924" blue="0.14509803921568626" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="Logo" translatesAutoresizingMaskIntoConstraints="NO" id="ZqZ-2q-aW1">
+                    <rect key="frame" x="78" y="54" width="78" height="128"/>
+                </imageView>
             </subviews>
             <color key="backgroundColor" red="0.99607843137254903" green="0.98039215686274506" blue="0.93725490196078431" alpha="1" colorSpace="calibratedRGB"/>
+            <constraints>
+                <constraint firstAttribute="centerX" secondItem="kId-c2-rCX" secondAttribute="centerX" constant="-55" id="Dw3-fX-gXg"/>
+                <constraint firstAttribute="centerX" secondItem="ZqZ-2q-aW1" secondAttribute="centerX" constant="123" id="FA2-nV-iZE"/>
+                <constraint firstAttribute="centerY" secondItem="kId-c2-rCX" secondAttribute="centerY" constant="122.5" id="IUn-TM-tVn"/>
+                <constraint firstAttribute="centerY" secondItem="ZqZ-2q-aW1" secondAttribute="centerY" constant="122" id="Yy0-R4-pMh"/>
+            </constraints>
             <nil key="simulatedStatusBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <point key="canvasLocation" x="548" y="455"/>
