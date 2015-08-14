@@ -110,9 +110,9 @@ class PlateViewController: UITableViewController, UITableViewDataSource, UITable
         
         //        let meals = mealList.subscript([indexPath.row])
         //        print(indexPath.row)
-        //        cell.mealTitleLabel.text = meals.mealTitle
-        //        cell.descriptionLabel.text = meals.mealDescription
-        //        cell.priceLabel.text = "\(meals.priceValue)"
+        cell.mealTitleLabel.text = self.mealArray[indexPath.row].mealTitle
+        cell.descriptionLabel.text = self.mealArray[indexPath.row].mealDescription
+        cell.priceLabel.text = "\(self.mealArray[indexPath.row].priceValue)"
         
         return cell
     }

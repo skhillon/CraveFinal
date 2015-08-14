@@ -41,7 +41,7 @@ class UserChoiceCollectionDataSource {
     
     //let locationHelper = LocationHelper.sharedInstance
     
-    var venueInformation: [(String, Int, String)] = []
+    var venueInformation: [(String, Int, String)] = [] //name, distance, venueID
     var finishedVenueIdArray: [String] = []
 //    var longitude: CLLocationDegrees!
 //    var latitude: CLLocationDegrees!
@@ -84,30 +84,24 @@ class UserChoiceCollectionDataSource {
         
         var longitude = long as Double
         var latitude = lat as Double
-        // TODO: instead of returning [MealObject] take a closure as argument
-//        
-//        longitude = 38.665314 /*locationHelper.locValue?.longitude */
-//        latitude = -121.143955/* locationHelper.locValue?.latitude */
-        for(var counter = 0; counter < numElements + 1; counter++) {
-            if counter == numElements {
-                let tempSortedVenues = sortVenues(venueInformation)
-                finishedVenueIdArray = filterVenues(tempSortedVenues)
-                foundMeals = findMeals(categories, long: longitude, lat: latitude)
-                
-            }
-                
-            else {
+
+        for(var counter = 0; counter < numElements ; counter++) {
+            let problemSolver = counter == numElements
+            println(problemSolver)
+
             //dispatch_async(dispatch_get_main_queue(), { () ->  Void in
 
-                println(categories.count) // I selected 6. this returns 21...
+                //println(categories.count)
+                //println(self.ingredientData.count) //this should be more than just 5...
                 
                 for tag in categories {
                     
-                    let requestString: String = "https://api.foursquare.com/v2/venues/search?ll=37.452042,-122.137489&categoryId=\(tag)&client_id=\(CLIENT_ID)&client_secret=\(CLIENT_SECRET)&v=20150812"
+                    let requestString: String = "https://api.foursquare.com/v2/venues/search?ll=37.452042,-122.137489&categoryId=\(tag)&client_id=\(CLIENT_ID)&client_secret=\(CLIENT_SECRET)&v=20150814"
                     
+                   // println(requestString)
                     Alamofire.request(.GET, requestString).responseString() {
                         (_, _, responseBody, _) in
-                        println("response")
+                        //println("response")
 //                        let responseDictionary = responseBody as! Dictionary<String, AnyObject>
 //                        responseDictionary["response"]["confident"]
                         if let data = responseBody!.dataUsingEncoding(NSUTF8StringEncoding) {
@@ -119,32 +113,45 @@ class UserChoiceCollectionDataSource {
                             
                             for venue in venues {
                                 let venueDict = venue.dictionary
+                                println(venueDict)
                                 let name = venueDict!["name"]!.stringValue
-                                let id = venueDict!["id"]!.stringValue
+                                let venueId = venueDict!["id"]!.stringValue
                                 let location = venueDict!["location"]!.dictionary
                                 let distance = location!["distance"]!.intValue
                                 
                                 // println(name + " distance: \(distance)")
-                                let tempTuple = (name, distance, id)
-                                self.venueInformation.append(tempTuple)
+//                                let tempTuple = (name, distance, id)
+//                                self.venueInformation.append(tempTuple)
                                 
                                 let mealObject = MealObject()
                                 mealObject.nameOfVenue = name
                                 mealObject.longitudeOfVenue = location!["lng"]!.doubleValue
                                 mealObject.latitudeOfVenue = location!["lat"]!.doubleValue
                                 mealObject.addressofVenue = location!["formattedAddress"]!.stringValue
-                                mealObject.distanceToVenue = location!["distance"]!.int!
+                                mealObject.distanceToVenue = distance
+                                mealObject.venueId = venueId
                                 self.foundMeals.append(mealObject)
-                                println(self.foundMeals)
+                                let tupleNameOfVenue = self.foundMeals.last!.nameOfVenue
+                                let tupleDistanceToVenue = self.foundMeals.last!.distanceToVenue
+                                let tupleVenueID = self.foundMeals.last!.venueId
+                                
+                                let tempTuple = (tupleNameOfVenue, tupleDistanceToVenue, tupleVenueID)
+                                self.venueInformation.append(tempTuple)
+                                if self.venueInformation.count == self.numElements {
+                                    let tempSortedVenues = self.sortVenues(self.venueInformation)
+                                    println(self.venueInformation)
+                                    self.finishedVenueIdArray = self.filterVenues(tempSortedVenues)
+                                    // println(finishedVenueIdArray)
+                                    self.foundMeals = self.findMeals(categories, long: longitude, lat: latitude)
+                                    // println(foundMeals)
+                                }
+                                //println(self.foundMeals)
                             }
                         }
                         }
                         }
                     }
             //})
-
-            counter++
-        }
         }
         return foundMeals
     }
@@ -183,15 +190,20 @@ class UserChoiceCollectionDataSource {
     
     func findMeals(venueIDArray: [String], long: CLLocationDegrees, lat: CLLocationDegrees) -> [MealObject] {
         let venuesToSearch = venueIDArray
+        //println(venuesToSearch)
         let longitude = long as Double
         let latitude = lat as Double
         //dispatch_async(dispatch_get_main_queue(), { () ->  Void in
         for venue in venuesToSearch {
-            Alamofire.request(.GET, "https://api.foursquare.com/v2/venues/\(venue)/menu?client_id=\(self.CLIENT_ID)&client_secret=\(self.CLIENT_SECRET)&v=20150729").responseJSON() {
-                (_, _, data, _) in
+            //println(venue)
+            let requestString = "https://api.foursquare.com/v2/venues/\(venue)/menu?client_id=\(self.CLIENT_ID)&client_secret=\(self.CLIENT_SECRET)&v=20150814"
+            println(requestString)
+            Alamofire.request(.GET, requestString).responseString() {
+                (_, _, responseBody, _) in
 //                if let url = NSURL(string: urlString) { // if #1
 //                    if let data = NSData(contentsOfURL: url, options: .allZeros, error: nil) { //if #2
-                        let json: JSON = data as! JSON
+                if let data = responseBody!.dataUsingEncoding(NSUTF8StringEncoding) {
+                    let json = JSON(data: data)
                         if json["meta"]["code"].intValue == 200 { //if #3
                             let menuContainer = json["response"]["menu"]["menus"].dictionary
                             let menuCount = menuContainer!["count"]!.int!
@@ -214,24 +226,26 @@ class UserChoiceCollectionDataSource {
                                                 meal.mealTitle = mealTitle
                                                 meal.mealDescription = mealDescription
                                                 meal.priceValue = priceValue
+                                                
+
                                                 println(meal.mealTitle)
                                                 println(meal.mealDescription)
-                                                println(meal.nameOfVenue)
-                                                println(meal.distanceToVenue)
                                                 println(meal.addressofVenue)
+                                                
+                                                // ===== ACCESSED ========
+                                                println(meal.distanceToVenue)
                                                 println(meal.longitudeOfVenue)
                                                 println(meal.latitudeOfVenue)
+                                                println(meal.nameOfVenue)
                                             }
                                         }
                                     }
                                 }
-                                
                             }// end if #4
-                            
                         } else {
                             println("Error in retrieving JSON")
-                        }
-                        
+                    }
+                }
 //                    }
 //                }
                 

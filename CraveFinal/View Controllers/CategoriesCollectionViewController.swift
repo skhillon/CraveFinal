@@ -156,7 +156,7 @@ class CategoriesCollectionViewController: UIViewController, UICollectionViewData
             let cell = collectionView.cellForItemAtIndexPath(indexPath)
             cell?.alpha = 0.5
             
-            if self.counter < 6 {
+            if self.counter < 5 {
             //categoryBank[indexPath.row]
             //self.navigationItem.rightBarButtonItem = doneButton
             let category = self.categoryBank[indexPath.row]
