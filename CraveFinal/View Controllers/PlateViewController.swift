@@ -42,11 +42,7 @@ class PlateViewController: UITableViewController, UITableViewDataSource, UITable
         
         self.locationManager.delegate = self
         let status = CLLocationManager.authorizationStatus()
-        if status == .NotDetermined {
-            if self.locationManager.respondsToSelector("requestWhenInUseAuthorization") {
-                self.locationManager.requestWhenInUseAuthorization()
-            }
-        }
+        self.locationManager.requestWhenInUseAuthorization()
         self.locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
         self.locationManager.distanceFilter = kCLDistanceFilterNone
         self.locationManager.startUpdatingLocation()

@@ -99,6 +99,7 @@ class UserChoiceCollectionDataSource {
             else {
             //dispatch_async(dispatch_get_main_queue(), { () ->  Void in
 
+                println(categories.count) // I selected 6. this returns 21...
                 
                 for tag in categories {
                     
