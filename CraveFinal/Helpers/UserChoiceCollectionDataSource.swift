@@ -102,10 +102,14 @@ class UserChoiceCollectionDataSource {
                 
                 for tag in categories {
                     
-                    Alamofire.request(.GET, "https://api.foursquare.com/v2/venues/search?ll=\(longitude),\(latitude)&categoryId=\(tag)&client_id=\(self.CLIENT_ID)&client_secrself.et=\(self.CLIENT_SECRET)&v=20150729").responseJSON() {
+                    let requestString: String = "https://api.foursquare.com/v2/venues/search?ll=37.452042,-122.137489&categoryId=\(tag)&client_id=\(CLIENT_ID)&client_secret=\(CLIENT_SECRET)&v=20150812"
+                    
+                    Alamofire.request(.GET, requestString).responseString() {
                         (_, _, responseBody, _) in
-                        println(responseBody)
-                        if let data = (responseBody)!.dataUsingEncoding(NSUTF8StringEncoding) {
+                        println("response")
+//                        let responseDictionary = responseBody as! Dictionary<String, AnyObject>
+//                        responseDictionary["response"]["confident"]
+                        if let data = responseBody!.dataUsingEncoding(NSUTF8StringEncoding) {
                         let json = JSON(data: data)
                         if json["meta"]["code"].intValue == 200 {
                             // we're OK to parse!
