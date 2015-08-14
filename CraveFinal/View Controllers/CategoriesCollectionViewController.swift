@@ -20,6 +20,8 @@ class CategoriesCollectionViewController: UIViewController, UICollectionViewData
     
     @IBOutlet weak var collectionViewLayout: UICollectionViewFlowLayout!
     
+    var counter = 0
+    
     var relevantNames: [Name] = []
     var relevantTags: [Tag] = []
     var relevantIngredients: [Ingredient] = []
@@ -47,6 +49,7 @@ class CategoriesCollectionViewController: UIViewController, UICollectionViewData
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         
         println("I'M HERE!")
         
@@ -152,6 +155,8 @@ class CategoriesCollectionViewController: UIViewController, UICollectionViewData
             
             let cell = collectionView.cellForItemAtIndexPath(indexPath)
             cell?.alpha = 0.5
+            
+            if self.counter < 6 {
             //categoryBank[indexPath.row]
             //self.navigationItem.rightBarButtonItem = doneButton
             let category = self.categoryBank[indexPath.row]
@@ -183,6 +188,8 @@ class CategoriesCollectionViewController: UIViewController, UICollectionViewData
                     self.relevantIngredientsLiked.ingredientsLiked.append(self.ingredients)
                     realm.add(self.relevantIngredientsLiked)
                 }
+                
+                counter++
 
 //                realm.write {
 //                    self.relevantCategoryTags.relevantTags.append(self.tag)
@@ -193,6 +200,7 @@ class CategoriesCollectionViewController: UIViewController, UICollectionViewData
 //                categoriesSelected.append(realmString)
 //                
             case "African":
+                counter++
                 tags = Tag()
                 names = Name()
                 ingredients = Ingredient()
@@ -231,6 +239,7 @@ class CategoriesCollectionViewController: UIViewController, UICollectionViewData
 //                categoriesSelected.append(realmString)
                 
             case "American":
+                counter++
                 tags = Tag()
                 names = Name()
                 ingredients = Ingredient()
@@ -268,6 +277,7 @@ class CategoriesCollectionViewController: UIViewController, UICollectionViewData
 //                categoriesSelected.append(realmString)
                 
             case "Asian":
+                counter++
                 tags = Tag()
                 names = Name()
                 ingredients = Ingredient()
@@ -306,6 +316,7 @@ class CategoriesCollectionViewController: UIViewController, UICollectionViewData
 //                categoriesSelected.append(realmString)
                 
             case "Caribbean":
+                counter++
                 tags = Tag()
                 names = Name()
                 ingredients = Ingredient()
@@ -341,6 +352,7 @@ class CategoriesCollectionViewController: UIViewController, UICollectionViewData
 //                categoriesSelected.append(realmString)
                 
             case "Chinese":
+                counter++
                 tags = Tag()
                 names = Name()
                 ingredients = Ingredient()
@@ -379,6 +391,7 @@ class CategoriesCollectionViewController: UIViewController, UICollectionViewData
 //                categoriesSelected.append(realmString)
                 
             case "Deli":
+                counter++
                 tags = Tag()
                 names = Name()
                 ingredients = Ingredient()
@@ -414,6 +427,7 @@ class CategoriesCollectionViewController: UIViewController, UICollectionViewData
 //                categoriesSelected.append(realmString)
                 
             case "EastEuro":
+                counter++
                 tags = Tag()
                 names = Name()
                 ingredients = Ingredient()
@@ -453,6 +467,7 @@ class CategoriesCollectionViewController: UIViewController, UICollectionViewData
 //                categoriesSelected.append(realmString)
                 
             case "French":
+                counter++
                 tags = Tag()
                 names = Name()
                 ingredients = Ingredient()
@@ -488,6 +503,7 @@ class CategoriesCollectionViewController: UIViewController, UICollectionViewData
 //                categoriesSelected.append(realmString)
                 
             case "German":
+                counter++
                 tags = Tag()
                 names = Name()
                 ingredients = Ingredient()
@@ -523,6 +539,7 @@ class CategoriesCollectionViewController: UIViewController, UICollectionViewData
 //                categoriesSelected.append(realmString)
                 
             case "Hawaiian":
+                counter++
                 tags = Tag()
                 names = Name()
                 ingredients = Ingredient()
@@ -559,6 +576,7 @@ class CategoriesCollectionViewController: UIViewController, UICollectionViewData
 //                categoriesSelected.append(realmString)
 //                
             case "Indian":
+                counter++
                 tags = Tag()
                 names = Name()
                 ingredients = Ingredient()
@@ -594,6 +612,7 @@ class CategoriesCollectionViewController: UIViewController, UICollectionViewData
 //                categoriesSelected.append(realmString)
                 
             case "Indonesian":
+                counter++
                 tags = Tag()
                 names = Name()
                 ingredients = Ingredient()
@@ -630,6 +649,7 @@ class CategoriesCollectionViewController: UIViewController, UICollectionViewData
 //                categoriesSelected.append(realmString)
                 
             case "Italian":
+                counter++
                 tags = Tag()
                 names = Name()
                 ingredients = Ingredient()
@@ -665,6 +685,7 @@ class CategoriesCollectionViewController: UIViewController, UICollectionViewData
 //                categoriesSelected.append(realmString)
                 
             case "Mediterranean":
+                counter++
                 tags = Tag()
                 names = Name()
                 ingredients = Ingredient()
@@ -701,6 +722,7 @@ class CategoriesCollectionViewController: UIViewController, UICollectionViewData
 //                categoriesSelected.append(realmString)
                 
             case "Mexican":
+                counter++
                 tags = Tag()
                 names = Name()
                 ingredients = Ingredient()
@@ -736,6 +758,7 @@ class CategoriesCollectionViewController: UIViewController, UICollectionViewData
 //                categoriesSelected.append(realmString)
                 
             case "Persian":
+                counter++
                 tags = Tag()
                 names = Name()
                 ingredients = Ingredient()
@@ -771,6 +794,7 @@ class CategoriesCollectionViewController: UIViewController, UICollectionViewData
 //                categoriesSelected.append(realmString)
                 
             case "Pizza":
+                counter++
                 tags = Tag()
                 names = Name()
                 ingredients = Ingredient()
@@ -807,6 +831,7 @@ class CategoriesCollectionViewController: UIViewController, UICollectionViewData
 //                categoriesSelected.append(realmString)
                 
             case "Seafood":
+                counter++
                 tags = Tag()
                 names = Name()
                 ingredients = Ingredient()
@@ -842,6 +867,7 @@ class CategoriesCollectionViewController: UIViewController, UICollectionViewData
 //                categoriesSelected.append(realmString)
 
             case "Thai":
+                counter++
                 tags = Tag()
                 names = Name()
                 ingredients = Ingredient()
@@ -899,13 +925,23 @@ class CategoriesCollectionViewController: UIViewController, UICollectionViewData
 //            var currentUser = User()
 //            currentUser.relevantCategories = self.categoriesSelected
             
+            } else {
+                println("Cannot select more than 5 categories")
+                let alert = UIAlertController(title: "Oops!", message: "Cannot select more than 5 categories.", preferredStyle: UIAlertControllerStyle.Alert)
+                let alertAction = UIAlertAction(title: "OK!", style: UIAlertActionStyle.Default) { (UIAlertAction) -> Void in }
+                alert.addAction(alertAction)
+                presentViewController(alert, animated: true) { () -> Void in }
+            }
     }
     
     func collectionView(collectionView: UICollectionView, didDeselectItemAtIndexPath indexPath: NSIndexPath) {
         let index = indexPath.row
-        relevantCategoryNames.relevantNames.removeAtIndex(index)
-        relevantCategoryTags.relevantTags.removeAtIndex(index)
-        relevantIngredientsLiked.ingredientsLiked.removeAtIndex(index)
+        realm.write {
+        self.relevantCategoryNames.relevantNames.removeAtIndex(index)
+        self.relevantCategoryTags.relevantTags.removeAtIndex(index)
+        self.relevantIngredientsLiked.ingredientsLiked.removeAtIndex(index)
+        }
+        counter--
     }
     
 }
