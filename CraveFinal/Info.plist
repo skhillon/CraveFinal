@@ -26,8 +26,8 @@
 	<string>LaunchScreen</string>
 	<key>UIMainStoryboardFile</key>
 	<string>Main</string>
-	<key>NSLocationWhenInUsageDescription</key>
-	<string>Sarkath is a naughty boy</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>Crave uses your location to find meal recommendations near you.</string>
 	<key>UIRequiredDeviceCapabilities</key>
 	<array>
 		<string>armv7</string>

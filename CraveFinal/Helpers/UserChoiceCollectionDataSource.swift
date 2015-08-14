@@ -88,7 +88,7 @@ class UserChoiceCollectionDataSource {
 //        
 //        longitude = 38.665314 /*locationHelper.locValue?.longitude */
 //        latitude = -121.143955/* locationHelper.locValue?.latitude */
-        for(var counter = 1; counter <= numElements; counter++) {
+        for(var counter = 0; counter < numElements + 1; counter++) {
             if counter == numElements {
                 let tempSortedVenues = sortVenues(venueInformation)
                 finishedVenueIdArray = filterVenues(tempSortedVenues)
@@ -103,9 +103,10 @@ class UserChoiceCollectionDataSource {
                 for tag in categories {
                     
                     Alamofire.request(.GET, "https://api.foursquare.com/v2/venues/search?ll=\(longitude),\(latitude)&categoryId=\(tag)&client_id=\(self.CLIENT_ID)&client_secrself.et=\(self.CLIENT_SECRET)&v=20150729").responseJSON() {
-                        (_, _, data, _) in
-                        println(data)
-                        let json: JSON = data as! JSON
+                        (_, _, responseBody, _) in
+                        println(responseBody)
+                        if let data = (responseBody)!.dataUsingEncoding(NSUTF8StringEncoding) {
+                        let json = JSON(data: data)
                         if json["meta"]["code"].intValue == 200 {
                             // we're OK to parse!
                             
@@ -132,8 +133,9 @@ class UserChoiceCollectionDataSource {
                                 println(self.foundMeals)
                             }
                         }
+                        }
+                        }
                     }
-                }
             //})
 
             counter++
@@ -168,7 +170,8 @@ class UserChoiceCollectionDataSource {
             idArray.append(venueElement.2)
         }
         for index in 0...4 {
-            filteredArray.insert(idArray[index], atIndex: index)
+            filteredArray.append(idArray[index])
+            //filteredArray.insert(idArray[index], atIndex: index)
         }
         return filteredArray
     }

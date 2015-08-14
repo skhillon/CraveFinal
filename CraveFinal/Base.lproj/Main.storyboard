@@ -152,7 +152,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vfo-nZ-UV4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2022" y="282"/>
+            <point key="canvasLocation" x="2020" y="282"/>
         </scene>
         <!--Plate View Controller-->
         <scene sceneID="wzL-UC-Amk">
@@ -312,7 +312,7 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="tvI-Ar-kNP" kind="show" id="bhS-o2-7iz"/>
+                                    <segue destination="tvI-Ar-kNP" kind="show" id="i89-s9-eok"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -463,12 +463,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bGU-yl-0FG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-190" y="282"/>
+            <point key="canvasLocation" x="-161" y="269"/>
         </scene>
         <!--Your Plate-->
         <scene sceneID="FRf-xk-pLO">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="mC3-0P-BIr" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="InitialNavigationController" automaticallyAdjustsScrollViewInsets="NO" id="mC3-0P-BIr" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Your Plate" image="Plate" id="uJM-7h-g1K">
                         <userDefinedRuntimeAttributes>
                             <userDefinedRuntimeAttribute type="color" keyPath="tintColor">

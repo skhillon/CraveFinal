@@ -33,17 +33,8 @@ class ResultsViewController: UIViewController {
     
     
     @IBAction func openMaps(sender: UIButton) {
-        
-        let coords = CLLocationCoordinate2DMake(mealObject.longitudeOfVenue, mealObject.latitudeOfVenue)
-        let placeMark = MKPlacemark(coordinate: coords, addressDictionary: nil)
-        var mapItem = MKMapItem(placemark: placeMark)
-        
-        mapItem.name = mealObject.nameOfVenue
-        
-        //You could also choose: MKLaunchOptionsDirectionsModeWalking
-        var launchOptions = [MKLaunchOptionsDirectionsModeKey : MKLaunchOptionsDirectionsModeDriving]
-        
-        mapItem.openInMapsWithLaunchOptions(launchOptions)
+        let url = NSURL(string: "http://maps.apple.com/maps?saddr=Current%20Location&daddr=\(mealObject.longitudeOfVenue),\(mealObject.latitudeOfVenue)")
+        UIApplication.sharedApplication().openURL(url!)
     }
     
     override func viewDidLoad() {

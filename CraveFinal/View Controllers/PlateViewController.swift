@@ -9,7 +9,6 @@
 import UIKit
 import RealmSwift
 import CoreLocation
-//BEFORE DELETING OTHER TAB BAR CONTROLLER
 
 class PlateViewController: UITableViewController, UITableViewDataSource, UITableViewDelegate, CLLocationManagerDelegate {
     
@@ -19,60 +18,55 @@ class PlateViewController: UITableViewController, UITableViewDataSource, UITable
     var cellLocation = 0
     let userChoice = UserChoiceCollectionDataSource()
     var mealArray: [MealObject] = []
+    
+    var locationManager: CLLocationManager = CLLocationManager()
     var currentLocation: CLLocationCoordinate2D = CLLocationCoordinate2D()
-    var locationManager: CLLocationManager = CLLocationManager() {
-        didSet {
-            self.mealArray = self.userChoice.getUserSuggestions(self.currentLocation.longitude, lat: self.currentLocation.latitude)
+    
+    func getResults(refreshControl: UIRefreshControl) {
+        
+        self.tableView.reloadData()
+        if (self.refreshControl != nil) {
+            self.refreshControl!.endRefreshing()
         }
+        //locationHelper.callback = { (longitude,latitude) in
+        self.mealArray = self.userChoice.getUserSuggestions(self.currentLocation.longitude, lat: self.currentLocation.latitude)
+        for meal in self.mealArray {
+            println(meal)
+        }
+
+        //}
     }
-    //var locationHelper = LocationHelper.sharedInstance
-    
-//    var longitude: CLLocationDegrees!
-//    var latitude: CLLocationDegrees!
-    //dynamic var mealList = List<MealObject>()
-    
-//    func getResults(refreshControl: UIRefreshControl) {
-//        //handle meal results getting here. put this in a callback in the viewdidload
-//        
-//        self.tableView.reloadData()
-//        if (self.refreshControl != nil) {
-//            self.refreshControl!.endRefreshing()
-//        }
-//        //locationHelper.callback = { (longitude,latitude) in
-//        self.mealArray = self.userChoice.getUserSuggestions(self.currentLocation.longitude, lat: self.currentLocation.latitude)
-//        for meal in self.mealArray {
-//            println(meal)
-//        }
-//
-//        //}
-//    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
+        
         self.locationManager.delegate = self
+        let status = CLLocationManager.authorizationStatus()
+        if status == .NotDetermined {
+            if self.locationManager.respondsToSelector("requestWhenInUseAuthorization") {
+                self.locationManager.requestWhenInUseAuthorization()
+            }
+        }
+        self.locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
         self.locationManager.distanceFilter = kCLDistanceFilterNone
-//        let status = CLLocationManager.authorizationStatus()
-//        if status == .NotDetermined {
-//            self.locationManager.requestWhenInUseAuthorization()
-//        } else if status == CLAuthorizationStatus.AuthorizedWhenInUse
-//            || status == CLAuthorizationStatus.AuthorizedAlways {
-//                self.locationManager.startUpdatingLocation()
-//        } else {
-//            println("No permissions")
-//        }
-        self.locationManager.requestWhenInUseAuthorization()
         self.locationManager.startUpdatingLocation()
+        
+
+        self.mealArray = self.userChoice.getUserSuggestions(self.currentLocation.longitude, lat: self.currentLocation.latitude)
+        for meal in self.mealArray {
+            println(meal)
+        }
+        
         //locationHelper.setupLocation()
 
         //println(locationHelper.locationManager.location) // returning nil...
 
-        //locationHelper.callback = { (longitude,latitude) in
+//        locationHelper.callback = { (longitude,latitude) in
 //            self.mealArray = self.userChoice.getUserSuggestions(self.currentLocation.longitude, lat: self.currentLocation.latitude)
 //            for meal in self.mealArray {
 //                println(meal)
 //            }
-        //}
+//        }
         
 
         tableView.dataSource = self
@@ -96,22 +90,6 @@ class PlateViewController: UITableViewController, UITableViewDataSource, UITable
         
     }
     
-    func getResults(refreshControl: UIRefreshControl) {
-        //handle meal results getting here. put this in a callback in the viewdidload
-        
-        self.tableView.reloadData()
-        if (self.refreshControl != nil) {
-            self.refreshControl!.endRefreshing()
-        }
-        //locationHelper.callback = { (longitude,latitude) in
-        self.mealArray = self.userChoice.getUserSuggestions(self.currentLocation.longitude, lat: self.currentLocation.latitude)
-        println(currentLocation.latitude)
-        for meal in self.mealArray {
-            println(meal)
-        }
-        
-        //}
-    }
     
     // MARK: - Navigation
     
@@ -121,9 +99,6 @@ class PlateViewController: UITableViewController, UITableViewDataSource, UITable
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-        
         if segue.identifier == "plateSegue" {
             if let destinationVC = segue.destinationViewController as? ResultsViewController {
                 destinationVC.mealObject = mealArray[cellLocation]
@@ -147,7 +122,7 @@ class PlateViewController: UITableViewController, UITableViewDataSource, UITable
     }
     
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        if mealArray.count > 0 { // roundabout way of mealList.count
+        if mealArray.count > 0 {
             return 1
         } else {
             var messageLabel: UILabel = UILabel(frame: CGRectMake(0, 0, self.view.bounds.size.width, self.view.bounds.size.height))
@@ -173,7 +148,11 @@ class PlateViewController: UITableViewController, UITableViewDataSource, UITable
         //timelineComponent.targetWillDisplayEntry(indexPath.row)
     }
     func locationManager(manager: CLLocationManager!, didUpdateLocations locations: [AnyObject]!) {
-        var tempLocation = locations[0] as! CLLocation
+        var locValue = locationManager.location.coordinate
+        var longitude = locValue.longitude
+        var latitude = locValue.latitude
+        //var tempLocation = locations[0] as! CLLocation
     }
+    
     
 }

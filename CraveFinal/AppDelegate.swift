@@ -31,7 +31,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             self.window?.rootViewController = initialViewController
             self.window?.makeKeyAndVisible()
         } else {
-        var initialViewController = storyboard.instantiateViewControllerWithIdentifier("TabBarController") as! UITabBarController
+        var initialViewController = storyboard.instantiateViewControllerWithIdentifier("InitialNavigationController") as! UINavigationController
 
             self.window?.rootViewController = initialViewController
             self.window?.makeKeyAndVisible()
