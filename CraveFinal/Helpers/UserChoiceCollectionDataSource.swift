@@ -75,7 +75,7 @@ class UserChoiceCollectionDataSource {
         
     }
     
-    func getUserSuggestions(long: CLLocationDegrees, lat: CLLocationDegrees) -> [MealObject] {
+    func getUserSuggestions(long: CLLocationDegrees, lat: CLLocationDegrees, callback: ([MealObject] -> Void))  {
         
         var categories: [String] = []
         for tag in foodCategories {
@@ -138,18 +138,24 @@ class UserChoiceCollectionDataSource {
                                     //println(self.venueInformation)
                                     self.finishedVenueIdArray = self.filterVenues(tempSortedVenues)
                                     // println(finishedVenueIdArray)
-                                    self.foundMeals = self.findMeals(self.finishedVenueIdArray, long: longitude, lat: latitude)
+                                    self.findMeals(self.finishedVenueIdArray, long: longitude, lat: latitude) { (result) in
+                                        self.foundMeals = result
+                                    }
                                     // println(foundMeals)
                                 }
                                 //println(self.foundMeals)
                             }
                         }
                         }
-                        }
+
                     }
+
+                    }
+        callback(self.foundMeals)
             //})
         }
-        return foundMeals
+//        println(foundMeals)
+//        return foundMeals
     }
     
     func sortVenues(unfilteredVenueInfo: [(String, Int, String)]) -> [(String, Int, String)] {
@@ -184,14 +190,14 @@ class UserChoiceCollectionDataSource {
         return filteredArray
     }
     
-    func findMeals(venueIDArray: [String], long: CLLocationDegrees, lat: CLLocationDegrees) -> [MealObject] {
+    func findMeals(venueIDArray: [String], long: CLLocationDegrees, lat: CLLocationDegrees, callback: ([MealObject]) -> Void) {
         let venuesToSearch = venueIDArray
-        //println(venuesToSearch)
+        println(venuesToSearch.count)
         let longitude = long as Double
         let latitude = lat as Double
         //dispatch_async(dispatch_get_main_queue(), { () ->  Void in
         for venue in venuesToSearch {
-            //println(venue)
+            
             let requestString = "https://api.foursquare.com/v2/venues/\(venue)/menu?client_id=\(self.CLIENT_ID)&client_secret=\(self.CLIENT_SECRET)&v=20150814"
             //println(requestString)
             Alamofire.request(.GET, requestString).responseString() {
@@ -205,17 +211,22 @@ class UserChoiceCollectionDataSource {
                         if json["meta"]["code"].intValue == 200 { //if #3
                             let menuContainer = json["response"]["menu"]["menus"].dictionary
                             let menuCount = menuContainer!["count"]!.int!
-                            //println(menuCount)
-                            if menuCount == 1 { //if #4
-                                
-                                let menuItems = menuContainer!["items"]!.arrayValue //lists all menus "main Menu"
+                            println(menuContainer)
+                            //if menuCount == 1 { //if #4
+                            
+                                let menuItems = menuContainer!["items"]?.arrayValue
+                            if menuItems != nil {
+                                println(menuItems!.count)
                                 for item in menuItems {
                                     let menuSections = item["entries"].dictionaryValue //subheadings in menus
                                     let subheadings = menuSections["items"]!.arrayValue
+                                    println(subheadings.count)
                                     for sub in subheadings {
                                         let entries = sub["entries"].dictionaryValue
                                         let food = entries["items"]!.arrayValue
+                                        println(food.count)
                                         for foodStuff in food {
+                                            println(self.foundMeals.count)
                                             for meal in self.foundMeals {
                                                 let mealTitle = foodStuff["name"].stringValue
                                                 let mealDescription = foodStuff["description"].stringValue
@@ -226,7 +237,8 @@ class UserChoiceCollectionDataSource {
                                                 meal.priceValue = priceValue
                                                 
 
-//                                                println(meal.mealTitle)
+                                                //println(meal.mealTitle)
+                                                //println(meal.priceValue)
 //                                                println(meal.mealDescription)
 //                                                println(meal.addressofVenue)
 //                                                
@@ -234,12 +246,13 @@ class UserChoiceCollectionDataSource {
 //                                                println(meal.distanceToVenue)
 //                                                println(meal.longitudeOfVenue)
 //                                                println(meal.latitudeOfVenue)
-                                                //println(meal.nameOfVenue)
+                                               // println(meal.nameOfVenue)
                                             }
                                         }
                                     }
                                 }
-                            }// end if #4
+                            }
+                            //}// end if #4
                         } else {
                             println("Error in retrieving JSON")
                     }
@@ -247,17 +260,27 @@ class UserChoiceCollectionDataSource {
 //                    }
 //                }
                 
+
+                
             }
+            /* ASYNCHRONOUS, WILL SKIP ABOVE CODE AND RUN THIS WITHOUT ANY DATA */
+            
+
+            //println(sortedFoundMeals)
+        }
+
+        if self.mealObject.checkCompleted() {
             self.searchMealDescriptions(self.foundMeals)
             self.sortedFoundMeals = self.sortMeals(self.foundMeals)
         }
+        callback(self.foundMeals)
             //})
         
 //        var returnedMealObjects: List<MealObject> = List<MealObject>()
 //        for i in 0...sortedFoundMeals.count {
 //            returnedMealObjects.append(sortedFoundMeals[i])
 //        }
-        return sortedFoundMeals
+        //return sortedFoundMeals
     } // end function
     
     func searchMealDescriptions(meals: [MealObject]) {

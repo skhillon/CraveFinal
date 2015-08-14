@@ -29,7 +29,10 @@ class PlateViewController: UITableViewController, UITableViewDataSource, UITable
             self.refreshControl!.endRefreshing()
         }
         //locationHelper.callback = { (longitude,latitude) in
-        self.mealArray = self.userChoice.getUserSuggestions(self.currentLocation.longitude, lat: self.currentLocation.latitude)
+        self.userChoice.getUserSuggestions(37/*self.currentLocation.longitude */, lat: -121/*self.currentLocation.latitude*/) { (result) in
+            self.mealArray = result
+        }
+        
         for meal in self.mealArray {
             println(meal)
         }
@@ -46,24 +49,15 @@ class PlateViewController: UITableViewController, UITableViewDataSource, UITable
         self.locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
         self.locationManager.distanceFilter = kCLDistanceFilterNone
         self.locationManager.startUpdatingLocation()
-        
+        println(self.currentLocation.longitude)
+        println(self.currentLocation.latitude)
 
-        self.mealArray = self.userChoice.getUserSuggestions(self.currentLocation.longitude, lat: self.currentLocation.latitude)
+        self.userChoice.getUserSuggestions(37/*self.currentLocation.longitude */, lat: -121/*self.currentLocation.latitude*/) { (result) in
+             self.mealArray = result
+        } //location is still 0
         for meal in self.mealArray {
             println(meal)
         }
-        
-        //locationHelper.setupLocation()
-
-        //println(locationHelper.locationManager.location) // returning nil...
-
-//        locationHelper.callback = { (longitude,latitude) in
-//            self.mealArray = self.userChoice.getUserSuggestions(self.currentLocation.longitude, lat: self.currentLocation.latitude)
-//            for meal in self.mealArray {
-//                println(meal)
-//            }
-//        }
-        
 
         tableView.dataSource = self
         tableView.delegate = self

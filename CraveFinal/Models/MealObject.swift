@@ -23,6 +23,14 @@ class MealObject: Object {
     dynamic var venueId = ""
     dynamic var saved = false
     
+    func checkCompleted() -> Bool {
+        if (mealTitle == "") || (mealDescription == "") || (nameOfVenue == "") /* || (priceValue == "") */ || (score == 0) || (longitudeOfVenue == 0) || (latitudeOfVenue == 0) || (distanceToVenue == 0) || (addressofVenue == "") || (venueId == "") {
+            return false
+        } else {
+            return true
+        }
+    }
+    
     
 //    var relevantMatchedIngredients = [] // use .count function for sort priority in sortMeals()
 //    var allMatchedIngredients = []
