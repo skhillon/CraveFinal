@@ -87,7 +87,7 @@ class UserChoiceCollectionDataSource {
 
         for(var counter = 0; counter < numElements ; counter++) {
             let problemSolver = counter == numElements
-            println(problemSolver)
+            //println(problemSolver)
 
             //dispatch_async(dispatch_get_main_queue(), { () ->  Void in
 
@@ -98,7 +98,7 @@ class UserChoiceCollectionDataSource {
                     
                     let requestString: String = "https://api.foursquare.com/v2/venues/search?ll=37.452042,-122.137489&categoryId=\(tag)&client_id=\(CLIENT_ID)&client_secret=\(CLIENT_SECRET)&v=20150814"
                     
-                   // println(requestString)
+                    //println(requestString)
                     Alamofire.request(.GET, requestString).responseString() {
                         (_, _, responseBody, _) in
                         //println("response")
@@ -113,7 +113,7 @@ class UserChoiceCollectionDataSource {
                             
                             for venue in venues {
                                 let venueDict = venue.dictionary
-                                println(venueDict)
+                                //println(venueDict)
                                 let name = venueDict!["name"]!.stringValue
                                 let venueId = venueDict!["id"]!.stringValue
                                 let location = venueDict!["location"]!.dictionary
@@ -131,18 +131,14 @@ class UserChoiceCollectionDataSource {
                                 mealObject.distanceToVenue = distance
                                 mealObject.venueId = venueId
                                 self.foundMeals.append(mealObject)
-                                let tupleNameOfVenue = self.foundMeals.last!.nameOfVenue
-                                let tupleDistanceToVenue = self.foundMeals.last!.distanceToVenue
-                                let tupleVenueID = self.foundMeals.last!.venueId
-                                
-                                let tempTuple = (tupleNameOfVenue, tupleDistanceToVenue, tupleVenueID)
+                                let tempTuple = (name, distance, venueId)
                                 self.venueInformation.append(tempTuple)
                                 if self.venueInformation.count == self.numElements {
                                     let tempSortedVenues = self.sortVenues(self.venueInformation)
-                                    println(self.venueInformation)
+                                    //println(self.venueInformation)
                                     self.finishedVenueIdArray = self.filterVenues(tempSortedVenues)
                                     // println(finishedVenueIdArray)
-                                    self.foundMeals = self.findMeals(categories, long: longitude, lat: latitude)
+                                    self.foundMeals = self.findMeals(self.finishedVenueIdArray, long: longitude, lat: latitude)
                                     // println(foundMeals)
                                 }
                                 //println(self.foundMeals)
@@ -197,17 +193,19 @@ class UserChoiceCollectionDataSource {
         for venue in venuesToSearch {
             //println(venue)
             let requestString = "https://api.foursquare.com/v2/venues/\(venue)/menu?client_id=\(self.CLIENT_ID)&client_secret=\(self.CLIENT_SECRET)&v=20150814"
-            println(requestString)
+            //println(requestString)
             Alamofire.request(.GET, requestString).responseString() {
                 (_, _, responseBody, _) in
 //                if let url = NSURL(string: urlString) { // if #1
 //                    if let data = NSData(contentsOfURL: url, options: .allZeros, error: nil) { //if #2
                 if let data = responseBody!.dataUsingEncoding(NSUTF8StringEncoding) {
                     let json = JSON(data: data)
+                        //println(json)
+                        //println(json.description)
                         if json["meta"]["code"].intValue == 200 { //if #3
                             let menuContainer = json["response"]["menu"]["menus"].dictionary
                             let menuCount = menuContainer!["count"]!.int!
-                            println(menuCount)
+                            //println(menuCount)
                             if menuCount == 1 { //if #4
                                 
                                 let menuItems = menuContainer!["items"]!.arrayValue //lists all menus "main Menu"
@@ -228,15 +226,15 @@ class UserChoiceCollectionDataSource {
                                                 meal.priceValue = priceValue
                                                 
 
-                                                println(meal.mealTitle)
-                                                println(meal.mealDescription)
-                                                println(meal.addressofVenue)
-                                                
-                                                // ===== ACCESSED ========
-                                                println(meal.distanceToVenue)
-                                                println(meal.longitudeOfVenue)
-                                                println(meal.latitudeOfVenue)
-                                                println(meal.nameOfVenue)
+//                                                println(meal.mealTitle)
+//                                                println(meal.mealDescription)
+//                                                println(meal.addressofVenue)
+//                                                
+//                                                // ===== ACCESSED ========
+//                                                println(meal.distanceToVenue)
+//                                                println(meal.longitudeOfVenue)
+//                                                println(meal.latitudeOfVenue)
+                                                //println(meal.nameOfVenue)
                                             }
                                         }
                                     }
