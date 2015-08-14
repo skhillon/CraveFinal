@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		284D2C391B7E92A40032C08C /* delete.swift in Sources */ = {isa = PBXBuildFile; fileRef = 284D2C381B7E92A40032C08C /* delete.swift */; };
 		28579CFA1B7AAFBA0099A270 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28579CF91B7AAFBA0099A270 /* AppDelegate.swift */; };
 		28579CFC1B7AAFBA0099A270 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28579CFB1B7AAFBA0099A270 /* ViewController.swift */; };
 		28579CFF1B7AAFBA0099A270 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 28579CFD1B7AAFBA0099A270 /* Main.storyboard */; };
@@ -46,6 +47,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		284D2C381B7E92A40032C08C /* delete.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = delete.swift; sourceTree = "<group>"; };
 		28579CF41B7AAFBA0099A270 /* CraveFinal.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CraveFinal.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		28579CF81B7AAFBA0099A270 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		28579CF91B7AAFBA0099A270 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -102,6 +104,7 @@
 		28579CEB1B7AAFBA0099A270 = {
 			isa = PBXGroup;
 			children = (
+				284D2C381B7E92A40032C08C /* delete.swift */,
 				28579CF61B7AAFBA0099A270 /* CraveFinal */,
 				28579D0C1B7AAFBA0099A270 /* CraveFinalTests */,
 				28579CF51B7AAFBA0099A270 /* Products */,
@@ -392,6 +395,7 @@
 				28D48F8E1B7B3D3700E459D8 /* Ingredient.swift in Sources */,
 				28579D271B7AB4E20099A270 /* Storyboard.swift in Sources */,
 				28D48F8A1B7B3B7000E459D8 /* RealmRelevantCategoryNames.swift in Sources */,
+				284D2C391B7E92A40032C08C /* delete.swift in Sources */,
 				28579D291B7AB5010099A270 /* RealmString.swift in Sources */,
 				28579D3B1B7AB5B60099A270 /* ResultsViewController.swift in Sources */,
 				28579D371B7AB58C0099A270 /* PlateViewController.swift in Sources */,

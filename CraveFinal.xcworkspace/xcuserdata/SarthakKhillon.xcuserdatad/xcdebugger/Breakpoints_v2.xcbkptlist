@@ -234,11 +234,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "CraveFinal/Helpers/UserChoiceCollectionDataSource.swift"
-            timestampString = "461236006.193441"
+            timestampString = "461283374.89911"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "102"
-            endingLineNumber = "102"
+            startingLineNumber = "104"
+            endingLineNumber = "104"
             landmarkName = "getUserSuggestions(_:lat:callback:)"
             landmarkType = "5">
          </BreakpointContent>
@@ -260,11 +260,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "CraveFinal/Helpers/UserChoiceCollectionDataSource.swift"
-            timestampString = "461234357.260286"
+            timestampString = "461283374.89911"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "99"
-            endingLineNumber = "99"
+            startingLineNumber = "101"
+            endingLineNumber = "101"
             landmarkName = "getUserSuggestions(_:lat:callback:)"
             landmarkType = "5">
          </BreakpointContent>
@@ -308,11 +308,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "CraveFinal/Helpers/UserChoiceCollectionDataSource.swift"
-            timestampString = "461236006.193441"
+            timestampString = "461283374.89911"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "127"
-            endingLineNumber = "127"
+            startingLineNumber = "131"
+            endingLineNumber = "131"
             landmarkName = "getUserSuggestions(_:lat:callback:)"
             landmarkType = "5">
          </BreakpointContent>
@@ -324,11 +324,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "CraveFinal/Helpers/UserChoiceCollectionDataSource.swift"
-            timestampString = "461271860.221439"
+            timestampString = "461283374.89911"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "184"
-            endingLineNumber = "184"
+            startingLineNumber = "191"
+            endingLineNumber = "191"
             landmarkName = "filterVenues(_:)"
             landmarkType = "5">
          </BreakpointContent>
@@ -340,11 +340,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "CraveFinal/Helpers/UserChoiceCollectionDataSource.swift"
-            timestampString = "461271860.221439"
+            timestampString = "461283374.89911"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "146"
-            endingLineNumber = "146"
+            startingLineNumber = "151"
+            endingLineNumber = "151"
             landmarkName = "getUserSuggestions(_:lat:callback:)"
             landmarkType = "5">
             <Locations>
@@ -436,11 +436,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "CraveFinal/Helpers/UserChoiceCollectionDataSource.swift"
-            timestampString = "461271860.221439"
+            timestampString = "461283374.89911"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "158"
-            endingLineNumber = "158"
+            startingLineNumber = "165"
+            endingLineNumber = "165"
             landmarkName = "getUserSuggestions(_:lat:callback:)"
             landmarkType = "5">
          </BreakpointContent>
@@ -452,11 +452,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "CraveFinal/Helpers/UserChoiceCollectionDataSource.swift"
-            timestampString = "461271860.221439"
+            timestampString = "461283374.89911"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "159"
-            endingLineNumber = "159"
+            startingLineNumber = "166"
+            endingLineNumber = "166"
             landmarkName = "getUserSuggestions(_:lat:callback:)"
             landmarkType = "5">
          </BreakpointContent>
@@ -464,15 +464,15 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "CraveFinal/Helpers/UserChoiceCollectionDataSource.swift"
-            timestampString = "461271965.148301"
+            timestampString = "461283374.89911"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "216"
-            endingLineNumber = "216"
+            startingLineNumber = "208"
+            endingLineNumber = "208"
             landmarkName = "findMeals(_:long:lat:callback:)"
             landmarkType = "5">
          </BreakpointContent>
@@ -484,11 +484,27 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "CraveFinal/Helpers/UserChoiceCollectionDataSource.swift"
-            timestampString = "461272440.858197"
+            timestampString = "461283797.98796"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "219"
-            endingLineNumber = "219"
+            startingLineNumber = "270"
+            endingLineNumber = "270"
+            landmarkName = "findMeals(_:long:lat:callback:)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "CraveFinal/Helpers/UserChoiceCollectionDataSource.swift"
+            timestampString = "461283797.98796"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "255"
+            endingLineNumber = "255"
             landmarkName = "findMeals(_:long:lat:callback:)"
             landmarkType = "5">
          </BreakpointContent>
