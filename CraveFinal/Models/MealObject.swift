@@ -25,7 +25,7 @@ class MealObject: Object {
     
     func checkCompleted() -> Bool {
         if (mealTitle == "") || (mealDescription == "") || (nameOfVenue == "") /* || (priceValue == "") */ || (score == 0) || (longitudeOfVenue == 0) || (latitudeOfVenue == 0) || (distanceToVenue == 0) || (addressofVenue == "") || (venueId == "") {
-            return false
+            return true
         } else {
             return true
         }

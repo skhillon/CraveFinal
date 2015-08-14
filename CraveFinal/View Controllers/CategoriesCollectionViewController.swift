@@ -936,10 +936,13 @@ class CategoriesCollectionViewController: UIViewController, UICollectionViewData
     
     func collectionView(collectionView: UICollectionView, didDeselectItemAtIndexPath indexPath: NSIndexPath) {
         let index = indexPath.row
+        
+        let cell = collectionView.cellForItemAtIndexPath(indexPath) as! CategoryCollectionViewCell
+        cell.alpha = 1.0
         realm.write {
-        self.relevantCategoryNames.relevantNames.removeAtIndex(index)
-        self.relevantCategoryTags.relevantTags.removeAtIndex(index)
-        self.relevantIngredientsLiked.ingredientsLiked.removeAtIndex(index)
+            self.relevantCategoryNames.relevantNames.removeAtIndex(index)
+            self.relevantCategoryTags.relevantTags.removeAtIndex(index)
+            self.relevantIngredientsLiked.ingredientsLiked.removeAtIndex(index)
         }
         counter--
     }

@@ -52,9 +52,14 @@ class PlateViewController: UITableViewController, UITableViewDataSource, UITable
         println(self.currentLocation.longitude)
         println(self.currentLocation.latitude)
 
-        self.userChoice.getUserSuggestions(37/*self.currentLocation.longitude */, lat: -121/*self.currentLocation.latitude*/) { (result) in
-             self.mealArray = result
-        } //location is still 0
+        self.userChoice.getUserSuggestions(37.0/*self.currentLocation.longitude */, lat: -121.3/*self.currentLocation.latitude*/) { (result) in
+            
+             self.mealArray = self.userChoice.findMeals(result)
+            
+        }
+        
+        
+        //location is still 0
         for meal in self.mealArray {
             println(meal)
         }

@@ -54,8 +54,10 @@ class UserChoiceCollectionDataSource {
         self.ingredientDataObject = realm.objects(RealmIngredientLiked)
         
         if self.ingredientDataObject.count != 0 {
+            
             println("ingredient Data is good")
             self.ingredientData = ingredientDataObject.first!.ingredientsLiked
+            
             //currentUser = Realm().objects(User)
             self.foodCategoriesObject = realm.objects(RealmRelevantCategoryTags)
             self.foodCategories = foodCategoriesObject.first!.relevantTags
@@ -86,15 +88,11 @@ class UserChoiceCollectionDataSource {
         
         var longitude = long as Double
         var latitude = lat as Double
-        
-        for(var counter = 0; counter < numElements ; counter++) {
-            let problemSolver = counter == numElements
-            //println(problemSolver)
             
             //dispatch_async(dispatch_get_main_queue(), { () ->  Void in
             
             //println(categories.count)
-            //println(self.ingredientData.count) //this should be more than just 5...
+        println("Ingredient data: \(self.ingredientData.count)") //this should be more than just 5...
             
             for tag in categories {
                 
@@ -103,9 +101,7 @@ class UserChoiceCollectionDataSource {
                 //println(requestString)
                 Alamofire.request(.GET, requestString).responseString() {
                     (_, _, responseBody, _) in
-                    //println("response")
-                    //                        let responseDictionary = responseBody as! Dictionary<String, AnyObject>
-                    //                        responseDictionary["response"]["confident"]
+
                     if let data = responseBody!.dataUsingEncoding(NSUTF8StringEncoding) {
                         let json = JSON(data: data)
                         if json["meta"]["code"].intValue == 200 {
@@ -113,7 +109,7 @@ class UserChoiceCollectionDataSource {
                             
                             let venues = json["response"]["venues"].arrayValue
                             self.numRestaurantsToQuery += venues.count
-                            println("Restaurants to query: \(self.numRestaurantsToQuery)")
+                            println("Restaurants that match the initial tag search: \(self.numRestaurantsToQuery)")
                             
                             for venue in venues {
                                 let venueDict = venue.dictionary
@@ -138,14 +134,19 @@ class UserChoiceCollectionDataSource {
                                 let tempTuple = (name, distance, venueId)
                                 self.venueInformation.append(tempTuple)
                                 
-                                if self.venueInformation.count == self.numElements {
+                                if self.venueInformation.count == self.numElements && self.venueInformation.count == 0 {
+                                    //do nothing
+                                }
+                                else if self.venueInformation.count == self.numElements {
                                     let tempSortedVenues = self.sortVenues(self.venueInformation)
                                     //println(self.venueInformation)
                                     self.finishedVenueIdArray = self.filterVenues(tempSortedVenues)
                                     // println(finishedVenueIdArray)
-                                    self.findMeals(self.finishedVenueIdArray, long: longitude, lat: latitude) { (result) in
-                                        self.foundMeals = result
-                                    }
+                                    self.foundMeals = self.findMeals(self.finishedVenueIdArray, long: longitude, lat: latitude)
+//                                        { (result) in
+//                                        self.foundMeals = result
+//                                        println("Found meals: \(self.foundMeals)")
+//                                    }
                                     // println(foundMeals)
                                 }
                                 //println(self.foundMeals)
@@ -154,8 +155,6 @@ class UserChoiceCollectionDataSource {
                     }
                     
                 }
-                
-            }
             if self.numRestaurantsToQuery == self.numQueriesReturned {
             callback(self.foundMeals)
             }
@@ -197,46 +196,43 @@ class UserChoiceCollectionDataSource {
         return filteredArray
     }
     
-    func findMeals(venueIDArray: [String], long: CLLocationDegrees, lat: CLLocationDegrees, callback: ([MealObject]) -> Void) {
+    func findMeals(venueIDArray: [String]) -> [MealObject] {
+        var finishedMealsArray: [MealObject]!
+        
         let venuesToSearch = venueIDArray
-        println("number of venues to search: \(venuesToSearch.count)")
-        let longitude = long as Double
-        let latitude = lat as Double
-        //dispatch_async(dispatch_get_main_queue(), { () ->  Void in
+        println("number of restaurants which will have its menus parsed: \(venuesToSearch.count)")
+
+ 
         for venue in venuesToSearch {
             
             let requestString = "https://api.foursquare.com/v2/venues/\(venue)/menu?client_id=\(self.CLIENT_ID)&client_secret=\(self.CLIENT_SECRET)&v=20150814"
-            //println(requestString)
+            
+            
+            // NONE OF THIS IS RUNNING
             Alamofire.request(.GET, requestString).responseString() {
                 (_, _, responseBody, _) in
                 
                 self.numQueriesReturned++
-                println("Queries returned: \(self.numQueriesReturned)")
-                //                if let url = NSURL(string: urlString) { // if #1
-                //                    if let data = NSData(contentsOfURL: url, options: .allZeros, error: nil) { //if #2
+                println("Number of restaurants whose menus have been successfully parsed: \(self.numQueriesReturned)")
+
                 if let data = responseBody!.dataUsingEncoding(NSUTF8StringEncoding) {
                     let json = JSON(data: data)
-                    //println(json)
-                    //println(json.description)
+
                     if json["meta"]["code"].intValue == 200 { //if #3
                         let menuContainer = json["response"]["menu"]["menus"].dictionary
                         let menuCount = menuContainer!["count"]!.int!
-                        //println(menuContainer)
-                        //if menuCount == 1 { //if #4
                         
                         let menuItems = menuContainer!["items"]?.arrayValue
                         if let menuElements = menuItems {
                             for item in menuElements {
                                 let menuSections = item["entries"].dictionaryValue //subheadings in menus
                                 let subheadings = menuSections["items"]!.arrayValue
-                                //println(subheadings.count)
+
                                 for sub in subheadings {
                                     let entries = sub["entries"].dictionaryValue
                                     let food = entries["items"]!.arrayValue
-                                    //println(food.count)
+
                                     for foodStuff in food {
-                                        // println(self.foundMeals.count)
-                                        
                                         
                                         for meal in self.foundMeals {
                                             let mealTitle = foodStuff["name"].stringValue
@@ -249,18 +245,16 @@ class UserChoiceCollectionDataSource {
                                             
                                             
 //                                            print(meal.mealTitle)
-//                                            println(meal.priceValue)
+                                           println(meal.priceValue)
 
                                             
-                                            // this code is never run...
+                                            // THIS CODE IS STILL NEVER RUN
                                             if self.mealObject.checkCompleted() {
                                                 self.foundMeals.append(self.mealObject)
-                                                self.finishUp()
+                                                finishedMealsArray = self.finishUp()
+                                                //return finishedMealsArray
                                             }
-
                                         }
-
-                                        callback(self.sortedFoundMeals)
                                     }
                                 }
                             }
@@ -270,16 +264,11 @@ class UserChoiceCollectionDataSource {
                         println("Error in retrieving JSON")
                     }
                 }
-                //                    }
-                //                }
-                
-                
-                
             }
             
         }
         
-        
+        return finishedMealsArray
         //})
         
         //        var returnedMealObjects: List<MealObject> = List<MealObject>()
@@ -289,11 +278,12 @@ class UserChoiceCollectionDataSource {
         //return sortedFoundMeals
     } // end function
     
-    func finishUp() {
+    func finishUp() -> [MealObject] {
         self.searchMealDescriptions(self.foundMeals)
         println(self.foundMeals)
         self.sortedFoundMeals = self.sortMeals(self.foundMeals)
         println(self.sortedFoundMeals)
+        return sortedFoundMeals
     }
     
     func searchMealDescriptions(meals: [MealObject]) {
