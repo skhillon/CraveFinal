@@ -9,6 +9,7 @@
 import UIKit
 import RealmSwift
 import CoreLocation
+import SwiftSpinner
 
 class PlateViewController: UITableViewController, UITableViewDataSource, UITableViewDelegate, CLLocationManagerDelegate {
     
@@ -37,10 +38,14 @@ class PlateViewController: UITableViewController, UITableViewDataSource, UITable
         //}
     }
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        dispatch_async(dispatch_get_global_queue(Int(QOS_CLASS_USER_INITIATED.value), 0)) {
+        
+        dispatch_async(dispatch_get_global_queue(Int(QOS_CLASS_UTILITY.value), 0)) {
+            dispatch_async(dispatch_get_global_queue(Int(QOS_CLASS_USER_INITIATED.value), 0)) {
             SwiftSpinner.show("Getting your location...", animated: true)
+            }
             self.locationManager.delegate = self
             let status = CLLocationManager.authorizationStatus()
             self.locationManager.requestWhenInUseAuthorization()
@@ -53,13 +58,18 @@ class PlateViewController: UITableViewController, UITableViewDataSource, UITable
         
         NSThread.sleepForTimeInterval(1)
         
-        dispatch_async(dispatch_get_global_queue(Int(QOS_CLASS_USER_INITIATED.value), 0)) {
+        dispatch_async(dispatch_get_global_queue(Int(QOS_CLASS_UTILITY.value), 0)) {
+            dispatch_async(dispatch_get_global_queue(Int(QOS_CLASS_USER_INITIATED.value), 0)) {
             SwiftSpinner.show("Finding restaurants near you...", animated: true)
+            }
             self.venuesArray = self.userChoice.getUserSuggestions(self.currentLocation.longitude, lat: self.currentLocation.latitude)
         }
         NSThread.sleepForTimeInterval(1)
-        dispatch_async(dispatch_get_global_queue(Int(QOS_CLASS_USER_INITIATED.value), 0)) {
+        
+        dispatch_async(dispatch_get_global_queue(Int(QOS_CLASS_UTILITY.value), 0)) {
+            dispatch_async(dispatch_get_global_queue(Int(QOS_CLASS_USER_INITIATED.value), 0)) {
             SwiftSpinner.show("Finding things to eat...", animated: true)
+            }
             self.mealArray = self.userChoice.findMeals(self.venuesArray)
         }
 

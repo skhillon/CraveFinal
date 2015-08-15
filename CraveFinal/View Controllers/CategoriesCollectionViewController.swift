@@ -178,15 +178,17 @@ class CategoriesCollectionViewController: UIViewController, UICollectionViewData
                     ingredients.ingredient = a
                 }
                 
-                realm.write {
-                    self.relevantCategoryTags.relevantTags.append(self.tags)
-                    realm.add(self.relevantCategoryTags)
-                    
-                    self.relevantCategoryNames.relevantNames.append(self.names)
-                    realm.add(self.relevantCategoryNames)
-                    
-                    self.relevantIngredientsLiked.ingredientsLiked.append(self.ingredients)
-                    realm.add(self.relevantIngredientsLiked)
+                dispatch_async(dispatch_get_global_queue(Int(QOS_CLASS_UTILITY.value), 0)) {
+                    realm.write {
+                        self.relevantCategoryTags.relevantTags.append(self.tags)
+                        realm.add(self.relevantCategoryTags)
+                        
+                        self.relevantCategoryNames.relevantNames.append(self.names)
+                        realm.add(self.relevantCategoryNames)
+                        
+                        self.relevantIngredientsLiked.ingredientsLiked.append(self.ingredients)
+                        realm.add(self.relevantIngredientsLiked)
+                    }
                 }
                 
                 counter++
@@ -216,16 +218,19 @@ class CategoriesCollectionViewController: UIViewController, UICollectionViewData
                     relevantIngredients.append(self.ingredients)
                 }
                 
-                realm.write {
-                    self.relevantCategoryTags.relevantTags.append(self.tags)
-                    realm.add(self.relevantCategoryTags)
-                    
-                    self.relevantCategoryNames.relevantNames.append(self.names)
-                    realm.add(self.relevantCategoryNames)
-                    
-                    self.relevantIngredientsLiked.ingredientsLiked.append(self.ingredients)
-                    realm.add(self.relevantIngredientsLiked)
+                dispatch_async(dispatch_get_global_queue(Int(QOS_CLASS_UTILITY.value), 0)) {
+                    realm.write {
+                        self.relevantCategoryTags.relevantTags.append(self.tags)
+                        realm.add(self.relevantCategoryTags)
+                        
+                        self.relevantCategoryNames.relevantNames.append(self.names)
+                        realm.add(self.relevantCategoryNames)
+                        
+                        self.relevantIngredientsLiked.ingredientsLiked.append(self.ingredients)
+                        realm.add(self.relevantIngredientsLiked)
+                    }
                 }
+
 //                realm.write {
 //                    self.relevantCategoryTags.relevantTags.append(self.tag)
 //                    self.relevantCategoryNames.relevantNames.append(self.name)
@@ -254,16 +259,19 @@ class CategoriesCollectionViewController: UIViewController, UICollectionViewData
                     relevantIngredients.append(self.ingredients)
                 }
                 
-                realm.write {
-                    self.relevantCategoryTags.relevantTags.append(self.tags)
-                    realm.add(self.relevantCategoryTags)
-                    
-                    self.relevantCategoryNames.relevantNames.append(self.names)
-                    realm.add(self.relevantCategoryNames)
-                    
-                    self.relevantIngredientsLiked.ingredientsLiked.append(self.ingredients)
-                    realm.add(self.relevantIngredientsLiked)
+                dispatch_async(dispatch_get_global_queue(Int(QOS_CLASS_UTILITY.value), 0)) {
+                    realm.write {
+                        self.relevantCategoryTags.relevantTags.append(self.tags)
+                        realm.add(self.relevantCategoryTags)
+                        
+                        self.relevantCategoryNames.relevantNames.append(self.names)
+                        realm.add(self.relevantCategoryNames)
+                        
+                        self.relevantIngredientsLiked.ingredientsLiked.append(self.ingredients)
+                        realm.add(self.relevantIngredientsLiked)
+                    }
                 }
+
 //                realm.write {
 //                    self.relevantCategoryNames.relevantNames.append(self.name)
 //                    self.relevantCategoryTags.relevantTags.append(self.tag)
@@ -293,16 +301,19 @@ class CategoriesCollectionViewController: UIViewController, UICollectionViewData
                     relevantIngredients.append(self.ingredients)
                 }
                 
-                realm.write {
-                    self.relevantCategoryTags.relevantTags.append(self.tags)
-                    realm.add(self.relevantCategoryTags)
-                    
-                    self.relevantCategoryNames.relevantNames.append(self.names)
-                    realm.add(self.relevantCategoryNames)
-                    
-                    self.relevantIngredientsLiked.ingredientsLiked.append(self.ingredients)
-                    realm.add(self.relevantIngredientsLiked)
+                dispatch_async(dispatch_get_global_queue(Int(QOS_CLASS_UTILITY.value), 0)) {
+                    realm.write {
+                        self.relevantCategoryTags.relevantTags.append(self.tags)
+                        realm.add(self.relevantCategoryTags)
+                        
+                        self.relevantCategoryNames.relevantNames.append(self.names)
+                        realm.add(self.relevantCategoryNames)
+                        
+                        self.relevantIngredientsLiked.ingredientsLiked.append(self.ingredients)
+                        realm.add(self.relevantIngredientsLiked)
+                    }
                 }
+
 //                realm.write {
 //               self.relevantCategoryTags.relevantTags.append(self.tag)
 //                    self.relevantCategoryNames.relevantNames.append(self.name)
@@ -332,16 +343,19 @@ class CategoriesCollectionViewController: UIViewController, UICollectionViewData
                     relevantIngredients.append(self.ingredients)
                 }
                 
-                realm.write {
-                    self.relevantCategoryTags.relevantTags.append(self.tags)
-                    realm.add(self.relevantCategoryTags)
-                    
-                    self.relevantCategoryNames.relevantNames.append(self.names)
-                    realm.add(self.relevantCategoryNames)
-                    
-                    self.relevantIngredientsLiked.ingredientsLiked.append(self.ingredients)
-                    realm.add(self.relevantIngredientsLiked)
+                dispatch_async(dispatch_get_global_queue(Int(QOS_CLASS_UTILITY.value), 0)) {
+                    realm.write {
+                        self.relevantCategoryTags.relevantTags.append(self.tags)
+                        realm.add(self.relevantCategoryTags)
+                        
+                        self.relevantCategoryNames.relevantNames.append(self.names)
+                        realm.add(self.relevantCategoryNames)
+                        
+                        self.relevantIngredientsLiked.ingredientsLiked.append(self.ingredients)
+                        realm.add(self.relevantIngredientsLiked)
+                    }
                 }
+
 //                realm.write {
 //               self.relevantCategoryNames.relevantNames.append(self.name)
 //                    self.relevantCategoryTags.relevantTags.append(self.tag)
@@ -368,16 +382,19 @@ class CategoriesCollectionViewController: UIViewController, UICollectionViewData
                     relevantIngredients.append(self.ingredients)
                 }
                 
-                realm.write {
-                    self.relevantCategoryTags.relevantTags.append(self.tags)
-                    realm.add(self.relevantCategoryTags)
-                    
-                    self.relevantCategoryNames.relevantNames.append(self.names)
-                    realm.add(self.relevantCategoryNames)
-                    
-                    self.relevantIngredientsLiked.ingredientsLiked.append(self.ingredients)
-                    realm.add(self.relevantIngredientsLiked)
+                dispatch_async(dispatch_get_global_queue(Int(QOS_CLASS_UTILITY.value), 0)) {
+                    realm.write {
+                        self.relevantCategoryTags.relevantTags.append(self.tags)
+                        realm.add(self.relevantCategoryTags)
+                        
+                        self.relevantCategoryNames.relevantNames.append(self.names)
+                        realm.add(self.relevantCategoryNames)
+                        
+                        self.relevantIngredientsLiked.ingredientsLiked.append(self.ingredients)
+                        realm.add(self.relevantIngredientsLiked)
+                    }
                 }
+
 //                realm.write {
 //                    self.relevantCategoryTags.relevantTags.append(self.tag)
 //                    self.relevantCategoryNames.relevantNames.append(self.name)
@@ -407,16 +424,19 @@ class CategoriesCollectionViewController: UIViewController, UICollectionViewData
                     relevantIngredients.append(self.ingredients)
                 }
                 
-                realm.write {
-                    self.relevantCategoryTags.relevantTags.append(self.tags)
-                    realm.add(self.relevantCategoryTags)
-                    
-                    self.relevantCategoryNames.relevantNames.append(self.names)
-                    realm.add(self.relevantCategoryNames)
-                    
-                    self.relevantIngredientsLiked.ingredientsLiked.append(self.ingredients)
-                    realm.add(self.relevantIngredientsLiked)
+                dispatch_async(dispatch_get_global_queue(Int(QOS_CLASS_UTILITY.value), 0)) {
+                    realm.write {
+                        self.relevantCategoryTags.relevantTags.append(self.tags)
+                        realm.add(self.relevantCategoryTags)
+                        
+                        self.relevantCategoryNames.relevantNames.append(self.names)
+                        realm.add(self.relevantCategoryNames)
+                        
+                        self.relevantIngredientsLiked.ingredientsLiked.append(self.ingredients)
+                        realm.add(self.relevantIngredientsLiked)
+                    }
                 }
+
 //                realm.write {
 //                    self.relevantCategoryNames.relevantNames.append(self.name)
 //               self.relevantCategoryTags.relevantTags.append(self.tag)
@@ -443,16 +463,19 @@ class CategoriesCollectionViewController: UIViewController, UICollectionViewData
                     relevantIngredients.append(self.ingredients)
                 }
                 
-                realm.write {
-                    self.relevantCategoryTags.relevantTags.append(self.tags)
-                    realm.add(self.relevantCategoryTags)
-                    
-                    self.relevantCategoryNames.relevantNames.append(self.names)
-                    realm.add(self.relevantCategoryNames)
-                    
-                    self.relevantIngredientsLiked.ingredientsLiked.append(self.ingredients)
-                    realm.add(self.relevantIngredientsLiked)
+                dispatch_async(dispatch_get_global_queue(Int(QOS_CLASS_UTILITY.value), 0)) {
+                    realm.write {
+                        self.relevantCategoryTags.relevantTags.append(self.tags)
+                        realm.add(self.relevantCategoryTags)
+                        
+                        self.relevantCategoryNames.relevantNames.append(self.names)
+                        realm.add(self.relevantCategoryNames)
+                        
+                        self.relevantIngredientsLiked.ingredientsLiked.append(self.ingredients)
+                        realm.add(self.relevantIngredientsLiked)
+                    }
                 }
+
 //                realm.write {
 //                    self.relevantCategoryTags.relevantTags.append(self.tag)
 //               self.relevantCategoryNames.relevantNames.append(self.name)
@@ -482,17 +505,19 @@ class CategoriesCollectionViewController: UIViewController, UICollectionViewData
                     ingredients.ingredient = a
                     relevantIngredients.append(self.ingredients)
                 }
-                
-                realm.write {
-                    self.relevantCategoryTags.relevantTags.append(self.tags)
-                    realm.add(self.relevantCategoryTags)
-                    
-                    self.relevantCategoryNames.relevantNames.append(self.names)
-                    realm.add(self.relevantCategoryNames)
-                    
-                    self.relevantIngredientsLiked.ingredientsLiked.append(self.ingredients)
-                    realm.add(self.relevantIngredientsLiked)
+                dispatch_async(dispatch_get_global_queue(Int(QOS_CLASS_UTILITY.value), 0)) {
+                    realm.write {
+                        self.relevantCategoryTags.relevantTags.append(self.tags)
+                        realm.add(self.relevantCategoryTags)
+                        
+                        self.relevantCategoryNames.relevantNames.append(self.names)
+                        realm.add(self.relevantCategoryNames)
+                        
+                        self.relevantIngredientsLiked.ingredientsLiked.append(self.ingredients)
+                        realm.add(self.relevantIngredientsLiked)
+                    }
                 }
+
 //                realm.write {
 //               self.relevantCategoryTags.relevantTags.append(self.tag)
 //                    self.relevantCategoryNames.relevantNames.append(self.name)
@@ -519,16 +544,19 @@ class CategoriesCollectionViewController: UIViewController, UICollectionViewData
                     relevantIngredients.append(self.ingredients)
                 }
                 
-                realm.write {
-                    self.relevantCategoryTags.relevantTags.append(self.tags)
-                    realm.add(self.relevantCategoryTags)
-                    
-                    self.relevantCategoryNames.relevantNames.append(self.names)
-                    realm.add(self.relevantCategoryNames)
-                    
-                    self.relevantIngredientsLiked.ingredientsLiked.append(self.ingredients)
-                    realm.add(self.relevantIngredientsLiked)
+                dispatch_async(dispatch_get_global_queue(Int(QOS_CLASS_UTILITY.value), 0)) {
+                    realm.write {
+                        self.relevantCategoryTags.relevantTags.append(self.tags)
+                        realm.add(self.relevantCategoryTags)
+                        
+                        self.relevantCategoryNames.relevantNames.append(self.names)
+                        realm.add(self.relevantCategoryNames)
+                        
+                        self.relevantIngredientsLiked.ingredientsLiked.append(self.ingredients)
+                        realm.add(self.relevantIngredientsLiked)
+                    }
                 }
+
 //                realm.write {
 //               self.relevantCategoryNames.relevantNames.append(self.name)
 //                    self.relevantCategoryTags.relevantTags.append(self.tag)
@@ -555,17 +583,19 @@ class CategoriesCollectionViewController: UIViewController, UICollectionViewData
                     relevantIngredients.append(self.ingredients)
                 }
                 
-                realm.write {
-                    self.relevantCategoryTags.relevantTags.append(self.tags)
-                    realm.add(self.relevantCategoryTags)
-                    
-                    self.relevantCategoryNames.relevantNames.append(self.names)
-                    realm.add(self.relevantCategoryNames)
-                    
-                    self.relevantIngredientsLiked.ingredientsLiked.append(self.ingredients)
-                    realm.add(self.relevantIngredientsLiked)
+                dispatch_async(dispatch_get_global_queue(Int(QOS_CLASS_UTILITY.value), 0)) {
+                    realm.write {
+                        self.relevantCategoryTags.relevantTags.append(self.tags)
+                        realm.add(self.relevantCategoryTags)
+                        
+                        self.relevantCategoryNames.relevantNames.append(self.names)
+                        realm.add(self.relevantCategoryNames)
+                        
+                        self.relevantIngredientsLiked.ingredientsLiked.append(self.ingredients)
+                        realm.add(self.relevantIngredientsLiked)
+                    }
                 }
-                
+
 //                realm.write {
 //               self.relevantCategoryTags.relevantTags.append(self.tag)
 //                    self.relevantCategoryNames.relevantNames.append(self.name)
@@ -592,16 +622,19 @@ class CategoriesCollectionViewController: UIViewController, UICollectionViewData
                     relevantIngredients.append(self.ingredients)
                 }
                 
-                realm.write {
-                    self.relevantCategoryTags.relevantTags.append(self.tags)
-                    realm.add(self.relevantCategoryTags)
-                    
-                    self.relevantCategoryNames.relevantNames.append(self.names)
-                    realm.add(self.relevantCategoryNames)
-                    
-                    self.relevantIngredientsLiked.ingredientsLiked.append(self.ingredients)
-                    realm.add(self.relevantIngredientsLiked)
+                dispatch_async(dispatch_get_global_queue(Int(QOS_CLASS_UTILITY.value), 0)) {
+                    realm.write {
+                        self.relevantCategoryTags.relevantTags.append(self.tags)
+                        realm.add(self.relevantCategoryTags)
+                        
+                        self.relevantCategoryNames.relevantNames.append(self.names)
+                        realm.add(self.relevantCategoryNames)
+                        
+                        self.relevantIngredientsLiked.ingredientsLiked.append(self.ingredients)
+                        realm.add(self.relevantIngredientsLiked)
+                    }
                 }
+
 //                realm.write {
 //                    self.relevantCategoryTags.relevantTags.append(self.tag)
 //                    self.relevantCategoryNames.relevantNames.append(self.name)
@@ -628,16 +661,19 @@ class CategoriesCollectionViewController: UIViewController, UICollectionViewData
                     relevantIngredients.append(self.ingredients)
                 }
                 
-                realm.write {
-                    self.relevantCategoryTags.relevantTags.append(self.tags)
-                    realm.add(self.relevantCategoryTags)
-                    
-                    self.relevantCategoryNames.relevantNames.append(self.names)
-                    realm.add(self.relevantCategoryNames)
-                    
-                    self.relevantIngredientsLiked.ingredientsLiked.append(self.ingredients)
-                    realm.add(self.relevantIngredientsLiked)
+                dispatch_async(dispatch_get_global_queue(Int(QOS_CLASS_UTILITY.value), 0)) {
+                    realm.write {
+                        self.relevantCategoryTags.relevantTags.append(self.tags)
+                        realm.add(self.relevantCategoryTags)
+                        
+                        self.relevantCategoryNames.relevantNames.append(self.names)
+                        realm.add(self.relevantCategoryNames)
+                        
+                        self.relevantIngredientsLiked.ingredientsLiked.append(self.ingredients)
+                        realm.add(self.relevantIngredientsLiked)
+                    }
                 }
+
                 
 //                realm.write {
 //               self.relevantCategoryTags.relevantTags.append(self.tag)
@@ -665,16 +701,19 @@ class CategoriesCollectionViewController: UIViewController, UICollectionViewData
                     relevantIngredients.append(self.ingredients)
                 }
                 
-                realm.write {
-                    self.relevantCategoryTags.relevantTags.append(self.tags)
-                    realm.add(self.relevantCategoryTags)
-                    
-                    self.relevantCategoryNames.relevantNames.append(self.names)
-                    realm.add(self.relevantCategoryNames)
-                    
-                    self.relevantIngredientsLiked.ingredientsLiked.append(self.ingredients)
-                    realm.add(self.relevantIngredientsLiked)
+                dispatch_async(dispatch_get_global_queue(Int(QOS_CLASS_UTILITY.value), 0)) {
+                    realm.write {
+                        self.relevantCategoryTags.relevantTags.append(self.tags)
+                        realm.add(self.relevantCategoryTags)
+                        
+                        self.relevantCategoryNames.relevantNames.append(self.names)
+                        realm.add(self.relevantCategoryNames)
+                        
+                        self.relevantIngredientsLiked.ingredientsLiked.append(self.ingredients)
+                        realm.add(self.relevantIngredientsLiked)
+                    }
                 }
+
 //                realm.write {
 //                    self.relevantCategoryNames.relevantNames.append(self.name)
 //               self.relevantCategoryTags.relevantTags.append(self.tag)
@@ -701,16 +740,19 @@ class CategoriesCollectionViewController: UIViewController, UICollectionViewData
                     relevantIngredients.append(self.ingredients)
                 }
                 
-                realm.write {
-                    self.relevantCategoryTags.relevantTags.append(self.tags)
-                    realm.add(self.relevantCategoryTags)
-                    
-                    self.relevantCategoryNames.relevantNames.append(self.names)
-                    realm.add(self.relevantCategoryNames)
-                    
-                    self.relevantIngredientsLiked.ingredientsLiked.append(self.ingredients)
-                    realm.add(self.relevantIngredientsLiked)
+                dispatch_async(dispatch_get_global_queue(Int(QOS_CLASS_UTILITY.value), 0)) {
+                    realm.write {
+                        self.relevantCategoryTags.relevantTags.append(self.tags)
+                        realm.add(self.relevantCategoryTags)
+                        
+                        self.relevantCategoryNames.relevantNames.append(self.names)
+                        realm.add(self.relevantCategoryNames)
+                        
+                        self.relevantIngredientsLiked.ingredientsLiked.append(self.ingredients)
+                        realm.add(self.relevantIngredientsLiked)
+                    }
                 }
+
                 
 //                realm.write {
 //                    self.relevantCategoryTags.relevantTags.append(self.tag)
@@ -738,16 +780,19 @@ class CategoriesCollectionViewController: UIViewController, UICollectionViewData
                     relevantIngredients.append(self.ingredients)
                 }
                 
-                realm.write {
-                    self.relevantCategoryTags.relevantTags.append(self.tags)
-                    realm.add(self.relevantCategoryTags)
-                    
-                    self.relevantCategoryNames.relevantNames.append(self.names)
-                    realm.add(self.relevantCategoryNames)
-                    
-                    self.relevantIngredientsLiked.ingredientsLiked.append(self.ingredients)
-                    realm.add(self.relevantIngredientsLiked)
+                dispatch_async(dispatch_get_global_queue(Int(QOS_CLASS_UTILITY.value), 0)) {
+                    realm.write {
+                        self.relevantCategoryTags.relevantTags.append(self.tags)
+                        realm.add(self.relevantCategoryTags)
+                        
+                        self.relevantCategoryNames.relevantNames.append(self.names)
+                        realm.add(self.relevantCategoryNames)
+                        
+                        self.relevantIngredientsLiked.ingredientsLiked.append(self.ingredients)
+                        realm.add(self.relevantIngredientsLiked)
+                    }
                 }
+
 //                realm.write {
 //                    self.relevantCategoryNames.relevantNames.append(self.name)
 //                    self.relevantCategoryTags.relevantTags.append(self.tag)
@@ -774,16 +819,19 @@ class CategoriesCollectionViewController: UIViewController, UICollectionViewData
                     relevantIngredients.append(self.ingredients)
                 }
                 
-                realm.write {
-                    self.relevantCategoryTags.relevantTags.append(self.tags)
-                    realm.add(self.relevantCategoryTags)
-                    
-                    self.relevantCategoryNames.relevantNames.append(self.names)
-                    realm.add(self.relevantCategoryNames)
-                    
-                    self.relevantIngredientsLiked.ingredientsLiked.append(self.ingredients)
-                    realm.add(self.relevantIngredientsLiked)
+                dispatch_async(dispatch_get_global_queue(Int(QOS_CLASS_UTILITY.value), 0)) {
+                    realm.write {
+                        self.relevantCategoryTags.relevantTags.append(self.tags)
+                        realm.add(self.relevantCategoryTags)
+                        
+                        self.relevantCategoryNames.relevantNames.append(self.names)
+                        realm.add(self.relevantCategoryNames)
+                        
+                        self.relevantIngredientsLiked.ingredientsLiked.append(self.ingredients)
+                        realm.add(self.relevantIngredientsLiked)
+                    }
                 }
+
 //                realm.write {
 //                    self.relevantCategoryTags.relevantTags.append(self.tag)
 //                    self.relevantCategoryNames.relevantNames.append(self.name)
@@ -810,15 +858,17 @@ class CategoriesCollectionViewController: UIViewController, UICollectionViewData
                     relevantIngredients.append(self.ingredients)
                 }
                 
-                realm.write {
-                    self.relevantCategoryTags.relevantTags.append(self.tags)
-                    realm.add(self.relevantCategoryTags)
-                    
-                    self.relevantCategoryNames.relevantNames.append(self.names)
-                    realm.add(self.relevantCategoryNames)
-                    
-                    self.relevantIngredientsLiked.ingredientsLiked.append(self.ingredients)
-                    realm.add(self.relevantIngredientsLiked)
+                dispatch_async(dispatch_get_global_queue(Int(QOS_CLASS_UTILITY.value), 0)) {
+                    realm.write {
+                        self.relevantCategoryTags.relevantTags.append(self.tags)
+                        realm.add(self.relevantCategoryTags)
+                        
+                        self.relevantCategoryNames.relevantNames.append(self.names)
+                        realm.add(self.relevantCategoryNames)
+                        
+                        self.relevantIngredientsLiked.ingredientsLiked.append(self.ingredients)
+                        realm.add(self.relevantIngredientsLiked)
+                    }
                 }
                 
 //                realm.write {
@@ -846,7 +896,7 @@ class CategoriesCollectionViewController: UIViewController, UICollectionViewData
                     ingredients.ingredient = a
                     relevantIngredients.append(self.ingredients)
                 }
-                
+                dispatch_async(dispatch_get_global_queue(Int(QOS_CLASS_UTILITY.value), 0)) {
                 realm.write {
                     self.relevantCategoryTags.relevantTags.append(self.tags)
                     realm.add(self.relevantCategoryTags)
@@ -856,6 +906,7 @@ class CategoriesCollectionViewController: UIViewController, UICollectionViewData
                     
                     self.relevantIngredientsLiked.ingredientsLiked.append(self.ingredients)
                     realm.add(self.relevantIngredientsLiked)
+                }
                 }
 //                realm.write {
 //                    self.relevantCategoryTags.relevantTags.append(self.tag)
@@ -883,17 +934,18 @@ class CategoriesCollectionViewController: UIViewController, UICollectionViewData
                     relevantIngredients.append(self.ingredients)
                 }
                 
-                realm.write {
-                    self.relevantCategoryTags.relevantTags.append(self.tags)
-                    realm.add(self.relevantCategoryTags)
-                    
-                    self.relevantCategoryNames.relevantNames.append(self.names)
-                    realm.add(self.relevantCategoryNames)
-                    
-                    self.relevantIngredientsLiked.ingredientsLiked.append(self.ingredients)
-                    realm.add(self.relevantIngredientsLiked)
+                dispatch_async(dispatch_get_global_queue(Int(QOS_CLASS_UTILITY.value), 0)) {
+                    realm.write {
+                        self.relevantCategoryTags.relevantTags.append(self.tags)
+                        realm.add(self.relevantCategoryTags)
+                        
+                        self.relevantCategoryNames.relevantNames.append(self.names)
+                        realm.add(self.relevantCategoryNames)
+                        
+                        self.relevantIngredientsLiked.ingredientsLiked.append(self.ingredients)
+                        realm.add(self.relevantIngredientsLiked)
+                    }
                 }
-                
 //                realm.write {
 //                    self.relevantCategoryNames.relevantNames.append(self.name)
 //                    self.relevantCategoryTags.relevantTags.append(self.tag)
@@ -939,10 +991,12 @@ class CategoriesCollectionViewController: UIViewController, UICollectionViewData
         
         let cell = collectionView.cellForItemAtIndexPath(indexPath) as! CategoryCollectionViewCell
         cell.alpha = 1.0
+        dispatch_async(dispatch_get_global_queue(Int(QOS_CLASS_UTILITY.value), 0)) {
         realm.write {
             self.relevantCategoryNames.relevantNames.removeAtIndex(index)
             self.relevantCategoryTags.relevantTags.removeAtIndex(index)
             self.relevantIngredientsLiked.ingredientsLiked.removeAtIndex(index)
+        }
         }
         counter--
     }
