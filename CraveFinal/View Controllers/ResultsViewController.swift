@@ -46,13 +46,35 @@ class ResultsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
+        if self.mealObject.priceValue != "" {
         self.priceLabel.text = self.mealObject.priceValue
-        self.mealTitleLabel.text = self.mealObject.mealTitle
-        self.mealDescriptionLabel.text = self.mealObject.mealDescription
+        } else {
+            self.priceLabel.text = "n/a"
+        }
         
+        if self.mealObject.mealTitle != "" {
+        self.mealTitleLabel.text = self.mealObject.mealTitle
+        } else {
+            self.mealTitleLabel.text = "Mystery Meal"
+        }
+        
+        if self.mealObject.mealDescription != "" {
+        self.mealDescriptionLabel.text = self.mealObject.mealDescription
+        } else {
+            self.mealDescriptionLabel.text = "No description is available for this meal"
+        }
+        
+        if self.mealObject.addressofVenue != "" {
         self.venueAddressLabel.text = self.mealObject.addressofVenue
+        } else {
+            self.venueAddressLabel.text = ""
+        }
+        
+        if self.mealObject.nameOfVenue != "" {
         self.venueNameLabel.text = self.mealObject.nameOfVenue
+        } else {
+            self.venueNameLabel.text = "Mystery Restaurant"
+        }
 //        let distMeters: Double = Double(self.mealObject.distanceToVenue)
 //        let conversionToMiles: Double = 0.000621371
 //        

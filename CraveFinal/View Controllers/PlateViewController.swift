@@ -22,7 +22,6 @@ class PlateViewController: UITableViewController, UITableViewDataSource, UITable
     var locationManager: CLLocationManager = CLLocationManager()
     var currentLocation: CLLocationCoordinate2D = CLLocationCoordinate2D()
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -34,8 +33,6 @@ class PlateViewController: UITableViewController, UITableViewDataSource, UITable
         self.locationManager.startUpdatingLocation()
 //        println(self.currentLocation.longitude)
 //        println(self.currentLocation.latitude)
-
-        
         
         //location is still 0
 //        for meal in self.mealArray {

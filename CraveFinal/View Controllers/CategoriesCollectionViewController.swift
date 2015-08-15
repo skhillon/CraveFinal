@@ -48,6 +48,8 @@ class CategoriesCollectionViewController: UIViewController, UICollectionViewData
     //var ingredientsToAppend: [String] = []
     let categoryBank = ["Afghan", "African", "American", "Asian", "Caribbean", "Chinese", "Deli", "EastEuro", "French", "German", "Hawaiian", "Indian", "Indonesian", "Italian", "Mediterranean", "Mexican", "Persian", "Pizza", "Seafood", "Thai"]
     
+    let tagImages = ["Afghan.png", "African.png", "American.png", "Asian.png", "Caribbean.png", "Chinese.png", "Deli.png", "EastEuro.png", "French.png", "German.png", "Hawaiian.png", "Indian.png", "Indonesian.png", "Italian.png", "Mediterranean.png", "Mexican.png", "Persian.png", "Pizza.png", "Seafood.png"]
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -117,9 +119,13 @@ class CategoriesCollectionViewController: UIViewController, UICollectionViewData
     }
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
+        
         var category = categoryBank[indexPath.row]
         
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("CategoryCell", forIndexPath: indexPath) as! CategoryCollectionViewCell
+        
+        //cell.categoryName.text = category
+        //cell.iconImage.images = UIImage(named: tagImages[indexPath.row])
 
         //cell.tintColor = UIColor()
         
@@ -130,7 +136,8 @@ class CategoriesCollectionViewController: UIViewController, UICollectionViewData
 //            //cell.alpha = 1
 //        }
         
-       cell.categoryName.text = categoryBank[indexPath.row]
+       //cell.categoryName.text = categoryBank[indexPath.row]
+       // cell.iconImage = UIImage(contentsOfFile: categoryBank[indexPath.row])
     
 //        cell.categoryImage.image = Choice.image
         
