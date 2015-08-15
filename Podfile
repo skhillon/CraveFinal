@@ -6,6 +6,7 @@ target 'CraveFinal' do
 	pod 'RealmSwift'
     pod 'SwiftyJSON'
     pod 'Alamofire', '~> 1.3'
+    pod 'SwiftSpinner'
 end
 
 target 'CraveFinalTests' do

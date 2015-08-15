@@ -79,9 +79,10 @@ class UserChoiceCollectionDataSource {
         
     }
     
-    func getUserSuggestions(long: CLLocationDegrees, lat: CLLocationDegrees, callback: ([MealObject] -> Void))  {
+    func getUserSuggestions(long: CLLocationDegrees, lat: CLLocationDegrees) -> [String]  {
         
         var categories: [String] = []
+        
         for tag in foodCategories {
             categories.append(tag.tag)
         }
@@ -98,11 +99,8 @@ class UserChoiceCollectionDataSource {
                 
                 let requestString: String = "https://api.foursquare.com/v2/venues/search?ll=37.452042,-122.137489&categoryId=\(tag)&client_id=\(CLIENT_ID)&client_secret=\(CLIENT_SECRET)&v=20150814"
                 
-                //println(requestString)
-                Alamofire.request(.GET, requestString).responseString() {
-                    (_, _, responseBody, _) in
-
-                    if let data = responseBody!.dataUsingEncoding(NSUTF8StringEncoding) {
+                if let url = NSURL(string: requestString) {
+                    if let data = NSData(contentsOfURL: url, options: .allZeros, error: nil) {
                         let json = JSON(data: data)
                         if json["meta"]["code"].intValue == 200 {
                             // we're OK to parse!
@@ -118,10 +116,6 @@ class UserChoiceCollectionDataSource {
                                 let venueId = venueDict!["id"]!.stringValue
                                 let location = venueDict!["location"]!.dictionary
                                 let distance = location!["distance"]!.intValue
-                                
-                                // println(name + " distance: \(distance)")
-                                //                                let tempTuple = (name, distance, id)
-                                //                                self.venueInformation.append(tempTuple)
                                 
                                 let mealObject = MealObject()
                                 mealObject.nameOfVenue = name
@@ -141,8 +135,8 @@ class UserChoiceCollectionDataSource {
                                     let tempSortedVenues = self.sortVenues(self.venueInformation)
                                     //println(self.venueInformation)
                                     self.finishedVenueIdArray = self.filterVenues(tempSortedVenues)
+                                    
                                     // println(finishedVenueIdArray)
-                                    self.foundMeals = self.findMeals(self.finishedVenueIdArray, long: longitude, lat: latitude)
 //                                        { (result) in
 //                                        self.foundMeals = result
 //                                        println("Found meals: \(self.foundMeals)")
@@ -155,11 +149,10 @@ class UserChoiceCollectionDataSource {
                     }
                     
                 }
-            if self.numRestaurantsToQuery == self.numQueriesReturned {
-            callback(self.foundMeals)
-            }
             //})
         }
+        return self.finishedVenueIdArray
+        
         //        println(foundMeals)
         //        return foundMeals
     }
@@ -208,15 +201,10 @@ class UserChoiceCollectionDataSource {
             let requestString = "https://api.foursquare.com/v2/venues/\(venue)/menu?client_id=\(self.CLIENT_ID)&client_secret=\(self.CLIENT_SECRET)&v=20150814"
             
             
-            // NONE OF THIS IS RUNNING
-            Alamofire.request(.GET, requestString).responseString() {
-                (_, _, responseBody, _) in
-                
-                self.numQueriesReturned++
-                println("Number of restaurants whose menus have been successfully parsed: \(self.numQueriesReturned)")
-
-                if let data = responseBody!.dataUsingEncoding(NSUTF8StringEncoding) {
+            if let url = NSURL(string: requestString) { // if #1
+                if let data = NSData(contentsOfURL: url, options: .allZeros, error: nil) { //if #2
                     let json = JSON(data: data)
+                    self.numQueriesReturned++
 
                     if json["meta"]["code"].intValue == 200 { //if #3
                         let menuContainer = json["response"]["menu"]["menus"].dictionary
@@ -245,7 +233,7 @@ class UserChoiceCollectionDataSource {
                                             
                                             
 //                                            print(meal.mealTitle)
-                                           println(meal.priceValue)
+                                           //println(meal.priceValue)
 
                                             
                                             // THIS CODE IS STILL NEVER RUN
@@ -258,6 +246,7 @@ class UserChoiceCollectionDataSource {
                                     }
                                 }
                             }
+                            }
                         }
                         //}// end if #4
                     } else {
@@ -265,25 +254,20 @@ class UserChoiceCollectionDataSource {
                     }
                 }
             }
-            
-        }
-        
-        return finishedMealsArray
-        //})
-        
-        //        var returnedMealObjects: List<MealObject> = List<MealObject>()
-        //        for i in 0...sortedFoundMeals.count {
-        //            returnedMealObjects.append(sortedFoundMeals[i])
-        //        }
-        //return sortedFoundMeals
-    } // end function
+     return finishedMealsArray
+    }
     
+// end function
+
     func finishUp() -> [MealObject] {
         self.searchMealDescriptions(self.foundMeals)
-        println(self.foundMeals)
+        //println(self.foundMeals)
         self.sortedFoundMeals = self.sortMeals(self.foundMeals)
-        println(self.sortedFoundMeals)
-        return sortedFoundMeals
+        //println(self.sortedFoundMeals)
+        for (var i = 0; i < self.sortedFoundMeals.count; i+=6000000000) {
+            println(self.sortedFoundMeals[i].mealTitle)
+        }
+        return self.sortedFoundMeals
     }
     
     func searchMealDescriptions(meals: [MealObject]) {

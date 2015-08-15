@@ -17,6 +17,7 @@ class PlateViewController: UITableViewController, UITableViewDataSource, UITable
     
     var cellLocation = 0
     let userChoice = UserChoiceCollectionDataSource()
+    var venuesArray: [String] = []
     var mealArray: [MealObject] = []
     
     var locationManager: CLLocationManager = CLLocationManager()
@@ -28,40 +29,38 @@ class PlateViewController: UITableViewController, UITableViewDataSource, UITable
         if (self.refreshControl != nil) {
             self.refreshControl!.endRefreshing()
         }
-        //locationHelper.callback = { (longitude,latitude) in
-        self.userChoice.getUserSuggestions(37/*self.currentLocation.longitude */, lat: -121/*self.currentLocation.latitude*/) { (result) in
-            self.mealArray = result
-        }
         
-        for meal in self.mealArray {
-            println(meal)
-        }
+        self.venuesArray = self.userChoice.getUserSuggestions(self.currentLocation.longitude, lat: self.currentLocation.latitude)
+        
+        self.mealArray = self.userChoice.findMeals(self.venuesArray)
 
         //}
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        self.locationManager.delegate = self
-        let status = CLLocationManager.authorizationStatus()
-        self.locationManager.requestWhenInUseAuthorization()
-        self.locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
-        self.locationManager.distanceFilter = kCLDistanceFilterNone
-        self.locationManager.startUpdatingLocation()
-        println(self.currentLocation.longitude)
-        println(self.currentLocation.latitude)
-
-        self.userChoice.getUserSuggestions(37.0/*self.currentLocation.longitude */, lat: -121.3/*self.currentLocation.latitude*/) { (result) in
-            
-             self.mealArray = self.userChoice.findMeals(result)
-            
+        dispatch_async(dispatch_get_global_queue(Int(QOS_CLASS_USER_INITIATED.value), 0)) {
+            SwiftSpinner.show("Getting your location...", animated: true)
+            self.locationManager.delegate = self
+            let status = CLLocationManager.authorizationStatus()
+            self.locationManager.requestWhenInUseAuthorization()
+            self.locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
+            self.locationManager.distanceFilter = kCLDistanceFilterNone
+            self.locationManager.startUpdatingLocation()
+            println(self.currentLocation.longitude)
+            println(self.currentLocation.latitude)
         }
         
+        NSThread.sleepForTimeInterval(1)
         
-        //location is still 0
-        for meal in self.mealArray {
-            println(meal)
+        dispatch_async(dispatch_get_global_queue(Int(QOS_CLASS_USER_INITIATED.value), 0)) {
+            SwiftSpinner.show("Finding restaurants near you...", animated: true)
+            self.venuesArray = self.userChoice.getUserSuggestions(self.currentLocation.longitude, lat: self.currentLocation.latitude)
+        }
+        NSThread.sleepForTimeInterval(1)
+        dispatch_async(dispatch_get_global_queue(Int(QOS_CLASS_USER_INITIATED.value), 0)) {
+            SwiftSpinner.show("Finding things to eat...", animated: true)
+            self.mealArray = self.userChoice.findMeals(self.venuesArray)
         }
 
         tableView.dataSource = self
