@@ -21,7 +21,7 @@ class UserChoiceCollectionDataSource {
     //    var foodCategories: List<RealmString> = List<RealmString>()
     //
     //    var ingredientData:List<RealmString> = List<RealmString>()
-    
+    var finishedMealsArray: [MealObject]!
     var numRestaurantsToQuery = 0
     var numQueriesReturned = 0
     
@@ -79,7 +79,7 @@ class UserChoiceCollectionDataSource {
         
     }
     
-    func getUserSuggestions(long: CLLocationDegrees, lat: CLLocationDegrees, callback: ([MealObject] -> Void))  {
+    func getUserSuggestions(long: CLLocationDegrees, lat: CLLocationDegrees, callback: ([String] -> Void))  {
         
         var categories: [String] = []
         for tag in foodCategories {
@@ -141,13 +141,9 @@ class UserChoiceCollectionDataSource {
                                     let tempSortedVenues = self.sortVenues(self.venueInformation)
                                     //println(self.venueInformation)
                                     self.finishedVenueIdArray = self.filterVenues(tempSortedVenues)
-                                    // println(finishedVenueIdArray)
-                                    self.foundMeals = self.findMeals(self.finishedVenueIdArray, long: longitude, lat: latitude)
-//                                        { (result) in
-//                                        self.foundMeals = result
-//                                        println("Found meals: \(self.foundMeals)")
-//                                    }
-                                    // println(foundMeals)
+                                    if self.numRestaurantsToQuery == self.numQueriesReturned {
+                                        callback(self.finishedVenueIdArray)
+                                    }
                                 }
                                 //println(self.foundMeals)
                             }
@@ -155,9 +151,7 @@ class UserChoiceCollectionDataSource {
                     }
                     
                 }
-            if self.numRestaurantsToQuery == self.numQueriesReturned {
-            callback(self.foundMeals)
-            }
+
             //})
         }
         //        println(foundMeals)
@@ -196,8 +190,8 @@ class UserChoiceCollectionDataSource {
         return filteredArray
     }
     
-    func findMeals(venueIDArray: [String]) -> [MealObject] {
-        var finishedMealsArray: [MealObject]!
+    func findMeals(venueIDArray: [String]) {
+
         
         let venuesToSearch = venueIDArray
         println("number of restaurants which will have its menus parsed: \(venuesToSearch.count)")
@@ -251,8 +245,7 @@ class UserChoiceCollectionDataSource {
                                             // THIS CODE IS STILL NEVER RUN
                                             if self.mealObject.checkCompleted() {
                                                 self.foundMeals.append(self.mealObject)
-                                                finishedMealsArray = self.finishUp()
-                                                //return finishedMealsArray
+                                                self.finishedMealsArray = self.finishUp()
                                             }
                                         }
                                     }
@@ -268,7 +261,7 @@ class UserChoiceCollectionDataSource {
             
         }
         
-        return finishedMealsArray
+//        return finishedMealsArray
         //})
         
         //        var returnedMealObjects: List<MealObject> = List<MealObject>()

@@ -18,27 +18,10 @@ class PlateViewController: UITableViewController, UITableViewDataSource, UITable
     var cellLocation = 0
     let userChoice = UserChoiceCollectionDataSource()
     var mealArray: [MealObject] = []
-    
+    var venueIDArray: [String] = []
     var locationManager: CLLocationManager = CLLocationManager()
     var currentLocation: CLLocationCoordinate2D = CLLocationCoordinate2D()
     
-    func getResults(refreshControl: UIRefreshControl) {
-        
-        self.tableView.reloadData()
-        if (self.refreshControl != nil) {
-            self.refreshControl!.endRefreshing()
-        }
-        //locationHelper.callback = { (longitude,latitude) in
-        self.userChoice.getUserSuggestions(37/*self.currentLocation.longitude */, lat: -121/*self.currentLocation.latitude*/) { (result) in
-            self.mealArray = result
-        }
-        
-        for meal in self.mealArray {
-            println(meal)
-        }
-
-        //}
-    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -49,14 +32,9 @@ class PlateViewController: UITableViewController, UITableViewDataSource, UITable
         self.locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
         self.locationManager.distanceFilter = kCLDistanceFilterNone
         self.locationManager.startUpdatingLocation()
-        println(self.currentLocation.longitude)
-        println(self.currentLocation.latitude)
+//        println(self.currentLocation.longitude)
+//        println(self.currentLocation.latitude)
 
-        self.userChoice.getUserSuggestions(37.0/*self.currentLocation.longitude */, lat: -121.3/*self.currentLocation.latitude*/) { (result) in
-            
-             self.mealArray = self.userChoice.findMeals(result)
-            
-        }
         
         
         //location is still 0
@@ -69,16 +47,41 @@ class PlateViewController: UITableViewController, UITableViewDataSource, UITable
         tableView.estimatedRowHeight = 125
         tableView.rowHeight = UITableViewAutomaticDimension
         
+        tableView.reloadData()
+        
         titleLabel.text = "Your Plate"
         subtitleLabel.text = "What can you see yourself eating?"
         
         self.refreshControl = UIRefreshControl()
         self.refreshControl?.backgroundColor = UIColor.redColor() // look at MakeNotes for custom colors
         self.refreshControl?.tintColor = UIColor.whiteColor()
-        self.refreshControl?.addTarget(self, action: "getResults:", forControlEvents: UIControlEvents.ValueChanged)
+        self.refreshControl?.addTarget(self, action: "getResults", forControlEvents: UIControlEvents.ValueChanged)
+        
         
     }
     
+    func getResults() {
+        var long = self.currentLocation.longitude
+        var lat = self.currentLocation.latitude
+        
+        self.userChoice.getUserSuggestions(long, lat: lat)
+            { (result) in
+                //callback: myCallback([MealObject])){
+                self.userChoice.findMeals(result)
+                self.mealArray = self.userChoice.finishedMealsArray
+        }
+        
+       tableView.reloadData()
+        
+        self.refreshControl?.endRefreshing()
+    }
+    override func viewDidAppear(animated: Bool) {
+        self.userChoice.getUserSuggestions(self.currentLocation.longitude, lat: self.currentLocation.latitude) { (result) in
+            //callback: myCallback([MealObject])){
+            self.userChoice.findMeals(result)
+            self.mealArray = self.userChoice.finishedMealsArray
+        }
+    }
     
     override func viewWillAppear(animated: Bool) {
         navigationController?.setNavigationBarHidden(true, animated: false)
@@ -147,7 +150,16 @@ class PlateViewController: UITableViewController, UITableViewDataSource, UITable
         var longitude = locValue.longitude
         var latitude = locValue.latitude
         //var tempLocation = locations[0] as! CLLocation
-    }
+        
+//        self.userChoice.getUserSuggestions(self.currentLocation.longitude, lat: self.currentLocation.latitude) { (result) in
+//            
+//            self.mealArray = self.userChoice.findMeals(result)
+//            
+//        }
+        
+        
+
     
-    
+}
+
 }
