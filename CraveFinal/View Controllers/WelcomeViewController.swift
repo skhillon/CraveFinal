@@ -10,12 +10,14 @@ import UIKit
 
 class WelcomeViewController: UIViewController {
     
+    @IBOutlet weak var blurView: UIVisualEffectView!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var instructionsLabel: UILabel!
     @IBOutlet weak var beginButton: UIButton!
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
     }
     
     override func viewWillAppear(animated: Bool) {

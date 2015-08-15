@@ -26,18 +26,14 @@ class ResultsViewController: UIViewController {
 //    let mealPrice: String!
     
     
-    @IBOutlet weak var photoScrollView: UIScrollView!
+    @IBOutlet weak var distanceLabel: UILabel!
     @IBOutlet weak var priceLabel: UILabel!
     @IBOutlet weak var mealTitleLabel: UILabel!
     @IBOutlet weak var mealDescriptionLabel: UILabel!
     @IBOutlet weak var venueAddressLabel: UILabel!
     @IBOutlet weak var openMapsButton: UIButton!
     @IBOutlet weak var venueNameLabel: UILabel!
-    
-    var paginatedScrollView: PaginatedScrollView?
-    var restaurantPhotos: [UIImage]?
-    
-    
+
     @IBAction func openMaps(sender: UIButton) {
         var myCoordinate = CLLocationCoordinate2DMake(self.mealObject.latitudeOfVenue, self.mealObject.longitudeOfVenue)
         
@@ -59,40 +55,21 @@ class ResultsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        
         self.priceLabel.text = self.mealObject.priceValue
         self.mealTitleLabel.text = self.mealObject.mealTitle
         self.mealDescriptionLabel.text = self.mealObject.mealDescription
         self.venueAddressLabel.text = self.mealObject.addressofVenue
         self.venueNameLabel.text = self.mealObject.nameOfVenue
+        let distMeters: Double = Double(self.mealObject.distanceToVenue)
+        let conversionToMiles: Double = 0.000621371
         
-        navigationController?.setNavigationBarHidden(false, animated: false)
-        
+        self.distanceLabel.text = "\(distMeters * conversionToMiles)"
+        self.navigationController?.setNavigationBarHidden(false, animated: false)
+        self.navigationController?.navigationBar.barStyle = UIBarStyle.Black
         // Do any additional setup after loading the view
-        setupScrollView()
-    }
-    
-    override func viewWillAppear(animated: Bool) {
-        super.viewWillAppear(animated)
-        SwiftSpinner.show("Getting data...", animated: true)
-    }
-    
-    func downloadArrayOfPhotos() {
         
     }
-    func setupScrollView() {
-        self.scrollView = UIScrollView(frame: CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height))
-        self.scrollView.pagingEnabled = true
-        self.scrollView.setAlwaysBounceVertical(false)
-        var numberOfViews: Int = 3
-        for var i = 0; i < numberOfViews; i++ {
-            var xOrigin: CGFloat = i * self.view.frame.size.width
-            var image: UIImageView = UIImageView(frame: CGRectMake(xOrigin, 0, self.view.frame.size.width, self.view.frame.size.height))
-            image.image = UIImage.imageNamed("image_\(i + 1)")
-            image.contentMode = UIViewContentModeScaleAspectFit
-            self.scrollView.addSubview(image)
-        }
-        self.scrollView.contentSize = CGSizeMake(self.view.frame.size.width * numberOfViews, self.view.frame.size.height)
-        self.view.addSubview(self.scrollView)
-    }
+    
     
 }

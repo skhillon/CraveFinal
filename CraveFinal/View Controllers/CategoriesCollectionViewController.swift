@@ -128,7 +128,7 @@ class CategoriesCollectionViewController: UIViewController, UICollectionViewData
 //            //cell.alpha = 1
 //        }
         
-//        cell.categoryName.text = Choice.name
+       cell.categoryName.text = categoryBank[indexPath.row]
 //        cell.categoryImage.image = Choice.image
         
         // Configure the cell

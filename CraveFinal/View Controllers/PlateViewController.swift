@@ -55,7 +55,7 @@ class PlateViewController: UITableViewController, UITableViewDataSource, UITable
        // subtitleLabel.text = "What can you see yourself eating?"
         
         self.refreshControl = UIRefreshControl()
-        self.refreshControl?.backgroundColor = UIColor.redColor() // look at MakeNotes for custom colors
+        self.refreshControl?.backgroundColor = UIColor.orangeColor() // look at MakeNotes for custom colors
         self.refreshControl?.tintColor = UIColor.whiteColor()
         self.refreshControl?.addTarget(self, action: "getResults", forControlEvents: UIControlEvents.ValueChanged)
         
@@ -90,6 +90,7 @@ class PlateViewController: UITableViewController, UITableViewDataSource, UITable
         navigationController?.setNavigationBarHidden(false, animated: false)
         navigationController?.navigationBar.barTintColor = UIColor.orangeColor()
         navigationController?.navigationBar.tintColor = UIColor.whiteColor()
+        self.navigationController?.navigationBar.barStyle = UIBarStyle.Black
     }
     
     
