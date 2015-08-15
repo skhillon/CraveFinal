@@ -13,18 +13,9 @@ import Alamofire
 import SwiftyJSON
 
 class ResultsViewController: UIViewController {
-    
-    // I need to get these values from the specific MealObject that is stored in the cell I clicked on. How?
-    //indexpath.row, get that value, store it somewhere, and then prepareforsegue send it here.
+
     
     var mealObject: MealObject!
-    // Currently hardcoded values.
-    //wait this is already stored in mealObject wat r u doing y u make again
-//    let longitudeOfVenue: Double!
-//    let latitudeOfVenue: Double!
-//    let nameOfVenue: String!
-//    let mealPrice: String!
-    
     
     @IBOutlet weak var distanceLabel: UILabel!
     @IBOutlet weak var priceLabel: UILabel!
@@ -59,12 +50,13 @@ class ResultsViewController: UIViewController {
         self.priceLabel.text = self.mealObject.priceValue
         self.mealTitleLabel.text = self.mealObject.mealTitle
         self.mealDescriptionLabel.text = self.mealObject.mealDescription
+        
         self.venueAddressLabel.text = self.mealObject.addressofVenue
         self.venueNameLabel.text = self.mealObject.nameOfVenue
-        let distMeters: Double = Double(self.mealObject.distanceToVenue)
-        let conversionToMiles: Double = 0.000621371
-        
-        //self.distanceLabel.text = "\(distMeters * conversionToMiles)"
+//        let distMeters: Double = Double(self.mealObject.distanceToVenue)
+//        let conversionToMiles: Double = 0.000621371
+//        
+//        self.distanceLabel.text = "\(distMeters * conversionToMiles)"
         self.navigationController?.setNavigationBarHidden(false, animated: false)
         self.navigationController?.navigationBar.barStyle = UIBarStyle.Black
         // Do any additional setup after loading the view

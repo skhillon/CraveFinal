@@ -361,7 +361,7 @@
                                         <rect key="frame" x="135" y="10" width="331" height="53"/>
                                         <color key="backgroundColor" red="0.85490196078431369" green="0.31372549019607843" blue="0.054901960784313725" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="331" id="9e6-UQ-eFn"/>
+                                            <constraint firstAttribute="width" constant="331" id="kVc-No-MWU"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="48"/>
                                         <state key="normal" title="DONE!">
@@ -375,9 +375,9 @@
                                 </subviews>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstItem="fco-zK-Owh" firstAttribute="top" secondItem="21H-wf-4ZV" secondAttribute="top" constant="10" id="SbU-UL-lJW"/>
-                                    <constraint firstAttribute="bottom" secondItem="fco-zK-Owh" secondAttribute="bottom" constant="11" id="UyM-80-Fet"/>
-                                    <constraint firstItem="fco-zK-Owh" firstAttribute="centerX" secondItem="21H-wf-4ZV" secondAttribute="centerX" id="vSi-YW-ZdD"/>
+                                    <constraint firstItem="fco-zK-Owh" firstAttribute="top" secondItem="21H-wf-4ZV" secondAttribute="top" constant="10" id="RHH-SH-HUJ"/>
+                                    <constraint firstItem="fco-zK-Owh" firstAttribute="centerX" secondItem="21H-wf-4ZV" secondAttribute="centerX" id="cP8-j5-QlN"/>
+                                    <constraint firstAttribute="bottom" secondItem="fco-zK-Owh" secondAttribute="bottom" constant="11" id="fLw-0t-plc"/>
                                 </constraints>
                             </view>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="eG5-iX-Il5" customClass="Categor">
@@ -397,10 +397,10 @@
                                             <rect key="frame" x="0.0" y="0.0" width="138" height="161"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Cl7-Ms-uBi">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Cl7-Ms-uBi">
                                                     <rect key="frame" x="8" y="8" width="117" height="116"/>
                                                 </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Category" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="p7S-1B-YCO">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Category" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="p7S-1B-YCO">
                                                     <rect key="frame" x="34" y="132" width="71" height="21"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="21" id="LuI-jM-bio"/>
@@ -414,13 +414,13 @@
                                         </view>
                                         <color key="backgroundColor" red="0.85490196078431369" green="0.31372549019607843" blue="0.054901960784313725" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
-                                            <constraint firstItem="p7S-1B-YCO" firstAttribute="centerX" secondItem="luZ-F1-OUx" secondAttribute="centerX" id="2U5-ld-P6d"/>
-                                            <constraint firstItem="p7S-1B-YCO" firstAttribute="bottom" secondItem="luZ-F1-OUx" secondAttribute="bottomMargin" id="C1f-qQ-vop"/>
-                                            <constraint firstItem="p7S-1B-YCO" firstAttribute="leading" secondItem="luZ-F1-OUx" secondAttribute="leadingMargin" constant="57" id="IBn-3D-rmt"/>
-                                            <constraint firstItem="p7S-1B-YCO" firstAttribute="top" secondItem="Cl7-Ms-uBi" secondAttribute="bottom" constant="8" symbolic="YES" id="NuF-EW-5LW"/>
-                                            <constraint firstItem="Cl7-Ms-uBi" firstAttribute="leading" secondItem="luZ-F1-OUx" secondAttribute="leadingMargin" constant="6" id="buA-lG-dGs"/>
-                                            <constraint firstItem="p7S-1B-YCO" firstAttribute="centerX" secondItem="Cl7-Ms-uBi" secondAttribute="centerX" id="d4u-8s-Udf"/>
-                                            <constraint firstItem="Cl7-Ms-uBi" firstAttribute="top" secondItem="luZ-F1-OUx" secondAttribute="topMargin" constant="5" id="s4l-T7-OHE"/>
+                                            <constraint firstItem="p7S-1B-YCO" firstAttribute="centerX" secondItem="luZ-F1-OUx" secondAttribute="centerX" id="1TJ-eR-LFE"/>
+                                            <constraint firstAttribute="trailingMargin" secondItem="Cl7-Ms-uBi" secondAttribute="trailing" constant="5" id="7No-nm-mqT"/>
+                                            <constraint firstItem="p7S-1B-YCO" firstAttribute="top" secondItem="Cl7-Ms-uBi" secondAttribute="bottom" constant="8" symbolic="YES" id="BRQ-tp-N9W"/>
+                                            <constraint firstItem="p7S-1B-YCO" firstAttribute="bottom" secondItem="luZ-F1-OUx" secondAttribute="bottomMargin" id="Jo5-i6-3xU"/>
+                                            <constraint firstItem="Cl7-Ms-uBi" firstAttribute="top" secondItem="luZ-F1-OUx" secondAttribute="topMargin" id="Zdi-TB-5aA"/>
+                                            <constraint firstItem="p7S-1B-YCO" firstAttribute="leading" secondItem="luZ-F1-OUx" secondAttribute="leadingMargin" constant="26" id="bJJ-Hz-1SO"/>
+                                            <constraint firstItem="Cl7-Ms-uBi" firstAttribute="leading" secondItem="luZ-F1-OUx" secondAttribute="leadingMargin" id="p9K-Zp-uQ7"/>
                                         </constraints>
                                         <size key="customSize" width="138" height="161"/>
                                         <connections>
@@ -432,14 +432,14 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="21H-wf-4ZV" firstAttribute="top" secondItem="P8D-wz-JWT" secondAttribute="bottom" constant="506" id="5Iq-tz-py2"/>
-                            <constraint firstItem="MJP-Sh-jwL" firstAttribute="top" secondItem="eG5-iX-Il5" secondAttribute="bottom" constant="73" id="6R8-6D-Czl"/>
-                            <constraint firstItem="21H-wf-4ZV" firstAttribute="bottom" secondItem="MJP-Sh-jwL" secondAttribute="top" id="Jis-Y5-kAW"/>
-                            <constraint firstItem="eG5-iX-Il5" firstAttribute="trailing" secondItem="21H-wf-4ZV" secondAttribute="trailing" id="Kjg-3i-eac"/>
-                            <constraint firstItem="21H-wf-4ZV" firstAttribute="leading" secondItem="eG5-iX-Il5" secondAttribute="leading" id="e0n-a2-tb5"/>
-                            <constraint firstAttribute="trailing" secondItem="eG5-iX-Il5" secondAttribute="trailing" id="fBz-vz-MPs"/>
-                            <constraint firstItem="eG5-iX-Il5" firstAttribute="top" secondItem="P8D-wz-JWT" secondAttribute="bottom" id="gLj-v0-GEX"/>
-                            <constraint firstItem="21H-wf-4ZV" firstAttribute="leading" secondItem="jWH-nz-joP" secondAttribute="leading" id="tSc-7l-X1S"/>
+                            <constraint firstItem="21H-wf-4ZV" firstAttribute="leading" secondItem="jWH-nz-joP" secondAttribute="leading" id="A6a-Pn-4vL"/>
+                            <constraint firstItem="21H-wf-4ZV" firstAttribute="top" secondItem="P8D-wz-JWT" secondAttribute="bottom" constant="506" id="CXq-lX-BcD"/>
+                            <constraint firstAttribute="trailing" secondItem="21H-wf-4ZV" secondAttribute="trailing" id="E84-Kl-gCB"/>
+                            <constraint firstItem="eG5-iX-Il5" firstAttribute="leading" secondItem="21H-wf-4ZV" secondAttribute="leading" id="HbB-Ro-JFr"/>
+                            <constraint firstItem="21H-wf-4ZV" firstAttribute="bottom" secondItem="MJP-Sh-jwL" secondAttribute="top" id="dRk-Au-Mzm"/>
+                            <constraint firstItem="MJP-Sh-jwL" firstAttribute="top" secondItem="eG5-iX-Il5" secondAttribute="bottom" constant="73" id="hAJ-SC-uwO"/>
+                            <constraint firstItem="eG5-iX-Il5" firstAttribute="trailing" secondItem="21H-wf-4ZV" secondAttribute="trailing" id="nKr-rZ-xpl"/>
+                            <constraint firstItem="eG5-iX-Il5" firstAttribute="top" secondItem="P8D-wz-JWT" secondAttribute="bottom" id="zH4-Df-83A"/>
                         </constraints>
                     </view>
                     <connections>
