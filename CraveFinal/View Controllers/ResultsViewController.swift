@@ -33,12 +33,31 @@ class ResultsViewController: UIViewController {
     
     
     @IBAction func openMaps(sender: UIButton) {
-        let url = NSURL(string: "http://maps.apple.com/maps?saddr=Current%20Location&daddr=\(mealObject.longitudeOfVenue),\(mealObject.latitudeOfVenue)")
-        UIApplication.sharedApplication().openURL(url!)
+        var myCoordinate = CLLocationCoordinate2DMake(self.mealObject.latitudeOfVenue, self.mealObject.longitudeOfVenue)
+        
+        var myPlacemark = MKPlacemark(coordinate: myCoordinate, addressDictionary: nil)
+        
+        var mapItem = MKMapItem(placemark: myPlacemark)
+        
+        mapItem.name = self.mealObject.nameOfVenue
+        
+        //You could also choose: MKLaunchOptionsDirectionsModeWalking
+        var launchOptions = [MKLaunchOptionsDirectionsModeKey : MKLaunchOptionsDirectionsModeDriving]
+        
+        mapItem.openInMapsWithLaunchOptions(launchOptions)
+        
+//        let url = NSURL(string: "http://maps.apple.com/maps?saddr=Current%20Location&daddr=\(self.mealObject.longitudeOfVenue),\(self.mealObject.latitudeOfVenue)")
+//        UIApplication.sharedApplication().openURL(url!)
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.priceLabel.text = self.mealObject.priceValue
+        self.mealTitleLabel.text = self.mealObject.mealTitle
+        self.mealDescriptionLabel.text = self.mealObject.mealDescription
+        self.venueAddressLabel.text = self.mealObject.addressofVenue
+        self.venueNameLabel.text = self.mealObject.nameOfVenue
         
         navigationController?.setNavigationBarHidden(false, animated: false)
         

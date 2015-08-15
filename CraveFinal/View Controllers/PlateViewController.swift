@@ -38,17 +38,18 @@ class PlateViewController: UITableViewController, UITableViewDataSource, UITable
         
         
         //location is still 0
-        for meal in self.mealArray {
-            println(meal)
-        }
+//        for meal in self.mealArray {
+//            println(meal)
+//        }
 
         tableView.dataSource = self
         tableView.delegate = self
-        tableView.estimatedRowHeight = 125
+        tableView.estimatedRowHeight = 150
         tableView.rowHeight = UITableViewAutomaticDimension
         
         tableView.reloadData()
         tableView.separatorStyle = UITableViewCellSeparatorStyle.SingleLine
+        tableView.separatorColor = UIColor.grayColor()
         
        // titleLabel.text = "Your Plate"
        // subtitleLabel.text = "What can you see yourself eating?"
