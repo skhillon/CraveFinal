@@ -64,7 +64,7 @@ class ResultsViewController: UIViewController {
         let distMeters: Double = Double(self.mealObject.distanceToVenue)
         let conversionToMiles: Double = 0.000621371
         
-        self.distanceLabel.text = "\(distMeters * conversionToMiles)"
+        //self.distanceLabel.text = "\(distMeters * conversionToMiles)"
         self.navigationController?.setNavigationBarHidden(false, animated: false)
         self.navigationController?.navigationBar.barStyle = UIBarStyle.Black
         // Do any additional setup after loading the view

@@ -132,7 +132,7 @@ class PlateViewController: UITableViewController, UITableViewDataSource, UITable
         }
         
         if self.mealArray[indexPath.row].priceValue != "" {
-        cell.priceLabel.text = "\(self.mealArray[indexPath.row].priceValue)"
+        cell.priceLabel.text = "$\(self.mealArray[indexPath.row].priceValue)"
         } else {
             cell.priceLabel.text = "n/a"
         }

@@ -779,6 +779,38 @@
             endingLineNumber = "71"
             landmarkName = "getResults()"
             landmarkType = "5">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "CraveFinal.PlateViewController.(getResults (CraveFinal.PlateViewController) -&gt; () -&gt; ()).(closure #1)"
+                  moduleName = "CraveFinal"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/SarthakKhillon/Desktop/CraveFinal/CraveFinal/View%20Controllers/PlateViewController.swift"
+                  timestampString = "461341831.718684"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "71"
+                  endingLineNumber = "71"
+                  offsetFromSymbolStart = "28">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "CraveFinal.PlateViewController.(getResults (CraveFinal.PlateViewController) -&gt; () -&gt; ()).(closure #1).(closure #1)"
+                  moduleName = "CraveFinal"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/SarthakKhillon/Desktop/CraveFinal/CraveFinal/View%20Controllers/PlateViewController.swift"
+                  timestampString = "461341831.718837"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "72"
+                  endingLineNumber = "72"
+                  offsetFromSymbolStart = "20">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -1028,12 +1060,12 @@
                   moduleName = "CraveFinal"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/SarthakKhillon/Desktop/CraveFinal/CraveFinal/View%20Controllers/PlateViewController.swift"
-                  timestampString = "461339260.764552"
+                  timestampString = "461341831.72127"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "84"
                   endingLineNumber = "84"
-                  offsetFromSymbolStart = "16">
+                  offsetFromSymbolStart = "28">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
@@ -1043,12 +1075,12 @@
                   moduleName = "CraveFinal"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/SarthakKhillon/Desktop/CraveFinal/CraveFinal/View%20Controllers/PlateViewController.swift"
-                  timestampString = "461339260.76583"
+                  timestampString = "461341831.721412"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "85"
                   endingLineNumber = "85"
-                  offsetFromSymbolStart = "16">
+                  offsetFromSymbolStart = "20">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -1092,12 +1124,12 @@
                   moduleName = "CraveFinal"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/SarthakKhillon/Desktop/CraveFinal/CraveFinal/View%20Controllers/PlateViewController.swift"
-                  timestampString = "461339260.809522"
+                  timestampString = "461341831.722433"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "82"
                   endingLineNumber = "82"
-                  offsetFromSymbolStart = "20">
+                  offsetFromSymbolStart = "32">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
@@ -1107,12 +1139,12 @@
                   moduleName = "CraveFinal"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/SarthakKhillon/Desktop/CraveFinal/CraveFinal/View%20Controllers/PlateViewController.swift"
-                  timestampString = "461339260.810606"
+                  timestampString = "461341831.722571"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "84"
                   endingLineNumber = "84"
-                  offsetFromSymbolStart = "16">
+                  offsetFromSymbolStart = "28">
                </Location>
             </Locations>
          </BreakpointContent>
