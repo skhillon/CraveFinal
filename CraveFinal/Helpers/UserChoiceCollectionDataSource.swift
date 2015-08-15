@@ -189,7 +189,6 @@ class UserChoiceCollectionDataSource {
     
     func findMeals(venueIDArray: [String], findMealsCallback: ([MealObject] -> Void)) {
         
-        
         let venuesToSearch = venueIDArray
         println("number of restaurants which will have its menus parsed: \(venuesToSearch.count)")
         
@@ -197,7 +196,7 @@ class UserChoiceCollectionDataSource {
         for venue in venuesToSearch {
             
             let requestString = "https://api.foursquare.com/v2/venues/\(venue)/menu?client_id=\(self.CLIENT_ID)&client_secret=\(self.CLIENT_SECRET)&v=20150814"
-            
+            println(requestString)
             
             // NONE OF THIS IS RUNNING
             Alamofire.request(.GET, requestString).responseString() {
@@ -242,14 +241,7 @@ class UserChoiceCollectionDataSource {
                                             
                                             // THIS CODE IS STILL NEVER RUN
                                             //if self.mealObject.checkCompleted() {
-                                            
-                                            if self.numQueriesReturned == self.numRestaurantsToQuery
-                                            {
-                                                self.foundMeals.append(self.mealObject)
-                                                self.finishedMealsArray = self.finishUp()
-                                                findMealsCallback(self.finishedMealsArray)
-                                            }
-                                        }
+                                                                                   }
                                     }
                                 }
                             }
@@ -259,18 +251,20 @@ class UserChoiceCollectionDataSource {
                         println("Error in retrieving JSON")
                     }
                 }
+                
+                
+                if self.numQueriesReturned == venuesToSearch.count
+                {
+                    self.foundMeals.append(self.mealObject)
+                    self.finishedMealsArray = self.finishUp()
+                    findMealsCallback(self.finishedMealsArray)
+                }
+
             }
             
         }
         
-        //        return finishedMealsArray
-        //})
-        
-        //        var returnedMealObjects: List<MealObject> = List<MealObject>()
-        //        for i in 0...sortedFoundMeals.count {
-        //            returnedMealObjects.append(sortedFoundMeals[i])
-        //        }
-        //return sortedFoundMeals
+     
     } // end function
     
     func finishUp() -> [MealObject] {

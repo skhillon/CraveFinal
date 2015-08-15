@@ -80,6 +80,7 @@ class PlateViewController: UITableViewController, UITableViewDataSource, UITable
             
             self.userChoice.findMeals(result) { (anotherResult) in
                 self.mealArray = anotherResult
+                self.tableView.reloadData()
             }
         }
     }
