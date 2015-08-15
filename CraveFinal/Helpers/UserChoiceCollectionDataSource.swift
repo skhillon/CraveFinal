@@ -25,6 +25,8 @@ class UserChoiceCollectionDataSource {
     var numRestaurantsToQuery = 0
     var numQueriesReturned = 0
     
+    var dumbo = 0
+    
     var foodCategoriesObject: Results<RealmRelevantCategoryTags>!
     var foodCategories: List<Tag> = List<Tag>()
     var ingredientDataObject: Results<RealmIngredientLiked>!
@@ -80,6 +82,7 @@ class UserChoiceCollectionDataSource {
     }
     
     func getUserSuggestions(long: CLLocationDegrees, lat: CLLocationDegrees, getUserSuggestionsCallback: ([String] -> Void))  {
+        
         var numCategoriesQueried = 0
         var categories: [String] = []
         for tag in foodCategories {
@@ -198,7 +201,7 @@ class UserChoiceCollectionDataSource {
             let requestString = "https://api.foursquare.com/v2/venues/\(venue)/menu?client_id=\(self.CLIENT_ID)&client_secret=\(self.CLIENT_SECRET)&v=20150814"
             println(requestString)
             
-            // NONE OF THIS IS RUNNING
+            
             Alamofire.request(.GET, requestString).responseString() {
                 (_, _, responseBody, _) in
                 
@@ -211,21 +214,22 @@ class UserChoiceCollectionDataSource {
                     if json["meta"]["code"].intValue == 200 { //if #3
                         let menuContainer = json["response"]["menu"]["menus"].dictionary
                         let menuCount = menuContainer!["count"]!.int!
-                        println(menuCount)
+                        //println(menuCount)
                         let menuItems = menuContainer!["items"]?.arrayValue
                         if let menuElements = menuItems {
-                            println(menuElements.count)
+                            //println(menuElements.count)
                             for item in menuElements {
                                 let menuSections = item["entries"].dictionaryValue //subheadings in menus
                                 let subheadings = menuSections["items"]!.arrayValue
-                                println(subheadings.count)
+                                //println(subheadings.count)
                                 for sub in subheadings {
                                     let entries = sub["entries"].dictionaryValue
                                     let food = entries["items"]!.arrayValue
-                                    println(food.count)
+                                    //println(food.count)
                                     for foodStuff in food {
-                                        println(self.foundMeals.count)
+                                        //println(self.foundMeals.count)
                                         for meal in self.foundMeals {
+                                            self.dumbo++
                                             let mealTitle = foodStuff["name"].stringValue
                                             let mealDescription = foodStuff["description"].stringValue
                                             let priceValue = foodStuff["price"].stringValue
@@ -236,7 +240,7 @@ class UserChoiceCollectionDataSource {
                                             
                                             
                                             //meal.pricevalue is nil...oh well?
-                                            println(meal.priceValue)
+                                            //println(meal.priceValue)
                                             
                                             
                                             // THIS CODE IS STILL NEVER RUN
@@ -252,12 +256,13 @@ class UserChoiceCollectionDataSource {
                     }
                 }
                 
+                println("THE NUMBER OF TOTAL MEALOBJECTS CREATED: \(self.dumbo)")
                 
                 if self.numQueriesReturned == venuesToSearch.count
                 {
                     self.foundMeals.append(self.mealObject)
                     self.finishedMealsArray = self.finishUp()
-                    findMealsCallback(self.sortedFoundMeals)
+                    findMealsCallback(self.finishedMealsArray)
                 }
 
             }

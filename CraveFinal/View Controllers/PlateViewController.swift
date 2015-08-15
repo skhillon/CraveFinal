@@ -47,7 +47,7 @@ class PlateViewController: UITableViewController, UITableViewDataSource, UITable
         tableView.estimatedRowHeight = 150
         tableView.rowHeight = UITableViewAutomaticDimension
         
-        tableView.reloadData()
+        //tableView.reloadData()
         tableView.separatorStyle = UITableViewCellSeparatorStyle.SingleLine
         tableView.separatorColor = UIColor.grayColor()
         
@@ -70,11 +70,13 @@ class PlateViewController: UITableViewController, UITableViewDataSource, UITable
             
             self.userChoice.findMeals(result) { (anotherResult) in
                 self.mealArray = (anotherResult)
+                       self.tableView.reloadData()
+                
+                
+                self.refreshControl?.endRefreshing()
             }
         }
-       tableView.reloadData()
-        
-        self.refreshControl?.endRefreshing()
+
     }
     override func viewDidAppear(animated: Bool) {
         self.userChoice.getUserSuggestions(self.currentLocation.longitude, lat: self.currentLocation.latitude) { (result) in
@@ -117,10 +119,23 @@ class PlateViewController: UITableViewController, UITableViewDataSource, UITable
         
         //        let meals = mealList.subscript([indexPath.row])
         //        print(indexPath.row)
+        if self.mealArray[indexPath.row].mealTitle != "" {
         cell.mealTitleLabel.text = self.mealArray[indexPath.row].mealTitle
-        cell.descriptionLabel.text = self.mealArray[indexPath.row].mealDescription
-        cell.priceLabel.text = "\(self.mealArray[indexPath.row].priceValue)"
+        } else {
+            cell.mealTitleLabel.text = "Unnamed dish"
+        }
         
+        if self.mealArray[indexPath.row].mealDescription != "" {
+        cell.descriptionLabel.text = self.mealArray[indexPath.row].mealDescription
+        } else {
+            cell.descriptionLabel.text = "No description has been provided for this dish."
+        }
+        
+        if self.mealArray[indexPath.row].priceValue != "" {
+        cell.priceLabel.text = "\(self.mealArray[indexPath.row].priceValue)"
+        } else {
+            cell.priceLabel.text = "n/a"
+        }
         return cell
     }
     
@@ -154,7 +169,7 @@ class PlateViewController: UITableViewController, UITableViewDataSource, UITable
         var locValue = locationManager.location.coordinate
         var longitude = locValue.longitude
         var latitude = locValue.latitude
-        println(latitude)
+        //println(latitude)
         //var tempLocation = locations[0] as! CLLocation
         
 //        self.userChoice.getUserSuggestions(self.currentLocation.longitude, lat: self.currentLocation.latitude) { (result) in

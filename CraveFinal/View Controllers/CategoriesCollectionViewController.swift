@@ -15,6 +15,7 @@ let realm = Realm()
 class CategoriesCollectionViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
     
     @IBOutlet weak var categoryLabel: UILabel!
+    @IBOutlet weak var iconImage: UIImage!
     
     @IBOutlet weak var collectionView: UICollectionView!
     
@@ -42,10 +43,11 @@ class CategoriesCollectionViewController: UIViewController, UICollectionViewData
     var relevantIngredientsLiked: RealmIngredientLiked = RealmIngredientLiked()
     
     //var doneButton : UIBarButtonItem?
-    let sectionInsets = UIEdgeInsets(top: 50.0, left: 20.0, bottom: 50.0, right: 20.0)
+    //let sectionInsets = UIEdgeInsets(top: 50.0, left: 20.0, bottom: 50.0, right: 20.0)
     
     //var ingredientsToAppend: [String] = []
     let categoryBank = ["Afghan", "African", "American", "Asian", "Caribbean", "Chinese", "Deli", "EastEuro", "French", "German", "Hawaiian", "Indian", "Indonesian", "Italian", "Mediterranean", "Mexican", "Persian", "Pizza", "Seafood", "Thai"]
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -129,6 +131,7 @@ class CategoriesCollectionViewController: UIViewController, UICollectionViewData
 //        }
         
        cell.categoryName.text = categoryBank[indexPath.row]
+    
 //        cell.categoryImage.image = Choice.image
         
         // Configure the cell
@@ -142,11 +145,11 @@ class CategoriesCollectionViewController: UIViewController, UICollectionViewData
             return CGSize(width: 120, height: 120)
     }
     
-    func collectionView(collectionView: UICollectionView,
-        layout collectionViewLayout: UICollectionViewLayout,
-        insetForSectionAtIndex section: Int) -> UIEdgeInsets {
-            return sectionInsets
-    }
+//    func collectionView(collectionView: UICollectionView,
+//        layout collectionViewLayout: UICollectionViewLayout,
+//        insetForSectionAtIndex section: Int) -> UIEdgeInsets {
+//            return sectionInsets
+//    }
     
     func collectionView(collectionView: UICollectionView,
         didSelectItemAtIndexPath indexPath: NSIndexPath) {
