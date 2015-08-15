@@ -257,7 +257,7 @@ class UserChoiceCollectionDataSource {
                 {
                     self.foundMeals.append(self.mealObject)
                     self.finishedMealsArray = self.finishUp()
-                    findMealsCallback(self.finishedMealsArray)
+                    findMealsCallback(self.sortedFoundMeals)
                 }
 
             }

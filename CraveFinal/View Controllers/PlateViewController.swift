@@ -12,8 +12,8 @@ import CoreLocation
 
 class PlateViewController: UITableViewController, UITableViewDataSource, UITableViewDelegate, CLLocationManagerDelegate {
     
-    @IBOutlet weak var titleLabel: UILabel!
-    @IBOutlet weak var subtitleLabel: UILabel!
+//    @IBOutlet weak var titleLabel: UILabel!
+//    @IBOutlet weak var subtitleLabel: UILabel!
     
     var cellLocation = 0
     let userChoice = UserChoiceCollectionDataSource()
@@ -50,8 +50,8 @@ class PlateViewController: UITableViewController, UITableViewDataSource, UITable
         tableView.reloadData()
         tableView.separatorStyle = UITableViewCellSeparatorStyle.SingleLine
         
-        titleLabel.text = "Your Plate"
-        subtitleLabel.text = "What can you see yourself eating?"
+       // titleLabel.text = "Your Plate"
+       // subtitleLabel.text = "What can you see yourself eating?"
         
         self.refreshControl = UIRefreshControl()
         self.refreshControl?.backgroundColor = UIColor.redColor() // look at MakeNotes for custom colors
@@ -86,8 +86,9 @@ class PlateViewController: UITableViewController, UITableViewDataSource, UITable
     }
     
     override func viewWillAppear(animated: Bool) {
-        navigationController?.setNavigationBarHidden(true, animated: false)
-        
+        navigationController?.setNavigationBarHidden(false, animated: false)
+        navigationController?.navigationBar.barTintColor = UIColor.orangeColor()
+        navigationController?.navigationBar.tintColor = UIColor.whiteColor()
     }
     
     
@@ -95,7 +96,7 @@ class PlateViewController: UITableViewController, UITableViewDataSource, UITable
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         cellLocation = indexPath.row
-        self.performSegueWithIdentifier("", sender: self)
+        self.performSegueWithIdentifier("plateSegue", sender: self)
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {

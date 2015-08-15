@@ -154,7 +154,7 @@
             </objects>
             <point key="canvasLocation" x="2020" y="282"/>
         </scene>
-        <!--Plate View Controller-->
+        <!--Put something on your plate!-->
         <scene sceneID="wzL-UC-Amk">
             <objects>
                 <tableViewController id="nr5-0R-zXZ" customClass="PlateViewController" customModule="CraveFinal" customModuleProvider="target" sceneMemberID="viewController">
@@ -162,39 +162,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <view key="tableHeaderView" contentMode="scaleToFill" id="Jby-3R-OqM">
-                            <rect key="frame" x="0.0" y="20" width="600" height="105"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <subviews>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your Plate" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cCk-8y-etV">
-                                    <rect key="frame" x="8" y="8" width="264" height="48"/>
-                                    <constraints>
-                                        <constraint firstAttribute="width" constant="264" id="1b4-Ic-drN"/>
-                                    </constraints>
-                                    <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="53"/>
-                                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                    <nil key="highlightedColor"/>
-                                </label>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your top 5 suggestions" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9cu-Dh-Vs6">
-                                    <rect key="frame" x="13" y="64" width="298" height="21"/>
-                                    <constraints>
-                                        <constraint firstAttribute="height" constant="21" id="Vdx-9C-dl2"/>
-                                        <constraint firstAttribute="width" constant="298" id="era-aS-hBk"/>
-                                    </constraints>
-                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                    <nil key="highlightedColor"/>
-                                </label>
-                            </subviews>
-                            <color key="backgroundColor" red="1" green="0.45882352939999999" blue="0.098039215690000001" alpha="1" colorSpace="calibratedRGB"/>
-                            <constraints>
-                                <constraint firstAttribute="bottom" secondItem="9cu-Dh-Vs6" secondAttribute="bottom" constant="20" id="09Z-ub-1XS"/>
-                                <constraint firstItem="cCk-8y-etV" firstAttribute="top" secondItem="Jby-3R-OqM" secondAttribute="topMargin" id="5a7-Y2-M6M"/>
-                                <constraint firstItem="9cu-Dh-Vs6" firstAttribute="leading" secondItem="Jby-3R-OqM" secondAttribute="leading" constant="13" id="ShW-M4-aN2"/>
-                                <constraint firstItem="cCk-8y-etV" firstAttribute="leading" secondItem="Jby-3R-OqM" secondAttribute="leadingMargin" id="h9O-mL-EyT"/>
-                                <constraint firstItem="9cu-Dh-Vs6" firstAttribute="top" secondItem="cCk-8y-etV" secondAttribute="bottom" constant="8" symbolic="YES" id="xLf-cd-PWd"/>
-                            </constraints>
-                        </view>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="MealCell" rowHeight="125" id="8m3-B8-9n9" customClass="PlateTableViewCell" customModule="CraveFinal" customModuleProvider="target">
                                 <autoresizingMask key="autoresizingMask"/>
@@ -238,7 +205,7 @@
                                         <constraint firstItem="I5Z-7X-bJW" firstAttribute="centerY" secondItem="dEW-zq-BpJ" secondAttribute="centerY" constant="-5.5" id="zIe-fY-3BH"/>
                                     </constraints>
                                 </tableViewCellContentView>
-                                <color key="backgroundColor" red="0.99607843137254903" green="0.98039215686274506" blue="0.93725490196078431" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <connections>
                                     <outlet property="descriptionLabel" destination="hbu-Kr-vqa" id="JRw-bq-Rx8"/>
                                     <outlet property="mealTitleLabel" destination="dEW-zq-BpJ" id="KvC-0H-ebe"/>
@@ -252,10 +219,8 @@
                             <outlet property="delegate" destination="nr5-0R-zXZ" id="P3N-lT-2bg"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="Jrh-1k-QJg" colorLabel="IBBuiltInLabel-Orange"/>
+                    <navigationItem key="navigationItem" title="Put something on your plate!" id="Jrh-1k-QJg" colorLabel="IBBuiltInLabel-Orange"/>
                     <connections>
-                        <outlet property="subtitleLabel" destination="9cu-Dh-Vs6" id="bWs-mf-yt3"/>
-                        <outlet property="titleLabel" destination="cCk-8y-etV" id="Sci-i3-7lK"/>
                         <segue destination="SnV-Np-iDU" kind="show" identifier="plateSegue" id="ffN-uT-7iT"/>
                     </connections>
                 </tableViewController>

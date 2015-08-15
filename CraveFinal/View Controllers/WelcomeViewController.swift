@@ -26,8 +26,8 @@ class WelcomeViewController: UIViewController {
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         
-        //self.titleLabel.text = "Welcome to Crave!"
-        self.instructionsLabel.text = "On the next screen, select the types of food you like the most."
+        self.titleLabel.text = "Welcome to Crave!"
+        self.instructionsLabel.text = "On the next screen, select your 5 favorite food categories!"
         self.beginButton.setTitle("LET'S GO!", forState: .Normal)
         //self.beginButton.tintColor = UIColor.blackColor()
     }
