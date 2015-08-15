@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		281159BD1B7F3577005DC26E /* PaginatedScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 281159BC1B7F3577005DC26E /* PaginatedScrollView.swift */; };
 		284D2C391B7E92A40032C08C /* delete.swift in Sources */ = {isa = PBXBuildFile; fileRef = 284D2C381B7E92A40032C08C /* delete.swift */; };
 		28579CFA1B7AAFBA0099A270 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28579CF91B7AAFBA0099A270 /* AppDelegate.swift */; };
 		28579CFC1B7AAFBA0099A270 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28579CFB1B7AAFBA0099A270 /* ViewController.swift */; };
@@ -47,6 +48,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		281159BC1B7F3577005DC26E /* PaginatedScrollView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaginatedScrollView.swift; sourceTree = "<group>"; };
 		284D2C381B7E92A40032C08C /* delete.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = delete.swift; sourceTree = "<group>"; };
 		28579CF41B7AAFBA0099A270 /* CraveFinal.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CraveFinal.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		28579CF81B7AAFBA0099A270 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -191,6 +193,7 @@
 				28579D201B7AB4860099A270 /* UserChoiceCollectionDataSource.swift */,
 				28579D241B7AB4CF0099A270 /* LocationHelper.swift */,
 				28579D261B7AB4E20099A270 /* Storyboard.swift */,
+				281159BC1B7F3577005DC26E /* PaginatedScrollView.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -403,6 +406,7 @@
 				28579D3D1B7AB5D20099A270 /* CategoriesCollectionViewController.swift in Sources */,
 				28579CFA1B7AAFBA0099A270 /* AppDelegate.swift in Sources */,
 				28D48F881B7B3B4C00E459D8 /* RealmIngredientsLiked.swift in Sources */,
+				281159BD1B7F3577005DC26E /* PaginatedScrollView.swift in Sources */,
 				28579D311B7AB5510099A270 /* PlateTableViewCell.swift in Sources */,
 				28579D2B1B7AB5150099A270 /* MealObject.swift in Sources */,
 				28579D351B7AB5790099A270 /* CategoryCollectionViewCell.swift in Sources */,

@@ -8,6 +8,9 @@
 
 import UIKit
 import MapKit
+import SwiftSpinner
+import Alamofire
+import SwiftyJSON
 
 class ResultsViewController: UIViewController {
     
@@ -23,13 +26,16 @@ class ResultsViewController: UIViewController {
 //    let mealPrice: String!
     
     
-    @IBOutlet weak var venueImageView: UIImageView!
+    @IBOutlet weak var photoScrollView: UIScrollView!
     @IBOutlet weak var priceLabel: UILabel!
     @IBOutlet weak var mealTitleLabel: UILabel!
     @IBOutlet weak var mealDescriptionLabel: UILabel!
     @IBOutlet weak var venueAddressLabel: UILabel!
     @IBOutlet weak var openMapsButton: UIButton!
     @IBOutlet weak var venueNameLabel: UILabel!
+    
+    var paginatedScrollView: PaginatedScrollView?
+    var restaurantPhotos: [UIImage]?
     
     
     @IBAction func openMaps(sender: UIButton) {
@@ -62,8 +68,31 @@ class ResultsViewController: UIViewController {
         navigationController?.setNavigationBarHidden(false, animated: false)
         
         // Do any additional setup after loading the view
+        setupScrollView()
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        SwiftSpinner.show("Getting data...", animated: true)
+    }
+    
+    func downloadArrayOfPhotos() {
         
-        
+    }
+    func setupScrollView() {
+        self.scrollView = UIScrollView(frame: CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height))
+        self.scrollView.pagingEnabled = true
+        self.scrollView.setAlwaysBounceVertical(false)
+        var numberOfViews: Int = 3
+        for var i = 0; i < numberOfViews; i++ {
+            var xOrigin: CGFloat = i * self.view.frame.size.width
+            var image: UIImageView = UIImageView(frame: CGRectMake(xOrigin, 0, self.view.frame.size.width, self.view.frame.size.height))
+            image.image = UIImage.imageNamed("image_\(i + 1)")
+            image.contentMode = UIViewContentModeScaleAspectFit
+            self.scrollView.addSubview(image)
+        }
+        self.scrollView.contentSize = CGSizeMake(self.view.frame.size.width * numberOfViews, self.view.frame.size.height)
+        self.view.addSubview(self.scrollView)
     }
     
 }
