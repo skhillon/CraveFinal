@@ -48,6 +48,7 @@ class PlateViewController: UITableViewController, UITableViewDataSource, UITable
         tableView.rowHeight = UITableViewAutomaticDimension
         
         tableView.reloadData()
+        tableView.separatorStyle = UITableViewCellSeparatorStyle.SingleLine
         
         titleLabel.text = "Your Plate"
         subtitleLabel.text = "What can you see yourself eating?"
@@ -64,22 +65,22 @@ class PlateViewController: UITableViewController, UITableViewDataSource, UITable
         var long = self.currentLocation.longitude
         var lat = self.currentLocation.latitude
         
-        self.userChoice.getUserSuggestions(long, lat: lat)
-            { (result) in
-                //callback: myCallback([MealObject])){
-                self.userChoice.findMeals(result)
-                self.mealArray = self.userChoice.finishedMealsArray
+        self.userChoice.getUserSuggestions(self.currentLocation.longitude, lat: self.currentLocation.latitude) { (result) in
+            
+            self.userChoice.findMeals(result) { (anotherResult) in
+                self.mealArray = (anotherResult)
+            }
         }
-        
        tableView.reloadData()
         
         self.refreshControl?.endRefreshing()
     }
     override func viewDidAppear(animated: Bool) {
         self.userChoice.getUserSuggestions(self.currentLocation.longitude, lat: self.currentLocation.latitude) { (result) in
-            //callback: myCallback([MealObject])){
-            self.userChoice.findMeals(result)
-            self.mealArray = self.userChoice.finishedMealsArray
+            
+            self.userChoice.findMeals(result) { (anotherResult) in
+                self.mealArray = anotherResult
+            }
         }
     }
     
@@ -149,6 +150,7 @@ class PlateViewController: UITableViewController, UITableViewDataSource, UITable
         var locValue = locationManager.location.coordinate
         var longitude = locValue.longitude
         var latitude = locValue.latitude
+        println(latitude)
         //var tempLocation = locations[0] as! CLLocation
         
 //        self.userChoice.getUserSuggestions(self.currentLocation.longitude, lat: self.currentLocation.latitude) { (result) in
