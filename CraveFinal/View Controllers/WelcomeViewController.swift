@@ -17,7 +17,7 @@ class WelcomeViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        self.navigationController?.navigationBar.barStyle = UIBarStyle.Black
     }
     
     override func viewWillAppear(animated: Bool) {
