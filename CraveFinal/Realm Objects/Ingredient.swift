@@ -10,7 +10,7 @@ import UIKit
 import RealmSwift
 
 class Ingredient: Object {
-    dynamic var ingredient: String = ""
+    dynamic var ingredient: [String] = []
 }
 
 /*

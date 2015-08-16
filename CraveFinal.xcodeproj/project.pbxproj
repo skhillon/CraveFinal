@@ -17,7 +17,6 @@
 		28579D101B7AAFBA0099A270 /* CraveFinalTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28579D0F1B7AAFBA0099A270 /* CraveFinalTests.swift */; };
 		28579D1A1B7AB16E0099A270 /* TestRealm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28579D191B7AB16E0099A270 /* TestRealm.swift */; };
 		28579D211B7AB4860099A270 /* UserChoiceCollectionDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28579D201B7AB4860099A270 /* UserChoiceCollectionDataSource.swift */; };
-		28579D251B7AB4CF0099A270 /* LocationHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28579D241B7AB4CF0099A270 /* LocationHelper.swift */; };
 		28579D271B7AB4E20099A270 /* Storyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28579D261B7AB4E20099A270 /* Storyboard.swift */; };
 		28579D291B7AB5010099A270 /* RealmString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28579D281B7AB5010099A270 /* RealmString.swift */; };
 		28579D2B1B7AB5150099A270 /* MealObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28579D2A1B7AB5150099A270 /* MealObject.swift */; };
@@ -62,7 +61,6 @@
 		28579D0F1B7AAFBA0099A270 /* CraveFinalTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CraveFinalTests.swift; sourceTree = "<group>"; };
 		28579D191B7AB16E0099A270 /* TestRealm.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TestRealm.swift; path = ../TestRealm.swift; sourceTree = "<group>"; };
 		28579D201B7AB4860099A270 /* UserChoiceCollectionDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UserChoiceCollectionDataSource.swift; path = CraveFinal/Helpers/UserChoiceCollectionDataSource.swift; sourceTree = SOURCE_ROOT; };
-		28579D241B7AB4CF0099A270 /* LocationHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationHelper.swift; sourceTree = "<group>"; };
 		28579D261B7AB4E20099A270 /* Storyboard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Storyboard.swift; sourceTree = "<group>"; };
 		28579D281B7AB5010099A270 /* RealmString.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RealmString.swift; path = ../Models/RealmString.swift; sourceTree = "<group>"; };
 		28579D2A1B7AB5150099A270 /* MealObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MealObject.swift; path = ../Models/MealObject.swift; sourceTree = "<group>"; };
@@ -191,7 +189,6 @@
 			isa = PBXGroup;
 			children = (
 				28579D201B7AB4860099A270 /* UserChoiceCollectionDataSource.swift */,
-				28579D241B7AB4CF0099A270 /* LocationHelper.swift */,
 				28579D261B7AB4E20099A270 /* Storyboard.swift */,
 				281159BC1B7F3577005DC26E /* PaginatedScrollView.swift */,
 			);
@@ -392,7 +389,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				28D48F901B7B3D7C00E459D8 /* Tag.swift in Sources */,
-				28579D251B7AB4CF0099A270 /* LocationHelper.swift in Sources */,
 				28579D211B7AB4860099A270 /* UserChoiceCollectionDataSource.swift in Sources */,
 				28579CFC1B7AAFBA0099A270 /* ViewController.swift in Sources */,
 				28D48F8E1B7B3D3700E459D8 /* Ingredient.swift in Sources */,

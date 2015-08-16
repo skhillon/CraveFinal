@@ -18,24 +18,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     //var locationHelper = LocationHelper.sharedInstance
     
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject :AnyObject]?) -> Bool {
-        var initalViewController: UIViewController!
+        var storyboard = UIStoryboard(name: "Main", bundle: nil)
+        var initalViewController = storyboard.instantiateViewControllerWithIdentifier("Welcome Controller") as! WelcomeViewController
         
         self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
-        
-        var storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let firstLaunch =  NSUserDefaults.standardUserDefaults().boolForKey("FirstLaunch")
-        if !firstLaunch {
-            var initialViewController = storyboard.instantiateViewControllerWithIdentifier("Welcome Controller") as! WelcomeViewController
-            NSUserDefaults.standardUserDefaults().setBool(true, forKey: "FirstLaunch")
-            NSUserDefaults.standardUserDefaults().synchronize()
-            self.window?.rootViewController = initialViewController
-            self.window?.makeKeyAndVisible()
-        } else {
-        var initialViewController = storyboard.instantiateViewControllerWithIdentifier("InitialNavigationController") as! UINavigationController
-
-            self.window?.rootViewController = initialViewController
-            self.window?.makeKeyAndVisible()
-        }
+        self.window?.rootViewController = initalViewController
         return true
     }
     
