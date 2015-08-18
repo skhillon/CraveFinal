@@ -14,8 +14,9 @@ import SwiftyJSON
 import RealmSwift
 
 class UserChoiceCollectionDataSource {
-
+    
     var finishedMealsArray: [MealObject]!
+    
     var numRestaurantsToQuery = 0
     var numQueriesReturned = 0
     
@@ -53,7 +54,7 @@ class UserChoiceCollectionDataSource {
             println(self.ingredientData)
             
             self.foodCategoriesObject = realm.objects(RealmRelevantCategoryTags)
-            self.foodCategories = foodCategoriesObject.first!.relevantTags // is this only getting afghan food?
+            self.foodCategories = foodCategoriesObject.first!.relevantTags
             if self.foodCategories.count > 0 {
                 println("foodCategories is good and food category count is \(self.foodCategories.count)")
             }
@@ -93,13 +94,12 @@ class UserChoiceCollectionDataSource {
         var longitude = long as Double
         var latitude = lat as Double
      
-        
         //println(categories.count)
         println("Ingredient data: \(self.ingredientData.count)")
         
         for tag in categories {
             
-            let requestString: String = "https://api.foursquare.com/v2/venues/search?ll=\(long),\(lat)&categoryId=\(tag)&client_id=\(CLIENT_ID)&client_secret=\(CLIENT_SECRET)&v=20150814"
+            let requestString: String = "https://api.foursquare.com/v2/venues/search?ll=\(longitude),\(latitude)&categoryId=\(tag)&client_id=\(CLIENT_ID)&client_secret=\(CLIENT_SECRET)&v=20150814"
             
             //println(requestString)
             Alamofire.request(.GET, requestString).responseString() {
