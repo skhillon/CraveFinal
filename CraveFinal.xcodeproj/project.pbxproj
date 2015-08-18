@@ -288,6 +288,7 @@
 				TargetAttributes = {
 					28579CF31B7AAFBA0099A270 = {
 						CreatedOnToolsVersion = 6.4;
+						DevelopmentTeam = KAE97MM9RT;
 					};
 					28579D081B7AAFBA0099A270 = {
 						CreatedOnToolsVersion = 6.4;
@@ -538,9 +539,12 @@
 			baseConfigurationReference = EB568C0F2A9E5158D230F67C /* Pods-CraveFinal.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = CraveFinal/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
@@ -549,9 +553,12 @@
 			baseConfigurationReference = 5195CB371D4B1C4AF968886E /* Pods-CraveFinal.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = CraveFinal/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
 		};

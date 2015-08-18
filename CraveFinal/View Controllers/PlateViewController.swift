@@ -21,6 +21,8 @@ class PlateViewController: UITableViewController, UITableViewDataSource, UITable
     var venueIDArray: [String] = []
     var locationManager: CLLocationManager = CLLocationManager()
     var currentLocation: CLLocationCoordinate2D = CLLocationCoordinate2D()
+    var longitude: CLLocationDegrees = CLLocationDegrees()
+    var latitude: CLLocationDegrees = CLLocationDegrees()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -63,7 +65,7 @@ class PlateViewController: UITableViewController, UITableViewDataSource, UITable
         var long = self.currentLocation.longitude
         var lat = self.currentLocation.latitude
         
-        self.userChoice.getUserSuggestions(self.currentLocation.longitude, lat: self.currentLocation.latitude) { (result) in
+        self.userChoice.getUserSuggestions(38.666007/*self.currentLocation.longitude*/, lat: -121.137887/*self.currentLocation.latitude*/) { (result) in
             
             self.userChoice.findMeals(result) { (anotherResult) in
                 self.mealArray = (anotherResult)
@@ -76,7 +78,9 @@ class PlateViewController: UITableViewController, UITableViewDataSource, UITable
 
     }
     override func viewDidAppear(animated: Bool) {
-        self.userChoice.getUserSuggestions(self.currentLocation.longitude, lat: self.currentLocation.latitude) { (result) in
+        println(self.currentLocation.latitude)
+        println(self.currentLocation.longitude)
+        self.userChoice.getUserSuggestions(38.666007/*self.currentLocation.longitude*/, lat: -121.137887/*self.currentLocation.latitude*/) { (result) in
             
             self.userChoice.findMeals(result) { (anotherResult) in
                 self.mealArray = anotherResult
@@ -164,8 +168,8 @@ class PlateViewController: UITableViewController, UITableViewDataSource, UITable
     }
     func locationManager(manager: CLLocationManager!, didUpdateLocations locations: [AnyObject]!) {
         var locValue = locationManager.location.coordinate
-        var longitude = locValue.longitude
-        var latitude = locValue.latitude
+        self.longitude = locValue.longitude
+        self.latitude = locValue.latitude
         //println(latitude)
         //var tempLocation = locations[0] as! CLLocation
         

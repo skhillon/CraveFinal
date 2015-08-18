@@ -14,13 +14,7 @@ import SwiftyJSON
 import RealmSwift
 
 class UserChoiceCollectionDataSource {
-    
-    //    //var currentUser:Results<User>!
-    //    var mealObject = MealObject()
-    //    var foundMeals: List<MealObject> = List<MealObject>()
-    //    var foodCategories: List<RealmString> = List<RealmString>()
-    //
-    //    var ingredientData:List<RealmString> = List<RealmString>()
+
     var finishedMealsArray: [MealObject]!
     var numRestaurantsToQuery = 0
     var numQueriesReturned = 0
@@ -32,39 +26,36 @@ class UserChoiceCollectionDataSource {
     var ingredientDataObject: Results<RealmIngredientLiked>!
     var ingredientData: List<Ingredient> = List<Ingredient>()
     
-    
     var mealObject = MealObject()
     var foundMeals: [MealObject] = []
     var sortedFoundMeals: [MealObject] = []
-    
     
     lazy var numElements: Int = { return self.foodCategories.count }()
     
     let CLIENT_ID = "GBFQRRGTBCGRIYX5H204VMOD1XRQRYDVZW1UCFNFYQVLKZLY"
     let CLIENT_SECRET = "KZRGDLJNGKDNVWSK2YID2WBAKRH2KBQ2ROIXPFW5FOFSNACU"
     
-    //let locationHelper = LocationHelper.sharedInstance
     
     var venueInformation: [(String, Int, String)] = [] //name, distance, venueID
     var finishedVenueIdArray: [String] = []
-    //    var longitude: CLLocationDegrees!
-    //    var latitude: CLLocationDegrees!
+
     
     required init(){
         
         
         self.ingredientDataObject = realm.objects(RealmIngredientLiked)
         
+        
         if self.ingredientDataObject.count != 0 {
             
             println("ingredient Data is good")
-            self.ingredientData = ingredientDataObject.first!.ingredientsLiked //what is this getting?
+            self.ingredientData = ingredientDataObject.first!.ingredientsLiked
+            println(self.ingredientData)
             
-            //currentUser = Realm().objects(User)
             self.foodCategoriesObject = realm.objects(RealmRelevantCategoryTags)
             self.foodCategories = foodCategoriesObject.first!.relevantTags // is this only getting afghan food?
             if self.foodCategories.count > 0 {
-                println("foodCategories is good")
+                println("foodCategories is good and food category count is \(self.foodCategories.count)")
             }
             
             if self.foodCategories.first != nil {
@@ -85,6 +76,7 @@ class UserChoiceCollectionDataSource {
         
         var numCategoriesQueried = 0
         var categories: [String] = []
+        
         for tag in foodCategories {
             categories.append(tag.tag)
         }
@@ -99,7 +91,7 @@ class UserChoiceCollectionDataSource {
         
         for tag in categories {
             
-            let requestString: String = "https://api.foursquare.com/v2/venues/search?ll=37.452042,-122.137489&categoryId=\(tag)&client_id=\(CLIENT_ID)&client_secret=\(CLIENT_SECRET)&v=20150814"
+            let requestString: String = "https://api.foursquare.com/v2/venues/search?ll=\(long),\(lat)&categoryId=\(tag)&client_id=\(CLIENT_ID)&client_secret=\(CLIENT_SECRET)&v=20150814"
             
             //println(requestString)
             Alamofire.request(.GET, requestString).responseString() {
@@ -111,6 +103,7 @@ class UserChoiceCollectionDataSource {
                         // we're OK to parse!
                         
                         let venues = json["response"]["venues"].arrayValue
+                        println(venues)
                         self.numRestaurantsToQuery += venues.count
                         println("Restaurants that match the initial tag search: \(self.numRestaurantsToQuery)")
                         
@@ -123,7 +116,7 @@ class UserChoiceCollectionDataSource {
                             let distance = location!["distance"]!.intValue
                             
                             
-                            let mealObject = MealObject()
+                            /*let mealObject = MealObject()
                             mealObject.nameOfVenue = name
                             mealObject.longitudeOfVenue = location!["lng"]!.doubleValue
                             mealObject.latitudeOfVenue = location!["lat"]!.doubleValue
@@ -131,9 +124,11 @@ class UserChoiceCollectionDataSource {
                             mealObject.distanceToVenue = distance
                             mealObject.venueId = venueId
                             self.foundMeals.append(mealObject)
+                            //println(mealObject)*/
                             let tempTuple = (name, distance, venueId)
                             self.venueInformation.append(tempTuple)
                             
+                            /*println("VenueInformation count is \(self.venueInformation.count) and numElements count is \(self.numElements)")
                             if self.venueInformation.count == self.numElements && self.venueInformation.count == 0 {
                                 //do nothing
                                 println("NOTHING")
@@ -145,10 +140,16 @@ class UserChoiceCollectionDataSource {
                                 println("Number of categories:\(categories.count)")
                                 println("Number of categories  Queried:\(numCategoriesQueried)")
                             }
-                            //println(self.foundMeals)
+                            //println(self.foundMeals)*/
                         }
                         
                         if categories.count ==  numCategoriesQueried {
+                            let tempSortedVenues = self.sortVenues(self.venueInformation)
+                            //println(self.venueInformation)
+                            self.finishedVenueIdArray = self.filterVenues(tempSortedVenues)
+                            println("Number of categories:\(categories.count)")
+                            println("Number of categories  Queried:\(numCategoriesQueried)")
+
                             getUserSuggestionsCallback(self.finishedVenueIdArray)
                         }
                         
@@ -172,6 +173,7 @@ class UserChoiceCollectionDataSource {
         }
         
         var sortedVenueInfo = venueInfo.sorted({sorter($0, $1)})
+        println(sortedVenueInfo)
         
         return sortedVenueInfo
         
@@ -183,7 +185,8 @@ class UserChoiceCollectionDataSource {
         for venueElement in sortedVenueInfo {
             idArray.append(venueElement.2)
         }
-        for index in 0...4 {
+        println("idArray is \(idArray)")
+        for index in 0...self.venueInformation.count - 1 {
             filteredArray.append(idArray[index])
             //filteredArray.insert(idArray[index], atIndex: index)
         }
@@ -200,6 +203,7 @@ class UserChoiceCollectionDataSource {
             
             let requestString = "https://api.foursquare.com/v2/venues/\(venue)/menu?client_id=\(self.CLIENT_ID)&client_secret=\(self.CLIENT_SECRET)&v=20150814"
             println(requestString)
+            println("Venue is \(venue)")
             
             
             Alamofire.request(.GET, requestString).responseString() {
@@ -225,7 +229,10 @@ class UserChoiceCollectionDataSource {
                                 for sub in subheadings {
                                     let entries = sub["entries"].dictionaryValue
                                     let food = entries["items"]!.arrayValue
-                                    //println(food.count)
+                                
+                                    println(food.count)
+                                    
+                                    println("Food count is \(food.count)")
                                     for foodStuff in food {
                                         //println(self.foundMeals.count)
                                         for meal in self.foundMeals {
@@ -274,7 +281,7 @@ class UserChoiceCollectionDataSource {
     
     func finishUp() -> [MealObject] {
         self.searchMealDescriptions(self.foundMeals)
-        println(self.foundMeals)
+        //println(self.foundMeals)
         self.sortedFoundMeals = self.sortMeals(self.foundMeals)
         println(self.sortedFoundMeals)
         return sortedFoundMeals

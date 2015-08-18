@@ -167,9 +167,17 @@ class CategoriesCollectionViewController: UIViewController, UICollectionViewData
         relevantNames.append(self.names)
         
         let arr: [String] = ingredientsArray
+        var arrList: List<RealmString> = List<RealmString>()
+        for a in arr {
+            let realmA = RealmString()
+            realmA.string = a
+            println(realmA)
+            arrList.append(realmA)
+            
+        }
         
         
-        ingredients.ingredient = arr
+        ingredients.ingredient = arrList
         
         
         realm.write {
@@ -204,9 +212,10 @@ class CategoriesCollectionViewController: UIViewController, UICollectionViewData
             case "Afghan":
                 println("Afghan selected")
                 
-                let arr: [String] = ["onions", "lamb", "rice", "lentils", "bolani", "mantwo", "aushak", "kabob"]
+//                let arr: [String] = ["onions", "lamb", "rice", "lentils", "bolani", "mantwo", "aushak", "kabob"]
+                let arr: [String] = ["lentils", "chickpeas", "cardamom", "chili", "cinnamon", "coriander", "cumin", "masala", "ginger", "mustard seed", "onion", "garlic", "turmeric", "rice", "cheese", "chicken", "beans"]
                 
-                createRealm("503288ae91d4c4b30a586d67", nameData: "Afghan", ingredientsArray: arr)
+                createRealm("4bf58dd8d48988d10f941735", nameData: "Indian", ingredientsArray: arr)
                 
                 counter++
 
@@ -232,7 +241,7 @@ class CategoriesCollectionViewController: UIViewController, UICollectionViewData
                 let arr: [String] = ["allspice", "callaloo", "coconut", "molasses", "pigeon", "peas", "pepper", "plantains", "rum", "scotch", "chiles", "turmeric"]
                 createRealm("4bf58dd8d48988d144941735", nameData: "Caribbean", ingredientsArray: arr)
                 
-//                
+                
 //            case "Chinese":
 //                counter++
 //                tags = Tag()
