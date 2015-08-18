@@ -133,7 +133,7 @@ class UserChoiceCollectionDataSource {
     /*
     checks validity of JSON request
     
-    @param: JSON optional response string
+    @param response: JSON optional response string
     @response: integer, most likely 200 or 400, used in if statement in getUserSuggestions()
     */
     func checkForValidity(response: String?) -> Int {
@@ -145,7 +145,7 @@ class UserChoiceCollectionDataSource {
     /*
     creates class-level tuple to be used in findMeals in later version
     
-    @param: array of restaurants
+    @param venueJSONResponse: array of restaurants
     @return void
     */
     func createTuple(venueJSONResponse: [String]) {
@@ -163,6 +163,10 @@ class UserChoiceCollectionDataSource {
     }
 
     /*
+    sorts venue information tuple
+    
+    @param unfilteredVenueInfo: array of tuples containing restaurant name, distance from user, and venueID
+    @return same, but sorted
     */
     func sortVenues(unfilteredVenueInfo: [(String, Int, String)]) -> [(String, Int, String)] {
         //sort by distance
@@ -184,6 +188,12 @@ class UserChoiceCollectionDataSource {
         
     }
     
+    /*
+    filters venues to nearest n venues, either hardcoded or something it depends on what you want. Maybe have user filter it out?
+    
+    @param sortedVenueInfo: what you got from sortedVenueInfo
+    @return: filtered out venueID array of strings.
+    */
     func filterVenues(sortedVenueInfo: [(String, Int, String)]) -> [String] {
         var idArray: [String] = []
         var filteredArray: [String] = []
@@ -217,55 +227,21 @@ class UserChoiceCollectionDataSource {
                 self.numQueriesReturned++
                 println("Number of restaurants whose menus have been successfully parsed: \(self.numQueriesReturned)")
                 
-                if let data = responseBody!.dataUsingEncoding(NSUTF8StringEncoding) {
-                    let json = JSON(data: data)
-                    
-                    if json["meta"]["code"].intValue == 200 { //if #3
-                        let menuContainer = json["response"]["menu"]["menus"].dictionary
+                if self.checkForValidity(responseBody) == 200 {
+                    let menuContainer = json["response"]["menu"]["menus"].dictionary
                         let menuCount = menuContainer!["count"]!.int!
                         //println(menuCount)
                         let menuItems = menuContainer!["items"]?.arrayValue
+                    
+                    
                         if let menuElements = menuItems {
-                            //println(menuElements.count)
-                            for item in menuElements {
-                                let menuSections = item["entries"].dictionaryValue //subheadings in menus
-                                let subheadings = menuSections["items"]!.arrayValue
-                                //println(subheadings.count)
-                                for sub in subheadings {
-                                    let entries = sub["entries"].dictionaryValue
-                                    let food = entries["items"]!.arrayValue
-                                
-                                    println(food.count)
-                                    
-                                    println("Food count is \(food.count)")
-                                    for foodStuff in food {
-                                        //println(self.foundMeals.count)
-                                        for meal in self.foundMeals {
-                                            self.dumbo++
-                                            let mealTitle = foodStuff["name"].stringValue
-                                            let mealDescription = foodStuff["description"].stringValue
-                                            let priceValue = foodStuff["price"].stringValue
-                                            
-                                            meal.mealTitle = mealTitle
-                                            meal.mealDescription = mealDescription
-                                            meal.priceValue = priceValue
-                                            
-                                            
-                                            //meal.pricevalue is nil...oh well?
-                                            //println(meal.priceValue)
-                                            
-                                            
-                                            // THIS CODE IS STILL NEVER RUN
-                                            //if self.mealObject.checkCompleted() {
-                                                                                   }
-                                    }
-                                }
-                            }
+                            println(menuElements.count)
+                            self.assignMealObjects(menuElements)
                         }
-                        //}// end if #4
-                    } else {
-                        println("Error in retrieving JSON")
-                    }
+                        
+                        else {
+                            println("Error in retrieving JSON")
+                        }
                 }
                 
                 println("THE NUMBER OF TOTAL MEALOBJECTS CREATED: \(self.dumbo)")
@@ -283,7 +259,38 @@ class UserChoiceCollectionDataSource {
         
      
     } // end function
-    
+
+    func assignMealObjects(Elements: [AnyObject]) {
+        for item in menuElements {
+            let menuSections = item["entries"].dictionaryValue //subheadings in menus
+            let subheadings = menuSections["items"]!.arrayValue
+            //println(subheadings.count)
+            for sub in subheadings {
+                let entries = sub["entries"].dictionaryValue
+                let food = entries["items"]!.arrayValue
+            
+                println(food.count)
+            
+                println("Food count is \(food.count)")
+            
+                
+                for foodStuff in food {
+                    
+                    for meal in self.foundMeals {
+                        self.dumbo++
+                        let mealTitle = foodStuff["name"].stringValue
+                        let mealDescription = foodStuff["description"].stringValue
+                        let priceValue = foodStuff["price"].stringValue
+                    
+                        meal.mealTitle = mealTitle
+                        meal.mealDescription = mealDescription
+                        meal.priceValue = priceValue
+                    }
+                }
+            }
+        }
+    }
+
     func finishUp() -> [MealObject] {
         self.searchMealDescriptions(self.foundMeals)
         //println(self.foundMeals)
