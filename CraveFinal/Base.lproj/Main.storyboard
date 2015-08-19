@@ -416,6 +416,9 @@
                                                 <exclude reference="p9K-Zp-uQ7"/>
                                             </mask>
                                         </variation>
+                                        <connections>
+                                            <outlet property="categoryName" destination="p7S-1B-YCO" id="thb-9E-Ibh"/>
+                                        </connections>
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>

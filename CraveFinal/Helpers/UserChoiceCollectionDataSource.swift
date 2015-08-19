@@ -103,7 +103,7 @@ class UserChoiceCollectionDataSource {
             
             let requestString: String = "https://api.foursquare.com/v2/venues/search?ll=\(longitude),\(latitude)&categoryId=\(tag)&client_id=\(CLIENT_ID)&client_secret=\(CLIENT_SECRET)&v=20150814"
             
-            println(requestString)
+            //println(requestString)
             Alamofire.request(.GET, requestString).responseString() {
                 (_, _, responseBody, _) in
                 
@@ -115,7 +115,7 @@ class UserChoiceCollectionDataSource {
                     let venues = json["response"]["venues"].arrayValue
                         //println(venues)
                         self.numRestaurantsToQuery += venues.count
-                        println("Restaurants that match the initial tag search: \(self.numRestaurantsToQuery)")
+                        //println("Restaurants that match the initial tag search: \(self.numRestaurantsToQuery)")
                     
                     for venue in venues {
                         let venueDict = venue.dictionary
@@ -164,7 +164,7 @@ class UserChoiceCollectionDataSource {
         }
         
         var sortedVenueInfo = venueInfo.sorted({sorter($0, $1)})
-        println(sortedVenueInfo)
+        //println(sortedVenueInfo)
         
         return sortedVenueInfo
         
@@ -195,21 +195,21 @@ class UserChoiceCollectionDataSource {
     func findMeals(venueTuple: [(String, Int, String)], findMealsCallback: ([MealObject] -> Void)) {
         
         let venuesToSearch = venueTuple
-        println("number of restaurants which will have its menus parsed: \(venuesToSearch.count)")
+        //println("number of restaurants which will have its menus parsed: \(venuesToSearch.count)")
         
         
         for venue in venuesToSearch {
             
             let requestString = "https://api.foursquare.com/v2/venues/\(venue.2)/menu?client_id=\(self.CLIENT_ID)&client_secret=\(self.CLIENT_SECRET)&v=20150814"
-            println(requestString)
-            println("Venue is \(venue)")
+            //println(requestString)
+            //println("Venue is \(venue)")
             
             
             Alamofire.request(.GET, requestString).responseString() {
                 (_, _, responseBody, _) in
                 
                 self.numQueriesReturned++
-                println("Number of restaurants whose menus have been successfully parsed: \(self.numQueriesReturned)")
+                //println("Number of restaurants whose menus have been successfully parsed: \(self.numQueriesReturned)")
                 
                 let data = responseBody!.dataUsingEncoding(NSUTF8StringEncoding)
                 let json = JSON(data: data!)
@@ -222,7 +222,7 @@ class UserChoiceCollectionDataSource {
                     
                     
                         if let menuElements = menuItems {
-                            println(menuElements.count)
+                            //println(menuElements.count)
                             for item in menuElements {
                                 let menuSections = item["entries"].dictionaryValue //subheadings in menus
                                 let subheadings = menuSections["items"]!.arrayValue
@@ -231,9 +231,9 @@ class UserChoiceCollectionDataSource {
                                     let entries = sub["entries"].dictionaryValue
                                     let food = entries["items"]!.arrayValue
                                     
-                                    println(food.count)
+                                    //println(food.count)
                                     
-                                    println("Food count is \(food.count)")
+                                    //println("Food count is \(food.count)")
                                     
                                     
                                     for foodStuff in food {
@@ -276,7 +276,7 @@ class UserChoiceCollectionDataSource {
                 
                 if self.numQueriesReturned == venuesToSearch.count
                 {
-                    println(self.foundMeals.count)
+                    //println(self.foundMeals.count)
                     //self.foundMeals.append(self.mealObject)
                     self.finishedMealsArray = self.finishUp()
                     findMealsCallback(self.finishedMealsArray)
@@ -295,7 +295,7 @@ class UserChoiceCollectionDataSource {
         self.sortedFoundMeals = self.sortMeals(self.foundMeals)
         //println(self.sortedFoundMeals.)
         for meal in self.sortedFoundMeals {
-            println("\(meal.mealTitle)'s score is: \(meal.score)")
+            //println("\(meal.mealTitle)'s score is: \(meal.score)")
         }
         return sortedFoundMeals
     }

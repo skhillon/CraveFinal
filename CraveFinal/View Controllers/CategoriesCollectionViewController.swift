@@ -48,7 +48,7 @@ class CategoriesCollectionViewController: UIViewController, UICollectionViewData
     //var ingredientsToAppend: [String] = []
     let categoryBank = ["Afghan", "African", "American", "Asian", "Caribbean", "Chinese", "Deli", "EastEuro", "French", "German", "Hawaiian", "Indian", "Indonesian", "Italian", "Mediterranean", "Mexican", "Persian", "Pizza", "Seafood", "Thai"]
     
-    let tagImages = ["Afghan.png", "African.png", "American.png", "Asian.png", "Caribbean.png", "Chinese.png", "Deli.png", "EastEuro.png", "French.png", "German.png", "Hawaiian.png", "Indian.png", "Indonesian.png", "Italian.png", "Mediterranean.png", "Mexican.png", "Persian.png", "Pizza.png", "Seafood.png"]
+
     
     
     override func viewDidLoad() {
@@ -171,7 +171,7 @@ class CategoriesCollectionViewController: UIViewController, UICollectionViewData
         for a in arr {
             let realmA = RealmString()
             realmA.string = a
-            println(realmA)
+            //println(realmA)
             arrList.append(realmA)
             
         }
@@ -212,31 +212,47 @@ class CategoriesCollectionViewController: UIViewController, UICollectionViewData
             case "Afghan":
                 println("Afghan selected")
                 
-//                let arr: [String] = ["onions", "lamb", "rice", "lentils", "bolani", "mantwo", "aushak", "kabob"]
-                let arr: [String] = ["lentils", "chickpeas", "cardamom", "chili", "cinnamon", "coriander", "cumin", "masala", "ginger", "mustard seed", "onion", "garlic", "turmeric", "rice", "cheese", "chicken", "beans"]
+                let arr: [String] = ["onions", "lamb", "rice", "lentils", "bolani", "mantwo", "aushak", "kabob"]
                 
                 createRealm("4bf58dd8d48988d10f941735", nameData: "Indian", ingredientsArray: arr)
                 
                 counter++
 
+            case "Indian":
+                println("Indian selected")
+                
+                let arr: [String] = ["lentils", "chickpeas", "cardamom", "chili", "cinnamon", "coriander", "cumin", "masala", "ginger", "mustard seed", "onion", "garlic", "turmeric", "rice", "cheese", "chicken", "beans"]
+                
+                createRealm("4bf58dd8d48988d10f941735", nameData: "Indian", ingredientsArray: arr)
+                
+                counter++
+                
             case "African":
+                println("African selected")
+
                 counter++
                 let arr: [String] = ["corn", "fennel", "miele", "carrot", "scallion", "chicken", "ginger", "garlic", "olive oil", "cumin", "turmeric"]
                 createRealm("4bf58dd8d48988d1c8941735", nameData: "African", ingredientsArray: arr)
         
                 
             case "American":
+                println("American selected")
+
                 counter++
                 let arr: [String] = ["cheese", "chicken", "beef", "onion", "salt", "pepper", "soup", "pasta", "oil", "garlic", "tomato", "sauce", "butter", "milk", "potatoes", "corn"]
                 createRealm("4bf58dd8d48988d14e941735", nameData: "American", ingredientsArray: arr)
                 
             case "Asian":
+                println("Asian selected")
+
                 counter++
                 let arr: [String] = ["soy", "sauce", "rice", "vinegar", "fish", "sriracha", "oyster", "coconut", "curry", "miso", "paste", "sesame", "oil", "sake", "rice", "noodles", "ginger", "lime", "cilantro"]
                 createRealm("4bf58dd8d48988d142941735", nameData: "Asian", ingredientsArray: arr)
                 
             
             case "Caribbean":
+                println("Caribbean selected")
+
                 counter++
                 let arr: [String] = ["allspice", "callaloo", "coconut", "molasses", "pigeon", "peas", "pepper", "plantains", "rum", "scotch", "chiles", "turmeric"]
                 createRealm("4bf58dd8d48988d144941735", nameData: "Caribbean", ingredientsArray: arr)
@@ -817,7 +833,7 @@ class CategoriesCollectionViewController: UIViewController, UICollectionViewData
 ////            var currentUser = User()
 ////            currentUser.relevantCategories = self.categoriesSelected
             default:
-                println("fail")
+                println("Unassigned Category : fail")
                 }
             } else {
                 println("Cannot select more than 5 categories")
