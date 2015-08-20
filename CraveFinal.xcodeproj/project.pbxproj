@@ -25,7 +25,6 @@
 		28579D3B1B7AB5B60099A270 /* ResultsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28579D3A1B7AB5B60099A270 /* ResultsViewController.swift */; };
 		28579D3D1B7AB5D20099A270 /* CategoriesCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28579D3C1B7AB5D20099A270 /* CategoriesCollectionViewController.swift */; };
 		28579D3F1B7AB5E50099A270 /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28579D3E1B7AB5E50099A270 /* WelcomeViewController.swift */; };
-		285868131B7DAF7800AF42E5 /* Food.plist in Resources */ = {isa = PBXBuildFile; fileRef = 285868121B7DAF7800AF42E5 /* Food.plist */; };
 		28838DD21B84DF37004E0BF2 /* CategoryCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28838DD11B84DF37004E0BF2 /* CategoryCollectionViewCell.swift */; };
 		28838DD41B84E630004E0BF2 /* MealCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28838DD31B84E630004E0BF2 /* MealCollection.swift */; };
 		28D48F881B7B3B4C00E459D8 /* RealmIngredientsLiked.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28D48F871B7B3B4C00E459D8 /* RealmIngredientsLiked.swift */; };
@@ -70,7 +69,6 @@
 		28579D3A1B7AB5B60099A270 /* ResultsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResultsViewController.swift; sourceTree = "<group>"; };
 		28579D3C1B7AB5D20099A270 /* CategoriesCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoriesCollectionViewController.swift; sourceTree = "<group>"; };
 		28579D3E1B7AB5E50099A270 /* WelcomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
-		285868121B7DAF7800AF42E5 /* Food.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Food.plist; sourceTree = "<group>"; };
 		28838DD11B84DF37004E0BF2 /* CategoryCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryCollectionViewCell.swift; sourceTree = "<group>"; };
 		28838DD31B84E630004E0BF2 /* MealCollection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MealCollection.swift; sourceTree = "<group>"; };
 		28D48F871B7B3B4C00E459D8 /* RealmIngredientsLiked.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RealmIngredientsLiked.swift; sourceTree = "<group>"; };
@@ -172,7 +170,6 @@
 				28579D361B7AB58C0099A270 /* PlateViewController.swift */,
 				28579D3A1B7AB5B60099A270 /* ResultsViewController.swift */,
 				28579D3C1B7AB5D20099A270 /* CategoriesCollectionViewController.swift */,
-				285868121B7DAF7800AF42E5 /* Food.plist */,
 				28579D3E1B7AB5E50099A270 /* WelcomeViewController.swift */,
 			);
 			path = "View Controllers";
@@ -323,7 +320,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				285868131B7DAF7800AF42E5 /* Food.plist in Resources */,
 				28579CFF1B7AAFBA0099A270 /* Main.storyboard in Resources */,
 				28579D041B7AAFBA0099A270 /* LaunchScreen.xib in Resources */,
 				28579D011B7AAFBA0099A270 /* Images.xcassets in Resources */,

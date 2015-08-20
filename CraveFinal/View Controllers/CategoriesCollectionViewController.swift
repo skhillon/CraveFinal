@@ -46,7 +46,7 @@ class CategoriesCollectionViewController: UIViewController, UICollectionViewData
     //let sectionInsets = UIEdgeInsets(top: 50.0, left: 20.0, bottom: 50.0, right: 20.0)
     
     // ingredientsToAppend: [String] = []
-    let categoryBank = ["Afghan", "African", "American", "Asian", "Caribbean", "Chinese", "Deli", "EastEuro", "French", "German", "Hawaiian", "Indian", "Indonesian", "Italian", "Mediterranean", "Mexican", "Persian", "Pizza", "Seafood", "Thai"]
+    let categoryBank = ["Afghan", "African", "American", "Asian", "Caribbean", "Chinese", "Deli", "Eastern European", "French", "German", "Hawaiian", "Indian", "Indonesian", "Italian", "Mediterranean", "Mexican", "Persian", "Pizza", "Seafood", "Thai"]
     
     let tagImages = ["Afghan.png", "African.png", "American.png", "Asian.png", "Caribbean.png", "Chinese.png", "Deli.png", "EastEuro.png", "French.png", "German.png", "Hawaiian.png", "Indian.png", "Indonesian.png", "Italian.png", "Mediterranean.png", "Mexican.png", "Persian.png", "Pizza.png", "Seafood.png"]
     
@@ -88,11 +88,11 @@ class CategoriesCollectionViewController: UIViewController, UICollectionViewData
         //doneButton = UIBarButtonItem(barButtonSystemItem: .Done, target: self, action: "segueToHomeScreen")
         
         // Do any additional setup after loading the view.
-        
-        if let cvl = collectionViewLayout as? UICollectionViewFlowLayout {
-            let widthOfCollectionView = cvl.collectionViewContentSize().width
-            cvl.itemSize.width = widthOfCollectionView/2.1
-        }
+//        
+//        if let cvl = collectionViewLayout as? UICollectionViewFlowLayout {
+//            let widthOfCollectionView = cvl.collectionViewContentSize().width
+//            cvl.itemSize.width = widthOfCollectionView/2.1
+//        }
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -162,7 +162,7 @@ class CategoriesCollectionViewController: UIViewController, UICollectionViewData
     func collectionView(collectionView: UICollectionView,
         layout collectionViewLayout: UICollectionViewLayout,
         sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
-            return CGSize(width: 120, height: 120)
+            return CGSize(width: 100, height: 50)
     }
     
 //    func collectionView(collectionView: UICollectionView,
@@ -215,7 +215,6 @@ class CategoriesCollectionViewController: UIViewController, UICollectionViewData
             
             let cell = collectionView.cellForItemAtIndexPath(indexPath)
             cell?.alpha = 0.5
-            
             if self.counter < 5 {
             //categoryBank[indexPath.row]
             //self.navigationItem.rightBarButtonItem = doneButton
@@ -288,7 +287,7 @@ class CategoriesCollectionViewController: UIViewController, UICollectionViewData
                 createRealm("4bf58dd8d48988d146941735", nameData: "Deli", ingredientsArray: arr)
                 
                 
-            case "EastEuro":
+            case "Eastern European":
                 counter++
                 println("Eastern European selected")
                 
@@ -399,7 +398,11 @@ class CategoriesCollectionViewController: UIViewController, UICollectionViewData
             default:
                 println("Unassigned Category : fail")
                 }
+                println("Inc Counter is \(counter)")
+
             } else {
+                counter++
+                println("Error Counter is \(counter)")
                 println("Cannot select more than 5 categories")
                 let alert = UIAlertController(title: "Oops!", message: "Cannot select more than 5 categories.", preferredStyle: UIAlertControllerStyle.Alert)
                 let alertAction = UIAlertAction(title: "OK!", style: UIAlertActionStyle.Default) { (UIAlertAction) -> Void in }
@@ -419,6 +422,8 @@ class CategoriesCollectionViewController: UIViewController, UICollectionViewData
             self.relevantIngredientsLiked.ingredientsLiked.removeAtIndex(index)
         }
         counter--
+        println("Dec Counter is \(counter)")
+
     }
     
 }
