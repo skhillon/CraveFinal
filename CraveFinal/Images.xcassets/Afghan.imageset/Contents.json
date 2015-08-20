@@ -2,18 +2,21 @@
   "images" : [
     {
       "idiom" : "universal",
-      "scale" : "1x",
-      "filename" : "Kebab Filled-64.png"
+      "filename" : "Kebab Filled-64.png",
+      "unassigned" : true,
+      "scale" : "1x"
     },
     {
       "idiom" : "universal",
-      "scale" : "2x",
-      "filename" : "Kebab Filled-64-1.png"
+      "filename" : "Kebab Filled-64-1.png",
+      "unassigned" : true,
+      "scale" : "2x"
     },
     {
       "idiom" : "universal",
-      "scale" : "3x",
-      "filename" : "Kebab Filled-64-2.png"
+      "filename" : "Kebab Filled-64-2.png",
+      "unassigned" : true,
+      "scale" : "3x"
     }
   ],
   "info" : {

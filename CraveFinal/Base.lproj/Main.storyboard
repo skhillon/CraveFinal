@@ -367,7 +367,7 @@
                                     <constraint firstAttribute="bottom" secondItem="fco-zK-Owh" secondAttribute="bottom" constant="11" id="e97-zH-aQA"/>
                                 </constraints>
                             </view>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="eG5-iX-Il5" customClass="Categor">
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="eG5-iX-Il5" customClass="CategoryCollectionViewController">
                                 <rect key="frame" x="0.0" y="20" width="600" height="507"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="ANL-qM-WPb">
@@ -384,7 +384,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="160" height="160"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pick me!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="p7S-1B-YCO">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Category Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="p7S-1B-YCO">
                                                     <rect key="frame" x="8" y="123" width="144" height="29"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="29" id="6QB-CS-NmB"/>
@@ -393,31 +393,22 @@
                                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Thai" translatesAutoresizingMaskIntoConstraints="NO" id="Cl7-Ms-uBi">
-                                                    <rect key="frame" x="48" y="34" width="65" height="67"/>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="UYE-Ss-HHX">
+                                                    <rect key="frame" x="40" y="33" width="80" height="80"/>
                                                 </imageView>
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
                                         <color key="backgroundColor" red="0.85490196078431369" green="0.31372549019607843" blue="0.054901960784313725" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
-                                            <constraint firstItem="Cl7-Ms-uBi" firstAttribute="centerX" secondItem="p7S-1B-YCO" secondAttribute="centerX" id="1jJ-TS-7zb"/>
-                                            <constraint firstItem="Cl7-Ms-uBi" firstAttribute="leading" secondItem="luZ-F1-OUx" secondAttribute="leadingMargin" constant="40" id="5VD-pY-Jvb"/>
                                             <constraint firstItem="p7S-1B-YCO" firstAttribute="leading" secondItem="luZ-F1-OUx" secondAttribute="leadingMargin" id="KvU-DT-UCK"/>
-                                            <constraint firstItem="Cl7-Ms-uBi" firstAttribute="top" secondItem="luZ-F1-OUx" secondAttribute="topMargin" constant="26" id="MoI-Hh-dZ5"/>
                                             <constraint firstItem="p7S-1B-YCO" firstAttribute="trailing" secondItem="luZ-F1-OUx" secondAttribute="trailingMargin" id="OxJ-pA-ck5"/>
                                             <constraint firstItem="p7S-1B-YCO" firstAttribute="bottom" secondItem="luZ-F1-OUx" secondAttribute="bottomMargin" id="PbC-VA-Qj4"/>
-                                            <constraint firstItem="p7S-1B-YCO" firstAttribute="top" secondItem="Cl7-Ms-uBi" secondAttribute="bottom" constant="22" id="Tu5-xa-ohF"/>
-                                            <constraint firstItem="Cl7-Ms-uBi" firstAttribute="leading" secondItem="luZ-F1-OUx" secondAttribute="leadingMargin" id="p9K-Zp-uQ7"/>
                                         </constraints>
                                         <size key="customSize" width="160" height="160"/>
-                                        <variation key="default">
-                                            <mask key="constraints">
-                                                <exclude reference="p9K-Zp-uQ7"/>
-                                            </mask>
-                                        </variation>
                                         <connections>
-                                            <outlet property="categoryName" destination="p7S-1B-YCO" id="thb-9E-Ibh"/>
+                                            <outlet property="categoryName" destination="p7S-1B-YCO" id="jvj-0v-tW0"/>
+                                            <outlet property="iconImage" destination="UYE-Ss-HHX" id="xM1-0e-Lf0"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
@@ -472,7 +463,6 @@
     </scenes>
     <resources>
         <image name="Plate" width="50" height="50"/>
-        <image name="Thai" width="64" height="64"/>
         <image name="welcome" width="1600" height="1200"/>
     </resources>
 </document>

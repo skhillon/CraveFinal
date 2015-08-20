@@ -21,12 +21,13 @@
 		28579D291B7AB5010099A270 /* RealmString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28579D281B7AB5010099A270 /* RealmString.swift */; };
 		28579D2B1B7AB5150099A270 /* MealObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28579D2A1B7AB5150099A270 /* MealObject.swift */; };
 		28579D311B7AB5510099A270 /* PlateTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28579D301B7AB5510099A270 /* PlateTableViewCell.swift */; };
-		28579D351B7AB5790099A270 /* CategoryCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28579D341B7AB5790099A270 /* CategoryCollectionViewCell.swift */; };
 		28579D371B7AB58C0099A270 /* PlateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28579D361B7AB58C0099A270 /* PlateViewController.swift */; };
 		28579D3B1B7AB5B60099A270 /* ResultsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28579D3A1B7AB5B60099A270 /* ResultsViewController.swift */; };
 		28579D3D1B7AB5D20099A270 /* CategoriesCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28579D3C1B7AB5D20099A270 /* CategoriesCollectionViewController.swift */; };
 		28579D3F1B7AB5E50099A270 /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28579D3E1B7AB5E50099A270 /* WelcomeViewController.swift */; };
 		285868131B7DAF7800AF42E5 /* Food.plist in Resources */ = {isa = PBXBuildFile; fileRef = 285868121B7DAF7800AF42E5 /* Food.plist */; };
+		28838DD21B84DF37004E0BF2 /* CategoryCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28838DD11B84DF37004E0BF2 /* CategoryCollectionViewCell.swift */; };
+		28838DD41B84E630004E0BF2 /* MealCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28838DD31B84E630004E0BF2 /* MealCollection.swift */; };
 		28D48F881B7B3B4C00E459D8 /* RealmIngredientsLiked.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28D48F871B7B3B4C00E459D8 /* RealmIngredientsLiked.swift */; };
 		28D48F8A1B7B3B7000E459D8 /* RealmRelevantCategoryNames.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28D48F891B7B3B7000E459D8 /* RealmRelevantCategoryNames.swift */; };
 		28D48F8C1B7B3B9B00E459D8 /* RealmRelevantCategoryTags.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28D48F8B1B7B3B9B00E459D8 /* RealmRelevantCategoryTags.swift */; };
@@ -65,12 +66,13 @@
 		28579D281B7AB5010099A270 /* RealmString.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RealmString.swift; path = ../Models/RealmString.swift; sourceTree = "<group>"; };
 		28579D2A1B7AB5150099A270 /* MealObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MealObject.swift; path = ../Models/MealObject.swift; sourceTree = "<group>"; };
 		28579D301B7AB5510099A270 /* PlateTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlateTableViewCell.swift; sourceTree = "<group>"; };
-		28579D341B7AB5790099A270 /* CategoryCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryCollectionViewCell.swift; sourceTree = "<group>"; };
 		28579D361B7AB58C0099A270 /* PlateViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlateViewController.swift; sourceTree = "<group>"; };
 		28579D3A1B7AB5B60099A270 /* ResultsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResultsViewController.swift; sourceTree = "<group>"; };
 		28579D3C1B7AB5D20099A270 /* CategoriesCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoriesCollectionViewController.swift; sourceTree = "<group>"; };
 		28579D3E1B7AB5E50099A270 /* WelcomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
 		285868121B7DAF7800AF42E5 /* Food.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Food.plist; sourceTree = "<group>"; };
+		28838DD11B84DF37004E0BF2 /* CategoryCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryCollectionViewCell.swift; sourceTree = "<group>"; };
+		28838DD31B84E630004E0BF2 /* MealCollection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MealCollection.swift; sourceTree = "<group>"; };
 		28D48F871B7B3B4C00E459D8 /* RealmIngredientsLiked.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RealmIngredientsLiked.swift; sourceTree = "<group>"; };
 		28D48F891B7B3B7000E459D8 /* RealmRelevantCategoryNames.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RealmRelevantCategoryNames.swift; sourceTree = "<group>"; };
 		28D48F8B1B7B3B9B00E459D8 /* RealmRelevantCategoryTags.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RealmRelevantCategoryTags.swift; sourceTree = "<group>"; };
@@ -180,7 +182,8 @@
 			isa = PBXGroup;
 			children = (
 				28579D301B7AB5510099A270 /* PlateTableViewCell.swift */,
-				28579D341B7AB5790099A270 /* CategoryCollectionViewCell.swift */,
+				28838DD11B84DF37004E0BF2 /* CategoryCollectionViewCell.swift */,
+				28838DD31B84E630004E0BF2 /* MealCollection.swift */,
 			);
 			path = ViewCells;
 			sourceTree = "<group>";
@@ -405,10 +408,11 @@
 				28D48F881B7B3B4C00E459D8 /* RealmIngredientsLiked.swift in Sources */,
 				281159BD1B7F3577005DC26E /* PaginatedScrollView.swift in Sources */,
 				28579D311B7AB5510099A270 /* PlateTableViewCell.swift in Sources */,
+				28838DD41B84E630004E0BF2 /* MealCollection.swift in Sources */,
 				28579D2B1B7AB5150099A270 /* MealObject.swift in Sources */,
-				28579D351B7AB5790099A270 /* CategoryCollectionViewCell.swift in Sources */,
 				28579D1A1B7AB16E0099A270 /* TestRealm.swift in Sources */,
 				28579D3F1B7AB5E50099A270 /* WelcomeViewController.swift in Sources */,
+				28838DD21B84DF37004E0BF2 /* CategoryCollectionViewCell.swift in Sources */,
 				28D48F921B7B3D9E00E459D8 /* Name.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

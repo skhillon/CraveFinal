@@ -35,7 +35,7 @@ class CategoriesCollectionViewController: UIViewController, UICollectionViewData
         var color: UIColor
         var isSelected : Bool
     }
-
+ 
     var relevantCategoryTags: RealmRelevantCategoryTags = RealmRelevantCategoryTags()
     
     var relevantCategoryNames: RealmRelevantCategoryNames = RealmRelevantCategoryNames()
@@ -45,15 +45,28 @@ class CategoriesCollectionViewController: UIViewController, UICollectionViewData
     //var doneButton : UIBarButtonItem?
     //let sectionInsets = UIEdgeInsets(top: 50.0, left: 20.0, bottom: 50.0, right: 20.0)
     
-    //var ingredientsToAppend: [String] = []
+    // ingredientsToAppend: [String] = []
     let categoryBank = ["Afghan", "African", "American", "Asian", "Caribbean", "Chinese", "Deli", "EastEuro", "French", "German", "Hawaiian", "Indian", "Indonesian", "Italian", "Mediterranean", "Mexican", "Persian", "Pizza", "Seafood", "Thai"]
     
-
+    let tagImages = ["Afghan.png", "African.png", "American.png", "Asian.png", "Caribbean.png", "Chinese.png", "Deli.png", "EastEuro.png", "French.png", "German.png", "Hawaiian.png", "Indian.png", "Indonesian.png", "Italian.png", "Mediterranean.png", "Mexican.png", "Persian.png", "Pizza.png", "Seafood.png"]
+    
+    var mealCategories: [MealCollection?] = []
+    
+    func loadMealCategories() {
+        for (var i = 0; i < categoryBank.count; i++) {
+            let catLabel: String = categoryBank[i]
+           // let tagImage: UIImage = UIImage(named: tagImages[i])!
+            
+            let mealCollection = MealCollection(name: catLabel/*, icon: tagImage*/)
+            self.mealCategories.append(mealCollection!)
+        }
+    }
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.loadMealCategories()
         
         println("I'M HERE!")
         
@@ -124,8 +137,8 @@ class CategoriesCollectionViewController: UIViewController, UICollectionViewData
         
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("CategoryCell", forIndexPath: indexPath) as! CategoryCollectionViewCell
         
-        //cell.categoryName.text = category
-        //cell.iconImage.images = UIImage(named: tagImages[indexPath.row])
+        cell.categoryName.text = category
+        //cell.iconImage.image = UIImage(named: tagImages[indexPath.row])
 
         //cell.tintColor = UIColor()
         
@@ -256,46 +269,15 @@ class CategoriesCollectionViewController: UIViewController, UICollectionViewData
                 counter++
                 let arr: [String] = ["allspice", "callaloo", "coconut", "molasses", "pigeon", "peas", "pepper", "plantains", "rum", "scotch", "chiles", "turmeric"]
                 createRealm("4bf58dd8d48988d144941735", nameData: "Caribbean", ingredientsArray: arr)
+
                 
+            case "Chinese":
+                println("Chinese selected")
                 
-//            case "Chinese":
-//                counter++
-//                tags = Tag()
-//                names = Name()
-//                ingredients = Ingredient()
-//                tags.tag = "4bf58dd8d48988d145941735"
-//                relevantTags.append(self.tags)
-//                names.name = "Chinese"
-//                relevantNames.append(self.names)
-//                
-//                    let arr: [String] = ["bamboo shoots", "bean", "chile", "noodles", "sticky", "rice", "jasmine", "shiitake", "sichuan", "soy", "sesame ", "water", "chestnuts"]
-//                
-//                for a in arr {
-//                    ingredients.ingredient = a
-//                    relevantIngredients.append(self.ingredients)
-//                }
-//                
-//                realm.write {
-//                    self.relevantCategoryTags.relevantTags.append(self.tags)
-//                    realm.add(self.relevantCategoryTags)
-//                    
-//                    self.relevantCategoryNames.relevantNames.append(self.names)
-//                    realm.add(self.relevantCategoryNames)
-//                    
-//                    self.relevantIngredientsLiked.ingredientsLiked.append(self.ingredients)
-//                    realm.add(self.relevantIngredientsLiked)
-//                }
-////                realm.write {
-////                    self.relevantCategoryTags.relevantTags.append(self.tag)
-////                    self.relevantCategoryNames.relevantNames.append(self.name)
-////                }
-////                let catArray = catHolder.componentsSeparatedByString(",")
-////                for cat in catArray {
-////                    relevantTags.append(cat)
-////                }
-////                let realmString = RealmString()
-////                realmString.string = "Chinese"
-////                categoriesSelected.append(realmString)
+                let arr: [String] = ["bamboo shoots", "bean", "chile", "noodles", "sticky", "rice", "jasmine", "shiitake", "sichuan", "soy", "sesame ", "water", "chestnuts"]
+
+                createRealm("4bf58dd8d48988d146941735", nameData: "Caribbean", ingredientsArray: arr)
+
 //                
 //            case "Deli":
 //                counter++
