@@ -242,158 +242,177 @@ class CategoriesCollectionViewController: UIViewController, UICollectionViewData
             case "African":
                 println("African selected")
 
-                counter++
                 let arr: [String] = ["corn", "fennel", "miele", "carrot", "scallion", "chicken", "ginger", "garlic", "olive oil", "cumin", "turmeric"]
                 createRealm("4bf58dd8d48988d1c8941735", nameData: "African", ingredientsArray: arr)
+                counter++
+
         
                 
             case "American":
                 println("American selected")
 
-                counter++
                 let arr: [String] = ["cheese", "chicken", "beef", "onion", "salt", "pepper", "soup", "pasta", "oil", "garlic", "tomato", "sauce", "butter", "milk", "potatoes", "corn"]
                 createRealm("4bf58dd8d48988d14e941735", nameData: "American", ingredientsArray: arr)
+                counter++
+
                 
             case "Asian":
                 println("Asian selected")
 
-                counter++
                 let arr: [String] = ["soy", "sauce", "rice", "vinegar", "fish", "sriracha", "oyster", "coconut", "curry", "miso", "paste", "sesame", "oil", "sake", "rice", "noodles", "ginger", "lime", "cilantro"]
                 createRealm("4bf58dd8d48988d142941735", nameData: "Asian", ingredientsArray: arr)
+                counter++
+
                 
             
             case "Caribbean":
                 println("Caribbean selected")
 
-                counter++
                 let arr: [String] = ["allspice", "callaloo", "coconut", "molasses", "pigeon", "peas", "pepper", "plantains", "rum", "scotch", "chiles", "turmeric"]
                 createRealm("4bf58dd8d48988d144941735", nameData: "Caribbean", ingredientsArray: arr)
+                counter++
+
 
                 
             case "Chinese":
                 println("Chinese selected")
-                counter++
                 
                 let arr: [String] = ["bamboo shoots", "bean", "chile", "noodles", "sticky", "rice", "jasmine", "shiitake", "sichuan", "soy", "sesame ", "water", "chestnuts"]
 
                 createRealm("4bf58dd8d48988d146941735", nameData: "Caribbean", ingredientsArray: arr)
+                counter++
+
 
                 //fix this below
             case "Deli":
                 println("Deli selected")
-                counter++
                 let arr: [String] = ["cold", "cuts", "salad", "pasta", "potato", "chicken", "tuna", "shrimp", "cheese", "eggplant", "pastrami", "roast beef", "salami", "ham", "turkey", "bologna"]
                 
                 createRealm("4bf58dd8d48988d146941735", nameData: "Deli", ingredientsArray: arr)
+                counter++
+
                 
                 
             case "Eastern European":
-                counter++
                 println("Eastern European selected")
                 
                 let arr: [String] = ["curd", "cheese", "kohlrabi", "peperivka", "kovbasa", "sorrel", "squash", "vegeta"]
                 
                 createRealm("52e81612bcbc57f1066b7a01", nameData: "Eastern European", ingredientsArray: arr)
+                counter++
+
                 
             case "French":
-                counter++
                 println("French selected")
                 
                 let arr: [String] = ["baguette", "butter", "cheese", "fleur", "herbes", "provence", "leeks", "mustard", "olive oil", "shallots", "tarragon", "chicken", "vinegar", "wine"]
 
                 createRealm("4bf58dd8d48988d10c941735", nameData: "French", ingredientsArray: arr)
+                counter++
+
 
             case "German":
-                counter++
                 println("German selected")
                 
                 let arr: [String] = ["pork", "beef", "chicken", "duck", "goose", "prunes", "apples", "venison", "boar", "hare", "pheasant", "trout", "potato", "dumplings", "cabbage", "carrots", "radishes", "turnips", "asparagus"]
 
                 createRealm("4bf58dd8d48988d10d941735", nameData: "German", ingredientsArray: arr)
+                counter++
+
 
             case "Hawaiian":
-                counter++
                 println("Hawaiian selected")
                 
                 let arr: [String] = ["taro", "sweet potato", "purple yam", "breadfruit", "sea", "mineral", "ti", "hala", "limpets", "kukui", "imu", "beef", "pork", "chicken", "butterfish", "soy sauce", "sesame oil", "coconut milk", "squid", "cornstarch"]
 
                 createRealm("52e81612bcbc57f1066b79fe", nameData: "Hawaiian", ingredientsArray: arr)
+                counter++
+
 
                 
             case "Indian":
-                counter++
                 println("Indian selected")
                 
                 let arr: [String] = ["lentils", "chickpeas", "cardamom", "chili", "cinnamon", "coriander", "cumin", "masala", "ginger", "mustard seed", "onion", "garlic", "turmeric", "rice", "cheese", "chicken", "beans"]
 
                 createRealm("4bf58dd8d48988d10f941735", nameData: "Indian", ingredientsArray: arr)
+                counter++
+
 
                 
             case "Indonesian":
-                counter++
                 println("Indonesian selected")
                 
                 let arr: [String] = ["rice", "coconut", "turmeric", "wheat", "noodles", "bakpao", "cakwe", "yam", "sweet", "potato", "taro", "cassava", "maize", "breadfruit", "jackfruit", "spinach", "papaya", "cassava", "cabbage", "potato", "carrot", "beef", "chicken", "duck", "goat", "lamb"]
                 
 
                 createRealm("52960eda3cf9994f4e043ac9", nameData: "Indonesian", ingredientsArray: arr)
+                counter++
+
 
             case "Italian":
-                counter++
                 println("Italian selected")
                 
                 let arr: [String] = ["tomatoes", "pasta", "rice", "flour", "beans", "bread", "artichoke", "olives", "olive oil", "garlic", "prosciutto", "basil", "mozzarella", "balsamic", "wine", "marsala", "parmesan"]
 
                 createRealm("4bf58dd8d48988d110941735", nameData: "Italian", ingredientsArray: arr)
+                counter++
+
                 
             case "Mediterranean":
-                counter++
                 println("Mediterranean selected")
                 
                 let arr: [String] = ["olive oil", "lamb", "onions", "pepper", "tomato", "phyllo", "spinach", "feta", "cheese", "hummus", "chickpeas", "garlic", "eggplant", "cinnamon", "grape", "rice", "chicken", "beef", "tahini"]
 
                 createRealm("4bf58dd8d48988d1c0941735", nameData: "Mediterranean", ingredientsArray: arr)
+                counter++
+
                 
             case "Mexican":
-                counter++
                 println("Mexican selected")
                 
                 let arr: [String] = ["avocadoes", "beans", "cheese", "chipotle", "chocolate", "sour", "cream", "lime", "oregano", "poblanos", "tomatoes", "tortilla", "salsa"]
 
                 createRealm("4bf58dd8d48988d1c1941735", nameData: "Mexican", ingredientsArray: arr)
+                counter++
+
 
             case "Persian":
-                counter++
                 println("Persian selected")
                 
                 let arr: [String] = ["garbanzo beans", "onion", "garlic cloves", "garlic", "parsley", "flour", "salt", "cumin", "coriander", "cardamom", "fava beans", "chickpeas", "pita bread"]
 
                 createRealm("52e81612bcbc57f1066b79f7", nameData: "Persian", ingredientsArray: arr)
+                counter++
+
 
                 
             case "Pizza":
-                counter++
                 println("Pizza selected")
                 
                 let arr: [String] = ["wheat", "flour", "dough", "tomato", "garlic", "onion", "basil", "pepperoni", "bacon", "beef", "chicken", "italian", "sausage", "breast", "salami", "ham", "cheese", "ranch", "marinara"]
 
                 createRealm("4bf58dd8d48988d1ca941735", nameData: "Pizza", ingredientsArray: arr)
+                counter++
+
                 
             case "Seafood":
-                counter++
                 println("Seafood selected")
                 
                 let arr: [String] = ["shrimp", "tuna", "shellfish", "shark", "salmon", "sushi", "squid", "fish", "fillet", "cod", "mackerel", "anchovies"]
 
                 createRealm("4bf58dd8d48988d1d2941735", nameData: "Seafood", ingredientsArray: arr)
+                counter++
+
                 
             case "Thai":
-                counter++
                 println("Thai selected")
                 
                 let arr: [String] = ["fish", "sauce", "nam", "pla", "anchovies", "cilantro", "basil", "coriander", "chile", "coconut", "milk", "palm", "lemongrass", "bamboo", "beancurd", "beansprouts"]
                 
                 createRealm("4bf58dd8d48988d149941735", nameData: "Thai", ingredientsArray: arr)
+                counter++
+
 
             default:
                 println("Unassigned Category : fail")
@@ -413,14 +432,19 @@ class CategoriesCollectionViewController: UIViewController, UICollectionViewData
     
     func collectionView(collectionView: UICollectionView, didDeselectItemAtIndexPath indexPath: NSIndexPath) {
         let index = indexPath.row
+        println("Pre removal index is \(index)")
         
         let cell = collectionView.cellForItemAtIndexPath(indexPath) as! CategoryCollectionViewCell
         cell.alpha = 1.0
         realm.write {
+            // your categories array holds 20. this only holds 5. if you deselect index 17, there is no realm index 17. 
+            // dictionary would work here...
             self.relevantCategoryNames.relevantNames.removeAtIndex(index)
             self.relevantCategoryTags.relevantTags.removeAtIndex(index)
             self.relevantIngredientsLiked.ingredientsLiked.removeAtIndex(index)
         }
+        println("Post removal index is \(index)")
+
         counter--
         println("Dec Counter is \(counter)")
 
