@@ -17,7 +17,7 @@ class UserChoiceCollectionDataSource {
     
     var finishedMealsArray: [MealObject]!
     
-    var tempSortedVenues: [(String, Int, String)]!
+    var tempSortedVenues: [(String, Int, String, Double, Double, String)]!
     
     var numRestaurantsToQuery = 0
     var numQueriesReturned = 0
@@ -39,7 +39,7 @@ class UserChoiceCollectionDataSource {
     let CLIENT_SECRET = "KZRGDLJNGKDNVWSK2YID2WBAKRH2KBQ2ROIXPFW5FOFSNACU"
     
     
-    var venueInformation: [(String, Int, String)] = [] //name, distance, venueID
+    var venueInformation: [(String, Int, String, Double, Double, String)] = [] //name, distance, venueID
     var finishedVenueIdArray: [String] = []
 
     
@@ -84,7 +84,7 @@ class UserChoiceCollectionDataSource {
     @param getUserSuggestionsCallback: A callback which takes the finished VenueID array and returns void. Should change to tuple soon.
     @return void
     */
-    func getUserSuggestions(long: CLLocationDegrees, lat: CLLocationDegrees, getUserSuggestionsCallback: ([(String, Int, String)] -> Void))  {
+    func getUserSuggestions(long: CLLocationDegrees, lat: CLLocationDegrees, getUserSuggestionsCallback: ([(String, Int, String, Double, Double, String)] -> Void))  {
         
         var numCategoriesQueried = 0
         var categories: [String] = []
@@ -101,9 +101,9 @@ class UserChoiceCollectionDataSource {
         
         for tag in categories {
             
-            let requestString: String = "https://api.foursquare.com/v2/venues/search?ll=\(longitude),\(latitude)&categoryId=\(tag)&client_id=\(CLIENT_ID)&client_secret=\(CLIENT_SECRET)&v=20150814"
+            let requestString: String = "https://api.foursquare.com/v2/venues/search?ll=\(latitude),\(longitude)&categoryId=\(tag)&client_id=\(CLIENT_ID)&client_secret=\(CLIENT_SECRET)&v=20150814"
             
-            //println(requestString)
+            println(requestString)
             Alamofire.request(.GET, requestString).responseString() {
                 (_, _, responseBody, _) in
                 
@@ -124,8 +124,12 @@ class UserChoiceCollectionDataSource {
                         let venueId = venueDict!["id"]!.stringValue
                         let location = venueDict!["location"]!.dictionary
                         let distance = location!["distance"]!.intValue
+                        let lng = location!["lng"]!.doubleValue
+                        let lat = location!["lat"]!.doubleValue
+                        let addressArray = location!["formattedAddress"]!.arrayValue
+                        let add = "\(addressArray[0])," + " \(addressArray[1])"
                         
-                        let tempTuple = (name, distance, venueId)
+                        let tempTuple = (name, distance, venueId, lng, lat, add)
                         self.venueInformation.append(tempTuple)
                     }
 
@@ -150,16 +154,16 @@ class UserChoiceCollectionDataSource {
     @param unfilteredVenueInfo: array of tuples containing restaurant name, distance from user, and venueID
     @return same, but sorted
     */
-    func sortVenues(unfilteredVenueInfo: [(String, Int, String)]) -> [(String, Int, String)] {
+    func sortVenues(unfilteredVenueInfo: [(String, Int, String, Double, Double, String)]) -> [(String, Int, String, Double, Double, String)] {
         //sort by distance
         
-        var venueInfo: [(String, Int, String)] = unfilteredVenueInfo
+        var venueInfo: [(String, Int, String, Double, Double, String)] = unfilteredVenueInfo
         
         for venue in venueInfo {
             //println(venue)
         }
         
-        func sorter(t1: (String, Int, String), t2: (String, Int, String)) -> Bool {
+        func sorter(t1: (String, Int, String, Double, Double, String), t2: (String, Int, String, Double, Double, String)) -> Bool {
             return t1.1 < t2.1
         }
         
@@ -192,7 +196,7 @@ class UserChoiceCollectionDataSource {
 //        return filteredArray
 //    }
     
-    func findMeals(venueTuple: [(String, Int, String)], findMealsCallback: ([MealObject] -> Void)) {
+    func findMeals(venueTuple: [(String, Int, String, Double, Double, String)], findMealsCallback: ([MealObject] -> Void)) {
         
         let venuesToSearch = venueTuple
         //println("number of restaurants which will have its menus parsed: \(venuesToSearch.count)")
@@ -250,6 +254,9 @@ class UserChoiceCollectionDataSource {
                                         mealObject.nameOfVenue = venue.0
                                         mealObject.distanceToVenue = venue.1
                                         mealObject.venueId = venue.2
+                                        mealObject.longitudeOfVenue = venue.3
+                                        mealObject.latitudeOfVenue = venue.4
+                                        mealObject.addressofVenue = venue.5
                                         
                                         self.foundMeals.append(mealObject)
                                         
@@ -291,12 +298,7 @@ class UserChoiceCollectionDataSource {
 
     func finishUp() -> [MealObject] {
         self.searchMealDescriptions(self.foundMeals)
-        //println(self.foundMeals)
         self.sortedFoundMeals = self.sortMeals(self.foundMeals)
-        //println(self.sortedFoundMeals.)
-        for meal in self.sortedFoundMeals {
-            //println("\(meal.mealTitle)'s score is: \(meal.score)")
-        }
         return sortedFoundMeals
     }
     
@@ -316,14 +318,16 @@ class UserChoiceCollectionDataSource {
             for word in mealDescriptionWordsArray {
                 description.append(word.lowercaseString)
             }
+            
+            println(description)
             //let userIngredientsLikedArray = self.ingredientData
             
-            mealItem.score = calcScore(description, userArray: self.ingredientData)
+            mealItem.score = calcScore(description, userList: self.ingredientData)
         }
     }
     
-    func calcScore(wordArray: [String], userArray: List<Ingredient>) -> Double {
-        let userIngredientBank = userArray
+    func calcScore(wordArray: [String], userList: List<Ingredient>) -> Double {
+        let userIngredientBank = userList
         var userFound: Double = 0
         let descriptionArray = wordArray
         for word in descriptionArray {

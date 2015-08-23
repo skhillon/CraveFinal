@@ -33,25 +33,15 @@ class PlateViewController: UITableViewController, UITableViewDataSource, UITable
         self.locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
         self.locationManager.distanceFilter = kCLDistanceFilterNone
         self.locationManager.startUpdatingLocation()
-//        println(self.currentLocation.longitude)
-//        println(self.currentLocation.latitude)
-        
-        //location is still 0
-//        for meal in self.mealArray {
-//            println(meal)
-//        }
 
         tableView.dataSource = self
         tableView.delegate = self
         tableView.estimatedRowHeight = 150
         tableView.rowHeight = UITableViewAutomaticDimension
-        
-        //tableView.reloadData()
+
         tableView.separatorStyle = UITableViewCellSeparatorStyle.SingleLine
         tableView.separatorColor = UIColor.grayColor()
-        
-       // titleLabel.text = "Your Plate"
-       // subtitleLabel.text = "What can you see yourself eating?"
+
         
         self.refreshControl = UIRefreshControl()
         self.refreshControl?.backgroundColor = UIColor.orangeColor() // look at MakeNotes for custom colors
@@ -62,31 +52,25 @@ class PlateViewController: UITableViewController, UITableViewDataSource, UITable
     }
     
     func getResults() {
-        var long = self.currentLocation.longitude
-        var lat = self.currentLocation.latitude
+        var long = self.longitude
+        var lat = self.latitude
+        let hardLat = 38.666007
+        let hardLong = -121.137887
         
-        self.userChoice.getUserSuggestions(38.666007/*self.currentLocation.longitude*/, lat: -121.137887/*self.currentLocation.latitude*/) { (result) in
+        self.userChoice.getUserSuggestions(hardLong, lat: hardLat) { (result) in
             
             self.userChoice.findMeals(result) { (anotherResult) in
+                
                 self.mealArray = (anotherResult)
-                       self.tableView.reloadData()
                 
-                
+                self.tableView.reloadData()
                 self.refreshControl?.endRefreshing()
             }
         }
 
     }
     override func viewDidAppear(animated: Bool) {
-        println(self.currentLocation.latitude)
-        println(self.currentLocation.longitude)
-        self.userChoice.getUserSuggestions(38.666007/*self.currentLocation.longitude*/, lat: -121.137887/*self.currentLocation.latitude*/) { (result) in
-            
-            self.userChoice.findMeals(result) { (anotherResult) in
-                self.mealArray = anotherResult
-                self.tableView.reloadData()
-            }
-        }
+        self.getResults()
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -166,22 +150,12 @@ class PlateViewController: UITableViewController, UITableViewDataSource, UITable
         print("cell recreated ")
         //timelineComponent.targetWillDisplayEntry(indexPath.row)
     }
+    
     func locationManager(manager: CLLocationManager!, didUpdateLocations locations: [AnyObject]!) {
         var locValue = locationManager.location.coordinate
         self.longitude = locValue.longitude
         self.latitude = locValue.latitude
-        //println(latitude)
-        //var tempLocation = locations[0] as! CLLocation
-        
-//        self.userChoice.getUserSuggestions(self.currentLocation.longitude, lat: self.currentLocation.latitude) { (result) in
-//            
-//            self.mealArray = self.userChoice.findMeals(result)
-//            
-//        }
-        
-        
-
     
-}
+    }
 
 }

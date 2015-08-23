@@ -26,21 +26,8 @@ class ResultsViewController: UIViewController {
     @IBOutlet weak var venueNameLabel: UILabel!
 
     @IBAction func openMaps(sender: UIButton) {
-        var myCoordinate = CLLocationCoordinate2DMake(self.mealObject.latitudeOfVenue, self.mealObject.longitudeOfVenue)
-        
-        var myPlacemark = MKPlacemark(coordinate: myCoordinate, addressDictionary: nil)
-        
-        var mapItem = MKMapItem(placemark: myPlacemark)
-        
-        mapItem.name = self.mealObject.nameOfVenue
-        
-        //You could also choose: MKLaunchOptionsDirectionsModeWalking
-        var launchOptions = [MKLaunchOptionsDirectionsModeKey : MKLaunchOptionsDirectionsModeDriving]
-        
-        mapItem.openInMapsWithLaunchOptions(launchOptions)
-        
-//        let url = NSURL(string: "http://maps.apple.com/maps?saddr=Current%20Location&daddr=\(self.mealObject.longitudeOfVenue),\(self.mealObject.latitudeOfVenue)")
-//        UIApplication.sharedApplication().openURL(url!)
+        let url = NSURL(string: "http://maps.apple.com/maps?saddr=Current%20Location&daddr=\(self.mealObject.latitudeOfVenue),\(self.mealObject.longitudeOfVenue)")
+        UIApplication.sharedApplication().openURL(url!)
     }
     
     override func viewDidLoad() {
