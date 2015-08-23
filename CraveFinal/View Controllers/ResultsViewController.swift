@@ -53,7 +53,7 @@ class ResultsViewController: UIViewController {
         }
         
         if self.mealObject.mealTitle != "" {
-        self.mealTitleLabel.text = self.mealObject.mealTitle
+        self.mealTitleLabel.text = "self.mealObject.mealTitle"
         } else {
             self.mealTitleLabel.text = "Mystery Meal"
         }

@@ -29,7 +29,7 @@ class WelcomeViewController: UIViewController {
         super.viewDidAppear(animated)
         
         self.titleLabel.text = "Welcome to Crave!"
-        self.instructionsLabel.text = "On the next screen, select your 5 favorite food categories!"
+        self.instructionsLabel.text = "Crave allows you to find meals that you like and the restaurants that offer them."
         self.beginButton.setTitle("LET'S GO!", forState: .Normal)
         //self.beginButton.tintColor = UIColor.blackColor()
     }
