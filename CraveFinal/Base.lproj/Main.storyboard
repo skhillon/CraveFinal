@@ -171,7 +171,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="MealCell" rowHeight="150" id="8m3-B8-9n9" customClass="PlateTableViewCell" customModule="CraveFinal" customModuleProvider="target">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="MealCell" rowHeight="125" id="8m3-B8-9n9" customClass="PlateTableViewCell" customModule="CraveFinal" customModuleProvider="target">
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="8m3-B8-9n9" id="gos-Ja-bbI">
                                     <autoresizingMask key="autoresizingMask"/>
@@ -191,14 +191,20 @@
                                             <color key="textColor" red="0.14901961389999999" green="0.72941178080000002" blue="0.35294118520000001" alpha="1" colorSpace="deviceRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Description" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hbu-Kr-vqa">
-                                            <rect key="frame" x="8" y="46" width="584" height="95.5"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Restaurant Name" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hbu-Kr-vqa">
+                                            <rect key="frame" x="8" y="46" width="321" height="60.5"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="95.5" id="0aE-0c-SJJ"/>
                                                 <constraint firstAttribute="width" secondItem="hbu-Kr-vqa" secondAttribute="height" multiplier="450:79" constant="40.012658227848078" id="bP3-lR-PlW"/>
                                             </constraints>
                                             <fontDescription key="fontDescription" type="italicSystem" pointSize="17"/>
                                             <color key="textColor" red="0.22352941176470587" green="0.27058823529411763" blue="0.32941176470588235" alpha="1" colorSpace="deviceRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Distance" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BQY-9S-JEm">
+                                            <rect key="frame" x="489" y="62" width="103" height="30"/>
+                                            <fontDescription key="fontDescription" type="italicSystem" pointSize="17"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
@@ -215,10 +221,10 @@
                                 </tableViewCellContentView>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <connections>
-                                    <outlet property="descriptionLabel" destination="hbu-Kr-vqa" id="JRw-bq-Rx8"/>
+                                    <outlet property="distanceLabel" destination="BQY-9S-JEm" id="nDI-bt-OAB"/>
                                     <outlet property="mealTitleLabel" destination="dEW-zq-BpJ" id="KvC-0H-ebe"/>
                                     <outlet property="priceLabel" destination="I5Z-7X-bJW" id="P6k-EA-DdW"/>
-                                    <outlet property="restaurantLabel" destination="dEW-zq-BpJ" id="vwm-ZE-ny4"/>
+                                    <outlet property="restLabel" destination="hbu-Kr-vqa" id="gju-fQ-iJX"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>

@@ -11,8 +11,11 @@ import UIKit
 class PlateTableViewCell: UITableViewCell {
     
     @IBOutlet weak var mealTitleLabel: UILabel!
-    @IBOutlet weak var descriptionLabel: UILabel!
+    @IBOutlet weak var restLabel: UILabel!
     @IBOutlet weak var priceLabel: UILabel!
+    @IBOutlet weak var distanceLabel: UILabel!
+    
+    
     
     @IBOutlet weak var restaurantLabel: UILabel! {
         didSet {

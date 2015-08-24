@@ -111,9 +111,15 @@ class PlateViewController: UITableViewController, UITableViewDataSource, UITable
         }
         
         if self.mealArray[indexPath.row].mealDescription != "" {
-        cell.descriptionLabel.text = self.mealArray[indexPath.row].mealDescription
+        cell.restLabel.text = self.mealArray[indexPath.row].nameOfVenue
         } else {
-            cell.descriptionLabel.text = "No description has been provided for this dish."
+            cell.restLabel.text = "No venue found"
+        }
+        
+        if self.mealArray[indexPath.row].distanceToVenue != 0 {
+            cell.distanceLabel.text = "\(self.mealArray[indexPath.row].distanceToVenue)"
+        } else {
+            cell.distanceLabel.text = "Distance n/a"
         }
         
         if self.mealArray[indexPath.row].priceValue != "" {
