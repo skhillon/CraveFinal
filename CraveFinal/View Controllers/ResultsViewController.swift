@@ -45,6 +45,7 @@ class ResultsViewController: UIViewController {
             self.mealTitleLabel.text = "Mystery Meal"
         }
         
+        
         if self.mealObject.mealDescription != "" {
         self.mealDescriptionLabel.text = self.mealObject.mealDescription
         } else {

@@ -303,12 +303,6 @@ class UserChoiceCollectionDataSource {
     }
     
     func searchMealDescriptions(meals: [MealObject]) {
-        
-        //        var mealObjectList = meals
-        //        var mealObjectArray: [MealObject] = []
-        //        for i in 0...mealObjectList.count {
-        //            mealObjectArray.append(mealObjectList[i])
-        //        }
         for mealItem in meals {
             
             let mealDescription = mealItem.mealDescription // [String] of meal descriptions
@@ -319,21 +313,22 @@ class UserChoiceCollectionDataSource {
                 description.append(word.lowercaseString)
             }
             
-            println(description)
+//            println(description)
             //let userIngredientsLikedArray = self.ingredientData
             
-            mealItem.score = calcScore(description, userList: self.ingredientData)
+            mealItem.score = calcScore(description, userIngredientBank: self.ingredientData)
         }
     }
     
-    func calcScore(wordArray: [String], userList: List<Ingredient>) -> Double {
-        let userIngredientBank = userList
+    func calcScore(descriptionArray: [String], userIngredientBank: List<Ingredient>) -> Double {
         var userFound: Double = 0
-        let descriptionArray = wordArray
+        
         for word in descriptionArray {
-            for comparison in userIngredientBank {
-                if word == comparison {
-                    userFound++
+            for bank in userIngredientBank {
+                for ing in bank.ingredient {
+                    if word == ing.string {
+                        userFound++
+                    }
                 }
             }
         }
@@ -349,6 +344,9 @@ class UserChoiceCollectionDataSource {
         //            mealObjectArray.append(mealObjectList[i])
         //        }
         mealArray.sort({ $0.score > $1.score })
+        for meal in mealArray {
+            println("Score: " + "\(meal.score)")
+        }
         return mealArray
     }
 }
