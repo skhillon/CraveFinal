@@ -352,7 +352,7 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "No"
+            shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "CraveFinal/View Controllers/PlateViewController.swift"
@@ -368,7 +368,7 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "No"
+            shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "CraveFinal/View Controllers/PlateViewController.swift"
@@ -400,7 +400,7 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "No"
+            shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "CraveFinal/View Controllers/PlateViewController.swift"
@@ -411,12 +411,44 @@
             endingLineNumber = "60"
             landmarkName = "getResults()"
             landmarkType = "5">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "CraveFinal.PlateViewController.getResults (CraveFinal.PlateViewController)() -&gt; ()"
+                  moduleName = "CraveFinal"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/SarthakKhillon/Desktop/CraveFinal/CraveFinal/View%20Controllers/PlateViewController.swift"
+                  timestampString = "462070825.699885"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "60"
+                  endingLineNumber = "60"
+                  offsetFromSymbolStart = "134">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "CraveFinal.PlateViewController.(getResults (CraveFinal.PlateViewController) -&gt; () -&gt; ()).(closure #1)"
+                  moduleName = "CraveFinal"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/SarthakKhillon/Desktop/CraveFinal/CraveFinal/View%20Controllers/PlateViewController.swift"
+                  timestampString = "462070825.700123"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "62"
+                  endingLineNumber = "62"
+                  offsetFromSymbolStart = "16">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "CraveFinal/Helpers/UserChoiceCollectionDataSource.swift"
@@ -458,6 +490,22 @@
             startingLineNumber = "330"
             endingLineNumber = "330"
             landmarkName = "calcScore(_:userIngredientBank:)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "CraveFinal/Helpers/UserChoiceCollectionDataSource.swift"
+            timestampString = "462070985.116311"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "111"
+            endingLineNumber = "111"
+            landmarkName = "getUserSuggestions(_:lat:getUserSuggestionsCallback:)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

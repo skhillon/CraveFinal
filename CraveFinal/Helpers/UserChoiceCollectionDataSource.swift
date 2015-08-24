@@ -53,7 +53,7 @@ class UserChoiceCollectionDataSource {
             
             println("ingredient Data is good")
             self.ingredientData = ingredientDataObject.first!.ingredientsLiked
-            println(self.ingredientData)
+            //println(self.ingredientData)
             
             self.foodCategoriesObject = realm.objects(RealmRelevantCategoryTags)
             self.foodCategories = foodCategoriesObject.first!.relevantTags
@@ -103,7 +103,7 @@ class UserChoiceCollectionDataSource {
             
             let requestString: String = "https://api.foursquare.com/v2/venues/search?ll=\(latitude),\(longitude)&categoryId=\(tag)&client_id=\(CLIENT_ID)&client_secret=\(CLIENT_SECRET)&v=20150814"
             
-            println(requestString)
+            //println(requestString)
             Alamofire.request(.GET, requestString).responseString() {
                 (_, _, responseBody, _) in
                 
@@ -259,10 +259,10 @@ class UserChoiceCollectionDataSource {
                                         mealObject.addressofVenue = venue.5
                                         
                                         //checks if any of the above values are empty before appending it to the valid foundMeals array
-                                        if mealObject.mealTitle != "" || mealObject.mealDescription != "" || mealObject.priceValue != "" || mealObject.nameOfVenue != "" || mealObject.distanceToVenue != 0 || mealObject.venueId != "" || mealObject.longitudeOfVenue != 0 || mealObject.latitudeOfVenue != 0 || mealObject.addressofVenue != ""
-                                        {
-                                            self.foundMeals.append(mealObject)
-                                        }
+//                                        if mealObject.mealTitle != "" || mealObject.mealDescription != "" || mealObject.priceValue != "" || mealObject.nameOfVenue != "" || mealObject.distanceToVenue != 0 || mealObject.venueId != "" || mealObject.longitudeOfVenue != 0 || mealObject.latitudeOfVenue != 0 || mealObject.addressofVenue != ""
+//                                        {
+//                                            self.foundMeals.append(mealObject)
+//                                        }
                                         
 
                                         
@@ -348,9 +348,6 @@ class UserChoiceCollectionDataSource {
         //            mealObjectArray.append(mealObjectList[i])
         //        }
         mealArray.sort({ $0.score > $1.score })
-        for meal in mealArray {
-            println("Score: " + "\(meal.score)")
-        }
         return mealArray
     }
 }
