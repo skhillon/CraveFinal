@@ -9,6 +9,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>CBZSplashView.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Pods-CraveFinal.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -37,7 +42,17 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>06F43B782A8DA2D69F86D3437931F529</key>
+		<key>420E7717CD669F48DE5D8F5850008C54</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>7C6E6FF09AE67AFB5AF2D5517E755C37</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>819C1C710D75A9D1281666C66E4CFC3B</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -47,12 +62,7 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>8A1B6C11B7A3E065D92D16F98C5504D8</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>9B030902C413AC699A4C91B727C1216A</key>
+		<key>96AEE33F65A2EF4B6B618C95828DF9DE</key>
 		<dict>
 			<key>primary</key>
 			<true/>

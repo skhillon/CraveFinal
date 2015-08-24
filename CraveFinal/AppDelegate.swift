@@ -18,6 +18,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     //var locationHelper = LocationHelper.sharedInstance
     
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject :AnyObject]?) -> Bool {
+        
         var storyboard = UIStoryboard(name: "Main", bundle: nil)
         var initalViewController = storyboard.instantiateViewControllerWithIdentifier("Welcome Controller") as! WelcomeViewController
         

@@ -7,6 +7,7 @@ target 'CraveFinal' do
     pod 'SwiftyJSON'
     pod 'Alamofire', '~> 1.3'
     pod 'SwiftSpinner'
+    pod 'CBZSplashView', '~> 1.0.0'
 end
 
 target 'CraveFinalTests' do

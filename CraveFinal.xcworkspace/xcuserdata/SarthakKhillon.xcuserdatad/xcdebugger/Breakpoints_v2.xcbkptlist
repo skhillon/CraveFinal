@@ -400,7 +400,7 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "CraveFinal/View Controllers/PlateViewController.swift"
@@ -413,14 +413,14 @@
             landmarkType = "5">
             <Locations>
                <Location
-                  shouldBeEnabled = "Yes"
+                  shouldBeEnabled = "No"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
                   symbolName = "CraveFinal.PlateViewController.getResults (CraveFinal.PlateViewController)() -&gt; ()"
                   moduleName = "CraveFinal"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/SarthakKhillon/Desktop/CraveFinal/CraveFinal/View%20Controllers/PlateViewController.swift"
-                  timestampString = "462070825.699885"
+                  timestampString = "462125329.568681"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "60"
@@ -428,14 +428,14 @@
                   offsetFromSymbolStart = "134">
                </Location>
                <Location
-                  shouldBeEnabled = "Yes"
+                  shouldBeEnabled = "No"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
                   symbolName = "CraveFinal.PlateViewController.(getResults (CraveFinal.PlateViewController) -&gt; () -&gt; ()).(closure #1)"
                   moduleName = "CraveFinal"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/SarthakKhillon/Desktop/CraveFinal/CraveFinal/View%20Controllers/PlateViewController.swift"
-                  timestampString = "462070825.700123"
+                  timestampString = "462125329.568918"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "62"
