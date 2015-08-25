@@ -9,6 +9,7 @@
 import UIKit
 import RealmSwift
 import CoreLocation
+//import SwiftSpinner
 
 class PlateViewController: UITableViewController, UITableViewDataSource, UITableViewDelegate, CLLocationManagerDelegate {
     
@@ -57,14 +58,20 @@ class PlateViewController: UITableViewController, UITableViewDataSource, UITable
         let hardLat = 38.666007
         let hardLong = -121.137887
         
+        var success = false
+        
+        //SwiftSpinner.show("Connecting \nto database")
         self.userChoice.getUserSuggestions(hardLong, lat: hardLat) { (result) in
             
+            //SwiftSpinner.show("Finding \nyour meals")
             self.userChoice.findMeals(result) { (anotherResult) in
-                
+                //SwiftSpinner.show("Almost \nthere!")
+                //println(anotherResult)
                 self.mealArray = (anotherResult)
+               // SwiftSpinner.show("Completed", animated: false)
                 
                 self.tableView.reloadData()
-                self.refreshControl?.endRefreshing()
+                //self.refreshControl?.endRefreshing()
             }
         }
 
@@ -117,7 +124,9 @@ class PlateViewController: UITableViewController, UITableViewDataSource, UITable
         }
         
         if self.mealArray[indexPath.row].distanceToVenue != 0 {
-            cell.distanceLabel.text = "\(self.mealArray[indexPath.row].distanceToVenue)"
+            let meterDistance = self.mealArray[indexPath.row].distanceToVenue
+            let mileDistance = round((Double(meterDistance) * 0.000621371 * 1000)/1000)
+            cell.distanceLabel.text = "\(mileDistance)" + " mi"
         } else {
             cell.distanceLabel.text = "Distance n/a"
         }

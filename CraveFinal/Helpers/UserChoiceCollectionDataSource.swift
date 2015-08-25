@@ -103,15 +103,20 @@ class UserChoiceCollectionDataSource {
             
             let requestString: String = "https://api.foursquare.com/v2/venues/search?ll=\(latitude),\(longitude)&categoryId=\(tag)&client_id=\(CLIENT_ID)&client_secret=\(CLIENT_SECRET)&v=20150814"
             
-            //println(requestString)
+            println("venues string is " + "\(requestString)")
             Alamofire.request(.GET, requestString).responseString() {
                 (_, _, responseBody, _) in
                 
                 numCategoriesQueried++
                 let data = responseBody!.dataUsingEncoding(NSUTF8StringEncoding)
                 let json = JSON(data: data!)
+                let checker = json["meta"]["code"].intValue
                 
-                if json["meta"]["code"].intValue == 200 {
+                if checker == 404 {
+                    println("venues request page not found")
+                } else if checker == 403 {
+                    println("venues rate limit exceeded")
+                } else if checker == 200 {
                     let venues = json["response"]["venues"].arrayValue
                         //println(venues)
                         self.numRestaurantsToQuery += venues.count
@@ -205,7 +210,7 @@ class UserChoiceCollectionDataSource {
         for venue in venuesToSearch {
             
             let requestString = "https://api.foursquare.com/v2/venues/\(venue.2)/menu?client_id=\(self.CLIENT_ID)&client_secret=\(self.CLIENT_SECRET)&v=20150814"
-            //println(requestString)
+            println("menu string is " + "\(requestString)")
             //println("Venue is \(venue)")
             
             
@@ -217,8 +222,13 @@ class UserChoiceCollectionDataSource {
                 
                 let data = responseBody!.dataUsingEncoding(NSUTF8StringEncoding)
                 let json = JSON(data: data!)
+                let checker = json["meta"]["code"].intValue
                 
-                if json["meta"]["code"].intValue == 200 {
+                if checker == 404 {
+                    println("meals request page not found")
+                } else if checker == 403 {
+                    println("meals rate limit exceeded")
+                } else if checker == 200 {
                     let menuContainer = json["response"]["menu"]["menus"].dictionary
                         let menuCount = menuContainer!["count"]!.int!
                         //println(menuCount)
@@ -258,11 +268,11 @@ class UserChoiceCollectionDataSource {
                                         mealObject.latitudeOfVenue = venue.4
                                         mealObject.addressofVenue = venue.5
                                         
-                                        //checks if any of the above values are empty before appending it to the valid foundMeals array
-//                                        if mealObject.mealTitle != "" || mealObject.mealDescription != "" || mealObject.priceValue != "" || mealObject.nameOfVenue != "" || mealObject.distanceToVenue != 0 || mealObject.venueId != "" || mealObject.longitudeOfVenue != 0 || mealObject.latitudeOfVenue != 0 || mealObject.addressofVenue != ""
-//                                        {
-//                                            self.foundMeals.append(mealObject)
-//                                        }
+//                                        checks if any of the above values are empty before appending it to the valid foundMeals array
+                                        if mealObject.mealTitle != "" || mealObject.mealDescription != "" || mealObject.priceValue != "" || mealObject.nameOfVenue != "" || mealObject.distanceToVenue != 0 || mealObject.venueId != "" || mealObject.longitudeOfVenue != 0 || mealObject.latitudeOfVenue != 0 || mealObject.addressofVenue != ""
+                                        {
+                                            self.foundMeals.append(mealObject)
+                                        }
                                         
 
                                         
