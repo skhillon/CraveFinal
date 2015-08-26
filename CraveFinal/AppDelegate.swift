@@ -15,7 +15,6 @@ let themeColor = UIColor(red: 0.99, green: 0.90, blue: 0.80, alpha: 1.0)
 class AppDelegate: UIResponder, UIApplicationDelegate {
     
     var window: UIWindow?
-    //var locationHelper = LocationHelper.sharedInstance
     
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject :AnyObject]?) -> Bool {
         
@@ -27,7 +26,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return true
     }
     
-    // How to detect if first time launching
 //    func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
 //        
 //        println("application did finish launching")
@@ -72,10 +70,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 ////        }
 //        return true
 //    }
-    
-    // let urlAccess = authorizeUserUsingClientId("GBFQRRGTBCGRIYX5H204VMOD1XRQRYDVZW1UCFNFYQVLKZLY", callbackURLString: "cravefoodfinder://foursquare", allowShowingAppStore: true)
-    
-    //  let errorCode = accessCodeForFSOAuthURL(urlAccess, error:
     
     func application(application: UIApplication, openURL url: NSURL, sourceApplication: String?, annotation: AnyObject?) -> Bool {
         return true

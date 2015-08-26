@@ -18,6 +18,10 @@ class WelcomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.navigationBar.barStyle = UIBarStyle.Black
+        
+        self.titleLabel.text = "Welcome to Crave!"
+        self.instructionsLabel.text = "Crave allows you to find meals that you like and the restaurants that offer them."
+        self.beginButton.setTitle("LET'S GO!", forState: .Normal)
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -28,9 +32,7 @@ class WelcomeViewController: UIViewController {
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         
-        self.titleLabel.text = "Welcome to Crave!"
-        self.instructionsLabel.text = "Crave allows you to find meals that you like and the restaurants that offer them."
-        self.beginButton.setTitle("LET'S GO!", forState: .Normal)
+
         //self.beginButton.tintColor = UIColor.blackColor()
     }
     

@@ -49,7 +49,7 @@ class PlateViewController: UITableViewController, UITableViewDataSource, UITable
         self.refreshControl?.tintColor = UIColor.whiteColor()
         self.refreshControl?.addTarget(self, action: "getResults", forControlEvents: UIControlEvents.ValueChanged)
         
-        
+        self.getResults()
     }
     
     func getResults() {
@@ -76,8 +76,9 @@ class PlateViewController: UITableViewController, UITableViewDataSource, UITable
         }
 
     }
+    
     override func viewDidAppear(animated: Bool) {
-        self.getResults()
+        
     }
     
     override func viewWillAppear(animated: Bool) {
