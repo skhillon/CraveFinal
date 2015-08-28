@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2802C9F11B8E34E600EAD064 /* IngredientSelectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2802C9F01B8E34E600EAD064 /* IngredientSelectionViewCell.swift */; };
 		281159BD1B7F3577005DC26E /* PaginatedScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 281159BC1B7F3577005DC26E /* PaginatedScrollView.swift */; };
 		284D2C391B7E92A40032C08C /* delete.swift in Sources */ = {isa = PBXBuildFile; fileRef = 284D2C381B7E92A40032C08C /* delete.swift */; };
 		28579CFA1B7AAFBA0099A270 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28579CF91B7AAFBA0099A270 /* AppDelegate.swift */; };
@@ -33,6 +34,7 @@
 		28D48F8E1B7B3D3700E459D8 /* Ingredient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28D48F8D1B7B3D3700E459D8 /* Ingredient.swift */; };
 		28D48F901B7B3D7C00E459D8 /* Tag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28D48F8F1B7B3D7C00E459D8 /* Tag.swift */; };
 		28D48F921B7B3D9E00E459D8 /* Name.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28D48F911B7B3D9E00E459D8 /* Name.swift */; };
+		28FE15A91B8E33CF00DB48FB /* IngredientSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28FE15A81B8E33CF00DB48FB /* IngredientSelectionViewController.swift */; };
 		B132F746385B6E5CA8007271 /* Pods_CraveFinal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A8F99719EFDFF94ED7AC894 /* Pods_CraveFinal.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 /* End PBXBuildFile section */
 
@@ -47,6 +49,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2802C9F01B8E34E600EAD064 /* IngredientSelectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IngredientSelectionViewCell.swift; sourceTree = "<group>"; };
 		281159BC1B7F3577005DC26E /* PaginatedScrollView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaginatedScrollView.swift; sourceTree = "<group>"; };
 		284D2C381B7E92A40032C08C /* delete.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = delete.swift; sourceTree = "<group>"; };
 		28579CF41B7AAFBA0099A270 /* CraveFinal.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CraveFinal.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -77,6 +80,7 @@
 		28D48F8D1B7B3D3700E459D8 /* Ingredient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Ingredient.swift; sourceTree = "<group>"; };
 		28D48F8F1B7B3D7C00E459D8 /* Tag.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tag.swift; sourceTree = "<group>"; };
 		28D48F911B7B3D9E00E459D8 /* Name.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Name.swift; sourceTree = "<group>"; };
+		28FE15A81B8E33CF00DB48FB /* IngredientSelectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IngredientSelectionViewController.swift; sourceTree = "<group>"; };
 		5195CB371D4B1C4AF968886E /* Pods-CraveFinal.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CraveFinal.release.xcconfig"; path = "Pods/Target Support Files/Pods-CraveFinal/Pods-CraveFinal.release.xcconfig"; sourceTree = "<group>"; };
 		5A8F99719EFDFF94ED7AC894 /* Pods_CraveFinal.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CraveFinal.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		EB568C0F2A9E5158D230F67C /* Pods-CraveFinal.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CraveFinal.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CraveFinal/Pods-CraveFinal.debug.xcconfig"; sourceTree = "<group>"; };
@@ -171,6 +175,7 @@
 				28579D3A1B7AB5B60099A270 /* ResultsViewController.swift */,
 				28579D3C1B7AB5D20099A270 /* CategoriesCollectionViewController.swift */,
 				28579D3E1B7AB5E50099A270 /* WelcomeViewController.swift */,
+				28FE15A81B8E33CF00DB48FB /* IngredientSelectionViewController.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -181,6 +186,7 @@
 				28579D301B7AB5510099A270 /* PlateTableViewCell.swift */,
 				28838DD11B84DF37004E0BF2 /* CategoryCollectionViewCell.swift */,
 				28838DD31B84E630004E0BF2 /* MealCollection.swift */,
+				2802C9F01B8E34E600EAD064 /* IngredientSelectionViewCell.swift */,
 			);
 			path = ViewCells;
 			sourceTree = "<group>";
@@ -395,6 +401,7 @@
 				28579D271B7AB4E20099A270 /* Storyboard.swift in Sources */,
 				28D48F8A1B7B3B7000E459D8 /* RealmRelevantCategoryNames.swift in Sources */,
 				284D2C391B7E92A40032C08C /* delete.swift in Sources */,
+				28FE15A91B8E33CF00DB48FB /* IngredientSelectionViewController.swift in Sources */,
 				28579D291B7AB5010099A270 /* RealmString.swift in Sources */,
 				28579D3B1B7AB5B60099A270 /* ResultsViewController.swift in Sources */,
 				28579D371B7AB58C0099A270 /* PlateViewController.swift in Sources */,
@@ -405,6 +412,7 @@
 				281159BD1B7F3577005DC26E /* PaginatedScrollView.swift in Sources */,
 				28579D311B7AB5510099A270 /* PlateTableViewCell.swift in Sources */,
 				28838DD41B84E630004E0BF2 /* MealCollection.swift in Sources */,
+				2802C9F11B8E34E600EAD064 /* IngredientSelectionViewCell.swift in Sources */,
 				28579D2B1B7AB5150099A270 /* MealObject.swift in Sources */,
 				28579D1A1B7AB16E0099A270 /* TestRealm.swift in Sources */,
 				28579D3F1B7AB5E50099A270 /* WelcomeViewController.swift in Sources */,

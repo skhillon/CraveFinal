@@ -13,13 +13,14 @@ import CoreLocation
 
 class PlateViewController: UITableViewController, UITableViewDataSource, UITableViewDelegate, CLLocationManagerDelegate {
     
-//    @IBOutlet weak var titleLabel: UILabel!
-//    @IBOutlet weak var subtitleLabel: UILabel!
-    
     var cellLocation = 0
+    
+    // MARK: Data Model variables
     let userChoice = UserChoiceCollectionDataSource()
     var mealArray: [MealObject] = []
     var venueIDArray: [String] = []
+    
+    // MARK: location variables
     var locationManager: CLLocationManager = CLLocationManager()
     var currentLocation: CLLocationCoordinate2D = CLLocationCoordinate2D()
     var longitude: CLLocationDegrees = CLLocationDegrees()
@@ -75,10 +76,6 @@ class PlateViewController: UITableViewController, UITableViewDataSource, UITable
             }
         }
 
-    }
-    
-    override func viewDidAppear(animated: Bool) {
-        
     }
     
     override func viewWillAppear(animated: Bool) {

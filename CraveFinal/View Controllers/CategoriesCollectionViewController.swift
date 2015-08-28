@@ -45,7 +45,8 @@ class CategoriesCollectionViewController: UIViewController, UICollectionViewData
     //var doneButton : UIBarButtonItem?
     //let sectionInsets = UIEdgeInsets(top: 50.0, left: 20.0, bottom: 50.0, right: 20.0)
     
-    // ingredientsToAppend: [String] = []
+    var categoriesToEdit: [String] = []
+    
     let categoryBank = ["Afghan", "African", "American", "Asian", "Caribbean", "Chinese", "Deli", "Eastern European", "French", "German", "Hawaiian", "Indian", "Indonesian", "Italian", "Mediterranean", "Mexican", "Persian", "Pizza", "Seafood", "Thai"]
     
     let tagImages = ["Afghan.png", "African.png", "American.png", "Asian.png", "Caribbean.png", "Chinese.png", "Deli.png", "EastEuro.png", "French.png", "German.png", "Hawaiian.png", "Indian.png", "Indonesian.png", "Italian.png", "Mediterranean.png", "Mexican.png", "Persian.png", "Pizza.png", "Seafood.png"]
@@ -116,7 +117,14 @@ class CategoriesCollectionViewController: UIViewController, UICollectionViewData
         // Get the new view controller using [segue destinationViewController].
         // Pass the selected object to the new view controller.
         
-        //don't think you need this, since you're going through multiple functions
+        if segue.identifier == "EditSegue" {
+            if let destinationVC = segue.destinationViewController as? IngredientSelectionViewController {
+                destination
+                destinationVC.categoriesToEdit = self.categoriesToEdit
+                destinationVC.relevantIngredients = self.relevantIngredients
+                destinationVC.relevantIngredientsLiked = self.relevantIngredientsLiked
+            }
+        }
     }
     
     
@@ -179,6 +187,8 @@ class CategoriesCollectionViewController: UIViewController, UICollectionViewData
         names.name = nameData
         relevantNames.append(self.names)
         
+        categoriesToEdit.append(nameData)
+        
         let arr: [String] = ingredientsArray
         var arrList: List<RealmString> = List<RealmString>()
         for a in arr {
@@ -214,7 +224,7 @@ class CategoriesCollectionViewController: UIViewController, UICollectionViewData
             
             
             let cell = collectionView.cellForItemAtIndexPath(indexPath)
-            cell?.alpha = 0.5
+            cell?.alpha = 1.0
             if self.counter < 5 {
             //categoryBank[indexPath.row]
             //self.navigationItem.rightBarButtonItem = doneButton
@@ -230,14 +240,14 @@ class CategoriesCollectionViewController: UIViewController, UICollectionViewData
                 
                 counter++
 
-            case "Indian":
-                println("Indian selected")
-                
-                let arr: [String] = ["lentils", "chickpeas", "cardamom", "chili", "cinnamon", "coriander", "cumin", "masala", "ginger", "mustard seed", "onion", "garlic", "turmeric", "rice", "cheese", "chicken", "beans"]
-                
-                createRealm("4bf58dd8d48988d10f941735", nameData: "Indian", ingredientsArray: arr)
-                
-                counter++
+//            case "Indian":
+//                println("Indian selected")
+//                
+//                let arr: [String] = ["lentils", "chickpeas", "cardamom", "chili", "cinnamon", "coriander", "cumin", "masala", "ginger", "mustard seed", "onion", "garlic", "turmeric", "rice", "cheese", "chicken", "beans"]
+//                
+//                createRealm("4bf58dd8d48988d10f941735", nameData: "Indian", ingredientsArray: arr)
+//                
+//                counter++
                 
             case "African":
                 println("African selected")
@@ -435,7 +445,7 @@ class CategoriesCollectionViewController: UIViewController, UICollectionViewData
         println("Pre removal index is \(index)")
         
         let cell = collectionView.cellForItemAtIndexPath(indexPath) as! CategoryCollectionViewCell
-        cell.alpha = 1.0
+        cell.alpha = 0.5
         realm.write {
             // your categories array holds 20. this only holds 5. if you deselect index 17, there is no realm index 17. 
             // dictionary would work here...
