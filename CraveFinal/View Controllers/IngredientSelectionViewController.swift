@@ -216,28 +216,23 @@ class IngredientSelectionViewController: UIViewController, UITableViewDataSource
         
     }
     
-//    func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-//        
-//        var sectionName: String = ""
-//        if (section == 0) {
-//            let tempKeysArray = (categoryInformationDictionary as NSDictionary).allKeysForObject(food0)
-//            sectionName = tempKeysArray[0] as! String
-//        } else if (section == 1) {
-//            let tempKeysArray = (categoryInformationDictionary as NSDictionary).allKeysForObject(food0)
-//            sectionName = tempKeysArray[1] as! String
-//        } else if (section == 2) {
-//            let tempKeysArray = (categoryInformationDictionary as NSDictionary).allKeysForObject(food0)
-//            sectionName = tempKeysArray[2] as! String
-//        } else if section == 3 {
-//            let tempKeysArray = (categoryInformationDictionary as NSDictionary).allKeysForObject(food0)
-//            sectionName = tempKeysArray[3] as! String
-//        } else if section == 4 {
-//            let tempKeysArray = (categoryInformationDictionary as NSDictionary).allKeysForObject(food0)
-//            sectionName = tempKeysArray[4] as! String
-//        }
-//        
-//        return sectionName
-//    }
+    func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        var sectionName = ""
+        
+        if section == 0 {
+            sectionName = selectedCategories[0]
+        } else if section == 1 {
+            sectionName = selectedCategories[1]
+        } else if section == 2 {
+            sectionName = selectedCategories[2]
+        } else if section == 3 {
+            sectionName = selectedCategories[3]
+        } else if section == 4 {
+            sectionName = selectedCategories[4]
+        }
+        
+        return sectionName
+    }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         var cell = tableView.cellForRowAtIndexPath(indexPath) as! IngredientSelectionViewCell

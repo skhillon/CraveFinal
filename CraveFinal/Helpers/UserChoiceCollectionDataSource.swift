@@ -30,11 +30,6 @@ class UserChoiceCollectionDataSource {
     var numElements: Int!
 
     
-//    var foodCategoriesObject: Results<RealmRelevantCategoryTags>!
-//    var foodCategories: List<Tag> = List<Tag>()
-//    var ingredientDataObject: Results<RealmIngredientLiked>!
-//    var ingredientData: List<Ingredient> = List<Ingredient>()
-    
     //var mealObject = MealObject()
     var foundMeals: [MealObject] = []
     var sortedFoundMeals: [MealObject] = []
@@ -47,9 +42,11 @@ class UserChoiceCollectionDataSource {
     var finishedVenueIdArray: [String] = []
 
     
-    required init(){
+    init(){
         foodCategories = ingSelectionVC.selectedTags
         ingredientData = ingSelectionVC.userIngredients
+        println(ingredientData.count)
+        println(foodCategories.count)
         numElements = foodCategories.count
     }
     
@@ -209,24 +206,19 @@ class UserChoiceCollectionDataSource {
                 } else if checker == 200 {
                     let menuContainer = json["response"]["menu"]["menus"].dictionary
                         let menuCount = menuContainer!["count"]!.int!
-                        //println(menuCount)
+
                         let menuItems = menuContainer!["items"]?.arrayValue
                     
                     
                         if let menuElements = menuItems {
-                            //println(menuElements.count)
+
                             for item in menuElements {
                                 let menuSections = item["entries"].dictionaryValue //subheadings in menus
                                 let subheadings = menuSections["items"]!.arrayValue
-                                //println(subheadings.count)
+
                                 for sub in subheadings {
                                     let entries = sub["entries"].dictionaryValue
                                     let food = entries["items"]!.arrayValue
-                                    
-                                    //println(food.count)
-                                    
-                                    //println("Food count is \(food.count)")
-                                    
                                     
                                     for foodStuff in food {
                                         self.dumbo++
@@ -252,15 +244,6 @@ class UserChoiceCollectionDataSource {
                                             self.foundMeals.append(mealObject)
                                         }
                                         
-
-                                        
-//                                        for meal in self.foundMeals {
-//                                           
-//                                            
-//                                            meal.mealTitle = mealTitle
-//                                            meal.mealDescription = mealDescription
-//                                            meal.priceValue = priceValue
-//                                        }
                                     }// for
                                 }
                             }
