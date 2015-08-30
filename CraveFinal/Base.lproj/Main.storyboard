@@ -250,7 +250,7 @@
                     </tableView>
                     <navigationItem key="navigationItem" title="Your Plate" id="Jrh-1k-QJg" colorLabel="IBBuiltInLabel-Orange"/>
                     <connections>
-                        <segue destination="SnV-Np-iDU" kind="show" identifier="plateSegue" id="ffN-uT-7iT"/>
+                        <segue destination="SnV-Np-iDU" kind="show" identifier="ResultSegue" id="ffN-uT-7iT"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JmF-H7-CDJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -639,7 +639,7 @@
                                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                 </state>
                                                 <connections>
-                                                    <segue destination="mC3-0P-BIr" kind="show" id="ZJz-do-M14"/>
+                                                    <segue destination="mC3-0P-BIr" kind="show" identifier="PlateSegue" id="ZJz-do-M14"/>
                                                 </connections>
                                             </button>
                                             <label autoresizesSubviews="NO" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="DONE!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="6" translatesAutoresizingMaskIntoConstraints="NO" id="RSy-xY-dkG">

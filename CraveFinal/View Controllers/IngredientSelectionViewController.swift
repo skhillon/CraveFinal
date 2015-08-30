@@ -252,6 +252,15 @@ class IngredientSelectionViewController: UIViewController, UITableViewDataSource
         println(userIngredients)
     }
     
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier = "PlateSegue" {
+            if let destinationVC = segue.destinationViewController as? PlateViewController {
+                destinationVC.foodCategories = self.selectedCategories
+                destinationVC.ingredientData = self.userIngredients
+            }
+        }
+    }
+    
     /*
     // Override to support conditional editing of the table view.
     override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
