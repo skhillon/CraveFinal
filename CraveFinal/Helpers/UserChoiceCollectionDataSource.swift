@@ -24,16 +24,20 @@ class UserChoiceCollectionDataSource {
     
     var dumbo = 0
     
-    var foodCategoriesObject: Results<RealmRelevantCategoryTags>!
-    var foodCategories: List<Tag> = List<Tag>()
-    var ingredientDataObject: Results<RealmIngredientLiked>!
-    var ingredientData: List<Ingredient> = List<Ingredient>()
+    var ingSelectionVC = IngredientSelectionViewController()
+    var foodCategories: [String]!
+    var ingredientData: [String]!
+    var numElements: Int!
+
+    
+//    var foodCategoriesObject: Results<RealmRelevantCategoryTags>!
+//    var foodCategories: List<Tag> = List<Tag>()
+//    var ingredientDataObject: Results<RealmIngredientLiked>!
+//    var ingredientData: List<Ingredient> = List<Ingredient>()
     
     //var mealObject = MealObject()
     var foundMeals: [MealObject] = []
     var sortedFoundMeals: [MealObject] = []
-    
-    lazy var numElements: Int = { return self.foodCategories.count }()
     
     let CLIENT_ID = "GBFQRRGTBCGRIYX5H204VMOD1XRQRYDVZW1UCFNFYQVLKZLY"
     let CLIENT_SECRET = "KZRGDLJNGKDNVWSK2YID2WBAKRH2KBQ2ROIXPFW5FOFSNACU"
@@ -44,35 +48,9 @@ class UserChoiceCollectionDataSource {
 
     
     required init(){
-        
-        
-        self.ingredientDataObject = realm.objects(RealmIngredientLiked)
-        
-        
-        if self.ingredientDataObject.count != 0 {
-            
-            println("ingredient Data is good")
-            self.ingredientData = ingredientDataObject.first!.ingredientsLiked
-            //println(self.ingredientData)
-            
-            self.foodCategoriesObject = realm.objects(RealmRelevantCategoryTags)
-            self.foodCategories = foodCategoriesObject.first!.relevantTags
-            if self.foodCategories.count > 0 {
-                println("foodCategories is good and food category count is \(self.foodCategories.count)")
-            }
-            
-            if self.foodCategories.first != nil {
-                println("foodCategories contains valid tags")
-                println(self.foodCategories.first)
-            } else {
-                println("foodCategories does not have existing tags")
-            }
-        } else {
-            println("Ingredient data invalid")
-        }
-        
-        //self.ingredientData = currentUser.first!.realIngredientsLiked
-        
+        foodCategories = ingSelectionVC.selectedTags
+        ingredientData = ingSelectionVC.userIngredients
+        numElements = foodCategories.count
     }
     
     
@@ -90,7 +68,7 @@ class UserChoiceCollectionDataSource {
         var categories: [String] = []
         
         for tag in foodCategories {
-            categories.append(tag.tag)
+            categories.append(tag)
         }
         
         var longitude = long as Double
@@ -283,13 +261,15 @@ class UserChoiceCollectionDataSource {
 //                                            meal.mealDescription = mealDescription
 //                                            meal.priceValue = priceValue
 //                                        }
-                                    }
+                                    }// for
                                 }
                             }
 
-                        }
+                        }// if
                     
-                }  else {
+                } // checker elseif
+                
+                else {
                     println("Error in retrieving JSON")
                 }
                 
@@ -334,16 +314,14 @@ class UserChoiceCollectionDataSource {
         }
     }
     
-    func calcScore(descriptionArray: [String], userIngredientBank: List<Ingredient>) -> Double {
+    func calcScore(descriptionArray: [String], userIngredientBank: [String]) -> Double {
         var userFound: Double = 0
         
         for word in descriptionArray {
-            for bank in userIngredientBank {
-                for ing in bank.ingredient {
-                    if word == ing.string {
+            for ing in userIngredientBank {
+                    if word == ing {
                         userFound++
                     }
-                }
             }
         }
         let score = userFound / Double(userIngredientBank.count)

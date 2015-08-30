@@ -15,75 +15,139 @@ let cellIdentifier = "IngredientCell"
 
 class IngredientSelectionViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
+    @IBOutlet weak var titleLabel: UILabel!
+    
+    @IBOutlet weak var subtitleLabel: UILabel!
+    
+    @IBOutlet weak var tableView: UITableView!
+    
     var cellLocation = 0
+    var selectedIngredients: [[String]] = []
+    var userIngredients: [String] = []
+    var selectedTags: [String] = []
     
-    var categoriesToEdit: [String] = []
-    
-    var categoryInformationDictionary: [String: [String]] = [:]
-   
-    var relevantIngredients: [Ingredient]!
-    var ingredients: Ingredient!
-    var relevantIngredientsLiked: RealmIngredientLiked!
-
-    var food0: [String]!
-    var food1: [String]!
-    var food2: [String]!
-    var food3: [String]!
-    var food4: [String]!
-    
-    // MARK: Category Ingredient Arrays
-    var afghanIngredients = ["onions", "lamb", "rice", "lentils", "bolani", "mantwo", "aushak", "kabob"]
-    var africanIngredients = ["corn", "fennel", "miele", "carrot", "scallion", "chicken", "ginger", "garlic", "olive oil", "cumin", "turmeric"]
-    var americanIngredients = ["cheese", "chicken", "beef", "onion", "salt", "pepper", "soup", "pasta", "oil", "garlic", "tomato", "sauce", "butter", "milk", "potatoes", "corn"]
-    var asianIngredients = ["soy", "sauce", "rice", "vinegar", "fish", "sriracha", "oyster", "coconut", "curry", "miso", "paste", "sesame", "oil", "sake", "rice", "noodles", "ginger", "lime", "cilantro"]
-    var caribbeanIngredients = ["allspice", "callaloo", "coconut", "molasses", "pigeon", "peas", "pepper", "plantains", "rum", "scotch", "chiles", "turmeric"]
-    var chineseIngredients = ["bamboo shoots", "bean", "chile", "noodles", "sticky", "rice", "jasmine", "shiitake", "sichuan", "soy", "sesame ", "water", "chestnuts"]
-    var deliIngredients = ["cold", "cuts", "salad", "pasta", "potato", "chicken", "tuna", "shrimp", "cheese", "eggplant", "pastrami", "roast beef", "salami", "ham", "turkey", "bologna"]
-    var easternEuropeanIngredients = ["curd", "cheese", "kohlrabi", "peperivka", "kovbasa", "sorrel", "squash", "vegeta"]
-    var frenchIngredients = ["baguette", "butter", "cheese", "fleur", "herbes", "provence", "leeks", "mustard", "olive oil", "shallots", "tarragon", "chicken", "vinegar", "wine"]
-    var germanIngredients = ["pork", "beef", "chicken", "duck", "goose", "prunes", "apples", "venison", "boar", "hare", "pheasant", "trout", "potato", "dumplings", "cabbage", "carrots", "radishes", "turnips", "asparagus"]
-    var hawaiianIngredients = ["taro", "sweet potato", "purple yam", "breadfruit", "sea", "mineral", "ti", "hala", "limpets", "kukui", "imu", "beef", "pork", "chicken", "butterfish", "soy sauce", "sesame oil", "coconut milk", "squid", "cornstarch"]
-    var indianIngredients = ["lentils", "chickpeas", "cardamom", "chili", "cinnamon", "coriander", "cumin", "masala", "ginger", "mustard seed", "onion", "garlic", "turmeric", "rice", "cheese", "chicken", "beans"]
-    var indonesianIngredients = ["rice", "coconut", "turmeric", "wheat", "noodles", "bakpao", "cakwe", "yam", "sweet", "potato", "taro", "cassava", "maize", "breadfruit", "jackfruit", "spinach", "papaya", "cassava", "cabbage", "potato", "carrot", "beef", "chicken", "duck", "goat", "lamb"]
-    var italianIngredients = ["tomatoes", "pasta", "rice", "flour", "beans", "bread", "artichoke", "olives", "olive oil", "garlic", "prosciutto", "basil", "mozzarella", "balsamic", "wine", "marsala", "parmesan"]
-    var mediterraneanIngredients = ["olive oil", "lamb", "onions", "pepper", "tomato", "phyllo", "spinach", "feta", "cheese", "hummus", "chickpeas", "garlic", "eggplant", "cinnamon", "grape", "rice", "chicken", "beef", "tahini"]
-    var mexicanIngredients = ["avocadoes", "beans", "cheese", "chipotle", "chocolate", "sour", "cream", "lime", "oregano", "poblanos", "tomatoes", "tortilla", "salsa"]
-    var persianIngredients = ["garbanzo beans", "onion", "garlic cloves", "garlic", "parsley", "flour", "salt", "cumin", "coriander", "cardamom", "fava beans", "chickpeas", "pita bread"]
-    var pizzaIngredients = ["wheat", "flour", "dough", "tomato", "garlic", "onion", "basil", "pepperoni", "bacon", "beef", "chicken", "italian", "sausage", "breast", "salami", "ham", "cheese", "ranch", "marinara"]
-    var seafoodIngredients = ["shrimp", "tuna", "shellfish", "shark", "salmon", "sushi", "squid", "fish", "fillet", "cod", "mackerel", "anchovies"]
-    var thaiIngredients = ["fish", "sauce", "nam", "pla", "anchovies", "cilantro", "basil", "coriander", "chile", "coconut", "milk", "palm", "lemongrass", "bamboo", "beancurd", "beansprouts"]
-
-    
-    func addToRealm(ingredientsArray: [String]) {
-    
-        ingredients = Ingredient()
-        let arr: [String] = ingredientsArray
-        
-        var arrList: List<RealmString> = List<RealmString>()
-        
-        for a in arr {
-            let realmA = RealmString
-            realmA.string = a
-            
-            arrList.append(realmA)
-        }
-        
-        ingredients.ingredient = arrList
-        
-        realm.write {
-            self.relevantIngredientsLiked.ingredientsLiked.append(self.ingredients)
-            realm.add(self.relevantIngredientsLiked)
-        }
-        
-    }
-    
-    func removeFromRealm() {} // specify realm write delete
+    var selectedCategories: [String] = []
     
     // MARK: System functions
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        for category in selectedCategories {
+                 //   let category = self.categoryBank[indexPath.row]
+        
+        switch(category) {
+            case "Afghan":
+                let arr: [String] = ["onions", "lamb", "rice", "lentils", "bolani", "mantwo", "aushak", "kabob"]
+                selectedIngredients.append(arr)
+                selectedTags.append("4bf58dd8d48988d10f941735")
 
+        
+                    case "African":
+                        let arr: [String] = ["corn", "fennel", "miele", "carrot", "scallion", "chicken", "ginger", "garlic", "olive oil", "cumin", "turmeric"]
+                        selectedIngredients.append(arr)
+                        selectedTags.append("4bf58dd8d48988d1c8941735")
+        
+        
+        
+                    case "American":
+                        let arr: [String] = ["cheese", "chicken", "beef", "onion", "salt", "pepper", "soup", "pasta", "oil", "garlic", "tomato", "sauce", "butter", "milk", "potatoes", "corn"]
+                        selectedIngredients.append(arr)
+                        selectedTags.append("4bf58dd8d48988d14e941735")
+        
+        
+                    case "Asian":
+                        let arr: [String] = ["soy", "sauce", "rice", "vinegar", "fish", "sriracha", "oyster", "coconut", "curry", "miso", "paste", "sesame", "oil", "sake", "rice", "noodles", "ginger", "lime", "cilantro"]
+                        selectedIngredients.append(arr)
+                        selectedTags.append("4bf58dd8d48988d142941735")
+        
+        
+                    case "Caribbean":
+                        let arr: [String] = ["allspice", "callaloo", "coconut", "molasses", "pigeon", "peas", "pepper", "plantains", "rum", "scotch", "chiles", "turmeric"]
+                        selectedIngredients.append(arr)
+                        selectedTags.append("4bf58dd8d48988d144941735")
+        
+        
+                    case "Chinese":
+                        let arr: [String] = ["bamboo shoots", "bean", "chile", "noodles", "sticky", "rice", "jasmine", "shiitake", "sichuan", "soy", "sesame ", "water", "chestnuts"]
+                        selectedIngredients.append(arr)
+                        selectedTags.append("4bf58dd8d48988d146941735")
+
+                    case "Deli":
+                        let arr: [String] = ["cold", "cuts", "salad", "pasta", "potato", "chicken", "tuna", "shrimp", "cheese", "eggplant", "pastrami", "roast beef", "salami", "ham", "turkey", "bologna"]
+                        selectedIngredients.append(arr)
+                        selectedTags.append("4bf58dd8d48988d146941735")
+        
+                    case "Eastern European":
+                        let arr: [String] = ["curd", "cheese", "kohlrabi", "peperivka", "kovbasa", "sorrel", "squash", "vegeta"]
+                        selectedIngredients.append(arr)
+                        selectedTags.append("52e81612bcbc57f1066b7a01")
+        
+                    case "French":
+                        let arr: [String] = ["baguette", "butter", "cheese", "fleur", "herbes", "provence", "leeks", "mustard", "olive oil", "shallots", "tarragon", "chicken", "vinegar", "wine"]
+                        selectedIngredients.append(arr)
+                        selectedTags.append("4bf58dd8d48988d10c941735")
+        
+                    case "German":
+                        let arr: [String] = ["pork", "beef", "chicken", "duck", "goose", "prunes", "apples", "venison", "boar", "hare", "pheasant", "trout", "potato", "dumplings", "cabbage", "carrots", "radishes", "turnips", "asparagus"]
+                        selectedIngredients.append(arr)
+                        selectedTags.append("4bf58dd8d48988d10d941735")
+        
+                    case "Hawaiian":
+                        let arr: [String] = ["taro", "sweet potato", "purple yam", "breadfruit", "sea", "mineral", "ti", "hala", "limpets", "kukui", "imu", "beef", "pork", "chicken", "butterfish", "soy sauce", "sesame oil", "coconut milk", "squid", "cornstarch"]
+                        selectedIngredients.append(arr)
+                        selectedTags.append("52e81612bcbc57f1066b79fe")
+        
+                    case "Indian":
+                        let arr: [String] = ["lentils", "chickpeas", "cardamom", "chili", "cinnamon", "coriander", "cumin", "masala", "ginger", "mustard seed", "onion", "garlic", "turmeric", "rice", "cheese", "chicken", "beans"]
+                        selectedIngredients.append(arr)
+                        selectedTags.append("4bf58dd8d48988d10f941735")
+        
+                    case "Indonesian":
+                        let arr: [String] = ["rice", "coconut", "turmeric", "wheat", "noodles", "bakpao", "cakwe", "yam", "sweet", "potato", "taro", "cassava", "maize", "breadfruit", "jackfruit", "spinach", "papaya", "cassava", "cabbage", "potato", "carrot", "beef", "chicken", "duck", "goat", "lamb"]
+                        selectedIngredients.append(arr)
+                        selectedTags.append("52960eda3cf9994f4e043ac9")
+        
+                    case "Italian":
+                        let arr: [String] = ["tomatoes", "pasta", "rice", "flour", "beans", "bread", "artichoke", "olives", "olive oil", "garlic", "prosciutto", "basil", "mozzarella", "balsamic", "wine", "marsala", "parmesan"]
+                        selectedIngredients.append(arr)
+                        selectedTags.append("4bf58dd8d48988d110941735")
+        
+                    case "Mediterranean":
+                        let arr: [String] = ["olive oil", "lamb", "onions", "pepper", "tomato", "phyllo", "spinach", "feta", "cheese", "hummus", "chickpeas", "garlic", "eggplant", "cinnamon", "grape", "rice", "chicken", "beef", "tahini"]
+                        selectedIngredients.append(arr)
+                        selectedTags.append("4bf58dd8d48988d1c0941735")
+        
+                    case "Mexican":
+                        let arr: [String] = ["avocadoes", "beans", "cheese", "chipotle", "chocolate", "sour", "cream", "lime", "oregano", "poblanos", "tomatoes", "tortilla", "salsa"]
+                        selectedIngredients.append(arr)
+                        selectedTags.append("4bf58dd8d48988d1c1941735")
+        
+                    case "Persian":
+                        let arr: [String] = ["garbanzo beans", "onion", "garlic cloves", "garlic", "parsley", "flour", "salt", "cumin", "coriander", "cardamom", "fava beans", "chickpeas", "pita bread"]
+                        selectedIngredients.append(arr)
+                        selectedTags.append("52e81612bcbc57f1066b79f7")
+        
+                    case "Pizza":
+                        let arr: [String] = ["wheat", "flour", "dough", "tomato", "garlic", "onion", "basil", "pepperoni", "bacon", "beef", "chicken", "italian", "sausage", "breast", "salami", "ham", "cheese", "ranch", "marinara"]
+                        selectedIngredients.append(arr)
+                        selectedTags.append("4bf58dd8d48988d1ca941735")
+        
+                    case "Seafood":
+                        let arr: [String] = ["shrimp", "tuna", "shellfish", "shark", "salmon", "sushi", "squid", "fish", "fillet", "cod", "mackerel", "anchovies"]
+                        selectedIngredients.append(arr)
+                        selectedTags.append("4bf58dd8d48988d1d2941735")
+            
+                    case "Thai":
+                        let arr: [String] = ["fish", "sauce", "nam", "pla", "anchovies", "cilantro", "basil", "coriander", "chile", "coconut", "milk", "palm", "lemongrass", "bamboo", "beancurd", "beansprouts"]
+                        selectedIngredients.append(arr)
+                        selectedTags.append("4bf58dd8d48988d149941735")
+        
+                    default:
+                        println("Unassigned Category : fail")
+                    }
+                }
+        
         tableView.dataSource = self
         tableView.delegate = self
         tableView.allowsMultipleSelection = true
@@ -105,110 +169,92 @@ class IngredientSelectionViewController: UIViewController, UITableViewDataSource
     
     // MARK: - Table view data source
     
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         // #warning Potentially incomplete method implementation.
         // Return the number of sections.
-        return 5
+        return selectedCategories.count
     }
     
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete method implementation.
-        // Return the number of rows in the section.
-        //println("rows in section is " + "\(section)")
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         var endResult = 0
         if (section == 0) {
-            //newArray = food0
-            endResult = food0.count
+            endResult = selectedIngredients[0].count
         }
         else if (section == 1) {
-            //newArray = food0 + food1
-            endResult = food1.count
+            endResult = selectedIngredients[0].count
         }
         else if (section == 2) {
-            //newArray = food0 + food1 + food2
-            endResult = food2.count
+            endResult = selectedIngredients[0].count
         }
         else if section == 3 {
-            //newArray = food0 + food1 + food2 + food3
-            endResult = food3.count
+            endResult = selectedIngredients[0].count
         }
         else if section == 4 {
-            //newArray = food0 + food1 + food2 + food3 + food4
-            endResult = food4.count
+            endResult = selectedIngredients[0].count
         }
-        //println(newArray)
         return endResult
     }
     
     
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier, forIndexPath: indexPath) as! MealTableViewCell
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier) as! IngredientSelectionViewCell
         
         
         // Configure the cell...
         if indexPath.section == 0 {
-            cell.nameIng.text = food0[indexPath.row]
-            
+            cell.ingredientLabel.text = selectedIngredients[0][indexPath.row]
         } else if indexPath.section == 1 {
-            cell.nameIng.text = food1[indexPath.row]
+            cell.ingredientLabel.text = selectedIngredients[1][indexPath.row]
         } else if indexPath.section == 2 {
-            cell.nameIng.text = food2[indexPath.row]
+            cell.ingredientLabel.text = selectedIngredients[2][indexPath.row]
         } else if indexPath.section == 3 {
-            cell.nameIng.text = food3[indexPath.row]
+            cell.ingredientLabel.text = selectedIngredients[3][indexPath.row]
         } else if indexPath.section == 4 {
-            cell.nameIng.text = food4[indexPath.row]
+            cell.ingredientLabel.text = selectedIngredients[4][indexPath.row]
         }
         return cell
         
     }
     
-    override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        
-        var sectionName: String = ""
-        if (section == 0) {
-            //newArray = food0
-            sectionName = "food0"
-        }
-        else if (section == 1) {
-            //newArray = food0 + food1
-            sectionName = "food1"
-        }
-        else if (section == 2) {
-            //newArray = food0 + food1 + food2
-            sectionName = "food2"
-        }
-        else if section == 3 {
-            //newArray = food0 + food1 + food2 + food3
-            sectionName = "food3"
-        }
-        else if section == 4 {
-            //newArray = food0 + food1 + food2 + food3 + food4
-            sectionName = "food4"
-        }
-        return sectionName
+//    func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+//        
+//        var sectionName: String = ""
+//        if (section == 0) {
+//            let tempKeysArray = (categoryInformationDictionary as NSDictionary).allKeysForObject(food0)
+//            sectionName = tempKeysArray[0] as! String
+//        } else if (section == 1) {
+//            let tempKeysArray = (categoryInformationDictionary as NSDictionary).allKeysForObject(food0)
+//            sectionName = tempKeysArray[1] as! String
+//        } else if (section == 2) {
+//            let tempKeysArray = (categoryInformationDictionary as NSDictionary).allKeysForObject(food0)
+//            sectionName = tempKeysArray[2] as! String
+//        } else if section == 3 {
+//            let tempKeysArray = (categoryInformationDictionary as NSDictionary).allKeysForObject(food0)
+//            sectionName = tempKeysArray[3] as! String
+//        } else if section == 4 {
+//            let tempKeysArray = (categoryInformationDictionary as NSDictionary).allKeysForObject(food0)
+//            sectionName = tempKeysArray[4] as! String
+//        }
+//        
+//        return sectionName
+//    }
+    
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        var cell = tableView.cellForRowAtIndexPath(indexPath) as! IngredientSelectionViewCell
+        self.userIngredients.append(cell.ingredientLabel.text!)
+        println(userIngredients)
     }
     
-    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        var cell = tableView.cellForRowAtIndexPath(indexPath) as! MealTableViewCell
-        //cell!.alpha = 1.0
-        //var selectedText = cell?.textLabel?.text
-        self.selectedIngredients.append(cell.nameIng.text!)
-        //println(cell.nameIng.text!)
-        println(selectedIngredients)
-    }
-    
-    override func tableView(tableView: UITableView, didDeselectRowAtIndexPath indexPath: NSIndexPath) {
-        var cell = tableView.cellForRowAtIndexPath(indexPath) as! MealTableViewCell
-        //let indexToRemove = selectedIngredients.find("\(cell.nameIng.text!)")
-        
+    func tableView(tableView: UITableView, didDeselectRowAtIndexPath indexPath: NSIndexPath) {
+        var cell = tableView.cellForRowAtIndexPath(indexPath) as! IngredientSelectionViewCell
         var found: Int?  // <= will hold the index if it was found, or else will be nil
-        for i in (0...(selectedIngredients.count - 1)) {
-            if selectedIngredients[i] == "\(cell.nameIng.text!)" {
+        for i in (0...(userIngredients.count - 1)) {
+            if userIngredients[i] == "\(cell.ingredientLabel.text!)" {
                 found = i
             }
         }
-        self.selectedIngredients.removeAtIndex(found!)
-        println(selectedIngredients)
+        self.userIngredients.removeAtIndex(found!)
+        println(userIngredients)
     }
     
     /*
