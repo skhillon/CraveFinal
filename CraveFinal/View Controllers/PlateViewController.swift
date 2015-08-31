@@ -388,7 +388,7 @@ class PlateViewController: UITableViewController, UITableViewDataSource, UITable
                                     mealObject.addressofVenue = venue.5
                                     
                                     //                                        checks if any of the above values are empty before appending it to the valid foundMeals array
-                                    if mealObject.mealTitle != "" || mealObject.mealDescription != "" || mealObject.priceValue != "" || mealObject.nameOfVenue != "" || mealObject.distanceToVenue != 0 || mealObject.venueId != "" || mealObject.longitudeOfVenue != 0 || mealObject.latitudeOfVenue != 0 || mealObject.addressofVenue != ""
+                                    if mealObject.mealTitle != "" || mealObject.mealDescription != "" || mealObject.priceValue != "n/a" || mealObject.nameOfVenue != "" || mealObject.distanceToVenue != 0 || mealObject.venueId != "" || mealObject.longitudeOfVenue != 0 || mealObject.latitudeOfVenue != 0 || mealObject.addressofVenue != ""
                                     {
                                         self.foundMeals.append(mealObject)
                                     }

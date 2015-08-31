@@ -182,16 +182,16 @@ class IngredientSelectionViewController: UIViewController, UITableViewDataSource
             endResult = selectedIngredients[0].count
         }
         else if (section == 1) {
-            endResult = selectedIngredients[0].count
+            endResult = selectedIngredients[1].count
         }
         else if (section == 2) {
-            endResult = selectedIngredients[0].count
+            endResult = selectedIngredients[2].count
         }
         else if section == 3 {
-            endResult = selectedIngredients[0].count
+            endResult = selectedIngredients[3].count
         }
         else if section == 4 {
-            endResult = selectedIngredients[0].count
+            endResult = selectedIngredients[4].count
         }
         return endResult
     }
