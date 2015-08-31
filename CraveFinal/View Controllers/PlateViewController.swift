@@ -50,6 +50,7 @@ class PlateViewController: UITableViewController, UITableViewDataSource, UITable
     
     var foundMeals: [MealObject] = []
     var sortedFoundMeals: [MealObject] = []
+    var filteredFoundMeals: [MealObject] = []
     
     let CLIENT_ID = "GBFQRRGTBCGRIYX5H204VMOD1XRQRYDVZW1UCFNFYQVLKZLY"
     let CLIENT_SECRET = "KZRGDLJNGKDNVWSK2YID2WBAKRH2KBQ2ROIXPFW5FOFSNACU"
@@ -400,7 +401,7 @@ class PlateViewController: UITableViewController, UITableViewDataSource, UITable
                                     mealObject.addressofVenue = venue.5
                                     
                                     //                                        checks if any of the above values are empty before appending it to the valid foundMeals array
-                                    if mealObject.mealTitle != "" || mealObject.mealDescription != "" || mealObject.priceValue != "n/a" || mealObject.nameOfVenue != "" || mealObject.distanceToVenue != 0 || mealObject.venueId != "" || mealObject.longitudeOfVenue != 0 || mealObject.latitudeOfVenue != 0 || mealObject.addressofVenue != ""
+                                    if mealObject.mealTitle != "" || mealObject.mealDescription != "" || mealObject.priceValue != "n/a" || mealObject.priceValue != "" || (mealObject.priceValue as NSString).doubleValue < 2.0 || mealObject.nameOfVenue != "" || mealObject.distanceToVenue != 0 || mealObject.venueId != "" || mealObject.longitudeOfVenue != 0 || mealObject.latitudeOfVenue != 0 || mealObject.addressofVenue != ""
                                     {
                                         self.foundMeals.append(mealObject)
                                     }
@@ -437,7 +438,8 @@ class PlateViewController: UITableViewController, UITableViewDataSource, UITable
     func finishUp() -> [MealObject] {
         self.searchMealDescriptions(self.foundMeals)
         self.sortedFoundMeals = self.sortMeals(self.foundMeals)
-        return sortedFoundMeals
+        self.filteredFoundMeals = self.filterMeals(self.sortedFoundMeals)
+        return filteredFoundMeals
     }
     
     func searchMealDescriptions(meals: [MealObject]) {
@@ -481,6 +483,17 @@ class PlateViewController: UITableViewController, UITableViewDataSource, UITable
         //        }
         mealArray.sort({ $0.score > $1.score })
         return mealArray
+    }
+    
+    func filterMeals(meals: [MealObject]) -> [MealObject] {
+        var tempArray: [MealObject] = []
+        for meal in meals {
+            if (meal.priceValue as NSString).doubleValue < 2.0 || meal.priceValue == "" || meal.priceValue == "n/a" || meal.priceValue == "N/A" {
+                tempArray.append(meal)
+            }
+        }
+        
+        return tempArray
     }
     
 }
