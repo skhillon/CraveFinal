@@ -11,7 +11,7 @@ import RealmSwift
 import CoreLocation
 import Alamofire
 import SwiftyJSON
-//import SwiftSpinner
+import SwiftSpinner
 
 class PlateViewController: UITableViewController, UITableViewDataSource, UITableViewDelegate {
     
@@ -59,6 +59,7 @@ class PlateViewController: UITableViewController, UITableViewDataSource, UITable
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        
         tableView.dataSource = self
         tableView.delegate = self
         tableView.estimatedRowHeight = 150
@@ -68,10 +69,10 @@ class PlateViewController: UITableViewController, UITableViewDataSource, UITable
         tableView.separatorColor = UIColor.grayColor()
         
         
-        self.refreshControl = UIRefreshControl()
-        self.refreshControl?.backgroundColor = UIColor.orangeColor() // look at MakeNotes for custom colors
-        self.refreshControl?.tintColor = UIColor.whiteColor()
-        self.refreshControl?.addTarget(self, action: "getResults", forControlEvents: UIControlEvents.ValueChanged)
+//        self.refreshControl = UIRefreshControl()
+//        self.refreshControl?.backgroundColor = UIColor.orangeColor() // look at MakeNotes for custom colors
+//        self.refreshControl?.tintColor = UIColor.whiteColor()
+//        self.refreshControl?.addTarget(self, action: "getResults", forControlEvents: UIControlEvents.ValueChanged)
         
         self.getResults()
     }
@@ -84,15 +85,17 @@ class PlateViewController: UITableViewController, UITableViewDataSource, UITable
         
         var success = false
         
-        //SwiftSpinner.show("Connecting \nto database")
+        SwiftSpinner.show("Connecting \nto database")
         self.getUserSuggestions(hardLong, lat: hardLat) { (result) in
             
-            //SwiftSpinner.show("Finding \nyour meals")
+            
+            
+            SwiftSpinner.show("Finding \nyour meals")
             self.findMeals(result) { (anotherResult) in
-                //SwiftSpinner.show("Almost \nthere!")
+                SwiftSpinner.show("Almost \nthere!")
                 //println(anotherResult)
                 self.mealArray = (anotherResult)
-                // SwiftSpinner.show("Completed", animated: false)
+                SwiftSpinner.show("Completed", animated: false)
                 
                 self.tableView.reloadData()
                 //self.refreshControl?.endRefreshing()
@@ -165,7 +168,7 @@ class PlateViewController: UITableViewController, UITableViewDataSource, UITable
             return 1
         } else {
             var messageLabel: UILabel = UILabel(frame: CGRectMake(0, 0, self.view.bounds.size.width, self.view.bounds.size.height))
-            messageLabel.text = "No data is currently available. Please pull down to refresh."
+            messageLabel.text = "Nothing here!"
             messageLabel.textColor = UIColor.blackColor()
             messageLabel.numberOfLines = 0
             messageLabel.textAlignment = NSTextAlignment.Center
@@ -308,7 +311,7 @@ class PlateViewController: UITableViewController, UITableViewDataSource, UITable
         
         var filteredArray: [(String, Int, String, Double, Double, String)] = []
         
-        for (var i = 0; i < 10; i++) {
+        for (var i = 0; i < 20; i++) {
             filteredArray.append(sortedVenueInfo[i])
         }
         

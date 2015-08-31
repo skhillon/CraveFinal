@@ -10,23 +10,17 @@
             <rect key="frame" x="0.0" y="0.0" width="480" height="480"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Powered by" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zdh-sU-zOT">
-                    <rect key="frame" x="164" y="298" width="99" height="37"/>
-                    <fontDescription key="fontDescription" name="HelveticaNeue-LightItalic" family="Helvetica Neue" pointSize="17"/>
-                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                    <nil key="highlightedColor"/>
-                </label>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="FoursquareLogo" translatesAutoresizingMaskIntoConstraints="NO" id="4Er-i9-stE">
-                    <rect key="frame" x="261" y="287" width="60" height="60"/>
-                </imageView>
-                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="rave" textAlignment="center" lineBreakMode="middleTruncation" baselineAdjustment="alignBaselines" minimumFontSize="18" translatesAutoresizingMaskIntoConstraints="NO" id="kId-c2-rCX">
-                    <rect key="frame" x="164" y="38" width="262" height="159"/>
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="rave" textAlignment="center" lineBreakMode="middleTruncation" baselineAdjustment="alignBaselines" minimumFontSize="18" translatesAutoresizingMaskIntoConstraints="NO" id="kId-c2-rCX">
+                    <rect key="frame" x="164" y="139" width="262" height="200"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="200" id="Mvd-rs-fwm"/>
+                    </constraints>
                     <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="150"/>
                     <color key="textColor" red="0.99215686274509807" green="0.55686274509803924" blue="0.14509803921568626" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Logo" translatesAutoresizingMaskIntoConstraints="NO" id="ZqZ-2q-aW1">
-                    <rect key="frame" x="78" y="54" width="78" height="128"/>
+                    <rect key="frame" x="78" y="175" width="78" height="128"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="78" id="LnK-tW-v3s"/>
                         <constraint firstAttribute="height" constant="128" id="cwl-Vs-Fgx"/>
@@ -37,8 +31,11 @@
             <constraints>
                 <constraint firstAttribute="centerX" secondItem="kId-c2-rCX" secondAttribute="centerX" constant="-55" id="Dw3-fX-gXg"/>
                 <constraint firstAttribute="centerX" secondItem="ZqZ-2q-aW1" secondAttribute="centerX" constant="123" id="FA2-nV-iZE"/>
-                <constraint firstAttribute="centerY" secondItem="kId-c2-rCX" secondAttribute="centerY" constant="122.5" id="IUn-TM-tVn"/>
-                <constraint firstAttribute="centerY" secondItem="ZqZ-2q-aW1" secondAttribute="centerY" constant="122" id="Yy0-R4-pMh"/>
+                <constraint firstAttribute="centerY" secondItem="kId-c2-rCX" secondAttribute="centerY" constant="1.5" id="IUn-TM-tVn"/>
+                <constraint firstAttribute="trailing" secondItem="kId-c2-rCX" secondAttribute="trailing" constant="54" id="Rwx-VS-w8f"/>
+                <constraint firstItem="ZqZ-2q-aW1" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="78" id="V1k-bl-c3h"/>
+                <constraint firstItem="kId-c2-rCX" firstAttribute="leading" secondItem="ZqZ-2q-aW1" secondAttribute="trailing" constant="8" id="VDg-BW-iVw"/>
+                <constraint firstAttribute="centerY" secondItem="ZqZ-2q-aW1" secondAttribute="centerY" constant="1" id="Yy0-R4-pMh"/>
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
@@ -46,7 +43,6 @@
         </view>
     </objects>
     <resources>
-        <image name="FoursquareLogo" width="220" height="263"/>
         <image name="Logo" width="500" height="870"/>
     </resources>
 </document>
