@@ -17,6 +17,8 @@ class PlateViewController: UITableViewController, UITableViewDataSource, UITable
     
     var cellLocation = 0
     
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+    
     // MARK: Data Model variables
     //let userChoice = UserChoiceCollectionDataSource()
     var mealArray: [MealObject] = []
@@ -75,6 +77,17 @@ class PlateViewController: UITableViewController, UITableViewDataSource, UITable
 //        self.refreshControl?.addTarget(self, action: "getResults", forControlEvents: UIControlEvents.ValueChanged)
         
         self.getResults()
+    }
+    
+    func didStartGettingResults(_ : UITableView) {
+        //activityIndicator.sizeToFit()
+        activityIndicator.startAnimating()
+        println("Starting to get results")
+    }
+    
+    func didFinishGettingResults(_ : UITableView) {
+        activityIndicator.stopAnimating()
+        println("finished getting results")
     }
     
     func getResults() {
@@ -311,12 +324,15 @@ class PlateViewController: UITableViewController, UITableViewDataSource, UITable
         
         var filteredArray: [(String, Int, String, Double, Double, String)] = []
         
+        if sortedVenueInfo.count != 0 {
         for (var i = 0; i < 20; i++) {
             filteredArray.append(sortedVenueInfo[i])
         }
         
         for place in filteredArray {
             println(place.1)
+        }
+        
         }
         return filteredArray
     }
