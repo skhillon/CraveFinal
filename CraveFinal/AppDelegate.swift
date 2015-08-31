@@ -8,13 +8,35 @@
 
 import UIKit
 import RealmSwift
+import CoreLocation
 
 let themeColor = UIColor(red: 0.99, green: 0.90, blue: 0.80, alpha: 1.0)
 
+var locManager = CLLocationManager()
+var strLatitude: String = ""
+var strLongitude: String = ""
+
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate {
     
     var window: UIWindow?
+    
+    
+    
+    func StartUpdating() {
+        locManager.delegate = self
+        let status = CLLocationManager.authorizationStatus()
+        locManager.requestWhenInUseAuthorization()
+        locManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
+        locManager.distanceFilter = kCLDistanceFilterNone
+        locManager.startUpdatingLocation()    }
+    
+    func locationManager(manager: CLLocationManager, didUpdateToLocation newLocation: CLLocation, fromLocation oldLocation: CLLocation) {
+        var latitude = newLocation.coordinate.latitude
+        strLatitude = "\(latitude)"
+        var longitude = newLocation.coordinate.longitude
+        strLongitude = "\(longitude)"
+    }
     
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject :AnyObject]?) -> Bool {
         

@@ -13,7 +13,7 @@ import Alamofire
 import SwiftyJSON
 //import SwiftSpinner
 
-class PlateViewController: UITableViewController, UITableViewDataSource, UITableViewDelegate, CLLocationManagerDelegate {
+class PlateViewController: UITableViewController, UITableViewDataSource, UITableViewDelegate {
     
     var cellLocation = 0
     
@@ -22,11 +22,11 @@ class PlateViewController: UITableViewController, UITableViewDataSource, UITable
     var mealArray: [MealObject] = []
     var venueIDArray: [String] = []
     
-    // MARK: location variables
-    var locationManager: CLLocationManager = CLLocationManager()
-    var currentLocation: CLLocationCoordinate2D = CLLocationCoordinate2D()
-    var longitude: CLLocationDegrees = CLLocationDegrees()
-    var latitude: CLLocationDegrees = CLLocationDegrees()
+//    // MARK: location variables
+//    var locationManager: CLLocationManager = CLLocationManager()
+//    var currentLocation: CLLocationCoordinate2D = CLLocationCoordinate2D()
+//    var longitude: CLLocationDegrees = CLLocationDegrees()
+//    var latitude: CLLocationDegrees = CLLocationDegrees()
     
     // MARK: UserChoice properties
     var finishedMealsArray: [MealObject]!
@@ -59,13 +59,6 @@ class PlateViewController: UITableViewController, UITableViewDataSource, UITable
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.locationManager.delegate = self
-        let status = CLLocationManager.authorizationStatus()
-        self.locationManager.requestWhenInUseAuthorization()
-        self.locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
-        self.locationManager.distanceFilter = kCLDistanceFilterNone
-        self.locationManager.startUpdatingLocation()
-        
         tableView.dataSource = self
         tableView.delegate = self
         tableView.estimatedRowHeight = 150
@@ -84,15 +77,15 @@ class PlateViewController: UITableViewController, UITableViewDataSource, UITable
     }
     
     func getResults() {
-        var long = self.longitude
-        var lat = self.latitude
-        let hardLat = 38.666007
-        let hardLong = -121.137887
+//        var long = self.longitude
+//        var lat = self.latitude
+//        let hardLat = 38.666007
+//        let hardLong = -121.137887
         
         var success = false
         
         //SwiftSpinner.show("Connecting \nto database")
-        self.getUserSuggestions(hardLong, lat: hardLat) { (result) in
+        self.getUserSuggestions(strLongitude, lat: strLatitude) { (result) in
             
             //SwiftSpinner.show("Finding \nyour meals")
             self.findMeals(result) { (anotherResult) in
@@ -194,12 +187,12 @@ class PlateViewController: UITableViewController, UITableViewDataSource, UITable
         //timelineComponent.targetWillDisplayEntry(indexPath.row)
     }
     
-    func locationManager(manager: CLLocationManager!, didUpdateLocations locations: [AnyObject]!) {
-        var locValue = locationManager.location.coordinate
-        self.longitude = locValue.longitude
-        self.latitude = locValue.latitude
-        
-    }
+//    func locationManager(manager: CLLocationManager!, didUpdateLocations locations: [AnyObject]!) {
+//        var locValue = locManager.location.coordinate
+//        self.longitude = locValue.longitude
+//        self.latitude = locValue.latitude
+//        
+//    }
     
     // MARK: UserChoiceCollectionDataSource Functions
     
@@ -211,7 +204,7 @@ class PlateViewController: UITableViewController, UITableViewDataSource, UITable
     @param getUserSuggestionsCallback: A callback which takes the finished VenueID array and returns void. Should change to tuple soon.
     @return void
     */
-    func getUserSuggestions(long: CLLocationDegrees, lat: CLLocationDegrees, getUserSuggestionsCallback: ([(String, Int, String, Double, Double, String)] -> Void))  {
+    func getUserSuggestions(long: String, lat: String, getUserSuggestionsCallback: ([(String, Int, String, Double, Double, String)] -> Void))  {
         
         var numCategoriesQueried = 0
         var categories: [String] = []
@@ -220,15 +213,15 @@ class PlateViewController: UITableViewController, UITableViewDataSource, UITable
             categories.append(tag)
         }
         
-        var longitude = long as Double
-        var latitude = lat as Double
+//        var longitude = long as Double
+//        var latitude = lat as Double
         
         //println(categories.count)
         println("Ingredient data: \(self.ingredientData.count)")
         
         for tag in categories {
             
-            let requestString: String = "https://api.foursquare.com/v2/venues/search?ll=\(latitude),\(longitude)&categoryId=\(tag)&client_id=\(CLIENT_ID)&client_secret=\(CLIENT_SECRET)&v=20150814"
+            let requestString: String = "https://api.foursquare.com/v2/venues/search?ll=" + lat + "," + long + "&categoryId=\(tag)&client_id=\(CLIENT_ID)&client_secret=\(CLIENT_SECRET)&v=20150814"
             
             println("venues string is " + "\(requestString)")
             Alamofire.request(.GET, requestString).responseString() {
