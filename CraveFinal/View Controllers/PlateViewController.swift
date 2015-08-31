@@ -38,9 +38,10 @@ class PlateViewController: UITableViewController, UITableViewDataSource, UITable
     
     var dumbo = 0
     
-    //var ingSelectionVC = IngredientSelectionViewController()
-    var foodCategories: [String] = []
-    var ingredientData: [String] = []
+    //passed from IngredientSelectionViewController
+    var foodCategories: [String]!
+    var ingredientData: [String]!
+
     lazy var numElements: Int = { self.ingredientData.count }()
     
     

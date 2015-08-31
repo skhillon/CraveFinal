@@ -26,7 +26,8 @@ class IngredientSelectionViewController: UIViewController, UITableViewDataSource
     var userIngredients: [String] = []
     var selectedTags: [String] = []
     
-    var selectedCategories: [String] = []
+    //passed from CategoryCollectionVC
+    var selectedCategories: [String]!
     
     // MARK: System functions
 
@@ -253,11 +254,10 @@ class IngredientSelectionViewController: UIViewController, UITableViewDataSource
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if segue.identifier = "PlateSegue" {
-            if let destinationVC = segue.destinationViewController as? PlateViewController {
-                destinationVC.foodCategories = self.selectedCategories
-                destinationVC.ingredientData = self.userIngredients
-            }
+        if segue.identifier == "PlateSegue" {
+            let destinationVC = segue.destinationViewController as! PlateViewController
+            destinationVC.foodCategories = self.selectedTags
+            destinationVC.ingredientData = self.userIngredients
         }
     }
     

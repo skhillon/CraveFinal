@@ -513,32 +513,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bGU-yl-0FG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-64" y="269"/>
-        </scene>
-        <!--Your Plate-->
-        <scene sceneID="FRf-xk-pLO">
-            <objects>
-                <navigationController storyboardIdentifier="InitialNavigationController" automaticallyAdjustsScrollViewInsets="NO" id="mC3-0P-BIr" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Your Plate" image="Plate" id="uJM-7h-g1K">
-                        <userDefinedRuntimeAttributes>
-                            <userDefinedRuntimeAttribute type="color" keyPath="tintColor">
-                                <color key="value" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                            </userDefinedRuntimeAttribute>
-                        </userDefinedRuntimeAttributes>
-                    </tabBarItem>
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="nmX-cr-XMh">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="nr5-0R-zXZ" kind="relationship" relationship="rootViewController" id="uDt-q0-khy"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="I5x-au-Xn8" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1412" y="269"/>
+            <point key="canvasLocation" x="706" y="282"/>
         </scene>
         <!--Ingredient Selection View Controller-->
         <scene sceneID="cep-AB-9b8">
@@ -639,7 +614,7 @@
                                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                 </state>
                                                 <connections>
-                                                    <segue destination="mC3-0P-BIr" kind="show" identifier="PlateSegue" id="ZJz-do-M14"/>
+                                                    <segue destination="nr5-0R-zXZ" kind="show" identifier="PlateSegue" id="rCg-wg-wQG"/>
                                                 </connections>
                                             </button>
                                             <label autoresizesSubviews="NO" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="DONE!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="6" translatesAutoresizingMaskIntoConstraints="NO" id="RSy-xY-dkG">
@@ -695,7 +670,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kup-xc-pwS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="658" y="269"/>
+            <point key="canvasLocation" x="1404" y="282"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="zrd-sa-cR8">
@@ -717,7 +692,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Plate" width="50" height="50"/>
         <image name="welcome" width="1600" height="1200"/>
     </resources>
 </document>
