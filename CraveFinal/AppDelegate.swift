@@ -21,15 +21,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
     
     var window: UIWindow?
     
-    
-    
     func StartUpdating() {
         locManager.delegate = self
         let status = CLLocationManager.authorizationStatus()
         locManager.requestWhenInUseAuthorization()
         locManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
         locManager.distanceFilter = kCLDistanceFilterNone
-        locManager.startUpdatingLocation()    }
+        locManager.startUpdatingLocation()
+    }
     
     func locationManager(manager: CLLocationManager, didUpdateToLocation newLocation: CLLocation, fromLocation oldLocation: CLLocation) {
         strLatitude = { newLocation.coordinate.latitude }()
@@ -39,7 +38,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject :AnyObject]?) -> Bool {
         
         var storyboard = UIStoryboard(name: "Main", bundle: nil)
-        var initalViewController = storyboard.instantiateViewControllerWithIdentifier("InitialVC") as! UINavigationController
+        var initalViewController = storyboard.instantiateViewControllerWithIdentifier("RootVC") as! RootViewController
         
         self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
         self.window?.rootViewController = initalViewController
