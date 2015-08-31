@@ -32,6 +32,7 @@ class PlateViewController: UITableViewController, UITableViewDataSource, UITable
     var finishedMealsArray: [MealObject]!
     
     var tempSortedVenues: [(String, Int, String, Double, Double, String)]!
+    var tempFilteredVenues: [(String, Int, String, Double, Double, String)]!
     
     var numRestaurantsToQuery = 0
     var numQueriesReturned = 0
@@ -41,7 +42,7 @@ class PlateViewController: UITableViewController, UITableViewDataSource, UITable
     //passed from IngredientSelectionViewController
     var foodCategories: [String]!
     var ingredientData: [String]!
-
+    
     lazy var numElements: Int = { self.ingredientData.count }()
     
     
@@ -52,7 +53,7 @@ class PlateViewController: UITableViewController, UITableViewDataSource, UITable
     let CLIENT_SECRET = "KZRGDLJNGKDNVWSK2YID2WBAKRH2KBQ2ROIXPFW5FOFSNACU"
     
     
-    var venueInformation: [(String, Int, String, Double, Double, String)] = [] //name, distance, venueID
+    var venueInformation: [(String, Int, String, Double, Double, String)] = [] //name, distance, venueID, ???
     var finishedVenueIdArray: [String] = []
     
     override func viewDidLoad() {
@@ -64,15 +65,15 @@ class PlateViewController: UITableViewController, UITableViewDataSource, UITable
         self.locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
         self.locationManager.distanceFilter = kCLDistanceFilterNone
         self.locationManager.startUpdatingLocation()
-
+        
         tableView.dataSource = self
         tableView.delegate = self
         tableView.estimatedRowHeight = 150
         tableView.rowHeight = UITableViewAutomaticDimension
-
+        
         tableView.separatorStyle = UITableViewCellSeparatorStyle.SingleLine
         tableView.separatorColor = UIColor.grayColor()
-
+        
         
         self.refreshControl = UIRefreshControl()
         self.refreshControl?.backgroundColor = UIColor.orangeColor() // look at MakeNotes for custom colors
@@ -98,13 +99,13 @@ class PlateViewController: UITableViewController, UITableViewDataSource, UITable
                 //SwiftSpinner.show("Almost \nthere!")
                 //println(anotherResult)
                 self.mealArray = (anotherResult)
-               // SwiftSpinner.show("Completed", animated: false)
+                // SwiftSpinner.show("Completed", animated: false)
                 
                 self.tableView.reloadData()
                 //self.refreshControl?.endRefreshing()
             }
         }
-
+        
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -139,13 +140,13 @@ class PlateViewController: UITableViewController, UITableViewDataSource, UITable
         //        let meals = mealList.subscript([indexPath.row])
         //        print(indexPath.row)
         if self.mealArray[indexPath.row].mealTitle != "" {
-        cell.mealTitleLabel.text = self.mealArray[indexPath.row].mealTitle
+            cell.mealTitleLabel.text = self.mealArray[indexPath.row].mealTitle
         } else {
             cell.mealTitleLabel.text = "Unnamed dish"
         }
         
         if self.mealArray[indexPath.row].mealDescription != "" {
-        cell.restLabel.text = self.mealArray[indexPath.row].nameOfVenue
+            cell.restLabel.text = self.mealArray[indexPath.row].nameOfVenue
         } else {
             cell.restLabel.text = "No venue found"
         }
@@ -159,7 +160,7 @@ class PlateViewController: UITableViewController, UITableViewDataSource, UITable
         }
         
         if self.mealArray[indexPath.row].priceValue != "" {
-        cell.priceLabel.text = "$\(self.mealArray[indexPath.row].priceValue)"
+            cell.priceLabel.text = "$\(self.mealArray[indexPath.row].priceValue)"
         } else {
             cell.priceLabel.text = "n/a"
         }
@@ -197,11 +198,11 @@ class PlateViewController: UITableViewController, UITableViewDataSource, UITable
         var locValue = locationManager.location.coordinate
         self.longitude = locValue.longitude
         self.latitude = locValue.latitude
-    
+        
     }
     
     // MARK: UserChoiceCollectionDataSource Functions
-
+    
     /**
     Gets the user's restaurant preferences based on the categories of food they've selected. By the end of this function there is valid information on nearby restaurants.
     
@@ -267,11 +268,10 @@ class PlateViewController: UITableViewController, UITableViewDataSource, UITable
                     
                     if categories.count ==  numCategoriesQueried {
                         self.tempSortedVenues = self.sortVenues(self.venueInformation)
-                        //println(self.venueInformation)
-                        //self.finishedVenueIdArray = self.filterVenues(tempSortedVenues)
+                        self.tempFilteredVenues = self.filterVenues(self.tempSortedVenues)
                         println("Number of categories:\(categories.count)")
                         println("Number of categories  Queried:\(numCategoriesQueried)")
-                        getUserSuggestionsCallback(self.tempSortedVenues!)
+                        getUserSuggestionsCallback(self.tempFilteredVenues!)
                     } // if
                     
                 } // response validity
@@ -305,27 +305,25 @@ class PlateViewController: UITableViewController, UITableViewDataSource, UITable
         
     }
     
-    //    /*
-    //    filters venues to nearest n venues, either hardcoded or something it depends on what you want. Maybe have user filter it out?
-    //
-    //    @param sortedVenueInfo: what you got from sortedVenueInfo
-    //    @return: filtered out venueID array of strings.
-    //    */
-    //    func filterVenues(sortedVenueInfo: [(String, Int, String)]) -> [String] {
-    //        var idArray: [String] = []
-    //        var filteredArray: [String] = []
-    //
-    //
-    //        for venueElement in sortedVenueInfo {
-    //            idArray.append(venueElement.2)
-    //        }
-    //        println("idArray is \(idArray)")
-    //        for index in 0...self.venueInformation.count - 1 {
-    //            filteredArray.append(idArray[index])
-    //            //filteredArray.insert(idArray[index], atIndex: index)
-    //        }
-    //        return filteredArray
-    //    }
+    /*
+    filters venues to nearest n venues, either hardcoded or something it depends on what you want. Maybe have user filter it out?
+    
+    @param sortedVenueInfo: what you got from sortedVenueInfo
+    @return: filtered out venueID array of strings.
+    */
+    func filterVenues(sortedVenueInfo: [(String, Int, String, Double, Double, String)]) -> [(String, Int, String, Double, Double, String)] {
+        
+        var filteredArray: [(String, Int, String, Double, Double, String)] = []
+        
+        for (var i = 0; i < 10; i++) {
+            filteredArray.append(sortedVenueInfo[i])
+        }
+        
+        for place in filteredArray {
+            println(place.1)
+        }
+        return filteredArray
+    }
     
     func findMeals(venueTuple: [(String, Int, String, Double, Double, String)], findMealsCallback: ([MealObject] -> Void)) {
         
@@ -472,5 +470,5 @@ class PlateViewController: UITableViewController, UITableViewDataSource, UITable
         mealArray.sort({ $0.score > $1.score })
         return mealArray
     }
-
+    
 }
