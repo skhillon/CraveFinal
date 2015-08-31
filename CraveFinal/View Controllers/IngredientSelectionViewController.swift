@@ -21,6 +21,8 @@ class IngredientSelectionViewController: UIViewController, UITableViewDataSource
     
     @IBOutlet weak var tableView: UITableView!
     
+    @IBOutlet weak var doneButton: UIButton!
+    
     var cellLocation = 0
     var selectedIngredients: [[String]] = []
     var userIngredients: [String] = []
@@ -33,6 +35,18 @@ class IngredientSelectionViewController: UIViewController, UITableViewDataSource
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // trying to hide done button when they have 0 values selected.
+        
+//        if selectedCategories.count <= 0 {
+//            doneButton.enabled = false
+//            doneButton.userInteractionEnabled = false
+//            doneButton.alpha = 0.5
+//        } else {
+//            doneButton.enabled = true
+//            doneButton.userInteractionEnabled = true
+//            doneButton.alpha = 1.0
+//        }
         
         for category in selectedCategories {
                  //   let category = self.categoryBank[indexPath.row]

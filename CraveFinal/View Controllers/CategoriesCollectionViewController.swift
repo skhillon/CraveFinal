@@ -18,6 +18,10 @@ class CategoriesCollectionViewController: UIViewController, UICollectionViewData
     
     @IBOutlet weak var collectionViewLayout: UICollectionViewFlowLayout!
     
+    @IBOutlet weak var doneButton: UIButton!
+    
+    
+    
     var counter = 0
     
     var selectedCategories: [String] = []
@@ -28,6 +32,17 @@ class CategoriesCollectionViewController: UIViewController, UICollectionViewData
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // trying to hide done button when they have 0 values selected.
+        
+        //        if selectedCategories.count <= 0 {
+        //            doneButton.enabled = false
+        //            doneButton.userInteractionEnabled = false
+        //            doneButton.alpha = 0.5
+        //        } else {
+        //            doneButton.enabled = true
+        //            doneButton.userInteractionEnabled = true
+        //            doneButton.alpha = 1.0
         
         println("I'M HERE!")
         

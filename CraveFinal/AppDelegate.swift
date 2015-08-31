@@ -13,8 +13,8 @@ import CoreLocation
 let themeColor = UIColor(red: 0.99, green: 0.90, blue: 0.80, alpha: 1.0)
 
 var locManager = CLLocationManager()
-var strLatitude: String = ""
-var strLongitude: String = ""
+var strLatitude: CLLocationDegrees!
+var strLongitude: CLLocationDegrees!
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate {
@@ -32,16 +32,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
         locManager.startUpdatingLocation()    }
     
     func locationManager(manager: CLLocationManager, didUpdateToLocation newLocation: CLLocation, fromLocation oldLocation: CLLocation) {
-        var latitude = newLocation.coordinate.latitude
-        strLatitude = "\(latitude)"
-        var longitude = newLocation.coordinate.longitude
-        strLongitude = "\(longitude)"
+        strLatitude = { newLocation.coordinate.latitude }()
+        strLongitude = { newLocation.coordinate.longitude }()
     }
     
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject :AnyObject]?) -> Bool {
         
         var storyboard = UIStoryboard(name: "Main", bundle: nil)
-        var initalViewController = storyboard.instantiateViewControllerWithIdentifier("Welcome Controller") as! WelcomeViewController
+        var initalViewController = storyboard.instantiateViewControllerWithIdentifier("InitialVC") as! UINavigationController
         
         self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
         self.window?.rootViewController = initalViewController

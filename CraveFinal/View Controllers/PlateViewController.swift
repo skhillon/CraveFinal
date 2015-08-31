@@ -77,15 +77,15 @@ class PlateViewController: UITableViewController, UITableViewDataSource, UITable
     }
     
     func getResults() {
-//        var long = self.longitude
-//        var lat = self.latitude
-//        let hardLat = 38.666007
-//        let hardLong = -121.137887
+        var long = strLongitude
+        var lat = strLatitude
+        let hardLat = 38.666007
+        let hardLong = -121.137887
         
         var success = false
         
         //SwiftSpinner.show("Connecting \nto database")
-        self.getUserSuggestions(strLongitude, lat: strLatitude) { (result) in
+        self.getUserSuggestions(hardLong, lat: hardLat) { (result) in
             
             //SwiftSpinner.show("Finding \nyour meals")
             self.findMeals(result) { (anotherResult) in
@@ -178,7 +178,7 @@ class PlateViewController: UITableViewController, UITableViewDataSource, UITable
     }
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5
+        return 10
     }
     
     override func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
@@ -204,7 +204,7 @@ class PlateViewController: UITableViewController, UITableViewDataSource, UITable
     @param getUserSuggestionsCallback: A callback which takes the finished VenueID array and returns void. Should change to tuple soon.
     @return void
     */
-    func getUserSuggestions(long: String, lat: String, getUserSuggestionsCallback: ([(String, Int, String, Double, Double, String)] -> Void))  {
+    func getUserSuggestions(long: CLLocationDegrees, lat: CLLocationDegrees, getUserSuggestionsCallback: ([(String, Int, String, Double, Double, String)] -> Void))  {
         
         var numCategoriesQueried = 0
         var categories: [String] = []
@@ -213,15 +213,15 @@ class PlateViewController: UITableViewController, UITableViewDataSource, UITable
             categories.append(tag)
         }
         
-//        var longitude = long as Double
-//        var latitude = lat as Double
+        var longitude = long as Double
+        var latitude = lat as Double
         
         //println(categories.count)
         println("Ingredient data: \(self.ingredientData.count)")
         
         for tag in categories {
             
-            let requestString: String = "https://api.foursquare.com/v2/venues/search?ll=" + lat + "," + long + "&categoryId=\(tag)&client_id=\(CLIENT_ID)&client_secret=\(CLIENT_SECRET)&v=20150814"
+            let requestString: String = "https://api.foursquare.com/v2/venues/search?ll=\(lat),\(long)&categoryId=\(tag)&client_id=\(CLIENT_ID)&client_secret=\(CLIENT_SECRET)&v=20150814"
             
             println("venues string is " + "\(requestString)")
             Alamofire.request(.GET, requestString).responseString() {
