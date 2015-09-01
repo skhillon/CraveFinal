@@ -267,7 +267,7 @@
         <!--Pick your cuisines-->
         <scene sceneID="WuM-J2-hdq">
             <objects>
-                <viewController id="tvI-Ar-kNP" customClass="CategoryViewController" customModule="CraveFinal" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="CategoryController" id="tvI-Ar-kNP" customClass="CategoryViewController" customModule="CraveFinal" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="P8D-wz-JWT"/>
                         <viewControllerLayoutGuide type="bottom" id="MJP-Sh-jwL"/>

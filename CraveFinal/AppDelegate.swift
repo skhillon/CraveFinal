@@ -36,13 +36,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
     }
     
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject :AnyObject]?) -> Bool {
+        
         startUpdating()
         
-        var storyboard = UIStoryboard(name: "Main", bundle: nil)
-        var initalViewController = storyboard.instantiateViewControllerWithIdentifier("RootVC") as! RootViewController
+        let normalLaunch = NSUserDefaults.standardUserDefaults().boolForKey("FirstLaunch")
+        var startViewController = UIViewController()
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        
+        if normalLaunch {
+            startViewController = storyboard.instantiateViewControllerWithIdentifier("CategoryController") as! CategoryViewController
+        } else {
+            startViewController = storyboard.instantiateViewControllerWithIdentifier("RootVC") as! RootViewController
+        }
         
         self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
-        self.window?.rootViewController = initalViewController
+        self.window?.rootViewController = startViewController
         return true
     }
     
