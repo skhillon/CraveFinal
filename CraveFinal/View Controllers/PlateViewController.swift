@@ -97,14 +97,12 @@ class PlateViewController: UITableViewController, UITableViewDataSource, UITable
         let hardLat = 38.666007
         let hardLong = -121.137887
         
-//        println("Long = \(long)")
-//        println("Lat = \(lat)")
+        println("Long = \(long)")
+        println("Lat = \(lat)")
         var success = false
         
         SwiftSpinner.show("Connecting \nto database")
-        self.getUserSuggestions(hardLong, lat: hardLat) { (result) in
-            
-            
+        self.getUserSuggestions(long, lat: lat) { (result) in
             
             SwiftSpinner.show("Finding \nyour meals")
             self.findMeals(result) { (anotherResult) in

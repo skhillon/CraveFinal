@@ -38,7 +38,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject :AnyObject]?) -> Bool {
         startUpdating()
         
-        
         var storyboard = UIStoryboard(name: "Main", bundle: nil)
         var initalViewController = storyboard.instantiateViewControllerWithIdentifier("RootVC") as! RootViewController
         
