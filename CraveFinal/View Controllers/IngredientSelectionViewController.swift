@@ -17,6 +17,13 @@ class IngredientSelectionViewController: UIViewController, UITableViewDataSource
     
     @IBOutlet weak var tableView: UITableView!
     
+    /*
+    bar button item
+    didSet {
+        enable button, don't gray out
+    }
+    */
+    
     var cellLocation = 0
     var selectedIngredients: [[String]] = []
     var userIngredients: [String] = []
