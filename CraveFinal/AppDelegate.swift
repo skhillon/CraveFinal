@@ -21,7 +21,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
     
     var window: UIWindow?
     
-    func StartUpdating() {
+    func startUpdating() {
         locManager.delegate = self
         let status = CLLocationManager.authorizationStatus()
         locManager.requestWhenInUseAuthorization()
@@ -36,6 +36,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
     }
     
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject :AnyObject]?) -> Bool {
+        startUpdating()
+        
         
         var storyboard = UIStoryboard(name: "Main", bundle: nil)
         var initalViewController = storyboard.instantiateViewControllerWithIdentifier("RootVC") as! RootViewController

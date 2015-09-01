@@ -28,6 +28,8 @@
 		2897C82D1B94E59200A65222 /* DataViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2897C82C1B94E59200A65222 /* DataViewController.swift */; };
 		2897C82F1B950B0C00A65222 /* ModelController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2897C82E1B950B0C00A65222 /* ModelController.swift */; };
 		2897C8311B95107900A65222 /* Z0133GNPXT.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 2897C8301B95107900A65222 /* Z0133GNPXT.jpg */; };
+		2897C8331B951A3A00A65222 /* CategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2897C8321B951A3A00A65222 /* CategoryViewController.swift */; };
+		2897C8351B951B8E00A65222 /* CategoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2897C8341B951B8E00A65222 /* CategoryTableViewCell.swift */; };
 		28FE15A91B8E33CF00DB48FB /* IngredientSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28FE15A81B8E33CF00DB48FB /* IngredientSelectionViewController.swift */; };
 		B132F746385B6E5CA8007271 /* Pods_CraveFinal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A8F99719EFDFF94ED7AC894 /* Pods_CraveFinal.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 /* End PBXBuildFile section */
@@ -68,6 +70,8 @@
 		2897C82C1B94E59200A65222 /* DataViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataViewController.swift; sourceTree = "<group>"; };
 		2897C82E1B950B0C00A65222 /* ModelController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModelController.swift; sourceTree = "<group>"; };
 		2897C8301B95107900A65222 /* Z0133GNPXT.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Z0133GNPXT.jpg; sourceTree = "<group>"; };
+		2897C8321B951A3A00A65222 /* CategoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryViewController.swift; sourceTree = "<group>"; };
+		2897C8341B951B8E00A65222 /* CategoryTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryTableViewCell.swift; sourceTree = "<group>"; };
 		28FE15A81B8E33CF00DB48FB /* IngredientSelectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IngredientSelectionViewController.swift; sourceTree = "<group>"; };
 		5195CB371D4B1C4AF968886E /* Pods-CraveFinal.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CraveFinal.release.xcconfig"; path = "Pods/Target Support Files/Pods-CraveFinal/Pods-CraveFinal.release.xcconfig"; sourceTree = "<group>"; };
 		5A8F99719EFDFF94ED7AC894 /* Pods_CraveFinal.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CraveFinal.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -167,6 +171,7 @@
 				2897C82A1B94E57600A65222 /* RootViewController.swift */,
 				2897C82C1B94E59200A65222 /* DataViewController.swift */,
 				2897C82E1B950B0C00A65222 /* ModelController.swift */,
+				2897C8321B951A3A00A65222 /* CategoryViewController.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -178,6 +183,7 @@
 				28838DD11B84DF37004E0BF2 /* CategoryCollectionViewCell.swift */,
 				28838DD31B84E630004E0BF2 /* MealCollection.swift */,
 				2802C9F01B8E34E600EAD064 /* IngredientSelectionViewCell.swift */,
+				2897C8341B951B8E00A65222 /* CategoryTableViewCell.swift */,
 			);
 			path = ViewCells;
 			sourceTree = "<group>";
@@ -384,8 +390,10 @@
 				28838DD41B84E630004E0BF2 /* MealCollection.swift in Sources */,
 				2802C9F11B8E34E600EAD064 /* IngredientSelectionViewCell.swift in Sources */,
 				2897C82D1B94E59200A65222 /* DataViewController.swift in Sources */,
+				2897C8351B951B8E00A65222 /* CategoryTableViewCell.swift in Sources */,
 				28579D2B1B7AB5150099A270 /* MealObject.swift in Sources */,
 				28579D3F1B7AB5E50099A270 /* WelcomeViewController.swift in Sources */,
+				2897C8331B951A3A00A65222 /* CategoryViewController.swift in Sources */,
 				28838DD21B84DF37004E0BF2 /* CategoryCollectionViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

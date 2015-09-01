@@ -9,7 +9,7 @@
 import UIKit
 import RealmSwift
 
-let reuseIdentifier = "Cell"
+//let reuseIdentifier = "Cell"
 let realm = Realm()
 
 class CategoriesCollectionViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
@@ -55,7 +55,7 @@ class CategoriesCollectionViewController: UIViewController, UICollectionViewData
     }
     
     override func viewWillAppear(animated: Bool) {
-        navigationController?.setNavigationBarHidden(true, animated: false)
+        navigationController?.setNavigationBarHidden(false, animated: false)
     }
     
     

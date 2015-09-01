@@ -17,7 +17,7 @@ class PlateViewController: UITableViewController, UITableViewDataSource, UITable
     
     var cellLocation = 0
     
-    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+    //@IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
     // MARK: Data Model variables
     //let userChoice = UserChoiceCollectionDataSource()
@@ -80,16 +80,16 @@ class PlateViewController: UITableViewController, UITableViewDataSource, UITable
         self.getResults()
     }
     
-    func didStartGettingResults(_ : UITableView) {
-        //activityIndicator.sizeToFit()
-        activityIndicator.startAnimating()
-        println("Starting to get results")
-    }
-    
-    func didFinishGettingResults(_ : UITableView) {
-        activityIndicator.stopAnimating()
-        println("finished getting results")
-    }
+//    func didStartGettingResults(_ : UITableView) {
+//        //activityIndicator.sizeToFit()
+//        activityIndicator.startAnimating()
+//        println("Starting to get results")
+//    }
+//    
+//    func didFinishGettingResults(_ : UITableView) {
+//        activityIndicator.stopAnimating()
+//        println("finished getting results")
+//    }
     
     func getResults() {
         var long = strLongitude
@@ -97,6 +97,8 @@ class PlateViewController: UITableViewController, UITableViewDataSource, UITable
         let hardLat = 38.666007
         let hardLong = -121.137887
         
+//        println("Long = \(long)")
+//        println("Lat = \(lat)")
         var success = false
         
         SwiftSpinner.show("Connecting \nto database")
@@ -109,6 +111,7 @@ class PlateViewController: UITableViewController, UITableViewDataSource, UITable
                 SwiftSpinner.show("Almost \nthere!")
                 //println(anotherResult)
                 self.mealArray = (anotherResult)
+                
                 SwiftSpinner.show("Completed", animated: false)
                 
                 self.tableView.reloadData()
@@ -155,10 +158,10 @@ class PlateViewController: UITableViewController, UITableViewDataSource, UITable
             cell.mealTitleLabel.text = "Unnamed dish"
         }
         
-        if self.mealArray[indexPath.row].mealDescription != "" {
+        if self.mealArray[indexPath.row].nameOfVenue != "" {
             cell.restLabel.text = self.mealArray[indexPath.row].nameOfVenue
         } else {
-            cell.restLabel.text = "No venue found"
+            cell.restLabel.text = "No Venue found"
         }
         
         if self.mealArray[indexPath.row].distanceToVenue != 0 {
@@ -172,7 +175,7 @@ class PlateViewController: UITableViewController, UITableViewDataSource, UITable
         if self.mealArray[indexPath.row].priceValue != "" {
             cell.priceLabel.text = "$\(self.mealArray[indexPath.row].priceValue)"
         } else {
-            cell.priceLabel.text = "n/a"
+            cell.priceLabel.text = "n/aa"
         }
         return cell
     }
@@ -182,7 +185,7 @@ class PlateViewController: UITableViewController, UITableViewDataSource, UITable
             return 1
         } else {
             var messageLabel: UILabel = UILabel(frame: CGRectMake(0, 0, self.view.bounds.size.width, self.view.bounds.size.height))
-            messageLabel.text = "Nothing here!"
+            messageLabel.text = "Loading..."
             messageLabel.textColor = UIColor.blackColor()
             messageLabel.numberOfLines = 0
             messageLabel.textAlignment = NSTextAlignment.Center
@@ -224,11 +227,6 @@ class PlateViewController: UITableViewController, UITableViewDataSource, UITable
     func getUserSuggestions(long: CLLocationDegrees, lat: CLLocationDegrees, getUserSuggestionsCallback: ([(String, Int, String, Double, Double, String)] -> Void))  {
         
         var numCategoriesQueried = 0
-        var categories: [String] = []
-        
-        for tag in foodCategories {
-            categories.append(tag)
-        }
         
         var longitude = long as Double
         var latitude = lat as Double
@@ -236,7 +234,9 @@ class PlateViewController: UITableViewController, UITableViewDataSource, UITable
         //println(categories.count)
         println("Ingredient data: \(self.ingredientData.count)")
         
-        for tag in categories {
+        for tag in self.foodCategories {
+            
+            println("tag is \(tag)")
             
             let requestString: String = "https://api.foursquare.com/v2/venues/search?ll=\(lat),\(long)&categoryId=\(tag)&client_id=\(CLIENT_ID)&client_secret=\(CLIENT_SECRET)&v=20150814"
             
@@ -276,10 +276,10 @@ class PlateViewController: UITableViewController, UITableViewDataSource, UITable
                     }
                     
                     
-                    if categories.count ==  numCategoriesQueried {
+                    if self.foodCategories.count ==  numCategoriesQueried {
                         self.tempSortedVenues = self.sortVenues(self.venueInformation)
                         self.tempFilteredVenues = self.filterVenues(self.tempSortedVenues)
-                        println("Number of categories:\(categories.count)")
+                        println("Number of categories:\(self.foodCategories.count)")
                         println("Number of categories  Queried:\(numCategoriesQueried)")
                         getUserSuggestionsCallback(self.tempFilteredVenues!)
                     } // if
@@ -401,8 +401,13 @@ class PlateViewController: UITableViewController, UITableViewDataSource, UITable
                                     mealObject.addressofVenue = venue.5
                                     
                                     //                                        checks if any of the above values are empty before appending it to the valid foundMeals array
-                                    if mealObject.mealTitle != "" || mealObject.mealDescription != "" || mealObject.priceValue != "n/a" || mealObject.priceValue != "" || (mealObject.priceValue as NSString).doubleValue < 2.0 || mealObject.nameOfVenue != "" || mealObject.distanceToVenue != 0 || mealObject.venueId != "" || mealObject.longitudeOfVenue != 0 || mealObject.latitudeOfVenue != 0 || mealObject.addressofVenue != ""
+                                    if (mealObject.mealTitle == "" || mealObject.mealDescription == "" || mealObject.priceValue == "n/a" || mealObject.priceValue == "" || mealObject.nameOfVenue == "" || mealObject.distanceToVenue == 0 || mealObject.venueId == "" || mealObject.longitudeOfVenue == 0 || mealObject.latitudeOfVenue == 0 || mealObject.addressofVenue == "")
+
+//                                                                 if (mealObject.mealTitle == "" || mealObject.mealDescription == "" || mealObject.priceValue == "n/a" || mealObject.priceValue == "" || (mealObject.priceValue as NSString).doubleValue < 2.00 || mealObject.nameOfVenue == "" || mealObject.distanceToVenue == 0 || mealObject.venueId == "" || mealObject.longitudeOfVenue == 0 || mealObject.latitudeOfVenue == 0 || mealObject.addressofVenue == "")
+//                                    if (mealObject.priceValue == "") || (mealObject.priceValue == "n/a")
                                     {
+                                    } else {
+                                        println("MealObject price is \(mealObject.priceValue)")
                                         self.foundMeals.append(mealObject)
                                     }
                                     
@@ -457,6 +462,7 @@ class PlateViewController: UITableViewController, UITableViewDataSource, UITable
             //let userIngredientsLikedArray = self.ingredientData
             
             mealItem.score = calcScore(description, userIngredientBank: self.ingredientData)
+              println("score is \(mealItem.score) mealitem price is \(mealItem.priceValue)")
         }
     }
     
@@ -471,6 +477,7 @@ class PlateViewController: UITableViewController, UITableViewDataSource, UITable
             }
         }
         let score = userFound / Double(userIngredientBank.count)
+        //println("score is \(score)")
         return score
     }
     
@@ -488,7 +495,7 @@ class PlateViewController: UITableViewController, UITableViewDataSource, UITable
     func filterMeals(meals: [MealObject]) -> [MealObject] {
         var tempArray: [MealObject] = []
         for meal in meals {
-            if (meal.priceValue as NSString).doubleValue < 2.0 || meal.priceValue == "" || meal.priceValue == "n/a" || meal.priceValue == "N/A" {
+            if (meal.priceValue as NSString).doubleValue > 2.0 || meal.priceValue == "" || meal.priceValue == "n/a" || meal.priceValue == "N/A" {
                 tempArray.append(meal)
             }
         }
