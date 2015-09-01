@@ -15,13 +15,7 @@ let cellIdentifier = "IngredientCell"
 
 class IngredientSelectionViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
-    @IBOutlet weak var titleLabel: UILabel!
-    
-    @IBOutlet weak var subtitleLabel: UILabel!
-    
     @IBOutlet weak var tableView: UITableView!
-    
-    @IBOutlet weak var doneButton: UIButton!
     
     var cellLocation = 0
     var selectedIngredients: [[String]] = []
