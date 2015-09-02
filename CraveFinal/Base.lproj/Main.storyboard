@@ -182,17 +182,18 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Meal Title" lineBreakMode="clip" numberOfLines="3" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dEW-zq-BpJ">
-                                            <rect key="frame" x="8" y="0.0" width="300" height="71"/>
+                                            <rect key="frame" x="8" y="0.0" width="451" height="71"/>
                                             <constraints>
-                                                <constraint firstAttribute="width" relation="lessThanOrEqual" priority="750" constant="300" id="LWc-5V-bsi"/>
+                                                <constraint firstAttribute="width" relation="lessThanOrEqual" priority="250" constant="300" id="LWc-5V-bsi"/>
                                             </constraints>
                                             <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                             <color key="textColor" red="1" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$0.00" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="I5Z-7X-bJW">
-                                            <rect key="frame" x="341" y="16" width="251" height="25"/>
+                                            <rect key="frame" x="492" y="16" width="100" height="25"/>
                                             <constraints>
+                                                <constraint firstAttribute="width" constant="100" id="bMU-2v-xRb"/>
                                                 <constraint firstAttribute="height" constant="25" id="ohQ-M0-NL5"/>
                                             </constraints>
                                             <fontDescription key="fontDescription" type="system" weight="light" pointSize="20"/>
@@ -200,16 +201,16 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Restaurant Name" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hbu-Kr-vqa">
-                                            <rect key="frame" x="8" y="67" width="321" height="39.5"/>
+                                            <rect key="frame" x="8" y="67" width="448" height="39.5"/>
                                             <constraints>
-                                                <constraint firstAttribute="width" constant="321" id="j2m-C3-Lh0"/>
+                                                <constraint firstAttribute="width" priority="250" constant="321" id="j2m-C3-Lh0"/>
                                             </constraints>
                                             <fontDescription key="fontDescription" type="italicSystem" pointSize="17"/>
                                             <color key="textColor" red="0.22352941176470587" green="0.27058823529411763" blue="0.32941176470588235" alpha="1" colorSpace="deviceRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Distance" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BQY-9S-JEm">
-                                            <rect key="frame" x="489" y="50" width="103" height="42"/>
+                                            <rect key="frame" x="489" y="66" width="103" height="42"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="103" id="NMi-TW-d8B"/>
                                             </constraints>
@@ -221,17 +222,18 @@
                                     <constraints>
                                         <constraint firstAttribute="bottomMargin" secondItem="dEW-zq-BpJ" secondAttribute="bottom" constant="45.5" id="6Gt-SW-haB"/>
                                         <constraint firstItem="hbu-Kr-vqa" firstAttribute="top" secondItem="gos-Ja-bbI" secondAttribute="topMargin" constant="59" id="Clm-jo-N9r"/>
+                                        <constraint firstItem="BQY-9S-JEm" firstAttribute="leading" secondItem="hbu-Kr-vqa" secondAttribute="trailing" constant="33" id="DPB-jR-H1w"/>
                                         <constraint firstItem="I5Z-7X-bJW" firstAttribute="top" secondItem="gos-Ja-bbI" secondAttribute="topMargin" constant="8" id="E5n-ZC-KcS"/>
                                         <constraint firstAttribute="trailingMargin" secondItem="I5Z-7X-bJW" secondAttribute="trailing" constant="-7" id="HHh-Ky-2lX"/>
-                                        <constraint firstItem="I5Z-7X-bJW" firstAttribute="leading" relation="lessThanOrEqual" secondItem="dEW-zq-BpJ" secondAttribute="trailing" constant="33" id="LwR-cS-bPu"/>
-                                        <constraint firstAttribute="bottomMargin" secondItem="BQY-9S-JEm" secondAttribute="bottom" constant="24.5" id="PdA-vd-NCM"/>
+                                        <constraint firstItem="I5Z-7X-bJW" firstAttribute="leading" secondItem="dEW-zq-BpJ" secondAttribute="trailing" constant="33" id="LwR-cS-bPu"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="BQY-9S-JEm" secondAttribute="bottom" constant="8.5" id="PdA-vd-NCM"/>
                                         <constraint firstItem="I5Z-7X-bJW" firstAttribute="trailing" secondItem="gos-Ja-bbI" secondAttribute="trailingMargin" id="UnE-Bq-xEY"/>
                                         <constraint firstItem="I5Z-7X-bJW" firstAttribute="trailing" secondItem="BQY-9S-JEm" secondAttribute="trailing" id="Y4l-7g-7sk"/>
                                         <constraint firstItem="dEW-zq-BpJ" firstAttribute="leading" secondItem="hbu-Kr-vqa" secondAttribute="leading" id="Y9d-74-x3x"/>
                                         <constraint firstItem="dEW-zq-BpJ" firstAttribute="top" secondItem="gos-Ja-bbI" secondAttribute="top" id="ZKi-gb-WuA"/>
                                         <constraint firstAttribute="bottomMargin" secondItem="hbu-Kr-vqa" secondAttribute="bottom" constant="10" id="cN6-5h-8Q9"/>
                                         <constraint firstItem="hbu-Kr-vqa" firstAttribute="top" secondItem="dEW-zq-BpJ" secondAttribute="bottom" constant="-4" id="i2n-Z4-Xeh"/>
-                                        <constraint firstItem="BQY-9S-JEm" firstAttribute="top" secondItem="I5Z-7X-bJW" secondAttribute="bottom" constant="9" id="mLb-Le-fHr"/>
+                                        <constraint firstItem="BQY-9S-JEm" firstAttribute="top" secondItem="I5Z-7X-bJW" secondAttribute="bottom" constant="25" id="mLb-Le-fHr"/>
                                         <constraint firstItem="dEW-zq-BpJ" firstAttribute="leading" secondItem="gos-Ja-bbI" secondAttribute="leadingMargin" id="xAX-HV-bev"/>
                                     </constraints>
                                     <variation key="default">
