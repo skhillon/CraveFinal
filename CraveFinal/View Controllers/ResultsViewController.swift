@@ -34,7 +34,7 @@ class ResultsViewController: UIViewController {
         UIApplication.sharedApplication().statusBarStyle = .LightContent
         
         if self.mealObject.priceValue != "" {
-        self.priceLabel.text = self.mealObject.priceValue
+        self.priceLabel.text = "$\(self.mealObject.priceValue)"
         } else {
             self.priceLabel.text = "n/a"
         }

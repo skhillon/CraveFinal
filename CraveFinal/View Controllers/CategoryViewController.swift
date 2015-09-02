@@ -31,6 +31,8 @@ class CategoryViewController: UIViewController, UITableViewDataSource, UITableVi
         navigationController?.setNavigationBarHidden(false, animated: false)
         navigationController?.navigationBar.barTintColor = UIColor.orangeColor()
         navigationController?.navigationBar.tintColor = UIColor.whiteColor()
+        let titleDict: NSDictionary = [NSForegroundColorAttributeName: UIColor.whiteColor()]
+        self.navigationController!.navigationBar.titleTextAttributes = titleDict as [NSObject : AnyObject]
         
         if selectedCategories.isEmpty {
             doneButton.enabled = false
