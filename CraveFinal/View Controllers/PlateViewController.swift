@@ -7,11 +7,9 @@
 //
 
 import UIKit
-import RealmSwift
 import CoreLocation
 import Alamofire
 import SwiftyJSON
-import SwiftSpinner
 
 class PlateViewController: UITableViewController, UITableViewDataSource, UITableViewDelegate {
     
@@ -101,17 +99,12 @@ class PlateViewController: UITableViewController, UITableViewDataSource, UITable
         println("Lat = \(lat)")
         var success = false
         
-        SwiftSpinner.show("Connecting \nto database")
         self.getUserSuggestions(long, lat: lat) { (result) in
             
-            SwiftSpinner.show("Finding \nyour meals")
             self.findMeals(result) { (anotherResult) in
-                SwiftSpinner.show("Almost \nthere!")
                 //println(anotherResult)
                 self.mealArray = (anotherResult)
-                
-                SwiftSpinner.show("Completed", animated: false)
-                
+                                
                 self.tableView.reloadData()
                 //self.refreshControl?.endRefreshing()
             }

@@ -8,7 +8,6 @@
 
 import UIKit
 import MapKit
-import SwiftSpinner
 import Alamofire
 import SwiftyJSON
 

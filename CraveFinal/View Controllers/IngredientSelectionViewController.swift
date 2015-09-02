@@ -8,7 +8,6 @@
 
 
 import UIKit
-import RealmSwift
 
 let cellIdentifier = "IngredientCell"
 // by default, all rows will be selected. It is then up to the user to select or deselect as they feel is necessary.

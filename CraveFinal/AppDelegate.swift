@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import RealmSwift
 import CoreLocation
 
 let themeColor = UIColor(red: 0.99, green: 0.90, blue: 0.80, alpha: 1.0)
@@ -55,51 +54,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
         self.window?.rootViewController = startViewController
         return true
     }
-    
-//    func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-//        
-//        println("application did finish launching")
-//        
-//        let firstLaunch =  NSUserDefaults.standardUserDefaults().boolForKey("FirstLaunch")
-//        let startViewController: UIViewController;
-//        
-//        if firstLaunch {
-//            // if user is logged in (e.g. exists) then skip the login screen and jump to timeline
-//            // timeline means initial view controller is the tabBarController
-//            let storyboard = UIStoryboard(name: "Main", bundle: nil)
-//            startViewController = storyboard.instantiateViewControllerWithIdentifier("TabBarController") as! UITabBarController
-//        } else {
-//            //set login view controller as default screen
-//            let welcomeController = WelcomeViewController()
-//            //welcomeController.delegate = welcomeController
-//            //loginViewController.signUpController?.delegate = parseLoginHelper
-//            
-//            startViewController = welcomeController
-//        }
-//        
-//        // Creating UIWindow as a container for all our views determined above.
-//        self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
-//        
-//        //setting view controller to either login or timeline
-//        self.window?.rootViewController = startViewController;
-//        self.window?.makeKeyAndVisible()
-//        
-//        
-//        // window?.tintColor = themeColor
-//        // Override point for customization after application launch.
-//        
-//
-////        if firstLaunch {
-////            println("Not the first launch")
-////        } else {
-////            println("First launch, setting NSUserDefault.")
-////            NSUserDefaults.standardUserDefaults().setBool(true, forKey: "FirstLaunch")
-////            let storyBoard = UIStoryboard(name: "Main", bundle: nil)
-////            let welcomeController = storyBoard.instantiateViewControllerWithIdentifier("Welcome Controller") as! WelcomeViewController
-////            self.window?.rootViewController?.presentViewController(welcomeController, animated: true, completion: nil)
-////        }
-//        return true
-//    }
     
     func application(application: UIApplication, openURL url: NSURL, sourceApplication: String?, annotation: AnyObject?) -> Bool {
         return true
