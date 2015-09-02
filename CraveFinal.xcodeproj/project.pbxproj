@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		2802C9F11B8E34E600EAD064 /* IngredientSelectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2802C9F01B8E34E600EAD064 /* IngredientSelectionViewCell.swift */; };
 		281159BD1B7F3577005DC26E /* PaginatedScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 281159BC1B7F3577005DC26E /* PaginatedScrollView.swift */; };
-		284D2C391B7E92A40032C08C /* delete.swift in Sources */ = {isa = PBXBuildFile; fileRef = 284D2C381B7E92A40032C08C /* delete.swift */; };
 		28579CFA1B7AAFBA0099A270 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28579CF91B7AAFBA0099A270 /* AppDelegate.swift */; };
 		28579CFF1B7AAFBA0099A270 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 28579CFD1B7AAFBA0099A270 /* Main.storyboard */; };
 		28579D011B7AAFBA0099A270 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 28579D001B7AAFBA0099A270 /* Images.xcassets */; };
@@ -45,7 +44,6 @@
 /* Begin PBXFileReference section */
 		2802C9F01B8E34E600EAD064 /* IngredientSelectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IngredientSelectionViewCell.swift; sourceTree = "<group>"; };
 		281159BC1B7F3577005DC26E /* PaginatedScrollView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaginatedScrollView.swift; sourceTree = "<group>"; };
-		284D2C381B7E92A40032C08C /* delete.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = delete.swift; sourceTree = "<group>"; };
 		28579CF41B7AAFBA0099A270 /* CraveFinal.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CraveFinal.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		28579CF81B7AAFBA0099A270 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		28579CF91B7AAFBA0099A270 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -96,7 +94,6 @@
 		28579CEB1B7AAFBA0099A270 = {
 			isa = PBXGroup;
 			children = (
-				284D2C381B7E92A40032C08C /* delete.swift */,
 				28579CF61B7AAFBA0099A270 /* CraveFinal */,
 				28579D0C1B7AAFBA0099A270 /* CraveFinalTests */,
 				28579CF51B7AAFBA0099A270 /* Products */,
@@ -371,7 +368,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				28579D271B7AB4E20099A270 /* Storyboard.swift in Sources */,
-				284D2C391B7E92A40032C08C /* delete.swift in Sources */,
 				28FE15A91B8E33CF00DB48FB /* IngredientSelectionViewController.swift in Sources */,
 				28579D3B1B7AB5B60099A270 /* ResultsViewController.swift in Sources */,
 				28579D371B7AB58C0099A270 /* PlateViewController.swift in Sources */,

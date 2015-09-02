@@ -2,7 +2,7 @@
 //  PlateViewController.swift
 //  Crave App
 //
-//  Created by Pankaj Khillon on 7/15/15.
+//  Created by Sarthak Khillon on 7/15/15.
 //  Copyright (c) 2015 Sarthak Khillon. All rights reserved.
 //
 
@@ -324,9 +324,15 @@ class PlateViewController: UITableViewController, UITableViewDataSource, UITable
         var filteredArray: [(String, Int, String, Double, Double, String)] = []
         
         if sortedVenueInfo.count != 0 {
-        for (var i = 0; i < 20; i++) {
-            filteredArray.append(sortedVenueInfo[i])
-        }
+            if sortedVenueInfo.count >= 20 {
+                for (var i = 0; (i < 20); i++) {
+                    filteredArray.append(sortedVenueInfo[i])
+                }
+            } else {
+                for (var i = 0; (i < sortedVenueInfo.count - 1); i++) {
+                    filteredArray.append(sortedVenueInfo[i])
+                }
+            }
         
         for place in filteredArray {
             println(place.1)

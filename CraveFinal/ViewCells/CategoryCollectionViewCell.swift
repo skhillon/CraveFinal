@@ -2,7 +2,7 @@
 //  CategoryCollectionViewCell.swift
 //  Crave App
 //
-//  Created by Pankaj Khillon on 8/7/15.
+//  Created by Sarthak Khillon on 8/7/15.
 //  Copyright (c) 2015 Sarthak Khillon. All rights reserved.
 //
 
