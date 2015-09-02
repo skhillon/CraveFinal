@@ -39,14 +39,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
         
         startUpdating()
         
-        let normalLaunch = NSUserDefaults.standardUserDefaults().boolForKey("FirstLaunch")
+        let normalLaunch = NSUserDefaults.standardUserDefaults().boolForKey("NormalLaunch")
         var startViewController = UIViewController()
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         
-        if normalLaunch {
-            startViewController = storyboard.instantiateViewControllerWithIdentifier("CategoryController") as! CategoryViewController
-        } else {
+        if !normalLaunch {
             startViewController = storyboard.instantiateViewControllerWithIdentifier("RootVC") as! RootViewController
+            NSUserDefaults.standardUserDefaults().setBool(true, forKey: "NormalLaunch")
+        } else {
+            startViewController = storyboard.instantiateViewControllerWithIdentifier("InitialVC") as! UINavigationController
+            NSUserDefaults.standardUserDefaults().setBool(false, forKey: "NormalLaunch")
         }
         
         self.window = UIWindow(frame: UIScreen.mainScreen().bounds)

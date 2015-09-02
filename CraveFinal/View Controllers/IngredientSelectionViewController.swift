@@ -261,6 +261,12 @@ class IngredientSelectionViewController: UIViewController, UITableViewDataSource
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         var cell = tableView.cellForRowAtIndexPath(indexPath) as! IngredientSelectionViewCell
         self.userIngredients.append(cell.ingredientLabel.text!)
+        
+        var bgColorView = UIView()
+        var colorSelected = UIColor(red: 1.0, green: 0.5, blue: 0, alpha: 0.7)
+        bgColorView.backgroundColor = colorSelected
+        cell.selectedBackgroundView = bgColorView
+        
         println(userIngredients)
         
         if userIngredients.isEmpty {

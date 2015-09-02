@@ -100,6 +100,11 @@ class CategoryViewController: UIViewController, UITableViewDataSource, UITableVi
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         var cell = tableView.cellForRowAtIndexPath(indexPath) as! CategoryTableViewCell
         //println(cell)
+        var bgColorView = UIView()
+        var colorSelected = UIColor(red: 1.0, green: 0.5, blue: 0, alpha: 0.7)
+        bgColorView.backgroundColor = colorSelected
+        cell.selectedBackgroundView = bgColorView
+        
         if self.counter > 4 {
             println("Error Counter is \(counter)")
             println("Cannot select more than 5 categories")
