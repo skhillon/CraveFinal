@@ -16,6 +16,8 @@ let cellIdentifier = "IngredientCell"
 class IngredientSelectionViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var doneButton: UIBarButtonItem!
+
     
     /*
     bar button item
@@ -36,6 +38,12 @@ class IngredientSelectionViewController: UIViewController, UITableViewDataSource
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        if userIngredients.isEmpty {
+            doneButton.enabled = false
+        } else {
+            doneButton.enabled = true
+        }
         
         // trying to hide done button when they have 0 values selected.
         
@@ -254,6 +262,12 @@ class IngredientSelectionViewController: UIViewController, UITableViewDataSource
         var cell = tableView.cellForRowAtIndexPath(indexPath) as! IngredientSelectionViewCell
         self.userIngredients.append(cell.ingredientLabel.text!)
         println(userIngredients)
+        
+        if userIngredients.isEmpty {
+            doneButton.enabled = false
+        } else {
+            doneButton.enabled = true
+        }
     }
     
     func tableView(tableView: UITableView, didDeselectRowAtIndexPath indexPath: NSIndexPath) {
@@ -266,6 +280,12 @@ class IngredientSelectionViewController: UIViewController, UITableViewDataSource
         }
         self.userIngredients.removeAtIndex(found!)
         println(userIngredients)
+        
+        if userIngredients.isEmpty {
+            doneButton.enabled = false
+        } else {
+            doneButton.enabled = true
+        }
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {

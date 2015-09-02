@@ -20,8 +20,6 @@
 		28579D311B7AB5510099A270 /* PlateTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28579D301B7AB5510099A270 /* PlateTableViewCell.swift */; };
 		28579D371B7AB58C0099A270 /* PlateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28579D361B7AB58C0099A270 /* PlateViewController.swift */; };
 		28579D3B1B7AB5B60099A270 /* ResultsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28579D3A1B7AB5B60099A270 /* ResultsViewController.swift */; };
-		28579D3D1B7AB5D20099A270 /* CategoriesCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28579D3C1B7AB5D20099A270 /* CategoriesCollectionViewController.swift */; };
-		28579D3F1B7AB5E50099A270 /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28579D3E1B7AB5E50099A270 /* WelcomeViewController.swift */; };
 		28838DD21B84DF37004E0BF2 /* CategoryCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28838DD11B84DF37004E0BF2 /* CategoryCollectionViewCell.swift */; };
 		28838DD41B84E630004E0BF2 /* MealCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28838DD31B84E630004E0BF2 /* MealCollection.swift */; };
 		2897C82B1B94E57600A65222 /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2897C82A1B94E57600A65222 /* RootViewController.swift */; };
@@ -62,8 +60,6 @@
 		28579D301B7AB5510099A270 /* PlateTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlateTableViewCell.swift; sourceTree = "<group>"; };
 		28579D361B7AB58C0099A270 /* PlateViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlateViewController.swift; sourceTree = "<group>"; };
 		28579D3A1B7AB5B60099A270 /* ResultsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResultsViewController.swift; sourceTree = "<group>"; };
-		28579D3C1B7AB5D20099A270 /* CategoriesCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoriesCollectionViewController.swift; sourceTree = "<group>"; };
-		28579D3E1B7AB5E50099A270 /* WelcomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
 		28838DD11B84DF37004E0BF2 /* CategoryCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryCollectionViewCell.swift; sourceTree = "<group>"; };
 		28838DD31B84E630004E0BF2 /* MealCollection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MealCollection.swift; sourceTree = "<group>"; };
 		2897C82A1B94E57600A65222 /* RootViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RootViewController.swift; sourceTree = "<group>"; };
@@ -165,13 +161,11 @@
 			children = (
 				28579D361B7AB58C0099A270 /* PlateViewController.swift */,
 				28579D3A1B7AB5B60099A270 /* ResultsViewController.swift */,
-				28579D3C1B7AB5D20099A270 /* CategoriesCollectionViewController.swift */,
-				28579D3E1B7AB5E50099A270 /* WelcomeViewController.swift */,
 				28FE15A81B8E33CF00DB48FB /* IngredientSelectionViewController.swift */,
+				2897C8321B951A3A00A65222 /* CategoryViewController.swift */,
 				2897C82A1B94E57600A65222 /* RootViewController.swift */,
 				2897C82C1B94E59200A65222 /* DataViewController.swift */,
 				2897C82E1B950B0C00A65222 /* ModelController.swift */,
-				2897C8321B951A3A00A65222 /* CategoryViewController.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -382,7 +376,6 @@
 				28579D3B1B7AB5B60099A270 /* ResultsViewController.swift in Sources */,
 				28579D371B7AB58C0099A270 /* PlateViewController.swift in Sources */,
 				2897C82B1B94E57600A65222 /* RootViewController.swift in Sources */,
-				28579D3D1B7AB5D20099A270 /* CategoriesCollectionViewController.swift in Sources */,
 				28579CFA1B7AAFBA0099A270 /* AppDelegate.swift in Sources */,
 				2897C82F1B950B0C00A65222 /* ModelController.swift in Sources */,
 				281159BD1B7F3577005DC26E /* PaginatedScrollView.swift in Sources */,
@@ -392,7 +385,6 @@
 				2897C82D1B94E59200A65222 /* DataViewController.swift in Sources */,
 				2897C8351B951B8E00A65222 /* CategoryTableViewCell.swift in Sources */,
 				28579D2B1B7AB5150099A270 /* MealObject.swift in Sources */,
-				28579D3F1B7AB5E50099A270 /* WelcomeViewController.swift in Sources */,
 				2897C8331B951A3A00A65222 /* CategoryViewController.swift in Sources */,
 				28838DD21B84DF37004E0BF2 /* CategoryCollectionViewCell.swift in Sources */,
 			);

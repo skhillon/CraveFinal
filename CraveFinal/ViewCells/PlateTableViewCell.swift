@@ -21,6 +21,7 @@ class PlateTableViewCell: UITableViewCell {
         didSet {
             if let lbl = restaurantLabelHolder {
                 restaurantLabel.text = lbl
+                restaurantLabel.lineBreakMode = NSLineBreakMode.ByClipping
             }
         }
     }
@@ -36,6 +37,9 @@ class PlateTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        
+        //mealTitleLabel.attributedText = attrString
+      //  mealTitleLabel.lineBreakMode = NSLineBreakMode.ByClipping
     }
     
     override func setSelected(selected: Bool, animated: Bool) {

@@ -279,25 +279,25 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pYS-jM-odZ">
                                 <rect key="frame" x="0.0" y="64" width="600" height="50"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Choose upto 5 Cuisines" textAlignment="center" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nGO-Yi-vUC">
-                                        <rect key="frame" x="0.0" y="10" width="566" height="35"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You can choose up to 5" textAlignment="center" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nGO-Yi-vUC">
+                                        <rect key="frame" x="17" y="8" width="566" height="35"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstAttribute="trailingMargin" secondItem="nGO-Yi-vUC" secondAttribute="trailing" constant="26" id="1M9-lk-p93"/>
                                     <constraint firstAttribute="bottom" secondItem="nGO-Yi-vUC" secondAttribute="bottom" constant="10" id="5YN-Aw-JHV"/>
                                     <constraint firstAttribute="height" constant="50" id="EP4-iq-5Um"/>
-                                    <constraint firstItem="nGO-Yi-vUC" firstAttribute="leading" secondItem="pYS-jM-odZ" secondAttribute="leading" id="O7U-lB-fdc"/>
+                                    <constraint firstItem="nGO-Yi-vUC" firstAttribute="leading" secondItem="pYS-jM-odZ" secondAttribute="leading" constant="17" id="O7U-lB-fdc"/>
                                     <constraint firstItem="nGO-Yi-vUC" firstAttribute="leading" secondItem="pYS-jM-odZ" secondAttribute="leading" constant="8" id="R0R-ke-xsA"/>
-                                    <constraint firstItem="nGO-Yi-vUC" firstAttribute="top" secondItem="pYS-jM-odZ" secondAttribute="top" constant="10" id="SX0-fe-wAT"/>
-                                    <constraint firstAttribute="bottom" relation="lessThanOrEqual" secondItem="nGO-Yi-vUC" secondAttribute="bottom" priority="750" constant="5" id="brN-8b-mrE"/>
+                                    <constraint firstItem="nGO-Yi-vUC" firstAttribute="top" secondItem="pYS-jM-odZ" secondAttribute="top" constant="8" id="SX0-fe-wAT"/>
+                                    <constraint firstAttribute="bottom" relation="lessThanOrEqual" secondItem="nGO-Yi-vUC" secondAttribute="bottom" priority="750" constant="7" id="brN-8b-mrE"/>
                                     <constraint firstItem="nGO-Yi-vUC" firstAttribute="leading" secondItem="pYS-jM-odZ" secondAttribute="leading" constant="8" id="hZ9-NN-zFJ"/>
                                     <constraint firstAttribute="trailing" secondItem="nGO-Yi-vUC" secondAttribute="trailing" priority="750" constant="271" id="j8r-1o-hdX"/>
                                     <constraint firstAttribute="centerX" secondItem="nGO-Yi-vUC" secondAttribute="centerX" constant="131.5" id="qJ1-at-k5t"/>
                                     <constraint firstItem="nGO-Yi-vUC" firstAttribute="top" relation="greaterThanOrEqual" secondItem="pYS-jM-odZ" secondAttribute="top" constant="5" id="tZ4-d7-QGN"/>
+                                    <constraint firstAttribute="trailing" secondItem="nGO-Yi-vUC" secondAttribute="trailing" constant="17" id="xn8-9g-P2v"/>
                                 </constraints>
                                 <variation key="default">
                                     <mask key="constraints">
@@ -347,7 +347,6 @@
                             <constraint firstItem="pYS-jM-odZ" firstAttribute="top" secondItem="P8D-wz-JWT" secondAttribute="bottom" id="bGa-0l-Rx6"/>
                             <constraint firstItem="pbl-FT-m3N" firstAttribute="top" secondItem="pYS-jM-odZ" secondAttribute="bottom" constant="10" id="c7n-tz-kXu"/>
                             <constraint firstAttribute="trailing" secondItem="pbl-FT-m3N" secondAttribute="trailing" id="gFN-0y-Roj"/>
-                            <constraint firstItem="pYS-jM-odZ" firstAttribute="leading" secondItem="jWH-nz-joP" secondAttribute="leadingMargin" constant="-16" id="ppp-Jh-Sj4"/>
                             <constraint firstItem="pbl-FT-m3N" firstAttribute="bottom" secondItem="MJP-Sh-jwL" secondAttribute="top" constant="49" id="qzF-Jp-iah"/>
                             <constraint firstItem="pbl-FT-m3N" firstAttribute="leading" secondItem="jWH-nz-joP" secondAttribute="leading" id="r9N-OO-33s"/>
                             <constraint firstItem="pYS-jM-odZ" firstAttribute="top" secondItem="P8D-wz-JWT" secondAttribute="bottom" id="xv0-Wh-dim"/>
@@ -368,6 +367,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="doneButton" destination="fSx-D7-Dg0" id="vGb-gH-ein"/>
                         <outlet property="tableView" destination="pbl-FT-m3N" id="c47-IW-6xy"/>
                     </connections>
                 </viewController>
@@ -429,6 +429,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="doneButton" destination="ACP-4Z-eNu" id="LUd-Ep-TGf"/>
                         <outlet property="tableView" destination="pQA-h4-DkK" id="S06-OX-LdI"/>
                     </connections>
                 </viewController>

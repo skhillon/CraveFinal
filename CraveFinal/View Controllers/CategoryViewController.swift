@@ -13,6 +13,7 @@ let reuseIdentifier = "Cell"
 class CategoryViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var doneButton: UIBarButtonItem!
     
     var counter = 0
     
@@ -24,6 +25,17 @@ class CategoryViewController: UIViewController, UITableViewDataSource, UITableVi
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        navigationController?.setNavigationBarHidden(false, animated: false)
+        navigationController?.navigationBar.barTintColor = UIColor.orangeColor()
+        navigationController?.navigationBar.tintColor = UIColor.whiteColor()
+        
+        if selectedCategories.isEmpty {
+            doneButton.enabled = false
+        } else {
+            doneButton.enabled = true
+
+        }
         
         // trying to hide done button when they have 0 values selected.
         
@@ -48,11 +60,6 @@ class CategoryViewController: UIViewController, UITableViewDataSource, UITableVi
         tableView.separatorColor = UIColor.grayColor()
     }
 
-    override func viewWillAppear(animated: Bool) {
-        navigationController?.setNavigationBarHidden(false, animated: false)
-        navigationController?.navigationBar.barTintColor = UIColor.orangeColor()
-        navigationController?.navigationBar.tintColor = UIColor.whiteColor()
-    }
     
     func segueToHomeScreen() {
         self.performSegueWithIdentifier("segueToHomeScreen", sender: self)
@@ -111,6 +118,13 @@ class CategoryViewController: UIViewController, UITableViewDataSource, UITableVi
             println("From selected \(selectedCategories)")
             
         }
+        if selectedCategories.isEmpty {
+            doneButton.enabled = false
+
+        } else {
+            doneButton.enabled = true
+
+        }
 
     }
     
@@ -127,6 +141,13 @@ class CategoryViewController: UIViewController, UITableViewDataSource, UITableVi
             self.selectedCategories.removeAtIndex(found!)
             cell.alpha = 1.0
             counter--
+        }
+        if selectedCategories.isEmpty {
+            doneButton.enabled = false
+
+        } else {
+            doneButton.enabled = true
+
         }
         
         println("From deselected \(selectedCategories)")
