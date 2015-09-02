@@ -31,6 +31,7 @@ class ResultsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        UIApplication.sharedApplication().statusBarStyle = .LightContent
         
         if self.mealObject.priceValue != "" {
         self.priceLabel.text = self.mealObject.priceValue

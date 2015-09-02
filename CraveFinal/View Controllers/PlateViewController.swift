@@ -59,6 +59,7 @@ class PlateViewController: UITableViewController, UITableViewDataSource, UITable
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        UIApplication.sharedApplication().statusBarStyle = .LightContent
         
         
         tableView.dataSource = self

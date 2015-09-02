@@ -53,17 +53,9 @@ code_sign_if_enabled() {
 
 if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework 'Pods-CraveFinal/Alamofire.framework'
-  install_framework 'Pods-CraveFinal/CBZSplashView.framework'
-  install_framework 'Pods-CraveFinal/Realm.framework'
-  install_framework 'Pods-CraveFinal/RealmSwift.framework'
-  install_framework 'Pods-CraveFinal/SwiftSpinner.framework'
   install_framework 'Pods-CraveFinal/SwiftyJSON.framework'
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework 'Pods-CraveFinal/Alamofire.framework'
-  install_framework 'Pods-CraveFinal/CBZSplashView.framework'
-  install_framework 'Pods-CraveFinal/Realm.framework'
-  install_framework 'Pods-CraveFinal/RealmSwift.framework'
-  install_framework 'Pods-CraveFinal/SwiftSpinner.framework'
   install_framework 'Pods-CraveFinal/SwiftyJSON.framework'
 fi

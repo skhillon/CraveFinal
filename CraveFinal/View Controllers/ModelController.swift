@@ -22,8 +22,8 @@ class ModelController: NSObject, UIPageViewControllerDataSource {
     
     var pageData: NSArray = ["Welcome to Crave", "Getting started is as easy as 1, 2, 3"]
     //var imageData: NSArray = ["One Finger-100.png", "Ingredients-100.png", "Restaurant-100.png"]
-    var detailsArray = ["Crave lets you find food based on what ingredients you know you want. Swipe left to learn more.",
-        "1. Choose the types of food you're willing to eat. You can select up to 5 food categories. \n2. Select the ingredients you know you want in your meal. \n3. See results and go eat!"]
+    var detailsArray = ["Crave lets you find food based on what ingredients you know you want. \n\nSwipe left to learn more or press Get Started.",
+        "1. Choose the types of food you're willing to eat. You can select up to 5 food categories. \n\n2. Select the ingredients you know you want in your meal. \n\n3. See results and go eat!"]
     
     func viewControllerAtIndex(index: Int, storyboard: UIStoryboard) -> DataViewController? {
         // Return the data view controller for the given index.

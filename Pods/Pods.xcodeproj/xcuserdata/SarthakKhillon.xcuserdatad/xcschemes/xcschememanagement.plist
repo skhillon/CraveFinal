@@ -9,27 +9,7 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>CBZSplashView.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
 		<key>Pods-CraveFinal.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
-		<key>Realm.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
-		<key>RealmSwift.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
-		<key>SwiftSpinner.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
@@ -42,37 +22,17 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>420E7717CD669F48DE5D8F5850008C54</key>
+		<key>27C9D2AACF68A5267203AA16E3412B74</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>7C6E6FF09AE67AFB5AF2D5517E755C37</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>819C1C710D75A9D1281666C66E4CFC3B</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>8530DEDBC37DD75056E54EB064F88745</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>96AEE33F65A2EF4B6B618C95828DF9DE</key>
+		<key>2E4793841A4AB98610E70FFAAFAC654C</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
 		<key>B9A04D3C9B208813656510FDA8ADAE02</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>C08C289F771810C5DA998DD76DDB6E67</key>
 		<dict>
 			<key>primary</key>
 			<true/>

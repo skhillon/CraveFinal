@@ -7,21 +7,20 @@
 //
 
 import UIKit
-import RealmSwift
 
-class MealObject: Object {
+class MealObject {
     
-    dynamic var mealTitle = ""
-    dynamic var mealDescription = ""
-    dynamic var nameOfVenue = ""
-    dynamic var priceValue = ""
-    dynamic var score: Double = 0
-    dynamic var longitudeOfVenue: Double = 0
-    dynamic var latitudeOfVenue: Double = 0
-    dynamic var distanceToVenue: Int = 0 // measured in meters
-    dynamic var addressofVenue = ""
-    dynamic var venueId = ""
-    dynamic var saved = false
+    var mealTitle = ""
+    var mealDescription = ""
+    var nameOfVenue = ""
+    var priceValue = ""
+    var score: Double = 0
+    var longitudeOfVenue: Double = 0
+    var latitudeOfVenue: Double = 0
+    var distanceToVenue: Int = 0 // measured in meters
+    var addressofVenue = ""
+    var venueId = ""
+    var saved = false
     
     func checkCompleted() -> Bool {
         if (mealTitle == "") || (mealDescription == "") || (nameOfVenue == "") /* || (priceValue == "") */ || (score == 0) || (longitudeOfVenue == 0) || (latitudeOfVenue == 0) || (distanceToVenue == 0) || (addressofVenue == "") || (venueId == "") {

@@ -464,21 +464,10 @@
                         <viewControllerLayoutGuide type="top" id="fwN-Rd-8l5"/>
                         <viewControllerLayoutGuide type="bottom" id="muV-0c-N20"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="O2k-xd-19q">
+                    <view key="view" alpha="0.90000000000000002" contentMode="scaleToFill" id="O2k-xd-19q">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Z0133GNPXT.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="kiO-7b-YXB">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                            </imageView>
-                        </subviews>
                         <color key="backgroundColor" red="1" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                        <constraints>
-                            <constraint firstItem="kiO-7b-YXB" firstAttribute="leading" secondItem="O2k-xd-19q" secondAttribute="leading" id="7i4-7k-pTL"/>
-                            <constraint firstItem="kiO-7b-YXB" firstAttribute="top" secondItem="O2k-xd-19q" secondAttribute="top" id="9iT-Hf-tYo"/>
-                            <constraint firstItem="kiO-7b-YXB" firstAttribute="bottom" secondItem="muV-0c-N20" secondAttribute="top" id="P24-pd-90t"/>
-                            <constraint firstAttribute="trailing" secondItem="kiO-7b-YXB" secondAttribute="trailing" id="oCh-nP-i4c"/>
-                        </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Kte-Ls-HBr" sceneMemberID="firstResponder"/>
@@ -493,11 +482,11 @@
                         <viewControllerLayoutGuide type="top" id="hBw-o3-9vl"/>
                         <viewControllerLayoutGuide type="bottom" id="ohX-iI-RVD"/>
                     </layoutGuides>
-                    <view key="view" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="fJw-Kh-E2a">
+                    <view key="view" clearsContextBeforeDrawing="NO" alpha="0.90000000000000002" contentMode="scaleToFill" id="fJw-Kh-E2a">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fuj-uF-fA3">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fuj-uF-fA3">
                                 <rect key="frame" x="35" y="136" width="527" height="277"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -561,7 +550,4 @@
             <point key="canvasLocation" x="-723" y="277"/>
         </scene>
     </scenes>
-    <resources>
-        <image name="Z0133GNPXT.jpg" width="3048" height="2286"/>
-    </resources>
 </document>

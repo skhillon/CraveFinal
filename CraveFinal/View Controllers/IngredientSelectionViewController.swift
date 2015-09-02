@@ -37,6 +37,7 @@ class IngredientSelectionViewController: UIViewController, UITableViewDataSource
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        UIApplication.sharedApplication().statusBarStyle = .LightContent
         
         if userIngredients.isEmpty {
             doneButton.enabled = false
