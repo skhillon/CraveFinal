@@ -17,6 +17,11 @@ It also implements a custom method, viewControllerAtIndex: which is useful in th
 There is no need to actually create view controllers for each page in advance -- indeed doing so incurs unnecessary overhead. Given the data model, these methods create, configure, and return a new view controller on demand.
 */
 
+// FIX: This whole setup is excessive for your needs. Seriously, just a single VC in storyboard would have been fine, heck even just an overlay on the CategoryVC with the intro info would have been fine.
+// The info on your second pageView isn't very informative beyond what the user will already see when they actually do it. I'd just remove it.
+// Made a quick mockup of a simple static page intro scene above yours in storyboard
+
+// FIX: Also, organizationally, this is not a VC, so shouldn't be in this folder
 
 class ModelController: NSObject, UIPageViewControllerDataSource {
     

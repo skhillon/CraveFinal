@@ -30,6 +30,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
     }
     
     func locationManager(manager: CLLocationManager, didUpdateToLocation newLocation: CLLocation, fromLocation oldLocation: CLLocation) {
+        // FIX: Why are these inside of closures?
         strLatitude = { newLocation.coordinate.latitude }()
         strLongitude = { newLocation.coordinate.longitude }()
     }
@@ -42,6 +43,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
         var startViewController = UIViewController()
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         
+        // FIX: By !normalLaunch do  you mean "first time opening app?" - if so, why in your else statement do you set normalLaunch back to false? Just testing?
         if !normalLaunch {
             startViewController = storyboard.instantiateViewControllerWithIdentifier("RootVC") as! RootViewController
             NSUserDefaults.standardUserDefaults().setBool(true, forKey: "NormalLaunch")

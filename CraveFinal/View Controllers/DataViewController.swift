@@ -22,7 +22,7 @@ class DataViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        UIApplication.sharedApplication().statusBarStyle = .LightContent
+        UIApplication.sharedApplication().statusBarStyle = .LightContent // FIX: this is fine, but you know you can set this in Storyboard right?
         // Do any additional setup after loading the view, typically from a nib.
     }
     
