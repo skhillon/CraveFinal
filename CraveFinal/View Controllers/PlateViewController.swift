@@ -71,24 +71,9 @@ class PlateViewController: UITableViewController, UITableViewDataSource, UITable
         tableView.separatorColor = UIColor.grayColor()
         
         
-//        self.refreshControl = UIRefreshControl()
-//        self.refreshControl?.backgroundColor = UIColor.orangeColor() // look at MakeNotes for custom colors
-//        self.refreshControl?.tintColor = UIColor.whiteColor()
-//        self.refreshControl?.addTarget(self, action: "getResults", forControlEvents: UIControlEvents.ValueChanged)
-        
         self.getResults()
     }
     
-//    func didStartGettingResults(_ : UITableView) {
-//        //activityIndicator.sizeToFit()
-//        activityIndicator.startAnimating()
-//        println("Starting to get results")
-//    }
-//    
-//    func didFinishGettingResults(_ : UITableView) {
-//        activityIndicator.stopAnimating()
-//        println("finished getting results")
-//    }
     
     func getResults() {
         var long = strLongitude
