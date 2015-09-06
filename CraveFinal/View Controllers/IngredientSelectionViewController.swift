@@ -9,8 +9,10 @@
 
 import UIKit
 
-let cellIdentifier = "IngredientCell"
-// by default, all rows will be selected. It is then up to the user to select or deselect as they feel is necessary.
+let cellIdentifier = "IngredientCell"  // FIX: not really saving any space with this, would rather you used it inline per usual
+
+// by default, all rows will be selected. It is then up to the user to select or deselect as they feel is necessary. 
+// FIX: liar
 
 class IngredientSelectionViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
@@ -201,6 +203,7 @@ class IngredientSelectionViewController: UIViewController, UITableViewDataSource
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         var endResult = 0
+        // FIX: I think you just want this, once: endResult = selectedIngredients[section].count
         if (section == 0) {
             endResult = selectedIngredients[0].count
         }
@@ -223,7 +226,8 @@ class IngredientSelectionViewController: UIViewController, UITableViewDataSource
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier) as! IngredientSelectionViewCell
         
-        
+        // FIX: Again: cell.ingredientLabel.text = selectedIngredients[indexPath.section][indexPath.row]
+
         // Configure the cell...
         if indexPath.section == 0 {
             cell.ingredientLabel.text = selectedIngredients[0][indexPath.row]
@@ -243,6 +247,7 @@ class IngredientSelectionViewController: UIViewController, UITableViewDataSource
     func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         var sectionName = ""
         
+        // FIX: sectionName = selectedCategories[section]
         if section == 0 {
             sectionName = selectedCategories[0]
         } else if section == 1 {
@@ -278,6 +283,8 @@ class IngredientSelectionViewController: UIViewController, UITableViewDataSource
     
     func tableView(tableView: UITableView, didDeselectRowAtIndexPath indexPath: NSIndexPath) {
         var cell = tableView.cellForRowAtIndexPath(indexPath) as! IngredientSelectionViewCell
+        
+        // FIX: this bit is getting complicated enough that I'd move it to an appropriately named helper
         var found: Int?  // <= will hold the index if it was found, or else will be nil
         for i in (0...(userIngredients.count - 1)) {
             if userIngredients[i] == "\(cell.ingredientLabel.text!)" {
@@ -287,6 +294,7 @@ class IngredientSelectionViewController: UIViewController, UITableViewDataSource
         self.userIngredients.removeAtIndex(found!)
         println(userIngredients)
         
+        // FIX: duplicate code here!! Create helper method to call instead, like "updateDoneButtonUI" or something usefully named
         if userIngredients.isEmpty {
             doneButton.enabled = false
         } else {
@@ -295,7 +303,7 @@ class IngredientSelectionViewController: UIViewController, UITableViewDataSource
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if segue.identifier == "PlateSegue" {
+        if segue.identifier == "PlateSegue" { // FIX: seems to me that it makes more sense to switch your use of Plate and Results, results for list of results, plate for viewing one dish
             let destinationVC = segue.destinationViewController as! PlateViewController
             destinationVC.foodCategories = self.selectedTags
             destinationVC.ingredientData = self.userIngredients
@@ -349,6 +357,7 @@ class IngredientSelectionViewController: UIViewController, UITableViewDataSource
     
 }
 
+// FIX: not being used
 extension Array {
     func find (includedElement: T -> Bool) -> Int? {
         for (idx, element) in enumerate(self) {

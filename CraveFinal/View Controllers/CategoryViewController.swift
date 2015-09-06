@@ -8,7 +8,7 @@
 
 import UIKit
 
-let reuseIdentifier = "Cell"
+let reuseIdentifier = "Cell" // FIX: delete, not being used
 
 class CategoryViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
@@ -26,14 +26,16 @@ class CategoryViewController: UIViewController, UITableViewDataSource, UITableVi
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        UIApplication.sharedApplication().statusBarStyle = .LightContent
+        UIApplication.sharedApplication().statusBarStyle = .LightContent // FIX: this is fine, but you know you can set this in Storyboard right?
         
-        navigationController?.setNavigationBarHidden(false, animated: false)
+        navigationController?.setNavigationBarHidden(false, animated: false) // FIX: was it hiding itself or animating before you set this?
         navigationController?.navigationBar.barTintColor = UIColor.orangeColor()
         navigationController?.navigationBar.tintColor = UIColor.whiteColor()
         let titleDict: NSDictionary = [NSForegroundColorAttributeName: UIColor.whiteColor()]
         self.navigationController!.navigationBar.titleTextAttributes = titleDict as [NSObject : AnyObject]
+        // FIX: since you have multiple lines of code all related to prettifying the navbar, consider moving them into a helper method, or at least adding comments saying what the block of code is doing
         
+        // FIX: add a comment explaining why this is needed - ie when you come back to this page it should stay enabled
         if selectedCategories.isEmpty {
             doneButton.enabled = false
         } else {
@@ -52,7 +54,7 @@ class CategoryViewController: UIViewController, UITableViewDataSource, UITableVi
         //            doneButton.userInteractionEnabled = true
         //            doneButton.alpha = 1.0
         
-        println("I'M HERE!")
+        println("I'M HERE!") // FIX: me too, don't forget to delete the unused code above
 
         tableView.dataSource = self
         tableView.delegate = self
@@ -60,12 +62,13 @@ class CategoryViewController: UIViewController, UITableViewDataSource, UITableVi
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.allowsMultipleSelection = true
         
-        tableView.separatorStyle = UITableViewCellSeparatorStyle.SingleLine
-        tableView.separatorColor = UIColor.grayColor()
+        tableView.separatorStyle = UITableViewCellSeparatorStyle.SingleLine // FIX: this is fine, but you know you can set this in Storyboard right?
+        tableView.separatorColor = UIColor.grayColor() // FIX: this is fine, but you know you can set this in Storyboard right?
     }
 
     
     func segueToHomeScreen() {
+        // FIX: are you using this anywhere?
         self.performSegueWithIdentifier("segueToHomeScreen", sender: self)
     }
     
@@ -75,13 +78,14 @@ class CategoryViewController: UIViewController, UITableViewDataSource, UITableVi
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if segue.identifier == "EditSegue" {
+        if segue.identifier == "EditSegue" { // FIX: not a good segue name, should be something like "ingredients" and adding "Segue" at the end is a bit redundant :p
             if let destinationVC = segue.destinationViewController as? IngredientSelectionViewController {
                 destinationVC.selectedCategories = self.selectedCategories
             }
         }
     }
     
+    // FIX: can delete this method - only needed if you want more than 1 section
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 1
     }
@@ -94,7 +98,7 @@ class CategoryViewController: UIViewController, UITableViewDataSource, UITableVi
         
         var category = categoryBank[indexPath.row]
         
-        let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as! CategoryTableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as! CategoryTableViewCell // FIX: again, your naming conventions suck. "Cell" really?
         
         cell.categoryName.text = category
         
@@ -140,6 +144,7 @@ class CategoryViewController: UIViewController, UITableViewDataSource, UITableVi
     func tableView(tableView: UITableView, didDeselectRowAtIndexPath indexPath: NSIndexPath) {
         var cell = tableView.cellForRowAtIndexPath(indexPath) as! CategoryTableViewCell
         
+        // FIX: this bit is getting complicated enough that I'd move it to an appropriately named helper
         var found: Int?  // <= will hold the index if it was found, or else will be nil
         for i in (0...(selectedCategories.count - 1)) {
             if selectedCategories[i] == "\(cell.categoryName.text!)" {
@@ -151,6 +156,8 @@ class CategoryViewController: UIViewController, UITableViewDataSource, UITableVi
             cell.alpha = 1.0
             counter--
         }
+        
+        // FIX: duplicate code here!! Create helper method to call instead, like "updateDoneButtonUI" or something usefully named
         if selectedCategories.isEmpty {
             doneButton.enabled = false
 

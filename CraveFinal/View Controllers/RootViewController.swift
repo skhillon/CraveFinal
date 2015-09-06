@@ -73,6 +73,9 @@ class RootViewController: UIViewController, UIPageViewControllerDelegate {
         }
         
         // In landscape orientation: Set set the spine location to "mid" and the page view controller's view controllers array to contain two view controllers. If the current page is even, set it to contain the current and next view controllers; if it is odd, set the array to contain the previous and current view controllers.
+        
+        // FIX: Just disable landscape mode, your app doesn't need it or benefit from it it any way.
+        
         let currentViewController = self.pageViewController!.viewControllers[0] as! DataViewController
         var viewControllers: [AnyObject]
         

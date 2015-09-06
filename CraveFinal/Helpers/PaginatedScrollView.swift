@@ -8,6 +8,7 @@
 
 import UIKit
 
+// FIX: What's going on here? Doesn't seem to be being used.
 class PaginatedScrollView: UIScrollView {
     
     var images: [UIImage]? {

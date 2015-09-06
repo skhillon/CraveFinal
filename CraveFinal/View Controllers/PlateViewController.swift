@@ -76,7 +76,7 @@ class PlateViewController: UITableViewController, UITableViewDataSource, UITable
     
     
     func getResults() {
-        var long = strLongitude
+        var long = strLongitude // FIX: should be treated as optionals, in case user didn't allow Location Data or it is otherwise not working
         var lat = strLatitude
         let hardLat = 38.666007
         let hardLong = -121.137887
@@ -84,6 +84,8 @@ class PlateViewController: UITableViewController, UITableViewDataSource, UITable
         println("Long = \(long)")
         println("Lat = \(lat)")
         var success = false
+        
+        // FIX: check for lat/long first and show warning if they don't exist
         
         self.getUserSuggestions(long, lat: lat) { (result) in
             
@@ -116,7 +118,7 @@ class PlateViewController: UITableViewController, UITableViewDataSource, UITable
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "ResultSegue" {
             if let destinationVC = segue.destinationViewController as? ResultsViewController {
-                destinationVC.mealObject = mealArray[cellLocation]
+                destinationVC.mealObject = mealArray[cellLocation] // FIX: instead of saving cellLocation, why not save Meal in didSelectRowAtIndexPath?
             }
         }
     }
@@ -129,16 +131,18 @@ class PlateViewController: UITableViewController, UITableViewDataSource, UITable
         
         //        let meals = mealList.subscript([indexPath.row])
         //        print(indexPath.row)
+        
+        // FIX: make life easier with a var - var meal = self.mealArray[indexPath.row]
         if self.mealArray[indexPath.row].mealTitle != "" {
             cell.mealTitleLabel.text = self.mealArray[indexPath.row].mealTitle
         } else {
-            cell.mealTitleLabel.text = "Unnamed dish"
+            cell.mealTitleLabel.text = "Unnamed dish" // FIX: have default values
         }
         
         if self.mealArray[indexPath.row].nameOfVenue != "" {
             cell.restLabel.text = self.mealArray[indexPath.row].nameOfVenue
         } else {
-            cell.restLabel.text = "No Venue found"
+            cell.restLabel.text = "No Venue found" // FIX: same
         }
         
         if self.mealArray[indexPath.row].distanceToVenue != 0 {
@@ -146,7 +150,7 @@ class PlateViewController: UITableViewController, UITableViewDataSource, UITable
             let mileDistance = round((Double(meterDistance) * 0.000621371 * 1000)/1000)
             cell.distanceLabel.text = "\(mileDistance)" + " mi"
         } else {
-            cell.distanceLabel.text = "Distance n/a"
+            cell.distanceLabel.text = "Distance n/a" // FIX: same
         }
         
         if self.mealArray[indexPath.row].priceValue != "" {
@@ -201,6 +205,8 @@ class PlateViewController: UITableViewController, UITableViewDataSource, UITable
     @param getUserSuggestionsCallback: A callback which takes the finished VenueID array and returns void. Should change to tuple soon.
     @return void
     */
+    
+    // FIX: obviously, I stopped checking code from here down
     func getUserSuggestions(long: CLLocationDegrees, lat: CLLocationDegrees, getUserSuggestionsCallback: ([(String, Int, String, Double, Double, String)] -> Void))  {
         
         var numCategoriesQueried = 0
